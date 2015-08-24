@@ -36,7 +36,7 @@
 
 	<ciManagement>
 		<system>Travis CI</system>
-		<url>https://travis-ci.org/bernardo-mg/dreadball-model-persistence</url>
+		<url>https://travis-ci.org/Bernardo-MG/dreadball-model-persistence</url>
 		<notifiers />
 	</ciManagement>
 
