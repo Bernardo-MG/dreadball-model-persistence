@@ -28,44 +28,63 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
+import com.wandrell.tabletop.dreadball.model.unit.AffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
-@Entity(name = "Unit")
-@Table(name = "units")
-public final class JPAUnit implements Unit, PersistenceEntity, Serializable {
+@Entity(name = "AffinityUnit")
+@Table(name = "affinity_units")
+public final class JPAAffinityUnit
+        implements AffinityUnit, PersistenceEntity, Serializable {
 
-    private static final long            serialVersionUID = -6317901977987115397L;
+    private static final long                  serialVersionUID = -6317901977987115397L;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "unit_abilities",
             joinColumns = { @JoinColumn(name = "unit_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAbility> abilities        = new LinkedHashSet<>();
+    private final Collection<JPAAbility>       abilities        = new LinkedHashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "unit_affinities",
+            joinColumns = { @JoinColumn(name = "unit_id",
+                    referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "affinity_id",
+                    referencedColumnName = "id") })
+    private final Collection<JPAAffinityGroup> affinities       = new LinkedList<JPAAffinityGroup>();
     @Embedded
-    private final JPAAttributesHolder    attributes       = new JPAAttributesHolder();
+    private final JPAAttributesHolder          attributes       = new JPAAttributesHolder();
     @Column(name = "cost")
-    private Integer                      cost;
+    private Integer                            cost;
+    @Column(name = "cost_ally")
+    private Integer                            costAlly;
+    @Column(name = "cost_friend")
+    private Integer                            costFriend;
+    @Column(name = "cost_stranger")
+    private Integer                            costStranger;
     @Column(name = "giant")
-    private Boolean                      giant;
+    private Boolean                            giant;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer                      id               = -1;
+    private Integer                            id               = -1;
     @Column(name = "name", unique = true)
-    private String                       name;
+    private String                             name;
     @Column(name = "position")
     @Enumerated(EnumType.STRING)
-    private TeamPosition                 position;
+    private TeamPosition                       position;
 
-    public JPAUnit() {
+    public JPAAffinityUnit() {
         super();
     }
 
     public final void addAbility(final JPAAbility ability) {
         getAbilitiesModifiable().add(ability);
+    }
+
+    public final void addAffinityGroup(final JPAAffinityGroup affinity) {
+        getAffinityGroupsModifiable().add(affinity);
     }
 
     @Override
@@ -82,9 +101,9 @@ public final class JPAUnit implements Unit, PersistenceEntity, Serializable {
             return false;
         }
 
-        final JPAUnit other;
+        final JPAAffinityUnit other;
 
-        other = (JPAUnit) obj;
+        other = (JPAAffinityUnit) obj;
         return Objects.equals(name, other.name);
     }
 
@@ -101,6 +120,23 @@ public final class JPAUnit implements Unit, PersistenceEntity, Serializable {
     }
 
     @Override
+    public final Collection<AffinityGroup> getAffinityGroups() {
+        final Collection<AffinityGroup> col;
+
+        col = new LinkedList<>();
+        for (final AffinityGroup affinity : getAffinityGroupsModifiable()) {
+            col.add(affinity);
+        }
+
+        return Collections.unmodifiableCollection(col);
+    }
+
+    @Override
+    public final Integer getAllyCost() {
+        return costAlly;
+    }
+
+    @Override
     public final AttributesHolder getAttributes() {
         return attributes;
     }
@@ -111,6 +147,11 @@ public final class JPAUnit implements Unit, PersistenceEntity, Serializable {
     }
 
     @Override
+    public final Integer getFriendCost() {
+        return costFriend;
+    }
+
+    @Override
     public final Integer getId() {
         return id;
     }
@@ -118,6 +159,11 @@ public final class JPAUnit implements Unit, PersistenceEntity, Serializable {
     @Override
     public final TeamPosition getPosition() {
         return position;
+    }
+
+    @Override
+    public final Integer getStrangerCost() {
+        return costStranger;
     }
 
     @Override
@@ -139,8 +185,20 @@ public final class JPAUnit implements Unit, PersistenceEntity, Serializable {
         getAbilitiesModifiable().remove(ability);
     }
 
+    public final void removeAffinityGroup(final AffinityGroup affinity) {
+        getAffinityGroupsModifiable().remove(affinity);
+    }
+
+    public final void setAllyCost(final Integer cost) {
+        costAlly = cost;
+    }
+
     public final void setCost(final Integer cost) {
         this.cost = cost;
+    }
+
+    public final void setFriendCost(final Integer cost) {
+        costFriend = cost;
     }
 
     public final void setGiant(final Boolean giant) {
@@ -162,6 +220,10 @@ public final class JPAUnit implements Unit, PersistenceEntity, Serializable {
         this.position = position;
     }
 
+    public final void setStrangerCost(final Integer cost) {
+        costStranger = cost;
+    }
+
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("name", name).toString();
@@ -169,6 +231,10 @@ public final class JPAUnit implements Unit, PersistenceEntity, Serializable {
 
     private final Collection<JPAAbility> getAbilitiesModifiable() {
         return abilities;
+    }
+
+    private final Collection<JPAAffinityGroup> getAffinityGroupsModifiable() {
+        return affinities;
     }
 
 }
