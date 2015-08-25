@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.AffinityUnitTestRepository;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AffinityUnitTestRepository;
 
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPAAffinityUnit

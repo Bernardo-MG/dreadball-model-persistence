@@ -1,5 +1,7 @@
 package com.wandrell.tabletop.dreadball.model.persistence.unit;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -28,6 +30,8 @@ public final class JPAUnit extends AbstractJPAUnit
     }
 
     public final void setCost(final Integer cost) {
+        checkNotNull(cost, "Received a null pointer as ally cost");
+
         this.cost = cost;
     }
 

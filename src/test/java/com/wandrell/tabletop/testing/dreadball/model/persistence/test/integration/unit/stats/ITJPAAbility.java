@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.AbilityTestRepository;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AbilityTestRepository;
 
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPAAbility

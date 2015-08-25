@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository;
+package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api;
 
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPASponsor;
 

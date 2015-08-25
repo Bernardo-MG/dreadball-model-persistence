@@ -1,5 +1,6 @@
 package com.wandrell.tabletop.dreadball.model.persistence.unit;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Collection;
@@ -45,7 +46,7 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
                     referencedColumnName = "id") })
     private final Collection<JPAAbility> abilities  = new LinkedHashSet<>();
     @Embedded
-    private final JPAAttributesHolder    attributes = new JPAAttributesHolder();
+    private JPAAttributesHolder          attributes = new JPAAttributesHolder();
     @Column(name = "giant")
     private Boolean                      giant;
     @Id
@@ -59,6 +60,13 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
 
     public AbstractJPAUnit() {
         super();
+    }
+
+    public final void addAbility(final Ability ability) {
+        checkArgument(ability instanceof JPAAbility,
+                "The Ability should be an instanceof JPAAbility");
+
+        getAbilitiesModifiable().add((JPAAbility) ability);
     }
 
     public final void addAbility(final JPAAbility ability) {
@@ -131,7 +139,25 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
         getAbilitiesModifiable().remove(ability);
     }
 
+    public final void setAbilities(final Collection<Ability> abilities) {
+        for (final Ability ability : abilities) {
+            checkArgument(ability instanceof JPAAbility,
+                    "All the abilities should be an instanceof JPAAbility");
+
+            getAbilitiesModifiable().add((JPAAbility) ability);
+        }
+    }
+
+    public final void setAttributes(final AttributesHolder attributes) {
+        checkArgument(attributes instanceof JPAAttributesHolder,
+                "The AttributesHolder should be an instanceof JPAAttributesHolder");
+
+        this.attributes = (JPAAttributesHolder) attributes;
+    }
+
     public final void setGiant(final Boolean giant) {
+        checkNotNull(giant, "Received a null pointer as giant flag");
+
         this.giant = giant;
     }
 
@@ -143,10 +169,14 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
     }
 
     public final void setName(final String name) {
+        checkNotNull(name, "Received a null pointer as name");
+
         this.name = name;
     }
 
     public final void setPosition(final TeamPosition position) {
+        checkNotNull(position, "Received a null pointer as team position role");
+
         this.position = position;
     }
 

@@ -1,5 +1,7 @@
 package com.wandrell.tabletop.dreadball.model.persistence.unit;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
@@ -79,18 +81,26 @@ public final class JPAAffinityUnit extends AbstractJPAUnit
     }
 
     public final void removeAffinityGroup(final AffinityGroup affinity) {
+        checkNotNull(affinity, "Received a null pointer as ally affinity");
+
         getAffinityGroupsModifiable().remove(affinity);
     }
 
     public final void setAllyCost(final Integer cost) {
+        checkNotNull(cost, "Received a null pointer as ally cost");
+
         costAlly = cost;
     }
 
     public final void setFriendCost(final Integer cost) {
+        checkNotNull(cost, "Received a null pointer as friend cost");
+
         costFriend = cost;
     }
 
     public final void setStrangerCost(final Integer cost) {
+        checkNotNull(cost, "Received a null pointer as stranger cost");
+
         costStranger = cost;
     }
 

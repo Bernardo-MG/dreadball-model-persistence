@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPASponsor;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.SponsorTestRepository;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.SponsorTestRepository;
 
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPASponsor

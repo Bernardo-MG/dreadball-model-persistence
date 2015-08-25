@@ -68,6 +68,8 @@ public final class JPAAffinityGroup
     }
 
     public final void setAffinityGroupName(final String name) {
+        checkNotNull(name, "Received a null pointer as name");
+
         this.name = name;
     }
 

@@ -6,29 +6,29 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitTestRepository;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AdvancementUnitTestRepository;
 
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
-public final class ITJPAUnit
+public final class ITJPAAdvancementUnit
         extends AbstractTransactionalTestNGSpringContextTests {
 
     @Autowired
-    private UnitTestRepository repository;
+    private AdvancementUnitTestRepository repository;
 
-    public ITJPAUnit() {
+    public ITJPAAdvancementUnit() {
         super();
     }
 
     @Test
     public void test_loads_guard() {
-        final JPAUnit unit;
+        final JPAAdvancementUnit unit;
 
         unit = repository.findById(3);
 
         Assert.assertEquals(unit.getId(), (Integer) 3);
-        Assert.assertEquals(unit.getTemplateName(), "unit3");
+        Assert.assertEquals(unit.getTemplateName(), "advunit3");
         Assert.assertEquals(unit.getCost(), (Integer) 11);
 
         Assert.assertEquals(unit.getAttributes().getArmor(), (Integer) 1);
@@ -42,16 +42,22 @@ public final class ITJPAUnit
         Assert.assertEquals(unit.isGiant(), (Boolean) false);
 
         Assert.assertEquals(unit.getAbilities().size(), 0);
+
+        Assert.assertEquals(unit.getUnspentExperience(), (Integer) 10);
+        Assert.assertEquals(unit.getRank(), (Integer) 20);
+
+        Assert.assertEquals(unit.getGraftedImplant().getComponentName(),
+                "component1");
     }
 
     @Test
     public void test_loads_jack() {
-        final JPAUnit unit;
+        final JPAAdvancementUnit unit;
 
         unit = repository.findById(2);
 
         Assert.assertEquals(unit.getId(), (Integer) 2);
-        Assert.assertEquals(unit.getTemplateName(), "unit2");
+        Assert.assertEquals(unit.getTemplateName(), "advunit2");
         Assert.assertEquals(unit.getCost(), (Integer) 11);
 
         Assert.assertEquals(unit.getAttributes().getArmor(), (Integer) 1);
@@ -65,16 +71,22 @@ public final class ITJPAUnit
         Assert.assertEquals(unit.isGiant(), (Boolean) true);
 
         Assert.assertEquals(unit.getAbilities().size(), 2);
+
+        Assert.assertEquals(unit.getUnspentExperience(), (Integer) 10);
+        Assert.assertEquals(unit.getRank(), (Integer) 20);
+
+        Assert.assertEquals(unit.getGraftedImplant().getComponentName(),
+                "component1");
     }
 
     @Test
     public void test_loads_striker() {
-        final JPAUnit unit;
+        final JPAAdvancementUnit unit;
 
         unit = repository.findById(1);
 
         Assert.assertEquals(unit.getId(), (Integer) 1);
-        Assert.assertEquals(unit.getTemplateName(), "unit1");
+        Assert.assertEquals(unit.getTemplateName(), "advunit1");
         Assert.assertEquals(unit.getCost(), (Integer) 11);
 
         Assert.assertEquals(unit.getAttributes().getArmor(), (Integer) 1);
@@ -88,6 +100,12 @@ public final class ITJPAUnit
         Assert.assertEquals(unit.isGiant(), (Boolean) false);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
+
+        Assert.assertEquals(unit.getUnspentExperience(), (Integer) 10);
+        Assert.assertEquals(unit.getRank(), (Integer) 20);
+
+        Assert.assertEquals(unit.getGraftedImplant().getComponentName(),
+                "component1");
     }
 
 }

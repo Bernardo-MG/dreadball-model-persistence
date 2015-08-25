@@ -25,7 +25,7 @@
 
 	<context:component-scan base-package="com.wandrell.tabletop.dreadball.model.persistence" />
 	
-	<jpa:repositories base-package="com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository"/>
+	<jpa:repositories base-package="com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.impl"/>
 
 	<!-- ================================== JPA ================================== -->
 

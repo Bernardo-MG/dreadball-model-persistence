@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.AffinityGroupTestRepository;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AffinityGroupTestRepository;
 
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPAAffinityGroup
