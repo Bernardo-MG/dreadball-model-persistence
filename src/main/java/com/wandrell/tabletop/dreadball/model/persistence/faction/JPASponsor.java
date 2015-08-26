@@ -34,7 +34,7 @@ public final class JPASponsor
 
     private static final long                  serialVersionUID = -6236019919297159189L;
     @Column(name = "cash")
-    private Integer                            cash;
+    private Integer                            cash             = 0;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "sponsor_affinity_groups",
             joinColumns = { @JoinColumn(name = "sponsor_id",
@@ -46,9 +46,9 @@ public final class JPASponsor
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer                            id               = -1;
     @Column(name = "name", unique = true)
-    private String                             name;
+    private String                             name             = "";
     @Column(name = "rank")
-    private Integer                            rank;
+    private Integer                            rank             = 0;
 
     public JPASponsor() {
         super();

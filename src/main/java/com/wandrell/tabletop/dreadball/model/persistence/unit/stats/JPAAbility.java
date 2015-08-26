@@ -26,7 +26,7 @@ public final class JPAAbility
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
     @Column(name = "name", unique = true)
-    private String            name;
+    private String            name             = "";
 
     public JPAAbility() {
         super();

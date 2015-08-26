@@ -18,7 +18,7 @@ public final class JPAUnit extends AbstractJPAUnit
 
     private static final long serialVersionUID = -6317901977987115397L;
     @Column(name = "cost")
-    private Integer           cost;
+    private Integer           cost             = 0;
 
     public JPAUnit() {
         super();

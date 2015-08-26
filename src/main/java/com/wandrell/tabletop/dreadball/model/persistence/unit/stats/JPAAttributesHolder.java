@@ -15,15 +15,15 @@ public final class JPAAttributesHolder
 
     private static final long serialVersionUID = 1L;
     @Column(name = "armor")
-    private Integer           armor;
+    private Integer           armor            = 0;
     @Column(name = "movement")
-    private Integer           movement;
+    private Integer           movement         = 0;
     @Column(name = "skill")
-    private Integer           skill;
+    private Integer           skill            = 0;
     @Column(name = "speed")
-    private Integer           speed;
+    private Integer           speed            = 0;
     @Column(name = "strength")
-    private Integer           strength;
+    private Integer           strength         = 0;
 
     public JPAAttributesHolder() {
         super();

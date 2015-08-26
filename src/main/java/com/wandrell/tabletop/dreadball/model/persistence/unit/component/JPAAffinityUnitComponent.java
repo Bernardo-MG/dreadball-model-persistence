@@ -15,11 +15,11 @@ public final class JPAAffinityUnitComponent extends AbstractJPAUnitComponent
 
     private static final long serialVersionUID = 1L;
     @Column(name = "cost_ally")
-    private Integer           costAlly;
+    private Integer           costAlly         = 0;
     @Column(name = "cost_friend")
-    private Integer           costFriend;
+    private Integer           costFriend       = 0;
     @Column(name = "cost_stranger")
-    private Integer           costStranger;
+    private Integer           costStranger     = 0;
 
     public JPAAffinityUnitComponent() {
         super();

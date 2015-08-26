@@ -48,15 +48,15 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
     @Embedded
     private JPAAttributesHolder          attributes = new JPAAttributesHolder();
     @Column(name = "giant")
-    private Boolean                      giant;
+    private Boolean                      giant      = false;
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer                      id         = -1;
     @Column(name = "name", unique = true)
-    private String                       name;
+    private String                       name       = "";
     @Column(name = "position")
     @Enumerated(EnumType.STRING)
-    private TeamPosition                 position;
+    private TeamPosition                 position   = TeamPosition.JACK;
 
     public AbstractJPAUnit() {
         super();

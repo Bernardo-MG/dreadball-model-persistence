@@ -56,13 +56,13 @@ public abstract class AbstractJPAUnitComponent
     @JoinColumn(name = "location_id")
     private JPAComponentLocation         location;
     @Column(name = "name", unique = true)
-    private String                       name;
+    private String                       name       = "";
     @ElementCollection(targetClass = TeamPosition.class)
     @JoinTable(name = "component_positions",
             joinColumns = @JoinColumn(name = "component_id") )
     @Enumerated(EnumType.STRING)
     @Column(name = "position")
-    final Collection<TeamPosition>       positions  = new LinkedList<TeamPosition>();
+    final Collection<TeamPosition>       positions  = new LinkedHashSet<TeamPosition>();
 
     public AbstractJPAUnitComponent() {
         super();

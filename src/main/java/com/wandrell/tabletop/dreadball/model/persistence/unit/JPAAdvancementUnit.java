@@ -24,14 +24,14 @@ public final class JPAAdvancementUnit extends AbstractJPAUnit
 
     private static final long serialVersionUID = -6317901977987115397L;
     @Column(name = "cost")
-    private Integer           cost;
+    private Integer           cost             = 0;
     @Column(name = "experience")
-    private Integer           experience;
+    private Integer           experience       = 0;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grafted_implant_id")
     private JPAUnitComponent  implant;
     @Column(name = "rank")
-    private Integer           rank;
+    private Integer           rank             = 0;
 
     public JPAAdvancementUnit() {
         super();

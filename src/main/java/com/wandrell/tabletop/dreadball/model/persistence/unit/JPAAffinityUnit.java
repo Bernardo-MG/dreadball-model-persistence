@@ -5,6 +5,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 import javax.persistence.CascadeType;
@@ -32,13 +33,13 @@ public final class JPAAffinityUnit extends AbstractJPAUnit
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAffinityGroup> affinities       = new LinkedList<JPAAffinityGroup>();
+    private final Collection<JPAAffinityGroup> affinities       = new LinkedHashSet<JPAAffinityGroup>();
     @Column(name = "cost_ally")
-    private Integer                            costAlly;
+    private Integer                            costAlly         = 0;
     @Column(name = "cost_friend")
-    private Integer                            costFriend;
+    private Integer                            costFriend       = 0;
     @Column(name = "cost_stranger")
-    private Integer                            costStranger;
+    private Integer                            costStranger     = 0;
 
     public JPAAffinityUnit() {
         super();
