@@ -6,6 +6,7 @@ DROP TABLE affinity_groups IF EXISTS;
 DROP TABLE advancement_units IF EXISTS;
 
 DROP TABLE unit_components IF EXISTS;
+DROP TABLE affinity_unit_components IF EXISTS;
 DROP TABLE component_locations IF EXISTS;
 
 DROP TABLE unit_abilities IF EXISTS;
@@ -78,6 +79,23 @@ CREATE TABLE unit_components (
 	positions		VARCHAR(30)
 );
 ALTER TABLE unit_components ADD CONSTRAINT fk_unit_components_location FOREIGN KEY (location_id) REFERENCES component_locations (id);
+
+CREATE TABLE affinity_unit_components (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	name			VARCHAR(30),
+	location_id		INTEGER,
+	cost			INTEGER DEFAULT 0,
+	armor			INTEGER DEFAULT 0,
+	movement		INTEGER DEFAULT 0,
+	skill			INTEGER DEFAULT 0,
+	speed			INTEGER DEFAULT 0,
+	strength		INTEGER DEFAULT 0,
+	positions		VARCHAR(30),
+	cost_ally		INTEGER DEFAULT 0,
+	cost_friend		INTEGER DEFAULT 0,
+	cost_stranger	INTEGER DEFAULT 0
+);
+ALTER TABLE affinity_unit_components ADD CONSTRAINT fk_affinity_unit_components_location FOREIGN KEY (location_id) REFERENCES component_locations (id);
 
 CREATE TABLE advancement_units (
 	id				INTEGER IDENTITY PRIMARY KEY,

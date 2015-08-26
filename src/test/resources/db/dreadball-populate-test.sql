@@ -47,6 +47,11 @@ INSERT INTO unit_components (id, name, location_id, cost, armor, movement, skill
 INSERT INTO unit_components (id, name, location_id, cost, armor, movement, skill, speed, strength) 
 	VALUES (2, 'component2', 1, 1, 2, 3, 4, 5, 6);
 
+INSERT INTO affinity_unit_components (id, name, location_id, cost, armor, movement, skill, speed, strength, cost_ally, cost_friend, cost_stranger) 
+	VALUES (1, 'component1', 1, 1, 2, 3, 4, 5, 6, 10, 20, 30);
+INSERT INTO affinity_unit_components (id, name, location_id, cost, armor, movement, skill, speed, strength, cost_ally, cost_friend, cost_stranger) 
+	VALUES (2, 'component2', 1, 1, 2, 3, 4, 5, 6, 10, 20, 30);
+
 INSERT INTO component_abilities (component_id, ability_id) VALUES (2, 1);
 
 INSERT INTO component_positions (component_id, position) VALUES (1, 'JACK');
