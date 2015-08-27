@@ -1,6 +1,8 @@
 DROP TABLE abilities IF EXISTS;
 DROP TABLE sponsors IF EXISTS;
 DROP TABLE team_rules IF EXISTS;
+DROP TABLE team_types IF EXISTS;
+DROP TABLE team_type_rules IF EXISTS;
 
 DROP TABLE units IF EXISTS;
 DROP TABLE affinity_units IF EXISTS;
@@ -32,10 +34,22 @@ CREATE TABLE sponsors (
 	rank			INTEGER DEFAULT 0
 );
 
+CREATE TABLE team_types (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	name			VARCHAR(30)
+);
+
 CREATE TABLE team_rules (
 	id				INTEGER IDENTITY PRIMARY KEY,
 	name			VARCHAR(30)
 );
+
+CREATE TABLE team_type_rules (
+	team_type_id	INTEGER,
+  	team_rule_id	INTEGER
+);
+ALTER TABLE team_type_rules ADD CONSTRAINT fk_team_type_rules_team_type FOREIGN KEY (team_type_id) REFERENCES team_types (id);
+ALTER TABLE team_type_rules ADD CONSTRAINT fk_team_type_rules_team_rule FOREIGN KEY (team_rule_id) REFERENCES team_rules (id);
 
 CREATE TABLE units (
 	id				INTEGER IDENTITY PRIMARY KEY,

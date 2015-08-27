@@ -15,6 +15,12 @@ INSERT INTO sponsors (id, name) VALUES (2, 'sponsor2');
 INSERT INTO team_rules (id, name) VALUES (1, 'team_rule1');
 INSERT INTO team_rules (id, name) VALUES (2, 'team_rule2');
 
+INSERT INTO team_types (id, name) VALUES (1, 'team_type1');
+INSERT INTO team_types (id, name) VALUES (2, 'team_type2');
+INSERT INTO team_types (id, name) VALUES (3, 'team_type3');
+
+INSERT INTO team_type_rules (team_type_id, team_rule_id) VALUES (2, 1);
+
 INSERT INTO units (id, name, cost, armor, movement, skill, speed, strength, position, giant)
 	VALUES (1, 'unit1', 11, 1, 2, 3, 4, 5, 'STRIKER', false);
 INSERT INTO units (id, name, cost, armor, movement, skill, speed, strength, position, giant)

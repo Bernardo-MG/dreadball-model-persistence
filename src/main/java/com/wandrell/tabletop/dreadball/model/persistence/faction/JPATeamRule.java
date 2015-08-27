@@ -21,7 +21,7 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamRule;
 public final class JPATeamRule
         implements TeamRule, PersistenceEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 3815826961091481042L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
@@ -30,6 +30,26 @@ public final class JPATeamRule
 
     public JPATeamRule() {
         super();
+    }
+
+    @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final JPATeamRule other;
+
+        other = (JPATeamRule) obj;
+        return Objects.equals(name, other.name);
     }
 
     @Override
