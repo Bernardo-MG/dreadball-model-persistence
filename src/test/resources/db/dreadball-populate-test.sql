@@ -12,6 +12,9 @@ INSERT INTO affinity_groups (id, name) VALUES (5, 'group5');
 INSERT INTO sponsors (id, name) VALUES (1, 'sponsor1');
 INSERT INTO sponsors (id, name) VALUES (2, 'sponsor2');
 
+INSERT INTO team_rules (id, name) VALUES (1, 'team_rule1');
+INSERT INTO team_rules (id, name) VALUES (2, 'team_rule2');
+
 INSERT INTO units (id, name, cost, armor, movement, skill, speed, strength, position, giant)
 	VALUES (1, 'unit1', 11, 1, 2, 3, 4, 5, 'STRIKER', false);
 INSERT INTO units (id, name, cost, armor, movement, skill, speed, strength, position, giant)

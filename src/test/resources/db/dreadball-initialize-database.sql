@@ -1,5 +1,7 @@
 DROP TABLE abilities IF EXISTS;
 DROP TABLE sponsors IF EXISTS;
+DROP TABLE team_rules IF EXISTS;
+
 DROP TABLE units IF EXISTS;
 DROP TABLE affinity_units IF EXISTS;
 DROP TABLE composite_affinity_units IF EXISTS;
@@ -28,6 +30,11 @@ CREATE TABLE sponsors (
 	name			VARCHAR(30),
 	cash			INTEGER DEFAULT 0,
 	rank			INTEGER DEFAULT 0
+);
+
+CREATE TABLE team_rules (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	name			VARCHAR(30)
 );
 
 CREATE TABLE units (
