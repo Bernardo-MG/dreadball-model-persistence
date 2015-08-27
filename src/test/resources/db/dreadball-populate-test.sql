@@ -26,6 +26,13 @@ INSERT INTO affinity_units (id, name, armor, movement, skill, speed, strength, p
 INSERT INTO affinity_units (id, name, armor, movement, skill, speed, strength, position, giant, cost_ally, cost_friend, cost_stranger)
 	VALUES (3, 'affunit3', 1, 2, 3, 4, 5, 'GUARD', false, 6, 7, 8);
 
+INSERT INTO composite_affinity_units (id, name, armor, movement, skill, speed, strength, position, giant, cost_ally, cost_friend, cost_stranger)
+	VALUES (1, 'caffunit1', 1, 2, 3, 4, 5, 'STRIKER', false, 6, 7, 8);
+INSERT INTO composite_affinity_units (id, name, armor, movement, skill, speed, strength, position, giant, cost_ally, cost_friend, cost_stranger)
+	VALUES (2, 'caffunit2', 1, 2, 3, 4, 5, 'JACK', true, 6, 7, 8);
+INSERT INTO composite_affinity_units (id, name, armor, movement, skill, speed, strength, position, giant, cost_ally, cost_friend, cost_stranger)
+	VALUES (3, 'caffunit3', 1, 2, 3, 4, 5, 'GUARD', false, 6, 7, 8);
+
 INSERT INTO sponsor_affinity_groups (sponsor_id, group_id) VALUES (1, 2);
 INSERT INTO sponsor_affinity_groups (sponsor_id, group_id) VALUES (1, 3);
 
@@ -46,6 +53,13 @@ INSERT INTO unit_components (id, name, location_id, cost, armor, movement, skill
 	VALUES (1, 'component1', 1, 1, 2, 3, 4, 5, 6);
 INSERT INTO unit_components (id, name, location_id, cost, armor, movement, skill, speed, strength) 
 	VALUES (2, 'component2', 1, 1, 2, 3, 4, 5, 6);
+INSERT INTO unit_components (id, name, location_id, cost, armor, movement, skill, speed, strength) 
+	VALUES (3, 'component3', 1, 1, 2, 3, 4, 5, 6);
+
+INSERT INTO composite_unit_components (unit_id, component_id) VALUES (1, 2);
+INSERT INTO composite_unit_components (unit_id, component_id) VALUES (2, 2);
+INSERT INTO composite_unit_components (unit_id, component_id) VALUES (3, 1);
+INSERT INTO composite_unit_components (unit_id, component_id) VALUES (3, 3);
 
 INSERT INTO affinity_unit_components (id, name, location_id, cost, armor, movement, skill, speed, strength, cost_ally, cost_friend, cost_stranger) 
 	VALUES (1, 'component1', 1, 1, 2, 3, 4, 5, 6, 10, 20, 30);
@@ -64,3 +78,10 @@ INSERT INTO advancement_units (id, name, cost, armor, movement, skill, speed, st
 	VALUES (2, 'advunit2', 11, 1, 2, 3, 4, 5, 'JACK', true, 10, 20, 1);
 INSERT INTO advancement_units (id, name, cost, armor, movement, skill, speed, strength, position, giant, experience, rank, grafted_implant_id)
 	VALUES (3, 'advunit3', 11, 1, 2, 3, 4, 5, 'GUARD', false, 10, 20, 1);
+
+INSERT INTO composite_advancement_units (id, name, cost, armor, movement, skill, speed, strength, position, giant, experience, rank, grafted_implant_id)
+	VALUES (1, 'cadvunit1', 11, 1, 2, 3, 4, 5, 'STRIKER', false, 10, 20, 1);
+INSERT INTO composite_advancement_units (id, name, cost, armor, movement, skill, speed, strength, position, giant, experience, rank, grafted_implant_id)
+	VALUES (2, 'cadvunit2', 11, 1, 2, 3, 4, 5, 'JACK', true, 10, 20, 1);
+INSERT INTO composite_advancement_units (id, name, cost, armor, movement, skill, speed, strength, position, giant, experience, rank, grafted_implant_id)
+	VALUES (3, 'cadvunit3', 11, 1, 2, 3, 4, 5, 'GUARD', false, 10, 20, 1);

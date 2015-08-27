@@ -63,14 +63,11 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
     }
 
     public final void addAbility(final Ability ability) {
+        checkNotNull(ability, "Received a null pointer as ability");
         checkArgument(ability instanceof JPAAbility,
                 "The Ability should be an instanceof JPAAbility");
 
         getAbilitiesModifiable().add((JPAAbility) ability);
-    }
-
-    public final void addAbility(final JPAAbility ability) {
-        getAbilitiesModifiable().add(ability);
     }
 
     @Override
@@ -140,6 +137,10 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
     }
 
     public final void setAbilities(final Collection<Ability> abilities) {
+        checkNotNull(abilities, "Received a null pointer as abilities");
+
+        getAbilitiesModifiable().clear();
+
         for (final Ability ability : abilities) {
             checkArgument(ability instanceof JPAAbility,
                     "All the abilities should be an instanceof JPAAbility");

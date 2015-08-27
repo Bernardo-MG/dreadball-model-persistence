@@ -8,13 +8,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 @Entity(name = "Unit")
 @Table(name = "units")
 public final class JPAUnit extends AbstractJPAUnit
-        implements Unit, PersistenceEntity, Serializable {
+        implements Unit, Serializable {
 
     private static final long serialVersionUID = -6317901977987115397L;
     @Column(name = "cost")
