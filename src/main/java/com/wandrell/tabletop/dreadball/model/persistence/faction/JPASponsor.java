@@ -126,7 +126,7 @@ public final class JPASponsor
     }
 
     @Override
-    public final void removeAfinityGroup(final AffinityGroup affinity) {
+    public final void removeAffinityGroup(final AffinityGroup affinity) {
         getAffinityGroupsModifiable().remove(affinity);
     }
 
@@ -134,6 +134,20 @@ public final class JPASponsor
         checkNotNull(group, "Received a null pointer as group");
 
         this.groups.remove(group);
+    }
+
+    @Override
+    public final void
+            setAffinityGroups(final Collection<AffinityGroup> affinities) {
+        checkNotNull(groups, "Received a null pointer as groups");
+
+        getAffinityGroupsModifiable().clear();
+
+        for (final AffinityGroup affinity : affinities) {
+            checkArgument(affinity instanceof JPAAffinityGroup,
+                    "The affinities should be an instance of JPAAffinityGroup");
+            getAffinityGroupsModifiable().add((JPAAffinityGroup) affinity);
+        }
     }
 
     @Override
@@ -148,25 +162,17 @@ public final class JPASponsor
         this.id = id;
     }
 
-    public final void setNameToken(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
-
-        this.name = name;
-    }
-
-    public final void
-            setPlayerGroups(final Collection<JPAAffinityGroup> groups) {
-        checkNotNull(groups, "Received a null pointer as groups");
-
-        this.groups.clear();
-        this.groups.addAll(groups);
-    }
-
     @Override
     public final void setRank(final Integer rank) {
         checkNotNull(rank, "Received a null pointer as rank");
 
         this.rank = rank;
+    }
+
+    public final void setSponsorName(final String name) {
+        checkNotNull(name, "Received a null pointer as name");
+
+        this.name = name;
     }
 
     @Override

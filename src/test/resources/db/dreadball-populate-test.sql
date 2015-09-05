@@ -94,3 +94,14 @@ INSERT INTO composite_advancement_units (id, name, cost, armor, movement, skill,
 	VALUES (2, 'cadvunit2', 11, 1, 2, 3, 4, 5, 'JACK', true, 10, 20, 1);
 INSERT INTO composite_advancement_units (id, name, cost, armor, movement, skill, speed, strength, position, giant, experience, rank, grafted_implant_id)
 	VALUES (3, 'cadvunit3', 11, 1, 2, 3, 4, 5, 'GUARD', false, 10, 20, 1);
+	
+INSERT INTO team_type_unit_avas (id, initial, max, team_type_id, unit_id) VALUES (1, 5, 10, 1, 2);
+
+INSERT INTO team_type_mvp_avas (id, team_type_id, unit_id) VALUES (1, 1, 2);
+
+INSERT INTO sponsor_affinity_avas (id, name, rank_increase) VALUES (1, 'A', FALSE);
+INSERT INTO sponsor_affinity_avas (id, name, rank_increase) VALUES (2, 'B', TRUE);
+
+INSERT INTO sponsor_affinity_avas_affinity_groups (sponsor_affinity_ava_id, affinity_id) VALUES (1, 2);
+INSERT INTO sponsor_affinity_avas_affinity_groups (sponsor_affinity_ava_id, affinity_id) VALUES (1, 4);
+INSERT INTO sponsor_affinity_avas_affinity_groups (sponsor_affinity_ava_id, affinity_id) VALUES (2, 1);

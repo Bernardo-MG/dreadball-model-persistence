@@ -22,6 +22,11 @@ DROP TABLE sponsor_affinity_groups IF EXISTS;
 DROP TABLE component_abilities IF EXISTS;
 DROP TABLE component_positions IF EXISTS;
 
+DROP TABLE team_type_unit_avas IF EXISTS;
+DROP TABLE team_type_mvp_avas IF EXISTS;
+DROP TABLE sponsor_affinity_avas IF EXISTS;
+DROP TABLE sponsor_affinity_avas_affinity_groups IF EXISTS;
+
 CREATE TABLE abilities (
 	id				INTEGER IDENTITY PRIMARY KEY,
 	name			VARCHAR(30)
@@ -192,3 +197,34 @@ CREATE TABLE component_positions (
   	position		VARCHAR(30)
 );
 ALTER TABLE component_positions ADD CONSTRAINT fk_component_positions_component FOREIGN KEY (component_id) REFERENCES unit_components (id);
+
+CREATE TABLE team_type_unit_avas (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	initial			INTEGER,
+	max				INTEGER,
+	team_type_id	INTEGER,
+	unit_id			INTEGER
+);
+ALTER TABLE team_type_unit_avas ADD CONSTRAINT fk_team_type_unit_avas_team FOREIGN KEY (team_type_id) REFERENCES team_types (id);
+ALTER TABLE team_type_unit_avas ADD CONSTRAINT fk_team_type_unit_avas_unit FOREIGN KEY (unit_id) REFERENCES units (id);
+
+CREATE TABLE team_type_mvp_avas (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	team_type_id	INTEGER,
+	unit_id			INTEGER
+);
+ALTER TABLE team_type_mvp_avas ADD CONSTRAINT fk_team_type_mvp_avas_team FOREIGN KEY (team_type_id) REFERENCES team_types (id);
+ALTER TABLE team_type_mvp_avas ADD CONSTRAINT fk_team_type_mvp_avas_unit FOREIGN KEY (unit_id) REFERENCES units (id);
+
+CREATE TABLE sponsor_affinity_avas (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	name			VARCHAR(30),
+	rank_increase	BOOLEAN
+);
+
+CREATE TABLE sponsor_affinity_avas_affinity_groups (
+	sponsor_affinity_ava_id	INTEGER,
+  	affinity_id		VARCHAR(30)
+);
+ALTER TABLE sponsor_affinity_avas_affinity_groups ADD CONSTRAINT fk_sponsor_affinity_groups_ava FOREIGN KEY (sponsor_affinity_ava_id) REFERENCES sponsor_affinity_avas (id);
+ALTER TABLE sponsor_affinity_avas_affinity_groups ADD CONSTRAINT fk_sponsor_affinity_groups_affinity FOREIGN KEY (affinity_id) REFERENCES affinity_groups (id);
