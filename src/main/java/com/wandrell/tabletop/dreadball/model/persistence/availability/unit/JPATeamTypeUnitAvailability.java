@@ -3,6 +3,7 @@ package com.wandrell.tabletop.dreadball.model.persistence.availability.unit;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.availability.unit.TeamTypeUnitAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
@@ -36,13 +38,34 @@ public final class JPATeamTypeUnitAvailability
     private Integer           max              = 0;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
-    private JPATeamType       team;
+    private JPATeamType       teamType;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
     private JPAUnit           unit;
 
     public JPATeamTypeUnitAvailability() {
         super();
+    }
+
+    @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final JPATeamTypeUnitAvailability other;
+
+        other = (JPATeamTypeUnitAvailability) obj;
+        return Objects.equals(teamType, other.teamType)
+                && Objects.equals(unit, other.unit);
     }
 
     @Override
@@ -62,12 +85,17 @@ public final class JPATeamTypeUnitAvailability
 
     @Override
     public final TeamType getTeamType() {
-        return team;
+        return teamType;
     }
 
     @Override
     public final Unit getUnit() {
         return unit;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hash(unit, teamType);
     }
 
     @Override
@@ -84,15 +112,27 @@ public final class JPATeamTypeUnitAvailability
     }
 
     public final void setMaxNumber(final Integer max) {
+        checkNotNull(max, "Received a null pointer as max");
+
         this.max = max;
     }
 
     public final void setTeamType(final JPATeamType team) {
-        this.team = team;
+        checkNotNull(team, "Received a null pointer as team type");
+
+        this.teamType = team;
     }
 
     public final void setUnit(final JPAUnit unit) {
+        checkNotNull(unit, "Received a null pointer as unit");
+
         this.unit = unit;
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("team", teamType)
+                .add("unit", unit).toString();
     }
 
 }

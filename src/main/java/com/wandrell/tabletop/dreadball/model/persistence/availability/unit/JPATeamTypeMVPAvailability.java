@@ -3,6 +3,7 @@ package com.wandrell.tabletop.dreadball.model.persistence.availability.unit;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.availability.unit.TeamTypeMVPAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
@@ -31,7 +33,7 @@ public final class JPATeamTypeMVPAvailability
     private Integer           id               = -1;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
-    private JPATeamType       team;
+    private JPATeamType       teamType;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
     private JPAUnit           unit;
@@ -41,18 +43,44 @@ public final class JPATeamTypeMVPAvailability
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final JPATeamTypeMVPAvailability other;
+
+        other = (JPATeamTypeMVPAvailability) obj;
+        return Objects.equals(teamType, other.teamType)
+                && Objects.equals(unit, other.unit);
+    }
+
+    @Override
     public final Integer getId() {
         return id;
     }
 
     @Override
     public final TeamType getTeamType() {
-        return team;
+        return teamType;
     }
 
     @Override
     public final Unit getUnit() {
         return unit;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hash(unit, teamType);
     }
 
     @Override
@@ -63,11 +91,21 @@ public final class JPATeamTypeMVPAvailability
     }
 
     public final void setTeamType(final JPATeamType team) {
-        this.team = team;
+        checkNotNull(team, "Received a null pointer as team type");
+
+        this.teamType = team;
     }
 
     public final void setUnit(final JPAUnit unit) {
+        checkNotNull(unit, "Received a null pointer as unit");
+
         this.unit = unit;
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("team", teamType)
+                .add("unit", unit).toString();
     }
 
 }

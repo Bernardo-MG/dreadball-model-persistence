@@ -1,5 +1,7 @@
 package com.wandrell.tabletop.dreadball.model.persistence.unit.component;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -44,6 +46,24 @@ public final class JPAAffinityUnitComponent extends AbstractJPAUnitComponent
     @Override
     public final Integer getStrangerCost() {
         return costStranger;
+    }
+
+    public final void setAllyCost(final Integer cost) {
+        checkNotNull(cost, "Received a null pointer as cost");
+
+        costAlly = cost;
+    }
+
+    public final void setFriendCost(final Integer cost) {
+        checkNotNull(cost, "Received a null pointer as cost");
+
+        costFriend = cost;
+    }
+
+    public final void setStrangerCost(final Integer cost) {
+        checkNotNull(cost, "Received a null pointer as cost");
+
+        costStranger = cost;
     }
 
 }

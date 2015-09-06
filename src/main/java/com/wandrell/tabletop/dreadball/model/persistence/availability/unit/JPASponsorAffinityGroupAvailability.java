@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,6 +21,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.availability.unit.SponsorAffinityGroupAvailability;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
@@ -58,6 +60,26 @@ public final class JPASponsorAffinityGroupAvailability implements
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final JPASponsorAffinityGroupAvailability other;
+
+        other = (JPASponsorAffinityGroupAvailability) obj;
+        return Objects.equals(id, other.id);
+    }
+
+    @Override
     public final Collection<AffinityGroup> getAffinityGroups() {
         final Collection<AffinityGroup> result;
 
@@ -77,6 +99,11 @@ public final class JPASponsorAffinityGroupAvailability implements
     @Override
     public final String getName() {
         return name;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override
@@ -111,6 +138,11 @@ public final class JPASponsorAffinityGroupAvailability implements
         checkNotNull(name, "Received a null pointer as name");
 
         this.name = name;
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("id", id).toString();
     }
 
     private final Collection<JPAAffinityGroup> getAffinityGroupsModifiable() {

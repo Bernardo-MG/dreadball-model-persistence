@@ -105,3 +105,9 @@ INSERT INTO sponsor_affinity_avas (id, name, rank_increase) VALUES (2, 'B', TRUE
 INSERT INTO sponsor_affinity_avas_affinity_groups (sponsor_affinity_ava_id, affinity_id) VALUES (1, 2);
 INSERT INTO sponsor_affinity_avas_affinity_groups (sponsor_affinity_ava_id, affinity_id) VALUES (1, 4);
 INSERT INTO sponsor_affinity_avas_affinity_groups (sponsor_affinity_ava_id, affinity_id) VALUES (2, 1);
+
+INSERT INTO team_type_asset_avas (team_type_id, cost_card, cost_cheerleader, cost_coaching, cost_dice, initial_card, initial_cheerleader, initial_dice, max_card, max_cheerleader, max_dice, def_coach, off_coach, sup_coach) 
+	VALUES (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, TRUE, FALSE, TRUE);
+
+INSERT INTO sponsor_asset_avas (id, cost_affinity, cost_cheerleader, cost_cheerleader_unlock, cost_dice, cost_medibot, cost_sabotage, cost_special_move, cost_wager, max_wager, min_team_cost)
+	VALUES (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);

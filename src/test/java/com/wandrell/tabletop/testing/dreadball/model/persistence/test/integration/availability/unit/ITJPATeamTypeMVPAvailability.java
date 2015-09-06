@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.testing.dreadball.model.persistence.test.integration.availability;
+package com.wandrell.tabletop.testing.dreadball.model.persistence.test.integration.availability.unit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -6,28 +6,26 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPATeamTypeUnitAvailability;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeUnitAvailabilityRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPATeamTypeMVPAvailability;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeMVPAvailabilityRepository;
 
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
-public final class ITJPATeamTypeUnitAvailability
+public final class ITJPATeamTypeMVPAvailability
         extends AbstractTransactionalTestNGSpringContextTests {
 
     @Autowired
-    private TeamTypeUnitAvailabilityRepository repository;
+    private TeamTypeMVPAvailabilityRepository repository;
 
-    public ITJPATeamTypeUnitAvailability() {
+    public ITJPATeamTypeMVPAvailability() {
         super();
     }
 
     @Test
     public void test_loads() {
-        final JPATeamTypeUnitAvailability ava;
+        final JPATeamTypeMVPAvailability ava;
 
         ava = repository.findById(1);
 
-        Assert.assertEquals(ava.getInitialNumber(), (Integer) 5);
-        Assert.assertEquals(ava.getMaxNumber(), (Integer) 10);
         Assert.assertEquals(ava.getTeamType().getTeamTypeName(), "team_type1");
         Assert.assertEquals(ava.getUnit().getTemplateName(), "unit2");
     }

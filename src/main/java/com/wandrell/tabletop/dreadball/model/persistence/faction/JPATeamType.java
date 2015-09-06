@@ -130,6 +130,8 @@ public final class JPATeamType
     }
 
     public final void setTeamTypeName(final String name) {
+        checkNotNull(name, "Received a null pointer as name");
+
         this.name = name;
     }
 

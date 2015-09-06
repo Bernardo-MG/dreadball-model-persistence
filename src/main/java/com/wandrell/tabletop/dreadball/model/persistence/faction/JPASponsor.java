@@ -152,6 +152,8 @@ public final class JPASponsor
 
     @Override
     public final void setCash(final Integer cash) {
+        checkNotNull(cash, "Received a null pointer as cash");
+
         this.cash = cash;
     }
 

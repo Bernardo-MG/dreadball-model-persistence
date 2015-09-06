@@ -1,4 +1,4 @@
-package com.wandrell.tabletop.testing.dreadball.model.persistence.test.integration.availability;
+package com.wandrell.tabletop.testing.dreadball.model.persistence.test.integration.availability.unit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;

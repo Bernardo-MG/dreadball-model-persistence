@@ -87,7 +87,7 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
         final AbstractJPAUnit other;
 
         other = (AbstractJPAUnit) obj;
-        return Objects.equals(name, other.name);
+        return Objects.equals(id, other.id);
     }
 
     @Override
@@ -124,7 +124,7 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(name);
+        return Objects.hashCode(id);
     }
 
     @Override
@@ -183,7 +183,8 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", name).toString();
+        return MoreObjects.toStringHelper(this).add("name", name).add("id", id)
+                .toString();
     }
 
     private final Collection<JPAAbility> getAbilitiesModifiable() {

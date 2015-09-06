@@ -27,6 +27,9 @@ DROP TABLE team_type_mvp_avas IF EXISTS;
 DROP TABLE sponsor_affinity_avas IF EXISTS;
 DROP TABLE sponsor_affinity_avas_affinity_groups IF EXISTS;
 
+DROP TABLE team_type_asset_avas IF EXISTS;
+DROP TABLE sponsor_asset_avas IF EXISTS;
+
 CREATE TABLE abilities (
 	id				INTEGER IDENTITY PRIMARY KEY,
 	name			VARCHAR(30)
@@ -228,3 +231,36 @@ CREATE TABLE sponsor_affinity_avas_affinity_groups (
 );
 ALTER TABLE sponsor_affinity_avas_affinity_groups ADD CONSTRAINT fk_sponsor_affinity_groups_ava FOREIGN KEY (sponsor_affinity_ava_id) REFERENCES sponsor_affinity_avas (id);
 ALTER TABLE sponsor_affinity_avas_affinity_groups ADD CONSTRAINT fk_sponsor_affinity_groups_affinity FOREIGN KEY (affinity_id) REFERENCES affinity_groups (id);
+
+CREATE TABLE team_type_asset_avas (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	team_type_id	INTEGER,
+	cost_card		INTEGER,
+	cost_cheerleader	INTEGER,
+	cost_coaching		INTEGER,
+	cost_dice		INTEGER,
+	initial_card	INTEGER,
+	initial_cheerleader	INTEGER,
+	initial_dice	INTEGER,
+	max_card		INTEGER,
+	max_cheerleader	INTEGER,
+	max_dice		INTEGER,
+	def_coach		BOOLEAN,
+	off_coach		BOOLEAN,
+	sup_coach		BOOLEAN,
+);
+ALTER TABLE team_type_asset_avas ADD CONSTRAINT fk_team_type_asset_avas_team FOREIGN KEY (team_type_id) REFERENCES team_types (id);
+
+CREATE TABLE sponsor_asset_avas (
+	id				INTEGER IDENTITY PRIMARY KEY,
+	cost_affinity	INTEGER,
+	cost_cheerleader	INTEGER,
+	cost_cheerleader_unlock	INTEGER,
+	cost_dice		INTEGER,
+	cost_medibot	INTEGER,
+	cost_sabotage	INTEGER,
+	cost_special_move	INTEGER,
+	cost_wager		INTEGER,
+	max_wager		INTEGER,
+	min_team_cost	INTEGER
+);
