@@ -23,15 +23,31 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * Persistent JPA-based implementation of
+ * {@link com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent
+ * UnitComponent}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "UnitComponent")
 @Table(name = "unit_components")
 public final class JPAUnitComponent extends AbstractJPAUnitComponent
         implements Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = -5547831116001472121L;
+    /**
+     * Component cost.
+     */
     @Column(name = "cost")
     private Integer           cost             = 0;
 
+    /**
+     * Constructs a {@code JPAUnitComponent}.
+     */
     public JPAUnitComponent() {
         super();
     }
@@ -41,6 +57,12 @@ public final class JPAUnitComponent extends AbstractJPAUnitComponent
         return cost;
     }
 
+    /**
+     * Sets the component cost.
+     * 
+     * @param cost
+     *            the component cost
+     */
     public final void setCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 

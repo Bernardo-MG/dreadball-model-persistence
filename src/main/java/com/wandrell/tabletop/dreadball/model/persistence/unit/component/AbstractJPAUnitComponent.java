@@ -50,11 +50,19 @@ import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
+/**
+ * Abstract persistent JPA-based implementation of {@link UnitComponent}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractJPAUnitComponent
         implements UnitComponent, PersistenceEntity {
 
+    /**
+     * Component abilities.
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "component_abilities",
             joinColumns = { @JoinColumn(name = "component_id",
@@ -62,16 +70,31 @@ public abstract class AbstractJPAUnitComponent
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
     private final Collection<JPAAbility> abilities  = new LinkedHashSet<>();
+    /**
+     * Component attributes bonus.
+     */
     @Embedded
     private JPAAttributesHolder          attributes = new JPAAttributesHolder();
+    /**
+     * Component primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer                      id         = -1;
+    /**
+     * Component location.
+     */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")
     private JPAComponentLocation         location;
+    /**
+     * Component name.
+     */
     @Column(name = "name", unique = true)
     private String                       name       = "";
+    /**
+     * Component team positions.
+     */
     @ElementCollection(targetClass = TeamPosition.class)
     @JoinTable(name = "component_positions",
             joinColumns = @JoinColumn(name = "component_id") )
@@ -79,10 +102,19 @@ public abstract class AbstractJPAUnitComponent
     @Column(name = "position")
     final Collection<TeamPosition>       positions  = new LinkedHashSet<TeamPosition>();
 
+    /**
+     * Constructs a {@code AbstractJPAUnitComponent}.
+     */
     public AbstractJPAUnitComponent() {
         super();
     }
 
+    /**
+     * Adds an ability.
+     * 
+     * @param ability
+     *            the ability to add
+     */
     public final void addAbility(final Ability ability) {
         checkArgument(ability instanceof JPAAbility,
                 "The Ability should be an instanceof JPAAbility");
@@ -90,6 +122,12 @@ public abstract class AbstractJPAUnitComponent
         getAbilitiesModifiable().add((JPAAbility) ability);
     }
 
+    /**
+     * Adds a team position role.
+     * 
+     * @param position
+     *            the team position role to add
+     */
     public final void addTeamPosition(final TeamPosition position) {
         getTeamPositionsModifiable().add(position);
     }
@@ -131,14 +169,35 @@ public abstract class AbstractJPAUnitComponent
         return Collections.unmodifiableCollection(getTeamPositionsModifiable());
     }
 
+    /**
+     * Removes an ability.
+     * 
+     * @param ability
+     *            the ability to remove
+     */
     public final void removeAbility(final Ability ability) {
         getAbilitiesModifiable().remove(ability);
     }
 
+    /**
+     * Removes a team position role.
+     * 
+     * @param position
+     *            the team position role to remove
+     */
     public final void removeTeamPosition(final TeamPosition position) {
         getTeamPositionsModifiable().remove(position);
     }
 
+    /**
+     * Sets the component abilities.
+     * <p>
+     * All the abilities which the component currently has will be removed and
+     * swapped with the received ones.
+     * 
+     * @param abilities
+     *            the abilities to set on the component
+     */
     public final void setAbilities(final Collection<Ability> abilities) {
         checkNotNull(abilities, "Received a null pointer as abilities");
 
@@ -150,6 +209,12 @@ public abstract class AbstractJPAUnitComponent
         }
     }
 
+    /**
+     * Sets the component attributes bonus.
+     * 
+     * @param attributes
+     *            the attributes bonus for the component
+     */
     public final void setAttributes(final AttributesHolder attributes) {
         checkNotNull(attributes, "Received a null pointer as attributes");
         checkArgument(attributes instanceof JPAAttributesHolder,
@@ -158,6 +223,12 @@ public abstract class AbstractJPAUnitComponent
         this.attributes = (JPAAttributesHolder) attributes;
     }
 
+    /**
+     * Sets the component name.
+     * 
+     * @param name
+     *            the component name
+     */
     public final void setComponentName(final String name) {
         checkNotNull(name, "Received a null pointer as name");
 
@@ -171,12 +242,27 @@ public abstract class AbstractJPAUnitComponent
         id = identifier;
     }
 
+    /**
+     * Sets the component location.
+     * 
+     * @param location
+     *            the component location
+     */
     public final void setLocation(final JPAComponentLocation location) {
         checkNotNull(location, "Received a null pointer as location");
 
         this.location = location;
     }
 
+    /**
+     * Sets the component team position roles.
+     * <p>
+     * All the team position roles which the component currently has will be
+     * removed and swapped with the received ones.
+     * 
+     * @param positions
+     *            the team position roles to set on the component
+     */
     public final void
             setTeamPosition(final Collection<TeamPosition> positions) {
         checkNotNull(positions,
@@ -186,10 +272,20 @@ public abstract class AbstractJPAUnitComponent
         getTeamPositionsModifiable().addAll(positions);
     }
 
+    /**
+     * Returns the modifiable collection of the component's abilities.
+     * 
+     * @return the modifiable collection of the component's abilities
+     */
     private final Collection<JPAAbility> getAbilitiesModifiable() {
         return abilities;
     }
 
+    /**
+     * Returns the modifiable collection of the component's team position roles.
+     * 
+     * @return the modifiable collection of the component's team position roles
+     */
     private final Collection<TeamPosition> getTeamPositionsModifiable() {
         return positions;
     }

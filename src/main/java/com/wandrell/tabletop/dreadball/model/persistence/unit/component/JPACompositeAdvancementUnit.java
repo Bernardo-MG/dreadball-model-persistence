@@ -36,13 +36,24 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.AbstractJPAAdvance
 import com.wandrell.tabletop.dreadball.model.unit.component.CompositeAdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
 
+/**
+ * Persistent JPA-based implementation of {@link CompositeAdvancementUnit}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "CompositeAdvancementUnit")
 @Table(name = "composite_advancement_units")
 public final class JPACompositeAdvancementUnit
         extends AbstractJPAAdvancementUnit
         implements CompositeAdvancementUnit, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long                  serialVersionUID = 4751347276326003773L;
+    /**
+     * Unit components.
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "composite_unit_components",
             joinColumns = { @JoinColumn(name = "unit_id",
@@ -51,10 +62,19 @@ public final class JPACompositeAdvancementUnit
                     referencedColumnName = "id") })
     private final Collection<JPAUnitComponent> components       = new LinkedHashSet<JPAUnitComponent>();
 
+    /**
+     * Constructs a {@code JPACompositeAdvancementUnit}.
+     */
     public JPACompositeAdvancementUnit() {
         super();
     }
 
+    /**
+     * Adds a component.
+     * 
+     * @param component
+     *            the component to add
+     */
     public final void addComponent(final JPAUnitComponent component) {
         checkNotNull(component, "Received a null pointer as component");
 
@@ -73,10 +93,25 @@ public final class JPACompositeAdvancementUnit
         return Collections.unmodifiableCollection(col);
     }
 
+    /**
+     * Removes a component.
+     * 
+     * @param component
+     *            the component to remove
+     */
     public final void removeComponent(final JPAUnitComponent component) {
         getComponentsModifiable().remove(component);
     }
 
+    /**
+     * Sets the unit components.
+     * <p>
+     * If the unit has any component these are removed and swapped with the
+     * received ones.
+     * 
+     * @param components
+     *            the components to set on the unit
+     */
     public final void
             setComponents(final Collection<UnitComponent> components) {
         checkNotNull(components, "Received a null pointer as components");
@@ -91,6 +126,11 @@ public final class JPACompositeAdvancementUnit
         }
     }
 
+    /**
+     * Returns the modifiable collection of the unit's components.
+     * 
+     * @return the modifiable collection of the unit's components
+     */
     private final Collection<JPAUnitComponent> getComponentsModifiable() {
         return components;
     }

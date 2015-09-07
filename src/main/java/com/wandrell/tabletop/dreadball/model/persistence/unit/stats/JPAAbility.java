@@ -31,18 +31,35 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 
+/**
+ * Persistent JPA-based implementation of {@link Ability}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "Ability")
 @Table(name = "abilities")
 public final class JPAAbility
         implements Ability, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = 1853450793663114595L;
+    /**
+     * Ability's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+    /**
+     * Ability name.
+     */
     @Column(name = "name", unique = true)
     private String            name             = "";
 
+    /**
+     * Constructs a {@code JPAAbility}.
+     */
     public JPAAbility() {
         super();
     }
@@ -89,6 +106,12 @@ public final class JPAAbility
         this.id = id;
     }
 
+    /**
+     * Sets the ability name.
+     * 
+     * @param name
+     *            the ability name
+     */
     public final void setName(final String name) {
         checkNotNull(name, "Received a null pointer as name");
 

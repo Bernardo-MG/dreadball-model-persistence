@@ -43,9 +43,9 @@ public final class TestJPASponsor {
         group2.setId(2);
         group2.setAffinityGroupName("group2");
 
-        sponsor.addPlayerGroup(group1);
-        sponsor.addPlayerGroup(group2);
-        sponsor.addPlayerGroup(group1);
+        sponsor.addAffinityGroup(group1);
+        sponsor.addAffinityGroup(group2);
+        sponsor.addAffinityGroup(group1);
 
         Assert.assertEquals(sponsor.getAffinityGroups().size(), 2);
     }

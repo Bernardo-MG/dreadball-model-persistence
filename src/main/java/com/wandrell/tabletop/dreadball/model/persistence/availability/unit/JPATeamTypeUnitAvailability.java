@@ -38,26 +38,52 @@ import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
+/**
+ * Persistent JPA-based implementation of {@link TeamType}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "TeamTypeUnitAvailability")
 @Table(name = "team_type_unit_avas")
 public final class JPATeamTypeUnitAvailability
         implements TeamTypeUnitAvailability, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = -3725739240261330858L;
+    /**
+     * Ava's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+    /**
+     * Initial number of units the team has.
+     */
     @Column(name = "initial")
     private Integer           initial          = 0;
+    /**
+     * Maximum number of units the team can have.
+     */
     @Column(name = "max")
     private Integer           max              = 0;
+    /**
+     * Team type for the availability.
+     */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
     private JPATeamType       teamType;
+    /**
+     * Unit for the availability.
+     */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
     private JPAUnit           unit;
 
+    /**
+     * Constructs a {@code JPATeamTypeUnitAvailability}.
+     */
     public JPATeamTypeUnitAvailability() {
         super();
     }
@@ -120,24 +146,48 @@ public final class JPATeamTypeUnitAvailability
         this.id = id;
     }
 
+    /**
+     * Sets the initial number of units for the team type.
+     * 
+     * @param initial
+     *            the initial number of units for the team type
+     */
     public final void setInitialNumber(final Integer initial) {
-        checkNotNull(id, "Received a null pointer as id");
+        checkNotNull(initial, "Received a null pointer as initial count");
 
         this.initial = initial;
     }
 
+    /**
+     * Sets the max number of units for the team type.
+     * 
+     * @param max
+     *            the max number of units for the team type
+     */
     public final void setMaxNumber(final Integer max) {
-        checkNotNull(max, "Received a null pointer as max");
+        checkNotNull(max, "Received a null pointer as max count");
 
         this.max = max;
     }
 
+    /**
+     * Sets the team type for the availability.
+     * 
+     * @param team
+     *            the team type for the availability
+     */
     public final void setTeamType(final JPATeamType team) {
         checkNotNull(team, "Received a null pointer as team type");
 
         this.teamType = team;
     }
 
+    /**
+     * Sets the unit for the availability.
+     * 
+     * @param unit
+     *            the unit for the availability
+     */
     public final void setUnit(final JPAUnit unit) {
         checkNotNull(unit, "Received a null pointer as unit");
 

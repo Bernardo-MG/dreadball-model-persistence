@@ -36,12 +36,23 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.AbstractJPAAffinit
 import com.wandrell.tabletop.dreadball.model.unit.component.CompositeAffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
 
+/**
+ * Persistent JPA-based implementation of {@link CompositeAffinityUnit}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "CompositeAffinityUnit")
 @Table(name = "composite_affinity_units")
 public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
         implements CompositeAffinityUnit, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long                  serialVersionUID = -5866596776570200158L;
+    /**
+     * Unit components.
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "composite_unit_components",
             joinColumns = { @JoinColumn(name = "unit_id",
@@ -50,10 +61,19 @@ public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
                     referencedColumnName = "id") })
     private final Collection<JPAUnitComponent> components       = new LinkedHashSet<JPAUnitComponent>();
 
+    /**
+     * Constructs a {@code JPACompositeAffinityUnit}.
+     */
     public JPACompositeAffinityUnit() {
         super();
     }
 
+    /**
+     * Adds a component.
+     * 
+     * @param component
+     *            the component to add
+     */
     public final void addComponent(final JPAUnitComponent component) {
         checkNotNull(component, "Received a null pointer as component");
 
@@ -72,10 +92,25 @@ public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
         return Collections.unmodifiableCollection(col);
     }
 
+    /**
+     * Removes a component.
+     * 
+     * @param component
+     *            the component to remove
+     */
     public final void removeComponent(final JPAUnitComponent component) {
         getComponentsModifiable().remove(component);
     }
 
+    /**
+     * Sets the unit components.
+     * <p>
+     * If the unit has any component these are removed and swapped with the
+     * received ones.
+     * 
+     * @param components
+     *            the components to set on the unit
+     */
     public final void
             setComponents(final Collection<UnitComponent> components) {
         checkNotNull(components, "Received a null pointer as components");
@@ -90,6 +125,11 @@ public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
         }
     }
 
+    /**
+     * Returns the modifiable collection of the unit's components.
+     * 
+     * @return the modifiable collection of the unit's components
+     */
     private final Collection<JPAUnitComponent> getComponentsModifiable() {
         return components;
     }

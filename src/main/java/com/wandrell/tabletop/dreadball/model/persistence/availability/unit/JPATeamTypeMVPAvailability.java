@@ -37,22 +37,42 @@ import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
+/**
+ * Persistent JPA-based implementation of {@link TeamTypeMVPAvailability}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "TeamTypeMVPAvailability")
 @Table(name = "team_type_mvp_avas")
 public final class JPATeamTypeMVPAvailability
         implements TeamTypeMVPAvailability, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = -6257561802154856009L;
+    /**
+     * Availability's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+    /**
+     * Team type for the availability.
+     */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
     private JPATeamType       teamType;
+    /**
+     * Unit for the availability.
+     */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
     private JPAUnit           unit;
 
+    /**
+     * Constructs a {@code JPATeamTypeMVPAvailability}.
+     */
     public JPATeamTypeMVPAvailability() {
         super();
     }
@@ -105,12 +125,24 @@ public final class JPATeamTypeMVPAvailability
         this.id = id;
     }
 
+    /**
+     * Sets the team type for the availability.
+     * 
+     * @param team
+     *            the team type for the availability
+     */
     public final void setTeamType(final JPATeamType team) {
         checkNotNull(team, "Received a null pointer as team type");
 
         this.teamType = team;
     }
 
+    /**
+     * Sets the unit for the availability.
+     * 
+     * @param unit
+     *            the unit for the availability
+     */
     public final void setUnit(final JPAUnit unit) {
         checkNotNull(unit, "Received a null pointer as unit");
 

@@ -42,45 +42,65 @@ import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
+/**
+ * Persistent JPA-based implementation of {@link Sponsor}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "Sponsor")
 @Table(name = "sponsors")
 public final class JPASponsor
         implements Sponsor, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long                  serialVersionUID = -6236019919297159189L;
-    @Column(name = "cash")
-    private Integer                            cash             = 0;
+    /**
+     * Sponsor affinity groups.
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "sponsor_affinity_groups",
             joinColumns = { @JoinColumn(name = "sponsor_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "group_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAffinityGroup> groups           = new LinkedHashSet<>();
+    private final Collection<JPAAffinityGroup> affinities       = new LinkedHashSet<>();
+    /**
+     * Sponsor cash.
+     */
+    @Column(name = "cash")
+    private Integer                            cash             = 0;
+    /**
+     * Sponsor's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer                            id               = -1;
+    /**
+     * Sponsor name.
+     */
     @Column(name = "name", unique = true)
     private String                             name             = "";
+    /**
+     * Sponsor rank.
+     */
     @Column(name = "rank")
     private Integer                            rank             = 0;
 
+    /**
+     * Constructs a {@code JPASponsor}.
+     */
     public JPASponsor() {
         super();
     }
 
     @Override
-    public final void addAfinityGroup(final AffinityGroup affinity) {
+    public final void addAffinityGroup(final AffinityGroup affinity) {
         checkArgument(affinity instanceof JPAAffinityGroup,
                 "The AffinityGroup should be an instance of JPAAffinityGroup");
 
         getAffinityGroupsModifiable().add((JPAAffinityGroup) affinity);
-    }
-
-    public final void addPlayerGroup(final JPAAffinityGroup group) {
-        checkNotNull(group, "Received a null pointer as group");
-
-        this.groups.add(group);
     }
 
     @Override
@@ -145,16 +165,10 @@ public final class JPASponsor
         getAffinityGroupsModifiable().remove(affinity);
     }
 
-    public final void removePlayerGroup(final JPAAffinityGroup group) {
-        checkNotNull(group, "Received a null pointer as group");
-
-        this.groups.remove(group);
-    }
-
     @Override
     public final void
             setAffinityGroups(final Collection<AffinityGroup> affinities) {
-        checkNotNull(groups, "Received a null pointer as groups");
+        checkNotNull(affinities, "Received a null pointer as groups");
 
         getAffinityGroupsModifiable().clear();
 
@@ -186,6 +200,12 @@ public final class JPASponsor
         this.rank = rank;
     }
 
+    /**
+     * Sets the sponsor name.
+     * 
+     * @param name
+     *            the sponsor name
+     */
     public final void setSponsorName(final String name) {
         checkNotNull(name, "Received a null pointer as name");
 
@@ -197,8 +217,13 @@ public final class JPASponsor
         return MoreObjects.toStringHelper(this).add("name", name).toString();
     }
 
+    /**
+     * Returns the modifiable collection of the sponsor's affinity groups.
+     * 
+     * @return the modifiable collection of the sponsor's affinity groups
+     */
     private final Collection<JPAAffinityGroup> getAffinityGroupsModifiable() {
-        return groups;
+        return affinities;
     }
 
 }

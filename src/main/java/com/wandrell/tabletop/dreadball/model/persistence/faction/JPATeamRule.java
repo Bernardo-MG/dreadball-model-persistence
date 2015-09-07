@@ -31,18 +31,35 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.faction.TeamRule;
 
+/**
+ * Persistent JPA-based implementation of {@link TeamRule}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "TeamRule")
 @Table(name = "team_rules")
 public final class JPATeamRule
         implements TeamRule, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = 3815826961091481042L;
+    /**
+     * Team rule's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+    /**
+     * Team rule name.
+     */
     @Column(name = "name", unique = true)
     private String            name             = "";
 
+    /**
+     * Constructs a {@code JPATeamRule}.
+     */
     public JPATeamRule() {
         super();
     }
@@ -89,6 +106,12 @@ public final class JPATeamRule
         this.id = id;
     }
 
+    /**
+     * Sets the team rule name.
+     * 
+     * @param name
+     *            the team rule name
+     */
     public final void setTeamRuleName(final String name) {
         checkNotNull(name, "Received a null pointer as name");
 

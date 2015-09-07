@@ -42,17 +42,34 @@ import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.faction.TeamRule;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
+/**
+ * Persistent JPA-based implementation of {@link TeamType}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "TeamType")
 @Table(name = "team_types")
 public final class JPATeamType
         implements TeamType, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long             serialVersionUID = -6484889622281976716L;
+    /**
+     * Team type's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer                       id               = -1;
+    /**
+     * Team type name.
+     */
     @Column(name = "name", unique = true)
     private String                        name             = "";
+    /**
+     * Team type rules.
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "team_type_rules",
             joinColumns = { @JoinColumn(name = "team_type_id",
@@ -61,10 +78,19 @@ public final class JPATeamType
                     referencedColumnName = "id") })
     private final Collection<JPATeamRule> rules            = new LinkedHashSet<JPATeamRule>();
 
+    /**
+     * Constructs a {@code JPATeamType}.
+     */
     public JPATeamType() {
         super();
     }
 
+    /**
+     * Adds a team rule.
+     * 
+     * @param rule
+     *            the team rule to add
+     */
     public final void addTeamRule(final TeamRule rule) {
         checkNotNull(rule, "Received a null pointer as rule");
         checkArgument(rule instanceof JPATeamRule,
@@ -120,6 +146,12 @@ public final class JPATeamType
         return Objects.hashCode(name);
     }
 
+    /**
+     * Removes a team rule.
+     * 
+     * @param rule
+     *            the team rule to remove
+     */
     public final void removeTeamRule(final TeamRule rule) {
         getTeamRulesModifiable().remove(rule);
     }
@@ -131,6 +163,15 @@ public final class JPATeamType
         this.id = id;
     }
 
+    /**
+     * Sets the team type team rules.
+     * <p>
+     * All the team rules which the team type currently has will be removed and
+     * swapped with the received ones.
+     * 
+     * @param rules
+     *            the team rules to set on the team type
+     */
     public final void setTeamRules(final Collection<TeamRule> rules) {
         checkNotNull(rules, "Received a null pointer as rules");
 
@@ -144,6 +185,12 @@ public final class JPATeamType
         }
     }
 
+    /**
+     * Sets the team type name.
+     * 
+     * @param name
+     *            team type name
+     */
     public final void setTeamTypeName(final String name) {
         checkNotNull(name, "Received a null pointer as name");
 
@@ -155,6 +202,11 @@ public final class JPATeamType
         return MoreObjects.toStringHelper(this).add("name", name).toString();
     }
 
+    /**
+     * Returns the modifiable collection of the team type's team rules.
+     * 
+     * @return the modifiable collection of the team type's team rules
+     */
     private final Collection<JPATeamRule> getTeamRulesModifiable() {
         return rules;
     }

@@ -29,20 +29,40 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAUnitC
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
 
+/**
+ * Abstract persistent JPA-based implementation of {@link AdvancementUnit}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @MappedSuperclass
 public abstract class AbstractJPAAdvancementUnit extends AbstractJPAUnit
         implements AdvancementUnit, PersistenceEntity {
 
+    /**
+     * Unit cost.
+     */
     @Column(name = "cost")
     private Integer          cost       = 0;
+    /**
+     * Unit experience.
+     */
     @Column(name = "experience")
     private Integer          experience = 0;
+    /**
+     * Unit grafted implant.
+     */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grafted_implant_id")
     private JPAUnitComponent implant;
+    /**
+     * Unit rank.
+     */
     @Column(name = "rank")
     private Integer          rank       = 0;
 
+    /**
+     * Constructs a {@code AbstractJPAAdvancementUnit}.
+     */
     public AbstractJPAAdvancementUnit() {
         super();
     }
@@ -73,6 +93,12 @@ public abstract class AbstractJPAAdvancementUnit extends AbstractJPAUnit
         return null;
     }
 
+    /**
+     * Sets the unit cost.
+     * 
+     * @param cost
+     *            unit cost
+     */
     public final void setCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 

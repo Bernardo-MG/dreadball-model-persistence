@@ -49,34 +49,66 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
+/**
+ * Abstract persistent JPA-based implementation of {@link Unit}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
 
+    /**
+     * Unit abilities.
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "unit_abilities",
             joinColumns = { @JoinColumn(name = "unit_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAbility> abilities  = new LinkedHashSet<>();
+    private final Collection<JPAAbility> abilities    = new LinkedHashSet<>();
+    /**
+     * Unit attributes.
+     */
     @Embedded
-    private JPAAttributesHolder          attributes = new JPAAttributesHolder();
+    private JPAAttributesHolder          attributes   = new JPAAttributesHolder();
+    /**
+     * Flag indicating if the unit is a giant.
+     */
     @Column(name = "giant")
-    private Boolean                      giant      = false;
+    private Boolean                      giant        = false;
+    /**
+     * Unit's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Integer                      id         = -1;
-    @Column(name = "name", unique = true)
-    private String                       name       = "";
+    private Integer                      id           = -1;
+    /**
+     * Unit team position.
+     */
     @Column(name = "position")
     @Enumerated(EnumType.STRING)
-    private TeamPosition                 position   = TeamPosition.JACK;
+    private TeamPosition                 position     = TeamPosition.JACK;
+    /**
+     * Unit template name.
+     */
+    @Column(name = "name", unique = true)
+    private String                       templateName = "";
 
+    /**
+     * Constructs a {@code AbstractJPAUnit}.
+     */
     public AbstractJPAUnit() {
         super();
     }
 
+    /**
+     * Adds an ability to the unit.
+     * 
+     * @param ability
+     *            the ability to add
+     */
     public final void addAbility(final Ability ability) {
         checkNotNull(ability, "Received a null pointer as ability");
         checkArgument(ability instanceof JPAAbility,
@@ -134,7 +166,7 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
 
     @Override
     public final String getTemplateName() {
-        return name;
+        return templateName;
     }
 
     @Override
@@ -147,10 +179,25 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
         return giant;
     }
 
+    /**
+     * Removes an ability from the unit.
+     * 
+     * @param ability
+     *            the ability to remove
+     */
     public final void removeAbility(final Ability ability) {
         getAbilitiesModifiable().remove(ability);
     }
 
+    /**
+     * Sets the unit abilities.
+     * <p>
+     * All the abilities which the unit currently has will be removed and
+     * swapped with the received ones.
+     * 
+     * @param abilities
+     *            the abilities to set on the unit
+     */
     public final void setAbilities(final Collection<Ability> abilities) {
         checkNotNull(abilities, "Received a null pointer as abilities");
 
@@ -164,6 +211,12 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
         }
     }
 
+    /**
+     * Sets the unit attributes.
+     * 
+     * @param attributes
+     *            the attributes for the unit
+     */
     public final void setAttributes(final AttributesHolder attributes) {
         checkArgument(attributes instanceof JPAAttributesHolder,
                 "The AttributesHolder should be an instanceof JPAAttributesHolder");
@@ -171,6 +224,12 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
         this.attributes = (JPAAttributesHolder) attributes;
     }
 
+    /**
+     * Sets the unit giant flag
+     * 
+     * @param giant
+     *            the flag indicating if the unit is a giant
+     */
     public final void setGiant(final Boolean giant) {
         checkNotNull(giant, "Received a null pointer as giant flag");
 
@@ -184,24 +243,41 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
         this.id = id;
     }
 
-    public final void setName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
-
-        this.name = name;
-    }
-
+    /**
+     * Sets the unit team position.
+     * 
+     * @param position
+     *            the team position for the unit
+     */
     public final void setPosition(final TeamPosition position) {
         checkNotNull(position, "Received a null pointer as team position role");
 
         this.position = position;
     }
 
-    @Override
-    public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", name).add("id", id)
-                .toString();
+    /**
+     * Sets the unit's template name.
+     * 
+     * @param name
+     *            the template name
+     */
+    public final void setTemplateName(final String name) {
+        checkNotNull(name, "Received a null pointer as name");
+
+        templateName = name;
     }
 
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("name", templateName)
+                .add("id", id).toString();
+    }
+
+    /**
+     * Returns the modifiable collection of the unit's abilities.
+     * 
+     * @return the modifiable collection of the unit's abilities
+     */
     private final Collection<JPAAbility> getAbilitiesModifiable() {
         return abilities;
     }

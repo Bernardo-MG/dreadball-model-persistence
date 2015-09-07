@@ -42,32 +42,62 @@ import com.wandrell.tabletop.dreadball.model.availability.unit.SponsorAffinityGr
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
+/**
+ * Persistent JPA-based implementation of
+ * {@link SponsorAffinityGroupAvailability}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "SponsorAffinityGroupAvailability")
 @Table(name = "sponsor_affinity_avas")
 public final class JPASponsorAffinityGroupAvailability implements
         SponsorAffinityGroupAvailability, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long                  serialVersionUID = -6796465298138862022L;
+    /**
+     * Available affinity groups.
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "sponsor_affinity_avas_affinity_groups",
             joinColumns = { @JoinColumn(name = "sponsor_affinity_ava_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAffinityGroup> groups           = new LinkedHashSet<>();
+    private final Collection<JPAAffinityGroup> affinities       = new LinkedHashSet<>();
+    /**
+     * Availability's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer                            id               = -1;
+    /**
+     * Availability's name.
+     */
     @Column(name = "name", unique = true)
     private String                             name             = "";
+    /**
+     * Flag indicating if the availability allows increasing the rank.
+     */
     @Column(name = "rank_increase", unique = true)
     private Boolean                            rankIncrease     = false;
 
+    /**
+     * Constructs a {@code JPATeamType}.
+     */
     public JPASponsorAffinityGroupAvailability() {
         super();
     }
 
-    public final void addAfinityGroup(final AffinityGroup affinity) {
+    /**
+     * Adds an affinity group.
+     * 
+     * @param affinity
+     *            the affinity group to add
+     */
+    public final void addAffinityGroup(final AffinityGroup affinity) {
         checkArgument(affinity instanceof JPAAffinityGroup,
                 "The AffinityGroup should be an instance of JPAAffinityGroup");
 
@@ -126,16 +156,31 @@ public final class JPASponsorAffinityGroupAvailability implements
         return rankIncrease;
     }
 
-    public final void removeAfinityGroup(final AffinityGroup affinity) {
+    /**
+     * Removes an affinity group.
+     * 
+     * @param affinity
+     *            the affinity group to remove
+     */
+    public final void removeAffinityGroup(final AffinityGroup affinity) {
         getAffinityGroupsModifiable().remove(affinity);
     }
 
+    /**
+     * Sets the availability affinity groups.
+     * <p>
+     * All the affinity groups which the availability currently has will be
+     * removed and swapped with the received ones.
+     * 
+     * @param affinities
+     *            the affinity groups to set on the unit
+     */
     public final void
-            setAffinityGroups(final Collection<JPAAffinityGroup> groups) {
-        checkNotNull(groups, "Received a null pointer as groups");
+            setAffinityGroups(final Collection<JPAAffinityGroup> affinities) {
+        checkNotNull(affinities, "Received a null pointer as groups");
 
         getAffinityGroupsModifiable().clear();
-        getAffinityGroupsModifiable().addAll(groups);
+        getAffinityGroupsModifiable().addAll(affinities);
     }
 
     @Override
@@ -145,10 +190,22 @@ public final class JPASponsorAffinityGroupAvailability implements
         this.id = id;
     }
 
+    /**
+     * Sets the flag indicating if the availability allows increasing the rank.
+     * 
+     * @param increase
+     *            flag indicating if the availability allows increasing the rank
+     */
     public final void setIncludingRankIncrease(final Boolean increase) {
         rankIncrease = increase;
     }
 
+    /**
+     * Sets the availability's name.
+     * 
+     * @param name
+     *            the availability's name
+     */
     public final void setName(final String name) {
         checkNotNull(name, "Received a null pointer as name");
 
@@ -160,8 +217,13 @@ public final class JPASponsorAffinityGroupAvailability implements
         return MoreObjects.toStringHelper(this).add("id", id).toString();
     }
 
+    /**
+     * Returns the modifiable collection of the availability's affinity groups.
+     * 
+     * @return the modifiable collection of the availability's affinity groups
+     */
     private final Collection<JPAAffinityGroup> getAffinityGroupsModifiable() {
-        return groups;
+        return affinities;
     }
 
 }

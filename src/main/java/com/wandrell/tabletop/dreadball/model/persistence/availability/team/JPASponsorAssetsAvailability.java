@@ -31,36 +31,80 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.availability.team.SponsorAssetsAvailability;
 
+/**
+ * Persistent JPA-based implementation of {@link SponsorAssetsAvailability}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "SponsorAssetsAvailability")
 @Table(name = "sponsor_asset_avas")
 public final class JPASponsorAssetsAvailability
         implements SponsorAssetsAvailability, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID      = -7367447173870314061L;
+    /**
+     * Cost of an affinity group.
+     */
     @Column(name = "cost_affinity")
     private Integer           costAffinity          = 0;
+    /**
+     * Cost of a cheerleader.
+     */
     @Column(name = "cost_cheerleader")
     private Integer           costCheerleader       = 0;
+    /**
+     * Cost of unlocking the cheerleaders.
+     */
     @Column(name = "cost_cheerleader_unlock")
     private Integer           costCheerleaderUnlock = 0;
+    /**
+     * Cost of a coaching dice.
+     */
     @Column(name = "cost_dice")
     private Integer           costDice              = 0;
+    /**
+     * Cost of a medibot.
+     */
     @Column(name = "cost_medibot")
     private Integer           costMedibot           = 0;
+    /**
+     * Cost of a sabotage card.
+     */
     @Column(name = "cost_sabotage")
     private Integer           costSabotage          = 0;
+    /**
+     * Cost of a special movement card.
+     */
     @Column(name = "cost_special_move")
     private Integer           costSpecialMove       = 0;
+    /**
+     * Cost of a wager.
+     */
     @Column(name = "cost_wager")
     private Integer           costWager             = 0;
+    /**
+     * Availability's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id                    = -1;
+    /**
+     * Maximum number of wagers.
+     */
     @Column(name = "max_wager")
     private Integer           maxWager              = 0;
+    /**
+     * Minimum required cost for a team.
+     */
     @Column(name = "min_team_cost")
     private Integer           minTeamCost           = 0;
 
+    /**
+     * Constructs a {@code JPASponsorAssetsAvailability}.
+     */
     public JPASponsorAssetsAvailability() {
         super();
     }
@@ -145,24 +189,48 @@ public final class JPASponsorAssetsAvailability
         return Objects.hash(id);
     }
 
+    /**
+     * Sets the cost of an affinity group.
+     * 
+     * @param cost
+     *            the cost of an affinity group
+     */
     public final void setAffinityGroupCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         costAffinity = cost;
     }
 
+    /**
+     * Sets the cost of a cheerleader.
+     * 
+     * @param cost
+     *            the cost of a cheerleader
+     */
     public final void setCheerleaderCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         costCheerleader = cost;
     }
 
+    /**
+     * Sets the cost of unlocking the cheerleaders.
+     * 
+     * @param cost
+     *            the cost of unlocking the cheerleaders
+     */
     public final void setCheerleaderUnlockCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         costCheerleaderUnlock = cost;
     }
 
+    /**
+     * Sets the cost of a coaching die.
+     * 
+     * @param cost
+     *            the cost of a coaching die
+     */
     public final void setCoachingDieCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
@@ -176,38 +244,75 @@ public final class JPASponsorAssetsAvailability
         this.id = id;
     }
 
+    /**
+     * Sets the cost of a medibot.
+     * 
+     * @param cost
+     *            the cost of a medibot
+     */
     public final void setMediBotCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         costMedibot = cost;
     }
 
+    /**
+     * Sets the cost of a sabotage card.
+     * 
+     * @param cost
+     *            the cost of a sabotage card
+     */
     public final void setSabotageCardCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         costSabotage = cost;
     }
 
+    /**
+     * Sets the cost of a special movement card.
+     * 
+     * @param cost
+     *            the cost of a special movement card
+     */
     public final void setSpecialMovementCardCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         costSpecialMove = cost;
     }
 
+    /**
+     * Sets the minimum allowed cost for a team.
+     * 
+     * @param cost
+     *            the minimum allowed cost for a team
+     */
     public final void setTeamCostMin(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         minTeamCost = cost;
     }
 
+    /**
+     * Sets the cost of a wager.
+     * 
+     * @param cost
+     *            the cost of a wager
+     */
     public final void setWagerCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         costWager = cost;
     }
 
+    /**
+     * Sets the maximum number of wagers.
+     * 
+     * @param max
+     *            the maximum number of wagers
+     */
     public final void setWagerMaxCount(final Integer max) {
-        checkNotNull(max, "Received a null pointer as max");
+        checkNotNull(max,
+                "Received a null pointer as maximum number of wagers");
 
         maxWager = max;
     }

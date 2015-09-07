@@ -31,18 +31,35 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
+/**
+ * Persistent JPA-based implementation of {@link AffinityGroup}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "AffinityGroup")
 @Table(name = "affinity_groups")
 public final class JPAAffinityGroup
         implements AffinityGroup, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = 3702432119601675635L;
+    /**
+     * Affinity group's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+    /**
+     * Affinity group¡s name.
+     */
     @Column(name = "name", unique = true)
     private String            name             = "";
 
+    /**
+     * Constructs a {@code JPAAffinityGroup}.
+     */
     public JPAAffinityGroup() {
         super();
     }
@@ -82,6 +99,12 @@ public final class JPAAffinityGroup
         return Objects.hashCode(name);
     }
 
+    /**
+     * Sets the affinity group's name.
+     * 
+     * @param name
+     *            the affinity group's name
+     */
     public final void setAffinityGroupName(final String name) {
         checkNotNull(name, "Received a null pointer as name");
 

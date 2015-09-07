@@ -29,18 +29,35 @@ import javax.persistence.Table;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.unit.component.ComponentLocation;
 
+/**
+ * Persistent JPA-based implementation of {@link ComponentLocation}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "ComponentLocation")
 @Table(name = "component_locations")
 public final class JPAComponentLocation
         implements ComponentLocation, PersistenceEntity, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = -7589272908184471999L;
+    /**
+     * Component location's primary key.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+    /**
+     * Component location name.
+     */
     @Column(name = "name", unique = true)
     private String            name             = "";
 
+    /**
+     * Constructs a {@code JPAComponentLocation}.
+     */
     public JPAComponentLocation() {
         super();
     }
@@ -55,6 +72,12 @@ public final class JPAComponentLocation
         return id;
     }
 
+    /**
+     * Sets the component location name.
+     * 
+     * @param name
+     *            the component location name
+     */
     public final void setComponentLocationName(final String name) {
         checkNotNull(name, "Received a null pointer as name");
 

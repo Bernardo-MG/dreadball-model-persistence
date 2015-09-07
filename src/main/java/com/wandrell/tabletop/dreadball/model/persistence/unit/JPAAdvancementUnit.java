@@ -20,13 +20,26 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * Persistent JPA-based implementation of
+ * {@link com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit
+ * AdvancementUnit}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "AdvancementUnit")
 @Table(name = "advancement_units")
 public final class JPAAdvancementUnit extends AbstractJPAAdvancementUnit
         implements Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = -6317901977987115397L;
 
+    /**
+     * Constructs a {@code JPAAdvancementUnit}.
+     */
     public JPAAdvancementUnit() {
         super();
     }

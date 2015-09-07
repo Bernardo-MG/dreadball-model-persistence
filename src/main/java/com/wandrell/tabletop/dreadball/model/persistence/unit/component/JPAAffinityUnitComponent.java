@@ -25,19 +25,39 @@ import javax.persistence.Table;
 
 import com.wandrell.tabletop.dreadball.model.unit.component.AffinityUnitComponent;
 
+/**
+ * Persistent JPA-based implementation of {@link AffinityUnitComponent}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @Entity(name = "AffinityUnitComponent")
 @Table(name = "affinity_unit_components")
 public final class JPAAffinityUnitComponent extends AbstractJPAUnitComponent
         implements AffinityUnitComponent, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = 1L;
+    /**
+     * Ally cost.
+     */
     @Column(name = "cost_ally")
     private Integer           costAlly         = 0;
+    /**
+     * Friend cost.
+     */
     @Column(name = "cost_friend")
     private Integer           costFriend       = 0;
+    /**
+     * Stranger cost.
+     */
     @Column(name = "cost_stranger")
     private Integer           costStranger     = 0;
 
+    /**
+     * Constructs a {@code JPAAffinityUnitComponent}.
+     */
     public JPAAffinityUnitComponent() {
         super();
     }
@@ -63,18 +83,36 @@ public final class JPAAffinityUnitComponent extends AbstractJPAUnitComponent
         return costStranger;
     }
 
+    /**
+     * Sets the ally cost.
+     * 
+     * @param cost
+     *            the ally cost
+     */
     public final void setAllyCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         costAlly = cost;
     }
 
+    /**
+     * Sets the friend cost.
+     * 
+     * @param cost
+     *            the friend cost
+     */
     public final void setFriendCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
         costFriend = cost;
     }
 
+    /**
+     * Sets the stranger cost.
+     * 
+     * @param cost
+     *            the stranger cost
+     */
     public final void setStrangerCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 

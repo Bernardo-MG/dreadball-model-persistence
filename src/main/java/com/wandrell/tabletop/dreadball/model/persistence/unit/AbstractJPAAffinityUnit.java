@@ -34,10 +34,18 @@ import javax.persistence.MappedSuperclass;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityUnit;
 
+/**
+ * Abstract persistent JPA-based implementation of {@link AffinityUnit}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @MappedSuperclass
 public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
         implements AffinityUnit {
 
+    /**
+     * Unit affinities.
+     */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "unit_affinities",
             joinColumns = { @JoinColumn(name = "unit_id",
@@ -45,19 +53,37 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
     private final Collection<JPAAffinityGroup> affinities   = new LinkedHashSet<JPAAffinityGroup>();
+    /**
+     * Ally cost.
+     */
     @Column(name = "cost_ally")
     private Integer                            costAlly     = 0;
+    /**
+     * Friend cost.
+     */
     @Column(name = "cost_friend")
     private Integer                            costFriend   = 0;
+    /**
+     * Stranger cost.
+     */
     @Column(name = "cost_stranger")
     private Integer                            costStranger = 0;
 
+    /**
+     * Constructs a {@code AbstractJPAAffinityUnit}.
+     */
     public AbstractJPAAffinityUnit() {
         super();
     }
 
+    /**
+     * Adds an affinity group to the unit.
+     * 
+     * @param affinity
+     *            affinity group to add
+     */
     public final void addAffinityGroup(final JPAAffinityGroup affinity) {
-        checkNotNull(affinity, "Received a null pointer as affinity");
+        checkNotNull(affinity, "Received a null pointer as the affinity group");
 
         getAffinityGroupsModifiable().add(affinity);
     }
@@ -94,12 +120,27 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
         return costStranger;
     }
 
+    /**
+     * Removes an affinity group from the unit.
+     * 
+     * @param affinity
+     *            the affinity group to remove
+     */
     public final void removeAffinityGroup(final AffinityGroup affinity) {
-        checkNotNull(affinity, "Received a null pointer as ally affinity");
+        checkNotNull(affinity, "Received a null pointer as the affinity group");
 
         getAffinityGroupsModifiable().remove(affinity);
     }
 
+    /**
+     * Sets the unit affinities.
+     * <p>
+     * All the affinities in the unit will be removed and swapped with the
+     * received ones.
+     * 
+     * @param affinities
+     *            the affinities to set on the unit
+     */
     public final void
             setAffinityGroups(final Collection<AffinityGroup> affinities) {
         checkNotNull(affinities, "Received a null pointer as affinities");
@@ -114,24 +155,47 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
         }
     }
 
+    /**
+     * Sets the unit's ally cost.
+     * 
+     * @param cost
+     *            the unit's ally cost
+     */
     public final void setAllyCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as ally cost");
 
         costAlly = cost;
     }
 
+    /**
+     * Sets the unit's friend cost.
+     * 
+     * @param cost
+     *            the unit's friend cost
+     */
     public final void setFriendCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as friend cost");
 
         costFriend = cost;
     }
 
+    /**
+     * Sets the unit's stranger cost.
+     * 
+     * @param cost
+     *            the unit's stranger cost
+     */
     public final void setStrangerCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as stranger cost");
 
         costStranger = cost;
     }
 
+    /**
+     * Returns the modifiable collection of the unit's affinity groups.
+     * 
+     * @return the modifiable collection of the unit's affinity groups
+     */
     private final Collection<JPAAffinityGroup> getAffinityGroupsModifiable() {
         return affinities;
     }
