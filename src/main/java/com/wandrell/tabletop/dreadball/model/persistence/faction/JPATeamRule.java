@@ -100,22 +100,22 @@ public final class JPATeamRule
     }
 
     @Override
-    public final void setId(final Integer id) {
-        checkNotNull(id, "Received a null pointer as id");
+    public final void setId(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as identifier");
 
-        this.id = id;
+        id = identifier;
     }
 
     /**
      * Sets the team rule name.
      * 
-     * @param name
+     * @param ruleName
      *            the team rule name
      */
-    public final void setTeamRuleName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
+    public final void setTeamRuleName(final String ruleName) {
+        checkNotNull(ruleName, "Received a null pointer as name");
 
-        this.name = name;
+        name = ruleName;
     }
 
     @Override

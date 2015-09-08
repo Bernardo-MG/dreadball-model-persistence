@@ -172,22 +172,22 @@ public final class JPASponsorAffinityGroupAvailability implements
      * All the affinity groups which the availability currently has will be
      * removed and swapped with the received ones.
      * 
-     * @param affinities
+     * @param affinityGroups
      *            the affinity groups to set on the unit
      */
-    public final void
-            setAffinityGroups(final Collection<JPAAffinityGroup> affinities) {
-        checkNotNull(affinities, "Received a null pointer as groups");
+    public final void setAffinityGroups(
+            final Collection<JPAAffinityGroup> affinityGroups) {
+        checkNotNull(affinityGroups, "Received a null pointer as groups");
 
         getAffinityGroupsModifiable().clear();
-        getAffinityGroupsModifiable().addAll(affinities);
+        getAffinityGroupsModifiable().addAll(affinityGroups);
     }
 
     @Override
-    public final void setId(final Integer id) {
-        checkNotNull(id, "Received a null pointer as id");
+    public final void setId(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as identifier");
 
-        this.id = id;
+        id = identifier;
     }
 
     /**
@@ -203,13 +203,13 @@ public final class JPASponsorAffinityGroupAvailability implements
     /**
      * Sets the availability's name.
      * 
-     * @param name
+     * @param nameAva
      *            the availability's name
      */
-    public final void setName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
+    public final void setName(final String nameAva) {
+        checkNotNull(nameAva, "Received a null pointer as name");
 
-        this.name = name;
+        name = nameAva;
     }
 
     @Override

@@ -167,12 +167,12 @@ public final class JPASponsor
 
     @Override
     public final void
-            setAffinityGroups(final Collection<AffinityGroup> affinities) {
-        checkNotNull(affinities, "Received a null pointer as groups");
+            setAffinityGroups(final Collection<AffinityGroup> affinityGroups) {
+        checkNotNull(affinityGroups, "Received a null pointer as groups");
 
         getAffinityGroupsModifiable().clear();
 
-        for (final AffinityGroup affinity : affinities) {
+        for (final AffinityGroup affinity : affinityGroups) {
             checkArgument(affinity instanceof JPAAffinityGroup,
                     "The affinities should be an instance of JPAAffinityGroup");
             getAffinityGroupsModifiable().add((JPAAffinityGroup) affinity);
@@ -180,36 +180,36 @@ public final class JPASponsor
     }
 
     @Override
-    public final void setCash(final Integer cash) {
-        checkNotNull(cash, "Received a null pointer as cash");
+    public final void setCash(final Integer spareCash) {
+        checkNotNull(spareCash, "Received a null pointer as cash");
 
-        this.cash = cash;
+        cash = spareCash;
     }
 
     @Override
-    public final void setId(final Integer id) {
-        checkNotNull(id, "Received a null pointer as id");
+    public final void setId(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as identifier");
 
-        this.id = id;
+        id = identifier;
     }
 
     @Override
-    public final void setRank(final Integer rank) {
-        checkNotNull(rank, "Received a null pointer as rank");
+    public final void setRank(final Integer sponsorRank) {
+        checkNotNull(sponsorRank, "Received a null pointer as rank");
 
-        this.rank = rank;
+        rank = sponsorRank;
     }
 
     /**
      * Sets the sponsor name.
      * 
-     * @param name
+     * @param sponsorName
      *            the sponsor name
      */
-    public final void setSponsorName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
+    public final void setSponsorName(final String sponsorName) {
+        checkNotNull(sponsorName, "Received a null pointer as name");
 
-        this.name = name;
+        name = sponsorName;
     }
 
     @Override

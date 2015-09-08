@@ -195,15 +195,15 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
      * All the abilities which the unit currently has will be removed and
      * swapped with the received ones.
      * 
-     * @param abilities
+     * @param unitAbilities
      *            the abilities to set on the unit
      */
-    public final void setAbilities(final Collection<Ability> abilities) {
-        checkNotNull(abilities, "Received a null pointer as abilities");
+    public final void setAbilities(final Collection<Ability> unitAbilities) {
+        checkNotNull(unitAbilities, "Received a null pointer as abilities");
 
         getAbilitiesModifiable().clear();
 
-        for (final Ability ability : abilities) {
+        for (final Ability ability : unitAbilities) {
             checkArgument(ability instanceof JPAAbility,
                     "All the abilities should be an instanceof JPAAbility");
 
@@ -214,45 +214,46 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
     /**
      * Sets the unit attributes.
      * 
-     * @param attributes
+     * @param attrs
      *            the attributes for the unit
      */
-    public final void setAttributes(final AttributesHolder attributes) {
-        checkArgument(attributes instanceof JPAAttributesHolder,
+    public final void setAttributes(final AttributesHolder attrs) {
+        checkNotNull(attrs, "Received a null pointer as attributes");
+        checkArgument(attrs instanceof JPAAttributesHolder,
                 "The AttributesHolder should be an instanceof JPAAttributesHolder");
 
-        this.attributes = (JPAAttributesHolder) attributes;
+        attributes = (JPAAttributesHolder) attrs;
     }
 
     /**
-     * Sets the unit giant flag
+     * Sets the unit giant flag.
      * 
-     * @param giant
+     * @param giantFlag
      *            the flag indicating if the unit is a giant
      */
-    public final void setGiant(final Boolean giant) {
-        checkNotNull(giant, "Received a null pointer as giant flag");
+    public final void setGiant(final Boolean giantFlag) {
+        checkNotNull(giantFlag, "Received a null pointer as giant flag");
 
-        this.giant = giant;
+        giant = giantFlag;
     }
 
     @Override
-    public final void setId(final Integer id) {
-        checkNotNull(id, "Received a null pointer as id");
+    public final void setId(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as identifier");
 
-        this.id = id;
+        id = identifier;
     }
 
     /**
      * Sets the unit team position.
      * 
-     * @param position
+     * @param pos
      *            the team position for the unit
      */
-    public final void setPosition(final TeamPosition position) {
-        checkNotNull(position, "Received a null pointer as team position role");
+    public final void setPosition(final TeamPosition pos) {
+        checkNotNull(pos, "Received a null pointer as team position role");
 
-        this.position = position;
+        position = pos;
     }
 
     /**

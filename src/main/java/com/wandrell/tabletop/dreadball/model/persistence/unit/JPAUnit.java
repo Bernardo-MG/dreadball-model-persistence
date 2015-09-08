@@ -23,17 +23,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
-
 /**
- * Persistent JPA-based implementation of {@link Unit}.
+ * Persistent JPA-based implementation of
+ * {@link com.wandrell.tabletop.dreadball.model.unit.Unit Unit}.
  * 
  * @author Bernardo Martínez Garrido
  */
 @Entity(name = "Unit")
 @Table(name = "units")
-public final class JPAUnit extends AbstractJPAUnit
-        implements Unit, Serializable {
+public final class JPAUnit extends AbstractJPAUnit implements Serializable {
 
     /**
      * Serialization ID.
@@ -60,13 +58,13 @@ public final class JPAUnit extends AbstractJPAUnit
     /**
      * Sets the unit's cost.
      * 
-     * @param cost
+     * @param costUnit
      *            the unit's cost
      */
-    public final void setCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as ally cost");
+    public final void setCost(final Integer costUnit) {
+        checkNotNull(costUnit, "Received a null pointer as cost");
 
-        this.cost = cost;
+        cost = costUnit;
     }
 
 }

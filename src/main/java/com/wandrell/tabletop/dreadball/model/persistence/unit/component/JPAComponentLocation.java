@@ -75,13 +75,13 @@ public final class JPAComponentLocation
     /**
      * Sets the component location name.
      * 
-     * @param name
+     * @param componentName
      *            the component location name
      */
-    public final void setComponentLocationName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
+    public final void setComponentLocationName(final String componentName) {
+        checkNotNull(componentName, "Received a null pointer as name");
 
-        this.name = name;
+        name = componentName;
     }
 
     @Override

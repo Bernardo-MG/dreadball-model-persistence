@@ -98,61 +98,61 @@ public final class JPAAttributesHolder
     /**
      * Sets the armor value.
      * 
-     * @param armor
+     * @param armorValue
      *            the armor value
      */
-    public final void setArmor(final Integer armor) {
-        checkNotNull(armor, "Received a null pointer as armor");
+    public final void setArmor(final Integer armorValue) {
+        checkNotNull(armorValue, "Received a null pointer as armor");
 
-        this.armor = armor;
+        armor = armorValue;
     }
 
     /**
      * Sets the movement value.
      * 
-     * @param movement
+     * @param movementValue
      *            the movement value
      */
-    public final void setMovement(final Integer movement) {
-        checkNotNull(movement, "Received a null pointer as movement");
+    public final void setMovement(final Integer movementValue) {
+        checkNotNull(movementValue, "Received a null pointer as movement");
 
-        this.movement = movement;
+        movement = movementValue;
     }
 
     /**
      * Sets the skill value.
      * 
-     * @param skill
+     * @param skillValue
      *            the skill value
      */
-    public final void setSkill(final Integer skill) {
-        checkNotNull(skill, "Received a null pointer as skill");
+    public final void setSkill(final Integer skillValue) {
+        checkNotNull(skillValue, "Received a null pointer as skill");
 
-        this.skill = skill;
+        skill = skillValue;
     }
 
     /**
      * Sets the speed value.
      * 
-     * @param speed
+     * @param speedValue
      *            the speed value
      */
-    public final void setSpeed(final Integer speed) {
-        checkNotNull(speed, "Received a null pointer as speed");
+    public final void setSpeed(final Integer speedValue) {
+        checkNotNull(speedValue, "Received a null pointer as speed");
 
-        this.speed = speed;
+        speed = speedValue;
     }
 
     /**
      * Sets the strength value.
      * 
-     * @param strength
+     * @param strengthValue
      *            the strength value
      */
-    public final void setStrength(final Integer strength) {
-        checkNotNull(strength, "Received a null pointer as strength");
+    public final void setStrength(final Integer strengthValue) {
+        checkNotNull(strengthValue, "Received a null pointer as strength");
 
-        this.strength = strength;
+        strength = strengthValue;
     }
 
 }

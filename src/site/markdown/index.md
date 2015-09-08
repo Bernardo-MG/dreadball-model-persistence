@@ -1,3 +1,5 @@
 # Dreadball Model Persistence Implementation
 
-This is a persistent implementation for the Dreadball Model API. It is still under development.
+Implementation for the [Dreadball Model API][dreadball-model-api] for a persistent, JPA-based, model.
+
+[dreadball-model-api]: https://github.com/Bernardo-MG/dreadball-model-api

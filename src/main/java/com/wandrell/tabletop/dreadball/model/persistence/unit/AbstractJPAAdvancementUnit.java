@@ -24,7 +24,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAUnitComponent;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
@@ -36,7 +35,7 @@ import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
  */
 @MappedSuperclass
 public abstract class AbstractJPAAdvancementUnit extends AbstractJPAUnit
-        implements AdvancementUnit, PersistenceEntity {
+        implements AdvancementUnit {
 
     /**
      * Unit cost.
@@ -96,36 +95,36 @@ public abstract class AbstractJPAAdvancementUnit extends AbstractJPAUnit
     /**
      * Sets the unit cost.
      * 
-     * @param cost
+     * @param costUnit
      *            unit cost
      */
-    public final void setCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
+    public final void setCost(final Integer costUnit) {
+        checkNotNull(costUnit, "Received a null pointer as cost");
 
-        this.cost = cost;
+        cost = costUnit;
     }
 
     @Override
-    public final void setGraftedImplant(final UnitComponent implant) {
-        checkNotNull(implant, "Received a null pointer as implant");
-        checkArgument(implant instanceof JPAUnitComponent,
+    public final void setGraftedImplant(final UnitComponent graft) {
+        checkNotNull(graft, "Received a null pointer as implant");
+        checkArgument(graft instanceof JPAUnitComponent,
                 "The implant should be an instance of JPAUnitComponent");
 
-        this.implant = (JPAUnitComponent) implant;
+        implant = (JPAUnitComponent) graft;
     }
 
     @Override
-    public final void setRank(final Integer rank) {
-        checkNotNull(rank, "Received a null pointer as rank");
+    public final void setRank(final Integer rankUnit) {
+        checkNotNull(rankUnit, "Received a null pointer as rank");
 
-        this.rank = rank;
+        rank = rankUnit;
     }
 
     @Override
-    public final void setUnspentExperience(final Integer experience) {
-        checkNotNull(experience, "Received a null pointer as experience");
+    public final void setUnspentExperience(final Integer exp) {
+        checkNotNull(exp, "Received a null pointer as experience");
 
-        this.experience = experience;
+        experience = exp;
     }
 
 }

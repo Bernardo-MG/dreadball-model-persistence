@@ -157,10 +157,10 @@ public final class JPATeamType
     }
 
     @Override
-    public final void setId(final Integer id) {
-        checkNotNull(id, "Received a null pointer as id");
+    public final void setId(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as identifier");
 
-        this.id = id;
+        id = identifier;
     }
 
     /**
@@ -169,15 +169,15 @@ public final class JPATeamType
      * All the team rules which the team type currently has will be removed and
      * swapped with the received ones.
      * 
-     * @param rules
+     * @param teamRules
      *            the team rules to set on the team type
      */
-    public final void setTeamRules(final Collection<TeamRule> rules) {
-        checkNotNull(rules, "Received a null pointer as rules");
+    public final void setTeamRules(final Collection<TeamRule> teamRules) {
+        checkNotNull(teamRules, "Received a null pointer as rules");
 
         getTeamRulesModifiable().clear();
 
-        for (final TeamRule rule : rules) {
+        for (final TeamRule rule : teamRules) {
             checkArgument(rule instanceof JPATeamRule,
                     "All the rules should be an instanceof JPATeamRule");
 
@@ -188,13 +188,13 @@ public final class JPATeamType
     /**
      * Sets the team type name.
      * 
-     * @param name
+     * @param typeName
      *            team type name
      */
-    public final void setTeamTypeName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
+    public final void setTeamTypeName(final String typeName) {
+        checkNotNull(typeName, "Received a null pointer as name");
 
-        this.name = name;
+        name = typeName;
     }
 
     @Override

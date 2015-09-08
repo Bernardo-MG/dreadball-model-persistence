@@ -138,16 +138,16 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
      * All the affinities in the unit will be removed and swapped with the
      * received ones.
      * 
-     * @param affinities
+     * @param affinityGroups
      *            the affinities to set on the unit
      */
     public final void
-            setAffinityGroups(final Collection<AffinityGroup> affinities) {
-        checkNotNull(affinities, "Received a null pointer as affinities");
+            setAffinityGroups(final Collection<AffinityGroup> affinityGroups) {
+        checkNotNull(affinityGroups, "Received a null pointer as affinities");
 
         getAffinityGroupsModifiable().clear();
 
-        for (final AffinityGroup affinity : affinities) {
+        for (final AffinityGroup affinity : affinityGroups) {
             checkArgument(affinity instanceof JPAAffinityGroup,
                     "All the affinities should be an instanceof JPAAffinityGroup");
 

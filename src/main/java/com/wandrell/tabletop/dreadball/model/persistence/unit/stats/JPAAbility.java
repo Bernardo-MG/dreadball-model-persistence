@@ -100,22 +100,22 @@ public final class JPAAbility
     }
 
     @Override
-    public final void setId(final Integer id) {
-        checkNotNull(id, "Received a null pointer as id");
+    public final void setId(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as identifier");
 
-        this.id = id;
+        id = identifier;
     }
 
     /**
      * Sets the ability name.
      * 
-     * @param name
+     * @param nameAbility
      *            the ability name
      */
-    public final void setName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
+    public final void setName(final String nameAbility) {
+        checkNotNull(nameAbility, "Received a null pointer as name");
 
-        this.name = name;
+        name = nameAbility;
     }
 
     @Override

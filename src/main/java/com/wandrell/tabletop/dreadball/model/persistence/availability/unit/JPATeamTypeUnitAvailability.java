@@ -140,34 +140,34 @@ public final class JPATeamTypeUnitAvailability
     }
 
     @Override
-    public final void setId(final Integer id) {
-        checkNotNull(id, "Received a null pointer as id");
+    public final void setId(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as identifier");
 
-        this.id = id;
+        id = identifier;
     }
 
     /**
      * Sets the initial number of units for the team type.
      * 
-     * @param initial
+     * @param initialCount
      *            the initial number of units for the team type
      */
-    public final void setInitialNumber(final Integer initial) {
-        checkNotNull(initial, "Received a null pointer as initial count");
+    public final void setInitialNumber(final Integer initialCount) {
+        checkNotNull(initialCount, "Received a null pointer as initial count");
 
-        this.initial = initial;
+        initial = initialCount;
     }
 
     /**
      * Sets the max number of units for the team type.
      * 
-     * @param max
+     * @param maxCount
      *            the max number of units for the team type
      */
-    public final void setMaxNumber(final Integer max) {
-        checkNotNull(max, "Received a null pointer as max count");
+    public final void setMaxNumber(final Integer maxCount) {
+        checkNotNull(maxCount, "Received a null pointer as max count");
 
-        this.max = max;
+        max = maxCount;
     }
 
     /**
@@ -179,19 +179,19 @@ public final class JPATeamTypeUnitAvailability
     public final void setTeamType(final JPATeamType team) {
         checkNotNull(team, "Received a null pointer as team type");
 
-        this.teamType = team;
+        teamType = team;
     }
 
     /**
      * Sets the unit for the availability.
      * 
-     * @param unit
+     * @param unitType
      *            the unit for the availability
      */
-    public final void setUnit(final JPAUnit unit) {
-        checkNotNull(unit, "Received a null pointer as unit");
+    public final void setUnit(final JPAUnit unitType) {
+        checkNotNull(unitType, "Received a null pointer as unit");
 
-        this.unit = unit;
+        unit = unitType;
     }
 
     @Override

@@ -60,13 +60,13 @@ public final class JPAUnitComponent extends AbstractJPAUnitComponent
     /**
      * Sets the component cost.
      * 
-     * @param cost
+     * @param costComponent
      *            the component cost
      */
-    public final void setCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
+    public final void setCost(final Integer costComponent) {
+        checkNotNull(costComponent, "Received a null pointer as cost");
 
-        this.cost = cost;
+        cost = costComponent;
     }
 
 }

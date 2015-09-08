@@ -119,10 +119,10 @@ public final class JPATeamTypeMVPAvailability
     }
 
     @Override
-    public final void setId(final Integer id) {
-        checkNotNull(id, "Received a null pointer as id");
+    public final void setId(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as id");
 
-        this.id = id;
+        id = identifier;
     }
 
     /**
@@ -134,19 +134,19 @@ public final class JPATeamTypeMVPAvailability
     public final void setTeamType(final JPATeamType team) {
         checkNotNull(team, "Received a null pointer as team type");
 
-        this.teamType = team;
+        teamType = team;
     }
 
     /**
      * Sets the unit for the availability.
      * 
-     * @param unit
+     * @param unitType
      *            the unit for the availability
      */
-    public final void setUnit(final JPAUnit unit) {
-        checkNotNull(unit, "Received a null pointer as unit");
+    public final void setUnit(final JPAUnit unitType) {
+        checkNotNull(unitType, "Received a null pointer as unit");
 
-        this.unit = unit;
+        unit = unitType;
     }
 
     @Override

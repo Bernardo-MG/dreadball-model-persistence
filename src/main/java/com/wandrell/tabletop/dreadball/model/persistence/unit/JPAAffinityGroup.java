@@ -102,20 +102,20 @@ public final class JPAAffinityGroup
     /**
      * Sets the affinity group's name.
      * 
-     * @param name
+     * @param nameAffinity
      *            the affinity group's name
      */
-    public final void setAffinityGroupName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
+    public final void setAffinityGroupName(final String nameAffinity) {
+        checkNotNull(nameAffinity, "Received a null pointer as name");
 
-        this.name = name;
+        name = nameAffinity;
     }
 
     @Override
-    public final void setId(final Integer id) {
-        checkNotNull(id, "Received a null pointer as id");
+    public final void setId(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as identifier");
 
-        this.id = id;
+        id = identifier;
     }
 
     @Override

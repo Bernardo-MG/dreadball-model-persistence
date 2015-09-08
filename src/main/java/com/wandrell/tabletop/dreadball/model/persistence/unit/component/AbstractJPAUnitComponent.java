@@ -69,29 +69,29 @@ public abstract class AbstractJPAUnitComponent
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAbility> abilities  = new LinkedHashSet<>();
+    private final Collection<JPAAbility>   abilities  = new LinkedHashSet<>();
     /**
      * Component attributes bonus.
      */
     @Embedded
-    private JPAAttributesHolder          attributes = new JPAAttributesHolder();
+    private JPAAttributesHolder            attributes = new JPAAttributesHolder();
     /**
      * Component primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Integer                      id         = -1;
+    private Integer                        id         = -1;
     /**
      * Component location.
      */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")
-    private JPAComponentLocation         location;
+    private JPAComponentLocation           location;
     /**
      * Component name.
      */
     @Column(name = "name", unique = true)
-    private String                       name       = "";
+    private String                         name       = "";
     /**
      * Component team positions.
      */
@@ -100,7 +100,7 @@ public abstract class AbstractJPAUnitComponent
             joinColumns = @JoinColumn(name = "component_id") )
     @Enumerated(EnumType.STRING)
     @Column(name = "position")
-    final Collection<TeamPosition>       positions  = new LinkedHashSet<TeamPosition>();
+    private final Collection<TeamPosition> positions  = new LinkedHashSet<TeamPosition>();
 
     /**
      * Constructs a {@code AbstractJPAUnitComponent}.
@@ -195,13 +195,13 @@ public abstract class AbstractJPAUnitComponent
      * All the abilities which the component currently has will be removed and
      * swapped with the received ones.
      * 
-     * @param abilities
+     * @param compAbilities
      *            the abilities to set on the component
      */
-    public final void setAbilities(final Collection<Ability> abilities) {
-        checkNotNull(abilities, "Received a null pointer as abilities");
+    public final void setAbilities(final Collection<Ability> compAbilities) {
+        checkNotNull(compAbilities, "Received a null pointer as abilities");
 
-        for (final Ability ability : abilities) {
+        for (final Ability ability : compAbilities) {
             checkArgument(ability instanceof JPAAbility,
                     "All the abilities should be an instanceof JPAAbility");
 
@@ -212,27 +212,27 @@ public abstract class AbstractJPAUnitComponent
     /**
      * Sets the component attributes bonus.
      * 
-     * @param attributes
+     * @param attrs
      *            the attributes bonus for the component
      */
-    public final void setAttributes(final AttributesHolder attributes) {
-        checkNotNull(attributes, "Received a null pointer as attributes");
-        checkArgument(attributes instanceof JPAAttributesHolder,
+    public final void setAttributes(final AttributesHolder attrs) {
+        checkNotNull(attrs, "Received a null pointer as attributes");
+        checkArgument(attrs instanceof JPAAttributesHolder,
                 "The AttributesHolder should be an instanceof JPAAttributesHolder");
 
-        this.attributes = (JPAAttributesHolder) attributes;
+        this.attributes = (JPAAttributesHolder) attrs;
     }
 
     /**
      * Sets the component name.
      * 
-     * @param name
+     * @param componentName
      *            the component name
      */
-    public final void setComponentName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
+    public final void setComponentName(final String componentName) {
+        checkNotNull(componentName, "Received a null pointer as name");
 
-        this.name = name;
+        name = componentName;
     }
 
     @Override
@@ -245,13 +245,14 @@ public abstract class AbstractJPAUnitComponent
     /**
      * Sets the component location.
      * 
-     * @param location
+     * @param compLocation
      *            the component location
      */
-    public final void setLocation(final JPAComponentLocation location) {
-        checkNotNull(location, "Received a null pointer as location");
+    public final void setLocation(final JPAComponentLocation compLocation) {
+        checkNotNull(compLocation,
+                "Received a null pointer as component location");
 
-        this.location = location;
+        location = compLocation;
     }
 
     /**
@@ -260,16 +261,16 @@ public abstract class AbstractJPAUnitComponent
      * All the team position roles which the component currently has will be
      * removed and swapped with the received ones.
      * 
-     * @param positions
+     * @param comPositions
      *            the team position roles to set on the component
      */
     public final void
-            setTeamPosition(final Collection<TeamPosition> positions) {
-        checkNotNull(positions,
-                "Received a null pointer as tema position roles");
+            setTeamPosition(final Collection<TeamPosition> comPositions) {
+        checkNotNull(comPositions,
+                "Received a null pointer as team position roles");
 
         getTeamPositionsModifiable().clear();
-        getTeamPositionsModifiable().addAll(positions);
+        getTeamPositionsModifiable().addAll(comPositions);
     }
 
     /**

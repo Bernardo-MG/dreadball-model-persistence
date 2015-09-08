@@ -108,16 +108,16 @@ public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
      * If the unit has any component these are removed and swapped with the
      * received ones.
      * 
-     * @param components
+     * @param unitComponents
      *            the components to set on the unit
      */
     public final void
-            setComponents(final Collection<UnitComponent> components) {
-        checkNotNull(components, "Received a null pointer as components");
+            setComponents(final Collection<UnitComponent> unitComponents) {
+        checkNotNull(unitComponents, "Received a null pointer as components");
 
         getComponentsModifiable().clear();
 
-        for (final UnitComponent component : components) {
+        for (final UnitComponent component : unitComponents) {
             checkArgument(component instanceof JPAUnitComponent,
                     "All the components should be an instanceof JPAUnitComponent");
 
