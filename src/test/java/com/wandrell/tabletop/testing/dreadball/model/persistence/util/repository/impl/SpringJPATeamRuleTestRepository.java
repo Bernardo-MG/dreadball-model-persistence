@@ -19,15 +19,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.availability.team.JPASponsorAssetsAvailability;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.SponsorAssetsAvailabilityRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamRule;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamRuleTestRepository;
 
-public interface JPASponsorAssetsAvailabilityRepository
-        extends SponsorAssetsAvailabilityRepository,
-        Repository<JPASponsorAssetsAvailability, Integer> {
+/**
+ * Spring Data JPA implementation of {@link TeamRuleTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPATeamRuleTestRepository
+        extends TeamRuleTestRepository, Repository<JPATeamRule, Integer> {
 
     @Override
-    @Query("SELECT ava FROM SponsorAssetsAvailability ava WHERE ava.id = :id")
-    public JPASponsorAssetsAvailability findById(@Param("id") int id);
+    @Query("SELECT rule FROM TeamRule rule WHERE rule.id = :id")
+    public JPATeamRule findById(@Param("id") int id);
 
 }

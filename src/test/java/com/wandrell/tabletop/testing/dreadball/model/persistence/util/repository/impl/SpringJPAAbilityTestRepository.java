@@ -19,14 +19,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAUnitComponent;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitComponentTestRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AbilityTestRepository;
 
-public interface JPAUnitComponentTestRepository extends
-        UnitComponentTestRepository, Repository<JPAUnitComponent, Integer> {
+/**
+ * Spring Data JPA implementation of {@link AbilityTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPAAbilityTestRepository
+        extends AbilityTestRepository, Repository<JPAAbility, Integer> {
 
     @Override
-    @Query("SELECT component FROM UnitComponent component WHERE component.id = :id")
-    public JPAUnitComponent findById(@Param("id") int id);
+    @Query("SELECT ability FROM Ability ability WHERE ability.id = :id")
+    public JPAAbility findById(@Param("id") int id);
 
 }

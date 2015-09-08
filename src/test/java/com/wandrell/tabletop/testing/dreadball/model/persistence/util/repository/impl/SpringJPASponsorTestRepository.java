@@ -19,15 +19,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAAffinityUnitComponent;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AffinityUnitComponentTestRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.faction.JPASponsor;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.SponsorTestRepository;
 
-public interface JPAAffinityUnitComponentTestRepository
-        extends AffinityUnitComponentTestRepository,
-        Repository<JPAAffinityUnitComponent, Integer> {
+/**
+ * Spring Data JPA implementation of {@link SponsorTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPASponsorTestRepository
+        extends SponsorTestRepository, Repository<JPASponsor, Integer> {
 
     @Override
-    @Query("SELECT component FROM AffinityUnitComponent component WHERE component.id = :id")
-    public JPAAffinityUnitComponent findById(@Param("id") int id);
+    @Query("SELECT sponsor FROM Sponsor sponsor WHERE sponsor.id = :id")
+    public JPASponsor findById(@Param("id") int id);
 
 }

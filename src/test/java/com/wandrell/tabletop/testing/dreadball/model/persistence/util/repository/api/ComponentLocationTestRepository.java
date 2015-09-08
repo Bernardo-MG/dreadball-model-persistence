@@ -17,8 +17,21 @@ package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repositor
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAComponentLocation;
 
+/**
+ * Interface for creating a test repository for {@code ComponentLocation}
+ * entities.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public interface ComponentLocationTestRepository {
 
+    /**
+     * Returns the entity with the specified id
+     * 
+     * @param id
+     *            the id the entity should have
+     * @return the entity with the specified id
+     */
     public JPAComponentLocation findById(int id);
 
 }

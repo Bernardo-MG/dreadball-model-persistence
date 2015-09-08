@@ -19,14 +19,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityUnit;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AffinityUnitTestRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.availability.team.JPATeamTypeAssetsAvailability;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeAssetsAvailabilityTestRepository;
 
-public interface JPAAffinityUnitTestRepository extends
-        AffinityUnitTestRepository, Repository<JPAAffinityUnit, Integer> {
+/**
+ * Spring Data JPA implementation of
+ * {@link TeamTypeAssetsAvailabilityTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPATeamTypeAssetsAvailabilityTestRepository
+        extends TeamTypeAssetsAvailabilityTestRepository,
+        Repository<JPATeamTypeAssetsAvailability, Integer> {
 
     @Override
-    @Query("SELECT unit FROM AffinityUnit unit WHERE unit.id = :id")
-    public JPAAffinityUnit findById(@Param("id") int id);
+    @Query("SELECT ava FROM TeamTypeAssetsAvailability ava WHERE ava.teamType.id = :id")
+    public JPATeamTypeAssetsAvailability findByTeamTypeId(@Param("id") int id);
 
 }

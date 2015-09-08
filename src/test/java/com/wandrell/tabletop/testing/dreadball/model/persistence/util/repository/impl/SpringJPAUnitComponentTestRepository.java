@@ -19,15 +19,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.availability.team.JPATeamTypeAssetsAvailability;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeAssetsAvailabilityRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAUnitComponent;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitComponentTestRepository;
 
-public interface JPATeamTypeAssetsAvailabilityRepository
-        extends TeamTypeAssetsAvailabilityRepository,
-        Repository<JPATeamTypeAssetsAvailability, Integer> {
+/**
+ * Spring Data JPA implementation of {@link UnitComponentTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPAUnitComponentTestRepository extends
+        UnitComponentTestRepository, Repository<JPAUnitComponent, Integer> {
 
     @Override
-    @Query("SELECT ava FROM TeamTypeAssetsAvailability ava WHERE ava.teamType.id = :id")
-    public JPATeamTypeAssetsAvailability findByTeamTypeId(@Param("id") int id);
+    @Query("SELECT component FROM UnitComponent component WHERE component.id = :id")
+    public JPAUnitComponent findById(@Param("id") int id);
 
 }

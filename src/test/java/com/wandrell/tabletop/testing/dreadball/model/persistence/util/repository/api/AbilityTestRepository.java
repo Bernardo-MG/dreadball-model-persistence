@@ -17,8 +17,20 @@ package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repositor
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
 
+/**
+ * Interface for creating a test repository for {@code Ability} entities.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public interface AbilityTestRepository {
 
+    /**
+     * Returns the entity with the specified id
+     * 
+     * @param id
+     *            the id the entity should have
+     * @return the entity with the specified id
+     */
     public JPAAbility findById(int id);
 
 }

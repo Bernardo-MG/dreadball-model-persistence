@@ -19,15 +19,20 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPASponsorAffinityGroupAvailability;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.SponsorAffinityGroupAvailabilityRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPACompositeAffinityUnit;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.CompositeAffinityUnitTestRepository;
 
-public interface JPASponsorAffinityGroupAvailabilityRepository
-        extends SponsorAffinityGroupAvailabilityRepository,
-        Repository<JPASponsorAffinityGroupAvailability, Integer> {
+/**
+ * Spring Data JPA implementation of {@link CompositeAffinityUnitTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPACompositeAffinityUnitTestRepository
+        extends CompositeAffinityUnitTestRepository,
+        Repository<JPACompositeAffinityUnit, Integer> {
 
     @Override
-    @Query("SELECT ava FROM SponsorAffinityGroupAvailability ava WHERE ava.id = :id")
-    public JPASponsorAffinityGroupAvailability findById(@Param("id") int id);
+    @Query("SELECT unit FROM CompositeAffinityUnit unit WHERE unit.id = :id")
+    public JPACompositeAffinityUnit findById(@Param("id") int id);
 
 }

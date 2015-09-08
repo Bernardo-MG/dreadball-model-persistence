@@ -22,7 +22,12 @@ import org.springframework.data.repository.query.Param;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AffinityGroupTestRepository;
 
-public interface JPAAffinityGroupTestRepository extends
+/**
+ * Spring Data JPA implementation of {@link AffinityGroupTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPAAffinityGroupTestRepository extends
         AffinityGroupTestRepository, Repository<JPAAffinityGroup, Integer> {
 
     @Override

@@ -15,10 +15,23 @@
  */
 package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api;
 
-import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPATeamTypeUnitAvailability;
+import com.wandrell.tabletop.dreadball.model.persistence.availability.team.JPATeamTypeAssetsAvailability;
 
-public interface TeamTypeUnitAvailabilityRepository {
+/**
+ * Interface for creating a test repository for
+ * {@code TeamTypeAssetsAvailability} entities.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface TeamTypeAssetsAvailabilityTestRepository {
 
-    public JPATeamTypeUnitAvailability findById(int id);
+    /**
+     * Returns the entity for the team type with the specified id
+     * 
+     * @param id
+     *            the id the entity should have
+     * @return the entity with the team type with the specified id
+     */
+    public JPATeamTypeAssetsAvailability findByTeamTypeId(int id);
 
 }

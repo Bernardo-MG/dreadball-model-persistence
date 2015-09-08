@@ -20,10 +20,16 @@ import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
 import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPATeamTypeUnitAvailability;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeUnitAvailabilityRepository;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeUnitAvailabilityTestRepository;
 
-public interface JPATeamTypeUnitAvailabilityRepository
-        extends TeamTypeUnitAvailabilityRepository,
+/**
+ * Spring Data JPA implementation of
+ * {@link TeamTypeUnitAvailabilityTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPATeamTypeUnitAvailabilityTestRepository
+        extends TeamTypeUnitAvailabilityTestRepository,
         Repository<JPATeamTypeUnitAvailability, Integer> {
 
     @Override

@@ -17,8 +17,20 @@ package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repositor
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
 
+/**
+ * Interface for creating a test repository for {@code AffinityGroup} entities.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public interface AffinityGroupTestRepository {
 
+    /**
+     * Returns the entity with the specified id
+     * 
+     * @param id
+     *            the id the entity should have
+     * @return the entity with the specified id
+     */
     public JPAAffinityGroup findById(int id);
 
 }

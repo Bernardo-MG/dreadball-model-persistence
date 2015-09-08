@@ -19,15 +19,20 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAComponentLocation;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.ComponentLocationTestRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAAffinityUnitComponent;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AffinityUnitComponentTestRepository;
 
-public interface JPAComponentLocationTestRepository
-        extends ComponentLocationTestRepository,
-        Repository<JPAComponentLocation, Integer> {
+/**
+ * Spring Data JPA implementation of {@link AffinityUnitComponentTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPAAffinityUnitComponentTestRepository
+        extends AffinityUnitComponentTestRepository,
+        Repository<JPAAffinityUnitComponent, Integer> {
 
     @Override
-    @Query("SELECT location FROM ComponentLocation location WHERE location.id = :id")
-    public JPAComponentLocation findById(@Param("id") int id);
+    @Query("SELECT component FROM AffinityUnitComponent component WHERE component.id = :id")
+    public JPAAffinityUnitComponent findById(@Param("id") int id);
 
 }

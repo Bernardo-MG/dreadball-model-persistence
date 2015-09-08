@@ -19,15 +19,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPACompositeAdvancementUnit;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.CompositeAdvancementUnitTestRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityUnit;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AffinityUnitTestRepository;
 
-public interface JPACompositeAdvancementUnitTestRepository
-        extends CompositeAdvancementUnitTestRepository,
-        Repository<JPACompositeAdvancementUnit, Integer> {
+/**
+ * Spring Data JPA implementation of {@link AffinityUnitTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPAAffinityUnitTestRepository extends
+        AffinityUnitTestRepository, Repository<JPAAffinityUnit, Integer> {
 
     @Override
-    @Query("SELECT unit FROM CompositeAdvancementUnit unit WHERE unit.id = :id")
-    public JPACompositeAdvancementUnit findById(@Param("id") int id);
+    @Query("SELECT unit FROM AffinityUnit unit WHERE unit.id = :id")
+    public JPAAffinityUnit findById(@Param("id") int id);
 
 }

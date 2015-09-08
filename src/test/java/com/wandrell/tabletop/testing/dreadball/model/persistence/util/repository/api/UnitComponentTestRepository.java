@@ -17,8 +17,20 @@ package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repositor
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAUnitComponent;
 
+/**
+ * Interface for creating a test repository for {@code UnitComponent} entities.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public interface UnitComponentTestRepository {
 
+    /**
+     * Returns the entity with the specified id
+     * 
+     * @param id
+     *            the id the entity should have
+     * @return the entity with the specified id
+     */
     public JPAUnitComponent findById(int id);
 
 }

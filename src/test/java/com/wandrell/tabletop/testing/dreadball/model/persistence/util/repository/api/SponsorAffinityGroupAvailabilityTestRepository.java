@@ -17,8 +17,21 @@ package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repositor
 
 import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPASponsorAffinityGroupAvailability;
 
-public interface SponsorAffinityGroupAvailabilityRepository {
+/**
+ * Interface for creating a test repository for
+ * {@code SponsorAffinityGroupAvailability} entities.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SponsorAffinityGroupAvailabilityTestRepository {
 
+    /**
+     * Returns the entity with the specified id
+     * 
+     * @param id
+     *            the id the entity should have
+     * @return the entity with the specified id
+     */
     public JPASponsorAffinityGroupAvailability findById(int id);
 
 }

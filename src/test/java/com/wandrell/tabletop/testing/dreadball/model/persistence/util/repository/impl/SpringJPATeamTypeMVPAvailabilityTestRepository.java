@@ -19,14 +19,22 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.faction.JPASponsor;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.SponsorTestRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPATeamTypeMVPAvailability;
+import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPATeamTypeUnitAvailability;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeMVPAvailabilityTestRepository;
 
-public interface JPASponsorTestRepository
-        extends SponsorTestRepository, Repository<JPASponsor, Integer> {
+/**
+ * Spring Data JPA implementation of
+ * {@link TeamTypeMVPAvailabilityTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPATeamTypeMVPAvailabilityTestRepository
+        extends TeamTypeMVPAvailabilityTestRepository,
+        Repository<JPATeamTypeUnitAvailability, Integer> {
 
     @Override
-    @Query("SELECT sponsor FROM Sponsor sponsor WHERE sponsor.id = :id")
-    public JPASponsor findById(@Param("id") int id);
+    @Query("SELECT ava FROM TeamTypeMVPAvailability ava WHERE ava.id = :id")
+    public JPATeamTypeMVPAvailability findById(@Param("id") int id);
 
 }

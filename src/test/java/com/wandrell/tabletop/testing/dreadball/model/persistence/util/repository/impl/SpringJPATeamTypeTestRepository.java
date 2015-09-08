@@ -19,14 +19,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAdvancementUnit;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AdvancementUnitTestRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeTestRepository;
 
-public interface JPAAdvancementUnitTestRepository extends
-        AdvancementUnitTestRepository, Repository<JPAAdvancementUnit, Integer> {
+/**
+ * Spring Data JPA implementation of {@link TeamTypeTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPATeamTypeTestRepository
+        extends TeamTypeTestRepository, Repository<JPATeamType, Integer> {
 
     @Override
-    @Query("SELECT unit FROM AdvancementUnit unit WHERE unit.id = :id")
-    public JPAAdvancementUnit findById(@Param("id") int id);
+    @Query("SELECT team FROM TeamType team WHERE team.id = :id")
+    public JPATeamType findById(@Param("id") int id);
 
 }

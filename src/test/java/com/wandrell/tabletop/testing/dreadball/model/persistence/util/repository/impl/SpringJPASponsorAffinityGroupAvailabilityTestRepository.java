@@ -19,14 +19,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AbilityTestRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPASponsorAffinityGroupAvailability;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.SponsorAffinityGroupAvailabilityTestRepository;
 
-public interface JPAAbilityTestRepository
-        extends AbilityTestRepository, Repository<JPAAbility, Integer> {
+/**
+ * Spring Data JPA implementation of
+ * {@link SponsorAffinityGroupAvailabilityTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPASponsorAffinityGroupAvailabilityTestRepository
+        extends SponsorAffinityGroupAvailabilityTestRepository,
+        Repository<JPASponsorAffinityGroupAvailability, Integer> {
 
     @Override
-    @Query("SELECT ability FROM Ability ability WHERE ability.id = :id")
-    public JPAAbility findById(@Param("id") int id);
+    @Query("SELECT ava FROM SponsorAffinityGroupAvailability ava WHERE ava.id = :id")
+    public JPASponsorAffinityGroupAvailability findById(@Param("id") int id);
 
 }

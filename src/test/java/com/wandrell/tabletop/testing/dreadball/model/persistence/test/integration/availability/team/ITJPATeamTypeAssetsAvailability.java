@@ -22,14 +22,14 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.persistence.availability.team.JPATeamTypeAssetsAvailability;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeAssetsAvailabilityRepository;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeAssetsAvailabilityTestRepository;
 
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPATeamTypeAssetsAvailability
         extends AbstractTransactionalTestNGSpringContextTests {
 
     @Autowired
-    private TeamTypeAssetsAvailabilityRepository repository;
+    private TeamTypeAssetsAvailabilityTestRepository repository;
 
     public ITJPATeamTypeAssetsAvailability() {
         super();

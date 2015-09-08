@@ -19,14 +19,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitTestRepository;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAdvancementUnit;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AdvancementUnitTestRepository;
 
-public interface JPAUnitTestRepository
-        extends UnitTestRepository, Repository<JPAUnit, Integer> {
+/**
+ * Spring Data JPA implementation of {@link AdvancementUnitTestRepository}
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public interface SpringJPAAdvancementUnitTestRepository extends
+        AdvancementUnitTestRepository, Repository<JPAAdvancementUnit, Integer> {
 
     @Override
-    @Query("SELECT unit FROM Unit unit WHERE unit.id = :id")
-    public JPAUnit findById(@Param("id") int id);
+    @Query("SELECT unit FROM AdvancementUnit unit WHERE unit.id = :id")
+    public JPAAdvancementUnit findById(@Param("id") int id);
 
 }
