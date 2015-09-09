@@ -24,20 +24,48 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeTestRepository;
 
+/**
+ * Integration tests for {@link JPATeamType}, checking that the JPA
+ * configuration is correct.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Team types with no rules are loaded correctly</li>
+ * <li>Team types with rules are loaded correctly</li>
+ * </ol>
+ * <p>
+ * These tests make use of a Spring persistence configuration file to initialize
+ * a {@link TeamTypeTestRepository}, which will be used to acquire the tested
+ * entity.
+ * <p>
+ * Said repository will access a temporal testing database, which will be
+ * initialized and populated prior to the tests.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPATeamType
         extends AbstractTransactionalTestNGSpringContextTests {
 
+    /**
+     * Repository used to acquire the tested entity.
+     */
     @Autowired
     private TeamTypeTestRepository repository;
 
+    /**
+     * Default constructor.
+     */
     public ITJPATeamType() {
         super();
     }
 
+    /**
+     * Tests that team types with no rules are loaded correctly
+     */
     @Test
     public void test_loads_noRules() {
-        final JPATeamType team;
+        final JPATeamType team; // Tested entity
 
         team = repository.findById(1);
 
@@ -45,9 +73,12 @@ public final class ITJPATeamType
         Assert.assertEquals(team.getTeamTypeName(), "team_type1");
     }
 
+    /**
+     * Tests that team types with rules are loaded correctly
+     */
     @Test
     public void test_loads_rules() {
-        final JPATeamType team;
+        final JPATeamType team; // Tested entity
 
         team = repository.findById(2);
 

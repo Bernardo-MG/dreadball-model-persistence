@@ -24,17 +24,46 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAAffinityUnitComponent;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AffinityUnitComponentTestRepository;
 
+/**
+ * Integration tests for {@link JPAAffinityUnitComponent}, checking that the JPA
+ * configuration is correct.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Basic unit components are loaded correctly</li>
+ * <li>Unit components with multiple team position roles are loaded correctly
+ * </li>
+ * </ol>
+ * <p>
+ * These tests make use of a Spring persistence configuration file to initialize
+ * a {@link AffinityUnitComponentTestRepository}, which will be used to acquire
+ * the tested entity.
+ * <p>
+ * Said repository will access a temporal testing database, which will be
+ * initialized and populated prior to the tests.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPAAffinityUnitComponent
         extends AbstractTransactionalTestNGSpringContextTests {
 
+    /**
+     * Repository used to acquire the tested entity.
+     */
     @Autowired
     private AffinityUnitComponentTestRepository repository;
 
+    /**
+     * Default constructor.
+     */
     public ITJPAAffinityUnitComponent() {
         super();
     }
 
+    /**
+     * Tests that basic unit components are loaded correctly.
+     */
     @Test
     public void test_loads() {
         final JPAAffinityUnitComponent component;
@@ -61,6 +90,10 @@ public final class ITJPAAffinityUnitComponent
         Assert.assertEquals(component.getStrangerCost(), (Integer) 30);
     }
 
+    /**
+     * Tests that unit components with multiple team position roles are loaded
+     * correctly.
+     */
     @Test
     public void test_loads_multiplePositions() {
         final JPAAffinityUnitComponent component;

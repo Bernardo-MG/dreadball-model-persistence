@@ -25,20 +25,49 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAdvancementUnit
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.AdvancementUnitTestRepository;
 
+/**
+ * Integration tests for {@link JPAAdvancementUnit}, checking that the JPA
+ * configuration is correct.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Units with the Striker role position are loaded correctly</li>
+ * <li>Units with the Jack role position are loaded correctly</li>
+ * <li>Units with the Guard role position are loaded correctly</li>
+ * </ol>
+ * <p>
+ * These tests make use of a Spring persistence configuration file to initialize
+ * a {@link AdvancementUnitTestRepository}, which will be used to acquire the
+ * tested entity.
+ * <p>
+ * Said repository will access a temporal testing database, which will be
+ * initialized and populated prior to the tests.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPAAdvancementUnit
         extends AbstractTransactionalTestNGSpringContextTests {
 
+    /**
+     * Repository used to acquire the tested entity.
+     */
     @Autowired
     private AdvancementUnitTestRepository repository;
 
+    /**
+     * Default constructor.
+     */
     public ITJPAAdvancementUnit() {
         super();
     }
 
+    /**
+     * Tests that units with the Guard role position are loaded correctly.
+     */
     @Test
     public void test_loads_guard() {
-        final JPAAdvancementUnit unit;
+        final JPAAdvancementUnit unit;  // Tested entity
 
         unit = repository.findById(3);
 
@@ -65,9 +94,12 @@ public final class ITJPAAdvancementUnit
                 "component1");
     }
 
+    /**
+     * Tests that units with the Jack role position are loaded correctly.
+     */
     @Test
     public void test_loads_jack() {
-        final JPAAdvancementUnit unit;
+        final JPAAdvancementUnit unit;  // Tested entity
 
         unit = repository.findById(2);
 
@@ -94,9 +126,12 @@ public final class ITJPAAdvancementUnit
                 "component1");
     }
 
+    /**
+     * Tests that units with the Striker role position are loaded correctly.
+     */
     @Test
     public void test_loads_striker() {
-        final JPAAdvancementUnit unit;
+        final JPAAdvancementUnit unit;  // Tested entity
 
         unit = repository.findById(1);
 

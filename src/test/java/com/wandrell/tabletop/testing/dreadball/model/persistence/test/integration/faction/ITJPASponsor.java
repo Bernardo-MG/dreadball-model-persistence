@@ -24,20 +24,48 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPASponsor;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.SponsorTestRepository;
 
+/**
+ * Integration tests for {@link JPASponsor}, checking that the JPA configuration
+ * is correct.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Sponsors with no affinities are loaded correctly</li>
+ * <li>Sponsors with affinities are loaded correctly</li>
+ * </ol>
+ * <p>
+ * These tests make use of a Spring persistence configuration file to initialize
+ * a {@link SponsorTestRepository}, which will be used to acquire the tested
+ * entity.
+ * <p>
+ * Said repository will access a temporal testing database, which will be
+ * initialized and populated prior to the tests.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPASponsor
         extends AbstractTransactionalTestNGSpringContextTests {
 
+    /**
+     * Repository used to acquire the tested entity.
+     */
     @Autowired
     private SponsorTestRepository repository;
 
+    /**
+     * Default constructor.
+     */
     public ITJPASponsor() {
         super();
     }
 
+    /**
+     * Tests that sponsors with no affinities are loaded correctly
+     */
     @Test
-    public void test_loads_groups() {
-        final JPASponsor sponsor;
+    public void test_loads_affinities() {
+        final JPASponsor sponsor;       // Tested entity
 
         sponsor = repository.findById(1);
 
@@ -47,9 +75,12 @@ public final class ITJPASponsor
         Assert.assertEquals(sponsor.getAffinityGroups().size(), 2);
     }
 
+    /**
+     * Tests that sponsors with affinities are loaded correctly
+     */
     @Test
-    public void test_loads_NoGroups() {
-        final JPASponsor sponsor;
+    public void test_loads_noAffinities() {
+        final JPASponsor sponsor;       // Tested entity
 
         sponsor = repository.findById(2);
 

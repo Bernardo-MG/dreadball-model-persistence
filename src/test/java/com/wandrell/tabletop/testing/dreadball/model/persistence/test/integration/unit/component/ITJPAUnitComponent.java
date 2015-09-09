@@ -24,20 +24,49 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAUnitComponent;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitComponentTestRepository;
 
+/**
+ * Integration tests for {@link JPAUnitComponent}, checking that the JPA
+ * configuration is correct.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Basic unit components are loaded correctly</li>
+ * <li>Unit components with multiple team position roles are loaded correctly
+ * </li>
+ * </ol>
+ * <p>
+ * These tests make use of a Spring persistence configuration file to initialize
+ * a {@link UnitComponentTestRepository}, which will be used to acquire the
+ * tested entity.
+ * <p>
+ * Said repository will access a temporal testing database, which will be
+ * initialized and populated prior to the tests.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPAUnitComponent
         extends AbstractTransactionalTestNGSpringContextTests {
 
+    /**
+     * Repository used to acquire the tested entity.
+     */
     @Autowired
     private UnitComponentTestRepository repository;
 
+    /**
+     * Default constructor.
+     */
     public ITJPAUnitComponent() {
         super();
     }
 
+    /**
+     * Tests that basic unit components are loaded correctly.
+     */
     @Test
     public void test_loads() {
-        final JPAUnitComponent component;
+        final JPAUnitComponent component;       // Tested entity
 
         component = repository.findById(1);
 
@@ -58,9 +87,13 @@ public final class ITJPAUnitComponent
         Assert.assertEquals(component.getAbilities().size(), 0);
     }
 
+    /**
+     * Tests that unit components with multiple team position roles are loaded
+     * correctly.
+     */
     @Test
     public void test_loads_multiplePositions() {
-        final JPAUnitComponent component;
+        final JPAUnitComponent component;       // Tested entity
 
         component = repository.findById(2);
 

@@ -21,17 +21,35 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPASponsor;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
 
+/**
+ * Unit tests for {@link JPASponsor}.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Repeated affinity groups received through the constructor are not
+ * repeated</li>
+ * </ol>
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class TestJPASponsor {
 
+    /**
+     * Default constructor.
+     */
     public TestJPASponsor() {
         super();
     }
 
+    /**
+     * Tests that repeated affinity groups received through the constructor are
+     * not repeated.
+     */
     @Test
-    public void test_groups_NoRepeat() {
-        final JPASponsor sponsor;
-        final JPAAffinityGroup group1;
-        final JPAAffinityGroup group2;
+    public void test_affinities_NoRepeat() {
+        final JPASponsor sponsor;       // Tested sponsor
+        final JPAAffinityGroup group1;  // Mocked affinity group
+        final JPAAffinityGroup group2;  // Mocked affinity group
 
         sponsor = new JPASponsor();
 

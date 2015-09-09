@@ -24,20 +24,47 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.persistence.availability.unit.JPASponsorAffinityGroupAvailability;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.SponsorAffinityGroupAvailabilityTestRepository;
 
+/**
+ * Integration tests for {@link JPASponsorAffinityGroupAvailability}, checking
+ * that the JPA configuration is correct.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Entities are loaded correctly</li>
+ * </ol>
+ * <p>
+ * These tests make use of a Spring persistence configuration file to initialize
+ * a {@link SponsorAffinityGroupAvailabilityTestRepository}, which will be used
+ * to acquire the tested entity.
+ * <p>
+ * Said repository will access a temporal testing database, which will be
+ * initialized and populated prior to the tests.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 @ContextConfiguration(locations = { "/spring/persistence.xml" })
 public final class ITJPASponsorAffinityGroupAvailability
         extends AbstractTransactionalTestNGSpringContextTests {
 
+    /**
+     * Repository used to acquire the tested entity.
+     */
     @Autowired
     private SponsorAffinityGroupAvailabilityTestRepository repository;
 
+    /**
+     * Default constructor.
+     */
     public ITJPASponsorAffinityGroupAvailability() {
         super();
     }
 
+    /**
+     * Tests that entities are loaded correctly.
+     */
     @Test
     public void test_loads() {
-        final JPASponsorAffinityGroupAvailability ava;
+        final JPASponsorAffinityGroupAvailability ava;  // Tested entity
 
         ava = repository.findById(1);
 
