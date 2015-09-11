@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context 
@@ -24,11 +25,9 @@
 	<!-- Default configuration -->
 	<context:property-placeholder location="classpath:spring/persistence.properties" />
 
-	<!-- Model -->
-	<context:component-scan base-package="com.wandrell.tabletop.dreadball.model.persistence" />
-	
 	<!-- Repositories -->
-	<jpa:repositories base-package="com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.impl"/>
+	<jpa:repositories
+		base-package="com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.impl" />
 
 	<!-- ================================== JPA ================================== -->
 
