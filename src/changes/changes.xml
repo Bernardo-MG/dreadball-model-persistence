@@ -11,9 +11,14 @@
 				First release of the library.
 			</action>
 		</release>
-		<release version="0.1.1" date="2015-09-09" description="First release">
+		<release version="0.1.1" date="2015-09-09" description="Fixed tests error outputs">
 			<action dev="bmg" type="fix">
 				Tests no longer give table drop errors.
+			</action>
+		</release>
+		<release version="0.1.2" date="2015-09-14" description="Updated dependencies">
+			<action dev="bmg" type="update">
+				Updated dependencies.
 			</action>
 		</release>
 	</body>
