@@ -19,5 +19,11 @@
 				Updated dependencies.
 			</action>
 		</release>
+		<release version="0.1.2" date="2015-10-14" description="Added hated affinities">
+			<action dev="bmg" type="add">
+				Added hated affinities to affinity
+				units.
+			</action>
+		</release>
 	</body>
 </document>
