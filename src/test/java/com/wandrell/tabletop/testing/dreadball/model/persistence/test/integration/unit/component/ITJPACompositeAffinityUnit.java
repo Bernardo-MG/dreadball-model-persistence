@@ -89,6 +89,8 @@ public final class ITJPACompositeAffinityUnit
         Assert.assertEquals(unit.getAffinityGroups().size(), 1);
 
         Assert.assertEquals(unit.getComponents().size(), 2);
+
+        Assert.assertEquals(unit.getHatedAffinityGroups().size(), 0);
     }
 
     /**
@@ -118,6 +120,8 @@ public final class ITJPACompositeAffinityUnit
         Assert.assertEquals(unit.getAffinityGroups().size(), 1);
 
         Assert.assertEquals(unit.getComponents().size(), 1);
+
+        Assert.assertEquals(unit.getHatedAffinityGroups().size(), 0);
     }
 
     /**
@@ -147,6 +151,8 @@ public final class ITJPACompositeAffinityUnit
         Assert.assertEquals(unit.getAffinityGroups().size(), 2);
 
         Assert.assertEquals(unit.getComponents().size(), 1);
+
+        Assert.assertEquals(unit.getHatedAffinityGroups().size(), 1);
     }
 
 }

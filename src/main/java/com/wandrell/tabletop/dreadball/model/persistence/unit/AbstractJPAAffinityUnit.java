@@ -68,6 +68,16 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
      */
     @Column(name = "cost_stranger")
     private Integer                            costStranger = 0;
+    /**
+     * Unit hated affinities.
+     */
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "unit_hated_affinities",
+            joinColumns = { @JoinColumn(name = "unit_id",
+                    referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "affinity_id",
+                    referencedColumnName = "id") })
+    private final Collection<JPAAffinityGroup> hated        = new LinkedHashSet<JPAAffinityGroup>();
 
     /**
      * Constructs a {@code AbstractJPAAffinityUnit}.
@@ -86,6 +96,19 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
         checkNotNull(affinity, "Received a null pointer as the affinity group");
 
         getAffinityGroupsModifiable().add(affinity);
+    }
+
+    /**
+     * Adds a hated affinity group to the unit.
+     * 
+     * @param affinity
+     *            affinity group to add
+     */
+    public final void addHatedAffinityGroup(final JPAAffinityGroup affinity) {
+        checkNotNull(affinity,
+                "Received a null pointer as the hated affinity group");
+
+        getHatedAffinityGroupsModifiable().add(affinity);
     }
 
     @Override
@@ -116,6 +139,18 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
     }
 
     @Override
+    public final Collection<AffinityGroup> getHatedAffinityGroups() {
+        final Collection<AffinityGroup> col;
+
+        col = new LinkedList<>();
+        for (final AffinityGroup affinity : getHatedAffinityGroupsModifiable()) {
+            col.add(affinity);
+        }
+
+        return Collections.unmodifiableCollection(col);
+    }
+
+    @Override
     public final Integer getStrangerCost() {
         return costStranger;
     }
@@ -130,6 +165,19 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
         checkNotNull(affinity, "Received a null pointer as the affinity group");
 
         getAffinityGroupsModifiable().remove(affinity);
+    }
+
+    /**
+     * Removes a hated affinity group from the unit.
+     * 
+     * @param affinity
+     *            the hated affinity group to remove
+     */
+    public final void removeHatedAffinityGroup(final AffinityGroup affinity) {
+        checkNotNull(affinity,
+                "Received a null pointer as the hated affinity group");
+
+        getHatedAffinityGroupsModifiable().remove(affinity);
     }
 
     /**
@@ -180,6 +228,30 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
     }
 
     /**
+     * Sets the unit hated affinities.
+     * <p>
+     * All the hated affinities in the unit will be removed and swapped with the
+     * received ones.
+     * 
+     * @param affinityGroups
+     *            the hated affinities to set on the unit
+     */
+    public final void setHatedAffinityGroups(
+            final Collection<AffinityGroup> affinityGroups) {
+        checkNotNull(affinityGroups,
+                "Received a null pointer as hated affinities");
+
+        getHatedAffinityGroupsModifiable().clear();
+
+        for (final AffinityGroup affinity : affinityGroups) {
+            checkArgument(affinity instanceof JPAAffinityGroup,
+                    "All the affinities should be an instanceof JPAAffinityGroup");
+
+            getHatedAffinityGroupsModifiable().add((JPAAffinityGroup) affinity);
+        }
+    }
+
+    /**
      * Sets the unit's stranger cost.
      * 
      * @param cost
@@ -198,6 +270,16 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
      */
     private final Collection<JPAAffinityGroup> getAffinityGroupsModifiable() {
         return affinities;
+    }
+
+    /**
+     * Returns the modifiable collection of the unit's hated affinity groups.
+     * 
+     * @return the modifiable collection of the unit's hated affinity groups
+     */
+    private final Collection<JPAAffinityGroup>
+            getHatedAffinityGroupsModifiable() {
+        return hated;
     }
 
 }

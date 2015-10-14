@@ -54,6 +54,8 @@ INSERT INTO unit_affinities (unit_id, affinity_id) VALUES (1, 3);
 INSERT INTO unit_affinities (unit_id, affinity_id) VALUES (2, 1);
 INSERT INTO unit_affinities (unit_id, affinity_id) VALUES (3, 3);
 
+INSERT INTO unit_hated_affinities (unit_id, affinity_id) VALUES (1, 1);
+
 INSERT INTO component_locations (id, name) VALUES (1, 'location1');
 INSERT INTO component_locations (id, name) VALUES (2, 'location2');
 INSERT INTO component_locations (id, name) VALUES (3, 'location3');

@@ -6,7 +6,7 @@
 
 	<groupId>com.wandrell.tabletop.dreadball</groupId>
 	<artifactId>dreadball-model-persistence</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Dreadball Persistence Model Implementation</name>
@@ -121,7 +121,7 @@
 		<slf4j.version>1.7.12</slf4j.version>
 		<spring.version>4.2.1.RELEASE</spring.version>
 		<spring.jpa.version>1.8.2.RELEASE</spring.jpa.version>
-		<tabletop.dreadball.model.api.version>0.3.3</tabletop.dreadball.model.api.version>
+		<tabletop.dreadball.model.api.version>0.3.4</tabletop.dreadball.model.api.version>
 		<testng.version>6.9.6</testng.version>
 		<wandrell.persistence.version>0.1.3</wandrell.persistence.version>
 		<!-- Plugins versions -->
