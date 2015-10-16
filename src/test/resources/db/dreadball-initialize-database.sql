@@ -1,7 +1,23 @@
+--
+--  Copyright 2015 the original author or authors
+--
+--  Licensed under the Apache License, Version 2.0 (the "License"); you may not
+--  use this file except in compliance with the License. You may obtain a copy of
+--  the License at
+--
+--  http://www.apache.org/licenses/LICENSE-2.0
+--
+--  Unless required by applicable law or agreed to in writing, software
+--  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+--  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+--  License for the specific language governing permissions and limitations under
+--  the License.
+--
 
 -- ****************************************
 --                DROPS
 -- ****************************************
+
 
 -- Aggregation tables
 
@@ -20,6 +36,7 @@ DROP TABLE composite_unit_components IF EXISTS;
 
 DROP TABLE sponsor_affinity_avas_affinity_groups IF EXISTS;
 
+
 -- Availabilities tables
 
 DROP TABLE team_type_unit_avas IF EXISTS;
@@ -31,12 +48,14 @@ DROP TABLE sponsor_affinity_avas IF EXISTS;
 
 DROP TABLE sponsor_asset_avas IF EXISTS;
 
+
 -- Team tables
 
 DROP TABLE team_types IF EXISTS;
 DROP TABLE team_rules IF EXISTS;
 
 DROP TABLE sponsors IF EXISTS;
+
 
 -- Unit tables
 
@@ -59,22 +78,26 @@ DROP TABLE abilities IF EXISTS;
 --                CREATION
 -- ****************************************
 
+
 -- Unit tables
 
 CREATE TABLE abilities (
 	id					INTEGER IDENTITY PRIMARY KEY,
 	name				VARCHAR(30)
 );
+ALTER TABLE abilities ADD CONSTRAINT uc_abilities UNIQUE (name);
 
 CREATE TABLE affinity_groups (
 	id					INTEGER IDENTITY PRIMARY KEY,
 	name				VARCHAR(30)
 );
+ALTER TABLE affinity_groups ADD CONSTRAINT uc_affinity_groups UNIQUE (name);
 
 CREATE TABLE component_locations (
 	id					INTEGER IDENTITY PRIMARY KEY,
 	name				VARCHAR(30)
 );
+ALTER TABLE component_locations ADD CONSTRAINT uc_component_locations UNIQUE (name);
 
 CREATE TABLE unit_components (
 	id					INTEGER IDENTITY PRIMARY KEY,
@@ -87,6 +110,7 @@ CREATE TABLE unit_components (
 	speed				INTEGER DEFAULT 0,
 	strength			INTEGER DEFAULT 0
 );
+ALTER TABLE unit_components ADD CONSTRAINT uc_unit_components_name UNIQUE (name);
 ALTER TABLE unit_components ADD CONSTRAINT fk_unit_components_location FOREIGN KEY (location_id) REFERENCES component_locations (id);
 
 CREATE TABLE affinity_unit_components (
@@ -103,6 +127,7 @@ CREATE TABLE affinity_unit_components (
 	cost_friend			INTEGER DEFAULT 0,
 	cost_stranger		INTEGER DEFAULT 0
 );
+ALTER TABLE affinity_unit_components ADD CONSTRAINT uc_affinity_unit_components_name UNIQUE (name);
 ALTER TABLE affinity_unit_components ADD CONSTRAINT fk_affinity_unit_components_location FOREIGN KEY (location_id) REFERENCES component_locations (id);
 
 CREATE TABLE component_positions (
@@ -142,6 +167,7 @@ CREATE TABLE composite_affinity_units (
 	cost_friend			INTEGER DEFAULT 0,
 	cost_stranger		INTEGER DEFAULT 0
 );
+ALTER TABLE composite_affinity_units ADD CONSTRAINT uc_composite_affinity_units_name UNIQUE (name);
 
 CREATE TABLE affinity_units (
 	id					INTEGER IDENTITY PRIMARY KEY,
@@ -157,6 +183,7 @@ CREATE TABLE affinity_units (
 	cost_friend			INTEGER DEFAULT 0,
 	cost_stranger		INTEGER DEFAULT 0
 );
+ALTER TABLE affinity_units ADD CONSTRAINT uc_affinity_units_name UNIQUE (name);
 
 CREATE TABLE units (
 	id					INTEGER IDENTITY PRIMARY KEY,
@@ -170,6 +197,8 @@ CREATE TABLE units (
 	position			VARCHAR(30),
 	giant				BOOLEAN DEFAULT FALSE
 );
+ALTER TABLE units ADD CONSTRAINT uc_units_name UNIQUE (name);
+
 
 -- Team tables
 
@@ -184,14 +213,16 @@ CREATE TABLE team_rules (
 	id					INTEGER IDENTITY PRIMARY KEY,
 	name				VARCHAR(30)
 );
+ALTER TABLE team_rules ADD CONSTRAINT uc_team_rules UNIQUE (name);
 
 CREATE TABLE team_types (
 	id					INTEGER IDENTITY PRIMARY KEY,
 	name				VARCHAR(30)
 );
+ALTER TABLE team_types ADD CONSTRAINT uc_team_types UNIQUE (name);
+
 
 -- Availabilities tables
-
 
 CREATE TABLE sponsor_asset_avas (
 	id					INTEGER IDENTITY PRIMARY KEY,
@@ -249,6 +280,7 @@ CREATE TABLE team_type_unit_avas (
 );
 ALTER TABLE team_type_unit_avas ADD CONSTRAINT fk_team_type_unit_avas_team FOREIGN KEY (team_type_id) REFERENCES team_types (id);
 ALTER TABLE team_type_unit_avas ADD CONSTRAINT fk_team_type_unit_avas_unit FOREIGN KEY (unit_id) REFERENCES units (id);
+
 
 -- Aggregation tables
 

@@ -6,7 +6,7 @@
 
 	<groupId>com.wandrell.tabletop.dreadball</groupId>
 	<artifactId>dreadball-model-persistence</artifactId>
-	<version>0.1.2</version>
+	<version>0.1.4</version>
 	<packaging>jar</packaging>
 
 	<name>Dreadball Persistence Model Implementation</name>
@@ -154,7 +154,7 @@
 		<!-- Extensions versions -->
 		<extension.wagon.version>2.9</extension.wagon.version>
 		<!-- Maven Site -->
-		<site.skin.version>0.1.0</site.skin.version>
+		<site.skin.version>0.2.0</site.skin.version>
 		<bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view</bintrayURL>
 		<mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-persistence</mavenURL>
 	</properties>
