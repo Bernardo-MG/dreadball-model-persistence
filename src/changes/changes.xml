@@ -31,5 +31,10 @@
 				sample and testing database creation script.
 			</action>
 		</release>
+		<release version="0.1.4" date="2015-10-16" description="Maven Site Skin">
+			<action dev="bmg" type="update">
+				Updated Maven Site Skin.
+			</action>
+		</release>
 	</body>
 </document>
