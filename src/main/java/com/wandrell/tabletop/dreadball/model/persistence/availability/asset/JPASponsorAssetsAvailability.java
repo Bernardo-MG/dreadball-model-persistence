@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.wandrell.tabletop.dreadball.model.persistence.availability.team;
+package com.wandrell.tabletop.dreadball.model.persistence.availability.asset;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -29,7 +29,7 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
-import com.wandrell.tabletop.dreadball.model.availability.team.SponsorAssetsAvailability;
+import com.wandrell.tabletop.dreadball.model.availability.asset.SponsorAssetsAvailability;
 
 /**
  * Persistent JPA-based implementation of {@link SponsorAssetsAvailability}.

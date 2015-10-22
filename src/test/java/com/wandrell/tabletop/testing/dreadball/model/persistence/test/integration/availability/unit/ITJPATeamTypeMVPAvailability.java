@@ -68,7 +68,7 @@ public final class ITJPATeamTypeMVPAvailability
 
         ava = repository.findById(1);
 
-        Assert.assertEquals(ava.getTeamType().getTeamTypeName(), "team_type1");
+        Assert.assertEquals(ava.getTeamType().getName(), "team_type1");
         Assert.assertEquals(ava.getUnit().getTemplateName(), "unit2");
     }
 

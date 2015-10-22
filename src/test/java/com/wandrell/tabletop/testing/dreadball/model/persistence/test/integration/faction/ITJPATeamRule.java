@@ -69,7 +69,7 @@ public final class ITJPATeamRule
         rule = repository.findById(1);
 
         Assert.assertEquals(rule.getId(), (Integer) 1);
-        Assert.assertEquals(rule.getTeamRuleName(), "team_rule1");
+        Assert.assertEquals(rule.getName(), "team_rule1");
     }
 
 }

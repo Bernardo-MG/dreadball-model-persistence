@@ -150,11 +150,6 @@ public abstract class AbstractJPAUnitComponent
     }
 
     @Override
-    public final String getComponentName() {
-        return name;
-    }
-
-    @Override
     public final Integer getId() {
         return id;
     }
@@ -162,6 +157,11 @@ public abstract class AbstractJPAUnitComponent
     @Override
     public final ComponentLocation getLocation() {
         return location;
+    }
+
+    @Override
+    public final String getName() {
+        return name;
     }
 
     @Override

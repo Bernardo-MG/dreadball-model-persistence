@@ -146,13 +146,13 @@ public final class JPASponsor
     }
 
     @Override
-    public final Integer getRank() {
-        return rank;
+    public final String getName() {
+        return name;
     }
 
     @Override
-    public final String getSponsorName() {
-        return name;
+    public final Integer getRank() {
+        return rank;
     }
 
     @Override
@@ -191,6 +191,11 @@ public final class JPASponsor
         checkNotNull(identifier, "Received a null pointer as identifier");
 
         id = identifier;
+    }
+
+    @Override
+    public final void setName(final String sponsorName) {
+        name = sponsorName;
     }
 
     @Override

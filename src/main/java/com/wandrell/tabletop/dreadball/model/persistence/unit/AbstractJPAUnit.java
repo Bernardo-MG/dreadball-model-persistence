@@ -45,18 +45,19 @@ import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAttributesHolder;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
+import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
- * Abstract persistent JPA-based implementation of {@link Unit}.
+ * Abstract persistent JPA-based implementation of {@link UnitTemplate}.
  * 
  * @author Bernardo Martínez Garrido
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
+public abstract class AbstractJPAUnit
+        implements UnitTemplate, PersistenceEntity {
 
     /**
      * Unit abilities.
@@ -93,7 +94,7 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
     /**
      * Unit template name.
      */
-    @Column(name = "name", unique = true)
+    @Column(name = "template_name", unique = true)
     private String                       templateName = "";
 
     /**

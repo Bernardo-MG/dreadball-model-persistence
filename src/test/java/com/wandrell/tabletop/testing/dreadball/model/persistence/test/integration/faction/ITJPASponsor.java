@@ -70,7 +70,7 @@ public final class ITJPASponsor
         sponsor = repository.findById(1);
 
         Assert.assertEquals(sponsor.getId(), (Integer) 1);
-        Assert.assertEquals(sponsor.getSponsorName(), "sponsor1");
+        Assert.assertEquals(sponsor.getName(), "sponsor1");
 
         Assert.assertEquals(sponsor.getAffinityGroups().size(), 2);
     }
@@ -85,7 +85,7 @@ public final class ITJPASponsor
         sponsor = repository.findById(2);
 
         Assert.assertEquals(sponsor.getId(), (Integer) 2);
-        Assert.assertEquals(sponsor.getSponsorName(), "sponsor2");
+        Assert.assertEquals(sponsor.getName(), "sponsor2");
 
         Assert.assertEquals(sponsor.getAffinityGroups().size(), 0);
     }

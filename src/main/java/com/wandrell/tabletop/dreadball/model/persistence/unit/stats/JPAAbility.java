@@ -85,13 +85,13 @@ public final class JPAAbility
     }
 
     @Override
-    public final String getAbilityName() {
-        return name;
+    public final Integer getId() {
+        return id;
     }
 
     @Override
-    public final Integer getId() {
-        return id;
+    public final String getName() {
+        return name;
     }
 
     @Override

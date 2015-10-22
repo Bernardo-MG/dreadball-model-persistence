@@ -138,7 +138,8 @@ ALTER TABLE component_positions ADD CONSTRAINT fk_component_positions_component 
 
 CREATE TABLE advancement_units (
 	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30),
+	template_name		VARCHAR(30),
+	name				VARCHAR(30) DEFAULT '',
 	cost				INTEGER DEFAULT 0,
 	armor				INTEGER DEFAULT 0,
 	movement			INTEGER DEFAULT 0,
@@ -155,7 +156,8 @@ ALTER TABLE advancement_units ADD CONSTRAINT fk_advancement_units_component FORE
 
 CREATE TABLE composite_affinity_units (
 	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30),
+	template_name		VARCHAR(30),
+	name				VARCHAR(30) DEFAULT '',
 	armor				INTEGER DEFAULT 0,
 	movement			INTEGER DEFAULT 0,
 	skill				INTEGER DEFAULT 0,
@@ -167,11 +169,12 @@ CREATE TABLE composite_affinity_units (
 	cost_friend			INTEGER DEFAULT 0,
 	cost_stranger		INTEGER DEFAULT 0
 );
-ALTER TABLE composite_affinity_units ADD CONSTRAINT uc_composite_affinity_units_name UNIQUE (name);
+ALTER TABLE composite_affinity_units ADD CONSTRAINT uc_composite_affinity_units_name UNIQUE (template_name);
 
 CREATE TABLE affinity_units (
 	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30),
+	template_name		VARCHAR(30),
+	name				VARCHAR(30) DEFAULT '',
 	armor				INTEGER DEFAULT 0,
 	movement			INTEGER DEFAULT 0,
 	skill				INTEGER DEFAULT 0,
@@ -183,11 +186,11 @@ CREATE TABLE affinity_units (
 	cost_friend			INTEGER DEFAULT 0,
 	cost_stranger		INTEGER DEFAULT 0
 );
-ALTER TABLE affinity_units ADD CONSTRAINT uc_affinity_units_name UNIQUE (name);
+ALTER TABLE affinity_units ADD CONSTRAINT uc_affinity_units_name UNIQUE (template_name);
 
 CREATE TABLE units (
 	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30),
+	template_name		VARCHAR(30),
 	cost				INTEGER DEFAULT 0,
 	armor				INTEGER DEFAULT 0,
 	movement			INTEGER DEFAULT 0,
@@ -197,7 +200,7 @@ CREATE TABLE units (
 	position			VARCHAR(30),
 	giant				BOOLEAN DEFAULT FALSE
 );
-ALTER TABLE units ADD CONSTRAINT uc_units_name UNIQUE (name);
+ALTER TABLE units ADD CONSTRAINT uc_units_name UNIQUE (template_name);
 
 
 -- Team tables

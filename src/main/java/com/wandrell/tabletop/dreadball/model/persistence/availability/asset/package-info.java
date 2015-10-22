@@ -16,4 +16,4 @@
 /**
  * Provides persistent classes for team assets availability classes.
  */
-package com.wandrell.tabletop.dreadball.model.persistence.availability.team;
+package com.wandrell.tabletop.dreadball.model.persistence.availability.asset;

@@ -70,7 +70,7 @@ public final class ITJPATeamType
         team = repository.findById(1);
 
         Assert.assertEquals(team.getId(), (Integer) 1);
-        Assert.assertEquals(team.getTeamTypeName(), "team_type1");
+        Assert.assertEquals(team.getName(), "team_type1");
     }
 
     /**
@@ -83,7 +83,7 @@ public final class ITJPATeamType
         team = repository.findById(2);
 
         Assert.assertEquals(team.getId(), (Integer) 2);
-        Assert.assertEquals(team.getTeamTypeName(), "team_type2");
+        Assert.assertEquals(team.getName(), "team_type2");
     }
 
 }

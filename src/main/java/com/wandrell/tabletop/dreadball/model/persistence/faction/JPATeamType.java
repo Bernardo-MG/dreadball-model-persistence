@@ -125,6 +125,11 @@ public final class JPATeamType
     }
 
     @Override
+    public final String getName() {
+        return name;
+    }
+
+    @Override
     public final Collection<TeamRule> getTeamRules() {
         final Collection<TeamRule> col;
 
@@ -134,11 +139,6 @@ public final class JPATeamType
         }
 
         return Collections.unmodifiableCollection(col);
-    }
-
-    @Override
-    public final String getTeamTypeName() {
-        return name;
     }
 
     @Override
