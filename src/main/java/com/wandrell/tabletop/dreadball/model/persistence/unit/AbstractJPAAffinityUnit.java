@@ -78,6 +78,11 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
     private final Collection<JPAAffinityGroup> hated        = new LinkedHashSet<JPAAffinityGroup>();
+    /**
+     * Unit name.
+     */
+    @Column(name = "name")
+    private String                             name         = "";
 
     /**
      * Constructs a {@code AbstractJPAAffinityUnit}.
@@ -148,6 +153,11 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
         }
 
         return Collections.unmodifiableCollection(col);
+    }
+
+    @Override
+    public final String getName() {
+        return name;
     }
 
     @Override
@@ -249,6 +259,11 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
 
             getHatedAffinityGroupsModifiable().add((JPAAffinityGroup) affinity);
         }
+    }
+
+    @Override
+    public final void setName(final String unitName) {
+        name = unitName;
     }
 
     /**

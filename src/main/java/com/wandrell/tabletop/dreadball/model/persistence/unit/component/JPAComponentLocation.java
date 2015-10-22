@@ -63,13 +63,13 @@ public final class JPAComponentLocation
     }
 
     @Override
-    public final String getComponentLocationName() {
-        return name;
+    public final Integer getId() {
+        return id;
     }
 
     @Override
-    public final Integer getId() {
-        return id;
+    public final String getName() {
+        return name;
     }
 
     /**

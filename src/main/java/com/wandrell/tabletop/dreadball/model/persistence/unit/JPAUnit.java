@@ -25,7 +25,7 @@ import javax.persistence.Table;
 
 /**
  * Persistent JPA-based implementation of
- * {@link com.wandrell.tabletop.dreadball.model.unit.Unit Unit}.
+ * {@link com.wandrell.tabletop.dreadball.model.unit.UnitTemplate UnitTemplate}.
  * 
  * @author Bernardo Martínez Garrido
  */

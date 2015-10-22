@@ -90,7 +90,7 @@ public final class JPATeamRule
     }
 
     @Override
-    public final String getTeamRuleName() {
+    public final String getName() {
         return name;
     }
 

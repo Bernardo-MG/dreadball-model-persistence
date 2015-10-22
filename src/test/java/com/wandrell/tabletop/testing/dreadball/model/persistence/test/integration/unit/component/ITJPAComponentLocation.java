@@ -69,7 +69,7 @@ public final class ITJPAComponentLocation
         location = repository.findById(3);
 
         Assert.assertEquals(location.getId(), (Integer) 3);
-        Assert.assertEquals(location.getComponentLocationName(), "location3");
+        Assert.assertEquals(location.getName(), "location3");
     }
 
 }

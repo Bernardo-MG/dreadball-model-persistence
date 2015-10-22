@@ -90,8 +90,7 @@ public final class ITJPAAdvancementUnit
         Assert.assertEquals(unit.getUnspentExperience(), (Integer) 10);
         Assert.assertEquals(unit.getRank(), (Integer) 20);
 
-        Assert.assertEquals(unit.getGraftedImplant().getComponentName(),
-                "component1");
+        Assert.assertEquals(unit.getGraftedImplant().getName(), "component1");
     }
 
     /**
@@ -122,8 +121,7 @@ public final class ITJPAAdvancementUnit
         Assert.assertEquals(unit.getUnspentExperience(), (Integer) 10);
         Assert.assertEquals(unit.getRank(), (Integer) 20);
 
-        Assert.assertEquals(unit.getGraftedImplant().getComponentName(),
-                "component1");
+        Assert.assertEquals(unit.getGraftedImplant().getName(), "component1");
     }
 
     /**
@@ -154,8 +152,7 @@ public final class ITJPAAdvancementUnit
         Assert.assertEquals(unit.getUnspentExperience(), (Integer) 10);
         Assert.assertEquals(unit.getRank(), (Integer) 20);
 
-        Assert.assertEquals(unit.getGraftedImplant().getComponentName(),
-                "component1");
+        Assert.assertEquals(unit.getGraftedImplant().getName(), "component1");
     }
 
 }

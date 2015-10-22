@@ -21,7 +21,7 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.persistence.availability.team.JPASponsorAssetsAvailability;
+import com.wandrell.tabletop.dreadball.model.persistence.availability.asset.JPASponsorAssetsAvailability;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.SponsorAssetsAvailabilityTestRepository;
 
 /**

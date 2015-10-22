@@ -71,7 +71,7 @@ public final class ITJPAAffinityUnitComponent
         component = repository.findById(1);
 
         Assert.assertEquals(component.getId(), (Integer) 1);
-        Assert.assertEquals(component.getComponentName(), "component1");
+        Assert.assertEquals(component.getName(), "component1");
 
         Assert.assertEquals(component.getAttributes().getArmor(), (Integer) 2);
         Assert.assertEquals(component.getAttributes().getMovement(),
@@ -101,7 +101,7 @@ public final class ITJPAAffinityUnitComponent
         component = repository.findById(2);
 
         Assert.assertEquals(component.getId(), (Integer) 2);
-        Assert.assertEquals(component.getComponentName(), "component2");
+        Assert.assertEquals(component.getName(), "component2");
 
         Assert.assertEquals(component.getAttributes().getArmor(), (Integer) 2);
         Assert.assertEquals(component.getAttributes().getMovement(),

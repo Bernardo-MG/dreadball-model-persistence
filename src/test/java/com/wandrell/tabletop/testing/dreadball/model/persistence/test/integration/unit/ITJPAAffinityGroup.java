@@ -69,7 +69,7 @@ public final class ITJPAAffinityGroup
         group = repository.findById(2);
 
         Assert.assertEquals(group.getId(), (Integer) 2);
-        Assert.assertEquals(group.getAffinityGroupName(), "group2");
+        Assert.assertEquals(group.getName(), "group2");
     }
 
 }

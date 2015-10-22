@@ -54,6 +54,11 @@ public abstract class AbstractJPAAdvancementUnit extends AbstractJPAUnit
     @JoinColumn(name = "grafted_implant_id")
     private JPAUnitComponent implant;
     /**
+     * Unit name.
+     */
+    @Column(name = "name")
+    private String           name       = "";
+    /**
      * Unit rank.
      */
     @Column(name = "rank")
@@ -74,6 +79,11 @@ public abstract class AbstractJPAAdvancementUnit extends AbstractJPAUnit
     @Override
     public final UnitComponent getGraftedImplant() {
         return implant;
+    }
+
+    @Override
+    public final String getName() {
+        return name;
     }
 
     @Override
@@ -111,6 +121,11 @@ public abstract class AbstractJPAAdvancementUnit extends AbstractJPAUnit
                 "The implant should be an instance of JPAUnitComponent");
 
         implant = (JPAUnitComponent) graft;
+    }
+
+    @Override
+    public final void setName(final String unitName) {
+        name = unitName;
     }
 
     @Override

@@ -69,7 +69,7 @@ public final class ITJPAAbility
         ability = repository.findById(2);
 
         Assert.assertEquals(ability.getId(), (Integer) 2);
-        Assert.assertEquals(ability.getAbilityName(), "ability2");
+        Assert.assertEquals(ability.getName(), "ability2");
     }
 
 }

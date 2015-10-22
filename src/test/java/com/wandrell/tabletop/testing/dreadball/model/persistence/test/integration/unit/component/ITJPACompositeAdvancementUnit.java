@@ -90,8 +90,7 @@ public final class ITJPACompositeAdvancementUnit
         Assert.assertEquals(unit.getUnspentExperience(), (Integer) 10);
         Assert.assertEquals(unit.getRank(), (Integer) 20);
 
-        Assert.assertEquals(unit.getGraftedImplant().getComponentName(),
-                "component1");
+        Assert.assertEquals(unit.getGraftedImplant().getName(), "component1");
 
         Assert.assertEquals(unit.getComponents().size(), 2);
     }
@@ -124,8 +123,7 @@ public final class ITJPACompositeAdvancementUnit
         Assert.assertEquals(unit.getUnspentExperience(), (Integer) 10);
         Assert.assertEquals(unit.getRank(), (Integer) 20);
 
-        Assert.assertEquals(unit.getGraftedImplant().getComponentName(),
-                "component1");
+        Assert.assertEquals(unit.getGraftedImplant().getName(), "component1");
 
         Assert.assertEquals(unit.getComponents().size(), 1);
     }
@@ -158,8 +156,7 @@ public final class ITJPACompositeAdvancementUnit
         Assert.assertEquals(unit.getUnspentExperience(), (Integer) 10);
         Assert.assertEquals(unit.getRank(), (Integer) 20);
 
-        Assert.assertEquals(unit.getGraftedImplant().getComponentName(),
-                "component1");
+        Assert.assertEquals(unit.getGraftedImplant().getName(), "component1");
 
         Assert.assertEquals(unit.getComponents().size(), 1);
     }

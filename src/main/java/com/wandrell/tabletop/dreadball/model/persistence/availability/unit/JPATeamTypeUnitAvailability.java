@@ -36,7 +36,7 @@ import com.wandrell.tabletop.dreadball.model.availability.unit.TeamTypeUnitAvail
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
+import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 
 /**
  * Persistent JPA-based implementation of {@link TeamType}.
@@ -130,7 +130,7 @@ public final class JPATeamTypeUnitAvailability
     }
 
     @Override
-    public final Unit getUnit() {
+    public final UnitTemplate getUnit() {
         return unit;
     }
 

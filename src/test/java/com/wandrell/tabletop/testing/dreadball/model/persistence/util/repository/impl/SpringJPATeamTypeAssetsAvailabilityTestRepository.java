@@ -19,7 +19,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.availability.team.JPATeamTypeAssetsAvailability;
+import com.wandrell.tabletop.dreadball.model.persistence.availability.asset.JPATeamTypeAssetsAvailability;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.TeamTypeAssetsAvailabilityTestRepository;
 
 /**

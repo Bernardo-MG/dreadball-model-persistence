@@ -15,7 +15,7 @@
  */
 package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api;
 
-import com.wandrell.tabletop.dreadball.model.persistence.availability.team.JPASponsorAssetsAvailability;
+import com.wandrell.tabletop.dreadball.model.persistence.availability.asset.JPASponsorAssetsAvailability;
 
 /**
  * Interface for creating a test repository for

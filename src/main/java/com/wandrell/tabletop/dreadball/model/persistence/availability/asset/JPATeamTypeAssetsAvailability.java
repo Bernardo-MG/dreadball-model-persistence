@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.wandrell.tabletop.dreadball.model.persistence.availability.team;
+package com.wandrell.tabletop.dreadball.model.persistence.availability.asset;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -32,7 +32,7 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
-import com.wandrell.tabletop.dreadball.model.availability.team.TeamTypeAssetsAvailability;
+import com.wandrell.tabletop.dreadball.model.availability.asset.TeamTypeAssetsAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
 
@@ -156,17 +156,17 @@ public final class JPATeamTypeAssetsAvailability
     }
 
     @Override
-    public final Integer getCheerleadersCost() {
+    public final Integer getCheerleaderCost() {
         return costCheerleader;
     }
 
     @Override
-    public final Integer getCheerleadersInitial() {
+    public final Integer getCheerleaderInitial() {
         return initialCheer;
     }
 
     @Override
-    public final Integer getCheerleadersMax() {
+    public final Integer getCheerleaderMax() {
         return maxCheerleader;
     }
 

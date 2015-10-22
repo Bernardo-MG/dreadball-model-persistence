@@ -70,7 +70,7 @@ public final class ITJPATeamTypeUnitAvailability
 
         Assert.assertEquals(ava.getInitialNumber(), (Integer) 5);
         Assert.assertEquals(ava.getMaxNumber(), (Integer) 10);
-        Assert.assertEquals(ava.getTeamType().getTeamTypeName(), "team_type1");
+        Assert.assertEquals(ava.getTeamType().getName(), "team_type1");
         Assert.assertEquals(ava.getUnit().getTemplateName(), "unit2");
     }
 
