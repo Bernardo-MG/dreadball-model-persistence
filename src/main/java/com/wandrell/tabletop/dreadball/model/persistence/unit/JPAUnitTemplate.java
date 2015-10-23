@@ -29,9 +29,9 @@ import javax.persistence.Table;
  * 
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "Unit")
+@Entity(name = "UnitTemplate")
 @Table(name = "units")
-public final class JPAUnit extends AbstractJPAUnit implements Serializable {
+public final class JPAUnitTemplate extends AbstractJPAUnit implements Serializable {
 
     /**
      * Serialization ID.
@@ -46,7 +46,7 @@ public final class JPAUnit extends AbstractJPAUnit implements Serializable {
     /**
      * Constructs a {@code JPAUnit}.
      */
-    public JPAUnit() {
+    public JPAUnitTemplate() {
         super();
     }
 

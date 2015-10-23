@@ -15,7 +15,7 @@
  */
 package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnitTemplate;
 
 /**
  * Interface for creating a test repository for {@code Unit} entities.
@@ -31,6 +31,6 @@ public interface UnitTestRepository {
      *            the id the entity should have
      * @return the entity with the specified id
      */
-    public JPAUnit findById(int id);
+    public JPAUnitTemplate findById(int id);
 
 }

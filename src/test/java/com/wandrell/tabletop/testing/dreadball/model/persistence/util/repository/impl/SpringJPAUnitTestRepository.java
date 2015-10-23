@@ -19,7 +19,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnitTemplate;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitTestRepository;
 
 /**
@@ -28,10 +28,10 @@ import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository
  * @author Bernardo Martínez Garrido
  */
 public interface SpringJPAUnitTestRepository
-        extends UnitTestRepository, Repository<JPAUnit, Integer> {
+        extends UnitTestRepository, Repository<JPAUnitTemplate, Integer> {
 
     @Override
     @Query("SELECT unit FROM Unit unit WHERE unit.id = :id")
-    public JPAUnit findById(@Param("id") int id);
+    public JPAUnitTemplate findById(@Param("id") int id);
 
 }

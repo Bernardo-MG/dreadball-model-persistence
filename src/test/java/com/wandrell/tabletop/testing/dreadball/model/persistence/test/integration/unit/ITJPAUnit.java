@@ -21,12 +21,12 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnitTemplate;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
 import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitTestRepository;
 
 /**
- * Integration tests for {@link JPAUnit}, checking that the JPA configuration is
+ * Integration tests for {@link JPAUnitTemplate}, checking that the JPA configuration is
  * correct.
  * <p>
  * Checks the following cases:
@@ -67,7 +67,7 @@ public final class ITJPAUnit
      */
     @Test
     public void test_loads_guard() {
-        final JPAUnit unit;     // Tested entity
+        final JPAUnitTemplate unit;     // Tested entity
 
         unit = repository.findById(3);
 
@@ -93,7 +93,7 @@ public final class ITJPAUnit
      */
     @Test
     public void test_loads_jack() {
-        final JPAUnit unit;     // Tested entity
+        final JPAUnitTemplate unit;     // Tested entity
 
         unit = repository.findById(2);
 
@@ -119,7 +119,7 @@ public final class ITJPAUnit
      */
     @Test
     public void test_loads_striker() {
-        final JPAUnit unit;     // Tested entity
+        final JPAUnitTemplate unit;     // Tested entity
 
         unit = repository.findById(1);
 
