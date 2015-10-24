@@ -13,25 +13,24 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.impl;
-
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.query.Param;
+package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api;
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnitTemplate;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitTestRepository;
 
 /**
- * Spring Data JPA implementation of {@link UnitTestRepository}
+ * Interface for creating a test repository for {@code UnitTemplate} entities.
  * 
  * @author Bernardo Martínez Garrido
  */
-public interface SpringJPAUnitTestRepository
-        extends UnitTestRepository, Repository<JPAUnitTemplate, Integer> {
+public interface UnitTemplateTestRepository {
 
-    @Override
-    @Query("SELECT unit FROM Unit unit WHERE unit.id = :id")
-    public JPAUnitTemplate findById(@Param("id") int id);
+    /**
+     * Returns the entity with the specified id
+     * 
+     * @param id
+     *            the id the entity should have
+     * @return the entity with the specified id
+     */
+    public JPAUnitTemplate findById(int id);
 
 }

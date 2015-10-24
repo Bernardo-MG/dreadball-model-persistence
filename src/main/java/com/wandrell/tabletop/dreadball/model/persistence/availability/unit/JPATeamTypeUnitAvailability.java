@@ -79,7 +79,7 @@ public final class JPATeamTypeUnitAvailability
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
-    private JPAUnitTemplate           unit;
+    private JPAUnitTemplate   unit;
 
     /**
      * Constructs a {@code JPATeamTypeUnitAvailability}.

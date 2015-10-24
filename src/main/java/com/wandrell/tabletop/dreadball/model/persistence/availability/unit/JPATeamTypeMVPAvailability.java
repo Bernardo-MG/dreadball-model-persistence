@@ -68,7 +68,7 @@ public final class JPATeamTypeMVPAvailability
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
-    private JPAUnitTemplate           unit;
+    private JPAUnitTemplate   unit;
 
     /**
      * Constructs a {@code JPATeamTypeMVPAvailability}.

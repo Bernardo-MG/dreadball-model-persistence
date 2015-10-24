@@ -23,11 +23,11 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnitTemplate;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitTestRepository;
+import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api.UnitTemplateTestRepository;
 
 /**
- * Integration tests for {@link JPAUnitTemplate}, checking that the JPA configuration is
- * correct.
+ * Integration tests for {@link JPAUnitTemplate}, checking that the JPA
+ * configuration is correct.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -37,8 +37,8 @@ import com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository
  * </ol>
  * <p>
  * These tests make use of a Spring persistence configuration file to initialize
- * a {@link UnitTestRepository}, which will be used to acquire the tested
- * entity.
+ * a {@link UnitTemplateTestRepository}, which will be used to acquire the
+ * tested entity.
  * <p>
  * Said repository will access a temporal testing database, which will be
  * initialized and populated prior to the tests.
@@ -53,7 +53,7 @@ public final class ITJPAUnit
      * Repository used to acquire the tested entity.
      */
     @Autowired
-    private UnitTestRepository repository;
+    private UnitTemplateTestRepository repository;
 
     /**
      * Default constructor.
