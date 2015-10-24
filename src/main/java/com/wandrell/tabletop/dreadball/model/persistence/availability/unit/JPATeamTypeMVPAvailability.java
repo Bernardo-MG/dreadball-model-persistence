@@ -34,7 +34,7 @@ import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.availability.unit.TeamTypeMVPAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnitTemplate;
 import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 
 /**
@@ -68,7 +68,7 @@ public final class JPATeamTypeMVPAvailability
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
-    private JPAUnit           unit;
+    private JPAUnitTemplate   unit;
 
     /**
      * Constructs a {@code JPATeamTypeMVPAvailability}.
@@ -143,7 +143,7 @@ public final class JPATeamTypeMVPAvailability
      * @param unitType
      *            the unit for the availability
      */
-    public final void setUnit(final JPAUnit unitType) {
+    public final void setUnit(final JPAUnitTemplate unitType) {
         checkNotNull(unitType, "Received a null pointer as unit");
 
         unit = unitType;

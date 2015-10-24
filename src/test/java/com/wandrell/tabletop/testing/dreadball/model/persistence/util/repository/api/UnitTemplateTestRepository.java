@@ -15,14 +15,14 @@
  */
 package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnitTemplate;
 
 /**
- * Interface for creating a test repository for {@code Unit} entities.
+ * Interface for creating a test repository for {@code UnitTemplate} entities.
  * 
  * @author Bernardo Martínez Garrido
  */
-public interface UnitTestRepository {
+public interface UnitTemplateTestRepository {
 
     /**
      * Returns the entity with the specified id
@@ -31,6 +31,6 @@ public interface UnitTestRepository {
      *            the id the entity should have
      * @return the entity with the specified id
      */
-    public JPAUnit findById(int id);
+    public JPAUnitTemplate findById(int id);
 
 }

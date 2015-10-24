@@ -41,5 +41,10 @@
 				Adapted to version 0.4.0 of the API.
 			</action>
 		</release>
+		<release version="0.2.1" date="2015-10-24" description="Corrected class name">
+			<action dev="bmg" type="fix">
+				Corrected the name of the JPAUnitTemplate.
+			</action>
+		</release>
 	</body>
 </document>
