@@ -288,6 +288,7 @@
 					<artifactId>spring-core</artifactId>
 				</exclusion>
 			</exclusions>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<!-- Spring Test -->

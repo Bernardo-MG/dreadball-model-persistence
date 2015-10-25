@@ -46,5 +46,10 @@
 				Corrected the name of the JPAUnitTemplate.
 			</action>
 		</release>
+		<release version="0.2.2" date="2015-10-25" description="Dependencies correction">
+			<action dev="bmg" type="fix">
+				Corrected Spring JPA dependency scope.
+			</action>
+		</release>
 	</body>
 </document>
