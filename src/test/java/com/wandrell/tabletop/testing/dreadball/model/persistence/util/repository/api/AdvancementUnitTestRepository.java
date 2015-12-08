@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.testing.dreadball.model.persistence.util.repository.api;
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAdvancementUnit;
