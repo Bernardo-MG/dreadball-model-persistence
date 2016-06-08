@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xml>
 <Configuration status="WARN">
 
 	<Properties>
-		<Property name="filename">tabletop-dreadball-model-test.log</Property>
+		<Property name="filename">tabletop-dreadball-model-jpa-test.log</Property>
 	</Properties>
 
 	<Appenders>
