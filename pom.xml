@@ -1,358 +1,357 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+   <modelVersion>4.0.0</modelVersion>
 
-    <!-- ********************************************** -->
-    <!-- ****************** BASE POM ****************** -->
-    <!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- ****************** BASE POM ****************** -->
+   <!-- ********************************************** -->
 
-    <parent>
-        <groupId>com.wandrell.maven</groupId>
-        <artifactId>base-pom</artifactId>
-        <version>0.1.0</version>
-    </parent>
+   <parent>
+      <groupId>com.wandrell.maven</groupId>
+      <artifactId>base-pom</artifactId>
+      <version>0.1.0</version>
+   </parent>
 
-    <!-- ********************************************** -->
-    <!-- **************** PROJECT INFO **************** -->
-    <!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- **************** PROJECT INFO **************** -->
+   <!-- ********************************************** -->
 
-    <groupId>com.wandrell.tabletop.dreadball</groupId>
-    <artifactId>dreadball-model-persistence</artifactId>
-    <version>0.2.3-SNAPSHOT</version>
-    <packaging>jar</packaging>
+   <groupId>com.wandrell.tabletop.dreadball</groupId>
+   <artifactId>dreadball-model-persistence</artifactId>
+   <version>0.2.3-SNAPSHOT</version>
+   <packaging>jar</packaging>
 
-    <name>Dreadball Persistence Model Implementation</name>
-    <description>Implementation of the Dreadball Model API mapped for persistence.</description>
-    <url>https://github.com/bernardo-mg/dreadball-model-persistence</url>
-    <inceptionYear>2015</inceptionYear>
+   <name>Dreadball Persistence Model Implementation</name>
+   <description>Implementation of the Dreadball Model API mapped for persistence.</description>
+   <url>https://github.com/bernardo-mg/dreadball-model-persistence</url>
+   <inceptionYear>2015</inceptionYear>
 
-    <licenses>
-        <license>
-            <name>Apache v2 License</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+   <licenses>
+      <license>
+         <name>Apache v2 License</name>
+         <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+         <distribution>repo</distribution>
+      </license>
+   </licenses>
 
-    <!-- ********************************************** -->
-    <!-- ********* INFRASTRUCTURE AND SERVICES ******** -->
-    <!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- ********* INFRASTRUCTURE AND SERVICES ******** -->
+   <!-- ********************************************** -->
 
-    <scm>
-        <connection>scm:git:https://github.com/bernardo-mg/dreadball-model-persistence.git</connection>
-        <developerConnection>scm:git:https://github.com/bernardo-mg/dreadball-model-persistence.git</developerConnection>
-        <tag>head</tag>
-        <url>https://github.com/bernardo-mg/dreadball-model-persistence</url>
-    </scm>
+   <scm>
+      <connection>scm:git:https://github.com/bernardo-mg/dreadball-model-persistence.git</connection>
+      <developerConnection>scm:git:https://github.com/bernardo-mg/dreadball-model-persistence.git</developerConnection>
+      <tag>head</tag>
+      <url>https://github.com/bernardo-mg/dreadball-model-persistence</url>
+   </scm>
 
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/bernardo-mg/dreadball-model-persistence/issues</url>
-    </issueManagement>
+   <issueManagement>
+      <system>GitHub</system>
+      <url>https://github.com/bernardo-mg/dreadball-model-persistence/issues</url>
+   </issueManagement>
 
-    <ciManagement>
-        <system>Travis CI</system>
-        <url>https://travis-ci.org/Bernardo-MG/dreadball-model-persistence</url>
-        <notifiers />
-    </ciManagement>
+   <ciManagement>
+      <system>Travis CI</system>
+      <url>https://travis-ci.org/Bernardo-MG/dreadball-model-persistence</url>
+      <notifiers />
+   </ciManagement>
 
-    <distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>releases</id>
-            <name>Releases Repository</name>
-            <url>https://api.bintray.com/maven/bernardo-mg/tabletop-toolkits/dreadball-model-persistence</url>
-        </repository>
-        <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>snapshots</id>
-            <name>Snapshots Repository</name>
-            <url>ftp://maven.wandrell.com</url>
-        </snapshotRepository>
-    </distributionManagement>
+   <distributionManagement>
+      <repository>
+         <uniqueVersion>false</uniqueVersion>
+         <id>releases</id>
+         <name>Releases Repository</name>
+         <url>https://api.bintray.com/maven/bernardo-mg/tabletop-toolkits/dreadball-model-persistence</url>
+      </repository>
+      <snapshotRepository>
+         <uniqueVersion>false</uniqueVersion>
+         <id>snapshots</id>
+         <name>Snapshots Repository</name>
+         <url>ftp://maven.wandrell.com</url>
+      </snapshotRepository>
+   </distributionManagement>
 
-    <!-- ********************************************** -->
-    <!-- ****************** PROFILES ****************** -->
-    <!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- ****************** PROFILES ****************** -->
+   <!-- ********************************************** -->
 
-    <profiles>
-        <profile>
-            <!-- Profile for the Eclipse Maven plugin -->
-            <!-- Sets the POM so this plugin does not give the usual unregistered 
-                goals errors -->
-            <!-- It will be activated automatically on Eclipse if this has 
-                the m2e plugin, by detecting the version property -->
-            <id>eclipse-maven</id>
-            <activation>
-                <property>
-                    <name>m2e.version</name>
-                </property>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <!-- m2e lifecycle mapping -->
-                            <!-- This is used to configure the Maven plugin 
-                                for Eclipse. -->
-                            <!-- Among other things, it allows registering 
-                                goals, which Eclipse would otherwise reject. -->
-                            <!-- It has no real effect on Maven. -->
-                            <groupId>org.eclipse.m2e</groupId>
-                            <artifactId>lifecycle-mapping</artifactId>
-                            <version>${plugin.lifecycle.version}</version>
-                            <configuration>
-                                <downloadSources>true</downloadSources>
-                                <downloadJavadocs>true</downloadJavadocs>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-        <profile>
-            <!-- Release site deployment profile -->
-            <!-- Sets the site repository to point to the releases repo -->
-            <id>deploy-site-release</id>
-            <activation>
-                <!-- Active by default so the repository appears in the reports -->
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <distributionManagement>
-                <site>
-                    <id>site</id>
-                    <name>Project Documentation Site</name>
-                    <url>ftp://docs.wandrell.com/dreadball-model-persistence</url>
-                </site>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <!-- Development site deployment profile -->
-            <!-- Sets the site repository to point to the development repo -->
-            <id>deploy-site-development</id>
-            <distributionManagement>
-                <site>
-                    <id>site-development</id>
-                    <name>Project Development Documentation Site</name>
-                    <url>ftp://docs.wandrell.com/dreadball-model-persistence</url>
-                </site>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <!-- Deployment profile -->
-            <!-- Sets ups the environment for deployment -->
-            <id>deployment</id>
-            <properties>
-                <!-- Tests are skipped -->
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-    </profiles>
+   <profiles>
+      <profile>
+         <!-- Profile for the Eclipse Maven plugin -->
+         <!-- Sets the POM so this plugin does not give the usual unregistered goals 
+            errors -->
+         <!-- It will be activated automatically on Eclipse if this has the m2e plugin, 
+            by detecting the version property -->
+         <id>eclipse-maven</id>
+         <activation>
+            <property>
+               <name>m2e.version</name>
+            </property>
+         </activation>
+         <build>
+            <pluginManagement>
+               <plugins>
+                  <plugin>
+                     <!-- m2e lifecycle mapping -->
+                     <!-- This is used to configure the Maven plugin for Eclipse. -->
+                     <!-- Among other things, it allows registering goals, which 
+                        Eclipse would otherwise reject. -->
+                     <!-- It has no real effect on Maven. -->
+                     <groupId>org.eclipse.m2e</groupId>
+                     <artifactId>lifecycle-mapping</artifactId>
+                     <version>${plugin.lifecycle.version}</version>
+                     <configuration>
+                        <downloadSources>true</downloadSources>
+                        <downloadJavadocs>true</downloadJavadocs>
+                     </configuration>
+                  </plugin>
+               </plugins>
+            </pluginManagement>
+         </build>
+      </profile>
+      <profile>
+         <!-- Release site deployment profile -->
+         <!-- Sets the site repository to point to the releases repo -->
+         <id>deploy-site-release</id>
+         <activation>
+            <!-- Active by default so the repository appears in the reports -->
+            <activeByDefault>true</activeByDefault>
+         </activation>
+         <distributionManagement>
+            <site>
+               <id>site</id>
+               <name>Project Documentation Site</name>
+               <url>ftp://docs.wandrell.com/dreadball-model-persistence</url>
+            </site>
+         </distributionManagement>
+      </profile>
+      <profile>
+         <!-- Development site deployment profile -->
+         <!-- Sets the site repository to point to the development repo -->
+         <id>deploy-site-development</id>
+         <distributionManagement>
+            <site>
+               <id>site-development</id>
+               <name>Project Development Documentation Site</name>
+               <url>ftp://docs.wandrell.com/dreadball-model-persistence</url>
+            </site>
+         </distributionManagement>
+      </profile>
+      <profile>
+         <!-- Deployment profile -->
+         <!-- Sets ups the environment for deployment -->
+         <id>deployment</id>
+         <properties>
+            <!-- Tests are skipped -->
+            <maven.test.skip>true</maven.test.skip>
+         </properties>
+      </profile>
+   </profiles>
 
-    <!-- ********************************************** -->
-    <!-- *********** ORGANIZATION AND MEMBERS ********* -->
-    <!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- *********** ORGANIZATION AND MEMBERS ********* -->
+   <!-- ********************************************** -->
 
-    <organization>
-        <name>Bernardo Martínez Garrido</name>
-        <url>https://github.com/Bernardo-MG</url>
-    </organization>
+   <organization>
+      <name>Bernardo Martínez Garrido</name>
+      <url>https://github.com/Bernardo-MG</url>
+   </organization>
 
-    <developers>
-        <developer>
-            <id>bmg</id>
-            <name>Bernardo Martínez Garrido</name>
-            <email>programming@wandrell.com</email>
-            <url>https://github.com/Bernardo-MG</url>
-            <organization>Bernardo Martínez Garrido</organization>
-            <organizationUrl>https://github.com/Bernardo-MG</organizationUrl>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>+1</timezone>
-            <properties />
-        </developer>
-    </developers>
+   <developers>
+      <developer>
+         <id>bmg</id>
+         <name>Bernardo Martínez Garrido</name>
+         <email>programming@wandrell.com</email>
+         <url>https://github.com/Bernardo-MG</url>
+         <organization>Bernardo Martínez Garrido</organization>
+         <organizationUrl>https://github.com/Bernardo-MG</organizationUrl>
+         <roles>
+            <role>Developer</role>
+         </roles>
+         <timezone>+1</timezone>
+         <properties />
+      </developer>
+   </developers>
 
-    <!-- ********************************************** -->
-    <!-- **************** PROPERTIES ****************** -->
-    <!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- **************** PROPERTIES ****************** -->
+   <!-- ********************************************** -->
 
-    <properties>
-        <!-- Manifest data -->
-        <manifest.name>com/wandrell/tabletop/dreadball/model/persistent</manifest.name>
-        <!-- Dependencies versions -->
-        <guava.version>18.0</guava.version>
-        <h2.version>1.4.190</h2.version>
-        <hibernate.version>5.0.2.Final</hibernate.version>
-        <hibernate.jpa2.version>1.0.0.Final</hibernate.jpa2.version>
-        <hikari.version>2.3.12</hikari.version>
-        <log4j.version>2.4.1</log4j.version>
-        <mockito.version>1.10.19</mockito.version>
-        <spring.version>4.2.3.RELEASE</spring.version>
-        <spring.data.version>1.11.1.RELEASE</spring.data.version>
-        <spring.jpa.version>1.9.1.RELEASE</spring.jpa.version>
-        <tabletop.dreadball.model.api.version>0.4.0</tabletop.dreadball.model.api.version>
-        <testng.version>6.9.6</testng.version>
-        <wandrell.persistence.version>0.1.6</wandrell.persistence.version>
-        <!-- Plugins versions -->
-        <plugin.changes.version>2.11</plugin.changes.version>
-        <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
-        <!-- Maven Site -->
-        <site.skin.version>0.3.0</site.skin.version>
-        <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view</bintrayURL>
-        <mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-persistence</mavenURL>
-    </properties>
+   <properties>
+      <!-- Manifest data -->
+      <manifest.name>com/wandrell/tabletop/dreadball/model/persistent</manifest.name>
+      <!-- Dependencies versions -->
+      <guava.version>18.0</guava.version>
+      <h2.version>1.4.190</h2.version>
+      <hibernate.version>5.0.2.Final</hibernate.version>
+      <hibernate.jpa2.version>1.0.0.Final</hibernate.jpa2.version>
+      <hikari.version>2.3.12</hikari.version>
+      <log4j.version>2.4.1</log4j.version>
+      <mockito.version>1.10.19</mockito.version>
+      <spring.version>4.2.3.RELEASE</spring.version>
+      <spring.data.version>1.11.1.RELEASE</spring.data.version>
+      <spring.jpa.version>1.9.1.RELEASE</spring.jpa.version>
+      <tabletop.dreadball.model.api.version>0.4.0</tabletop.dreadball.model.api.version>
+      <testng.version>6.9.6</testng.version>
+      <wandrell.persistence.version>0.1.6</wandrell.persistence.version>
+      <!-- Plugins versions -->
+      <plugin.changes.version>2.11</plugin.changes.version>
+      <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
+      <!-- Maven Site -->
+      <site.skin.version>0.3.0</site.skin.version>
+      <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view</bintrayURL>
+      <mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-persistence</mavenURL>
+   </properties>
 
-    <!-- ********************************************** -->
-    <!-- *************** DEPENDENCIES ***************** -->
-    <!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- *************** DEPENDENCIES ***************** -->
+   <!-- ********************************************** -->
 
-    <dependencies>
-        <dependency>
-            <!-- Dreadball Model API -->
-            <groupId>com.wandrell.tabletop.dreadball</groupId>
-            <artifactId>dreadball-model-api</artifactId>
-            <version>${tabletop.dreadball.model.api.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Guava -->
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Hibernate JPA 2.0 -->
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>${hibernate.jpa2.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Java Persistence Utils -->
-            <groupId>com.wandrell</groupId>
-            <artifactId>persistence-utils</artifactId>
-            <version>${wandrell.persistence.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Spring Data Commons -->
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>${spring.data.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Spring JPA -->
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${spring.jpa.version}</version>
-        </dependency>
-        <!-- ============================================== -->
-        <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
-        <!-- ============================================== -->
-        <dependency>
-            <!-- H2 Database -->
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Hibernate Ehcache -->
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
-            <version>${hibernate.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Hibernate Entity Manager -->
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Hikari CP -->
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP-java6</artifactId>
-            <version>${hikari.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Log4j core -->
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Log4j SLF4J Bridge -->
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Mockito -->
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Spring AOP -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Spring Core -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Spring Beans -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Spring Framework Context -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Spring Transactions -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Spring Test -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- TestNG -->
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+   <dependencies>
+      <dependency>
+         <!-- Dreadball Model API -->
+         <groupId>com.wandrell.tabletop.dreadball</groupId>
+         <artifactId>dreadball-model-api</artifactId>
+         <version>${tabletop.dreadball.model.api.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Guava -->
+         <groupId>com.google.guava</groupId>
+         <artifactId>guava</artifactId>
+         <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Hibernate JPA 2.0 -->
+         <groupId>org.hibernate.javax.persistence</groupId>
+         <artifactId>hibernate-jpa-2.1-api</artifactId>
+         <version>${hibernate.jpa2.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Java Persistence Utils -->
+         <groupId>com.wandrell</groupId>
+         <artifactId>persistence-utils</artifactId>
+         <version>${wandrell.persistence.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Spring Data Commons -->
+         <groupId>org.springframework.data</groupId>
+         <artifactId>spring-data-commons</artifactId>
+         <version>${spring.data.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Spring JPA -->
+         <groupId>org.springframework.data</groupId>
+         <artifactId>spring-data-jpa</artifactId>
+         <version>${spring.jpa.version}</version>
+      </dependency>
+      <!-- ============================================== -->
+      <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
+      <!-- ============================================== -->
+      <dependency>
+         <!-- H2 Database -->
+         <groupId>com.h2database</groupId>
+         <artifactId>h2</artifactId>
+         <version>${h2.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Hibernate Ehcache -->
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-ehcache</artifactId>
+         <version>${hibernate.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Hibernate Entity Manager -->
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-entitymanager</artifactId>
+         <version>${hibernate.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Hikari CP -->
+         <groupId>com.zaxxer</groupId>
+         <artifactId>HikariCP-java6</artifactId>
+         <version>${hikari.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Log4j core -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-core</artifactId>
+         <version>${log4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Log4j SLF4J Bridge -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-slf4j-impl</artifactId>
+         <version>${log4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Mockito -->
+         <groupId>org.mockito</groupId>
+         <artifactId>mockito-all</artifactId>
+         <version>${mockito.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Spring AOP -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-aop</artifactId>
+         <version>${spring.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Spring Core -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-core</artifactId>
+         <version>${spring.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Spring Beans -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-beans</artifactId>
+         <version>${spring.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Spring Framework Context -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context</artifactId>
+         <version>${spring.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Spring Transactions -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-tx</artifactId>
+         <version>${spring.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Spring Test -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-test</artifactId>
+         <version>${spring.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- TestNG -->
+         <groupId>org.testng</groupId>
+         <artifactId>testng</artifactId>
+         <version>${testng.version}</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
 
-    <!-- ********************************************** -->
-    <!-- ******************* BUILD ******************** -->
-    <!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- ******************* BUILD ******************** -->
+   <!-- ********************************************** -->
 
    <build>
       <defaultGoal>clean package install</defaultGoal>
@@ -439,14 +438,14 @@
    <reporting>
       <plugins>
          <plugin>
-             <!-- FindBugs -->
-             <!-- Checks for patterns which are prone to errors -->
-             <groupId>org.codehaus.mojo</groupId>
-             <artifactId>findbugs-maven-plugin</artifactId>
-             <configuration>
-                 <!-- Exclusion patterns -->
-                 <excludeFilterFile>${project.basedir}/src/config/findbugs/findbugs-exclude.xml</excludeFilterFile>
-             </configuration>
+            <!-- FindBugs -->
+            <!-- Checks for patterns which are prone to errors -->
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+            <configuration>
+               <!-- Exclusion patterns -->
+               <excludeFilterFile>${project.basedir}/src/config/findbugs/findbugs-exclude.xml</excludeFilterFile>
+            </configuration>
          </plugin>
          <plugin>
             <!-- Checkstyle -->
