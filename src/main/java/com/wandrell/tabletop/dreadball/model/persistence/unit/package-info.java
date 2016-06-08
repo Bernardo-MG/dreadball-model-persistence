@@ -16,4 +16,5 @@
 /**
  * Provides persistent classes for units.
  */
+
 package com.wandrell.tabletop.dreadball.model.persistence.unit;

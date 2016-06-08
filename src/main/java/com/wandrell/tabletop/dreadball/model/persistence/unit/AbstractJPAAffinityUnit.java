@@ -54,21 +54,25 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
     private final Collection<JPAAffinityGroup> affinities   = new LinkedHashSet<JPAAffinityGroup>();
+
     /**
      * Ally cost.
      */
     @Column(name = "cost_ally")
     private Integer                            costAlly     = 0;
+
     /**
      * Friend cost.
      */
     @Column(name = "cost_friend")
     private Integer                            costFriend   = 0;
+
     /**
      * Stranger cost.
      */
     @Column(name = "cost_stranger")
     private Integer                            costStranger = 0;
+
     /**
      * Unit hated affinities.
      */
@@ -79,6 +83,7 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
     private final Collection<JPAAffinityGroup> hated        = new LinkedHashSet<JPAAffinityGroup>();
+
     /**
      * Unit name.
      */

@@ -34,8 +34,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.wandrell.tabletop.dreadball.model.persistence.unit.AbstractJPAAdvancementUnit;
+import com.wandrell.tabletop.dreadball.model.unit.component.Component;
 import com.wandrell.tabletop.dreadball.model.unit.component.CompositeAdvancementUnit;
-import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
 
 /**
  * Persistent JPA-based implementation of {@link CompositeAdvancementUnit}.
@@ -51,7 +51,8 @@ public final class JPACompositeAdvancementUnit
     /**
      * Serialization ID.
      */
-    private static final long                  serialVersionUID = 4751347276326003773L;
+    private static final long              serialVersionUID = 4751347276326003773L;
+
     /**
      * Unit components.
      */
@@ -61,7 +62,7 @@ public final class JPACompositeAdvancementUnit
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "component_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAUnitComponent> components       = new LinkedHashSet<JPAUnitComponent>();
+    private final Collection<JPAComponent> components       = new LinkedHashSet<JPAComponent>();
 
     /**
      * Constructs a {@code JPACompositeAdvancementUnit}.
@@ -76,18 +77,18 @@ public final class JPACompositeAdvancementUnit
      * @param component
      *            the component to add
      */
-    public final void addComponent(final JPAUnitComponent component) {
+    public final void addComponent(final JPAComponent component) {
         checkNotNull(component, "Received a null pointer as component");
 
         getComponentsModifiable().add(component);
     }
 
     @Override
-    public final Collection<UnitComponent> getComponents() {
-        final Collection<UnitComponent> col;
+    public final Collection<Component> getComponents() {
+        final Collection<Component> col;
 
         col = new LinkedList<>();
-        for (final UnitComponent ability : getComponentsModifiable()) {
+        for (final Component ability : getComponentsModifiable()) {
             col.add(ability);
         }
 
@@ -100,7 +101,7 @@ public final class JPACompositeAdvancementUnit
      * @param component
      *            the component to remove
      */
-    public final void removeComponent(final JPAUnitComponent component) {
+    public final void removeComponent(final JPAComponent component) {
         getComponentsModifiable().remove(component);
     }
 
@@ -114,16 +115,16 @@ public final class JPACompositeAdvancementUnit
      *            the components to set on the unit
      */
     public final void
-            setComponents(final Collection<UnitComponent> unitComponents) {
+            setComponents(final Collection<Component> unitComponents) {
         checkNotNull(unitComponents, "Received a null pointer as components");
 
         getComponentsModifiable().clear();
 
-        for (final UnitComponent component : unitComponents) {
-            checkArgument(component instanceof JPAUnitComponent,
-                    "All the components should be an instanceof JPAUnitComponent");
+        for (final Component component : unitComponents) {
+            checkArgument(component instanceof JPAComponent,
+                    "All the components should be an instanceof JPAComponent");
 
-            getComponentsModifiable().add((JPAUnitComponent) component);
+            getComponentsModifiable().add((JPAComponent) component);
         }
     }
 
@@ -132,7 +133,7 @@ public final class JPACompositeAdvancementUnit
      * 
      * @return the modifiable collection of the unit's components
      */
-    private final Collection<JPAUnitComponent> getComponentsModifiable() {
+    private final Collection<JPAComponent> getComponentsModifiable() {
         return components;
     }
 

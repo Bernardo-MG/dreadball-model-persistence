@@ -46,12 +46,14 @@ public final class JPAAffinityGroup
      * Serialization ID.
      */
     private static final long serialVersionUID = 3702432119601675635L;
+
     /**
      * Affinity group's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+
     /**
      * Affinity group¡s name.
      */

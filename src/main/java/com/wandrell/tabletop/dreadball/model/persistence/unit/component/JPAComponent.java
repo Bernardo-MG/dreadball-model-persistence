@@ -33,13 +33,14 @@ import javax.persistence.Table;
  */
 @Entity(name = "UnitComponent")
 @Table(name = "unit_components")
-public final class JPAUnitComponent extends AbstractJPAUnitComponent
+public final class JPAComponent extends AbstractJPAComponent
         implements Serializable {
 
     /**
      * Serialization ID.
      */
     private static final long serialVersionUID = -5547831116001472121L;
+
     /**
      * Component cost.
      */
@@ -49,7 +50,7 @@ public final class JPAUnitComponent extends AbstractJPAUnitComponent
     /**
      * Constructs a {@code JPAUnitComponent}.
      */
-    public JPAUnitComponent() {
+    public JPAComponent() {
         super();
     }
 

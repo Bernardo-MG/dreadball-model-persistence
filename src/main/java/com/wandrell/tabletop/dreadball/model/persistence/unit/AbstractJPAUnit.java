@@ -44,21 +44,20 @@ import javax.persistence.ManyToMany;
 import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
-import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAttributesHolder;
-import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAttributes;
+import com.wandrell.tabletop.dreadball.model.unit.Role;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Abstract persistent JPA-based implementation of {@link UnitTemplate}.
+ * Abstract persistent JPA-based implementation of {@link Unit}.
  * 
  * @author Bernardo Martínez Garrido
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AbstractJPAUnit
-        implements UnitTemplate, PersistenceEntity {
+public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
 
     /**
      * Unit abilities.
@@ -70,28 +69,33 @@ public abstract class AbstractJPAUnit
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
     private final Collection<JPAAbility> abilities    = new LinkedHashSet<>();
+
     /**
      * Unit attributes.
      */
     @Embedded
-    private JPAAttributesHolder          attributes   = new JPAAttributesHolder();
+    private JPAAttributes                attributes   = new JPAAttributes();
+
     /**
      * Flag indicating if the unit is a giant.
      */
     @Column(name = "giant")
     private Boolean                      giant        = false;
+
     /**
      * Unit's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer                      id           = -1;
+
     /**
      * Unit team position.
      */
     @Column(name = "position")
     @Enumerated(EnumType.STRING)
-    private TeamPosition                 position     = TeamPosition.JACK;
+    private Role                         position     = Role.JACK;
+
     /**
      * Unit template name.
      */
@@ -152,7 +156,7 @@ public abstract class AbstractJPAUnit
     }
 
     @Override
-    public final AttributesHolder getAttributes() {
+    public final Attributes getAttributes() {
         return attributes;
     }
 
@@ -162,7 +166,7 @@ public abstract class AbstractJPAUnit
     }
 
     @Override
-    public final TeamPosition getPosition() {
+    public final Role getRole() {
         return position;
     }
 
@@ -219,12 +223,12 @@ public abstract class AbstractJPAUnit
      * @param attrs
      *            the attributes for the unit
      */
-    public final void setAttributes(final AttributesHolder attrs) {
+    public final void setAttributes(final Attributes attrs) {
         checkNotNull(attrs, "Received a null pointer as attributes");
-        checkArgument(attrs instanceof JPAAttributesHolder,
-                "The AttributesHolder should be an instanceof JPAAttributesHolder");
+        checkArgument(attrs instanceof JPAAttributes,
+                "The Attributes should be an instanceof JPAAttributes");
 
-        attributes = (JPAAttributesHolder) attrs;
+        attributes = (JPAAttributes) attrs;
     }
 
     /**
@@ -252,7 +256,7 @@ public abstract class AbstractJPAUnit
      * @param pos
      *            the team position for the unit
      */
-    public final void setPosition(final TeamPosition pos) {
+    public final void setPosition(final Role pos) {
         checkNotNull(pos, "Received a null pointer as team position role");
 
         position = pos;

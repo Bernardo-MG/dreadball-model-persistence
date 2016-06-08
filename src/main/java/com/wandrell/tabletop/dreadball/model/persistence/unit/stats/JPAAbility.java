@@ -46,12 +46,14 @@ public final class JPAAbility
      * Serialization ID.
      */
     private static final long serialVersionUID = 1853450793663114595L;
+
     /**
      * Ability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+
     /**
      * Ability name.
      */

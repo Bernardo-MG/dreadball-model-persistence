@@ -16,4 +16,5 @@
 /**
  * Provides persistent classes for unit statistics.
  */
+
 package com.wandrell.tabletop.dreadball.model.persistence.unit.stats;

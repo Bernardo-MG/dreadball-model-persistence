@@ -16,4 +16,5 @@
 /**
  * Provides persistent classes for unit availabilities.
  */
+
 package com.wandrell.tabletop.dreadball.model.persistence.availability.unit;

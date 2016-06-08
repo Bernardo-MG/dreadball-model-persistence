@@ -32,11 +32,11 @@ import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.persistence.PersistenceEntity;
-import com.wandrell.tabletop.dreadball.model.availability.unit.TeamTypeMVPAvailability;
+import com.wandrell.tabletop.dreadball.model.availability.unit.TeamTypeMvpAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnitTemplate;
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Persistent JPA-based implementation of {@link TeamTypeMVPAvailability}.
@@ -45,36 +45,39 @@ import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
  */
 @Entity(name = "TeamTypeMVPAvailability")
 @Table(name = "team_type_mvp_avas")
-public final class JPATeamTypeMVPAvailability
-        implements TeamTypeMVPAvailability, PersistenceEntity, Serializable {
+public final class JPATeamTypeMvpAvailability
+        implements TeamTypeMvpAvailability, PersistenceEntity, Serializable {
 
     /**
      * Serialization ID.
      */
     private static final long serialVersionUID = -6257561802154856009L;
+
     /**
      * Availability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+
     /**
      * Team type for the availability.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
     private JPATeamType       teamType;
+
     /**
      * Unit for the availability.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
-    private JPAUnitTemplate   unit;
+    private JPAUnit           unit;
 
     /**
      * Constructs a {@code JPATeamTypeMVPAvailability}.
      */
-    public JPATeamTypeMVPAvailability() {
+    public JPATeamTypeMvpAvailability() {
         super();
     }
 
@@ -92,9 +95,9 @@ public final class JPATeamTypeMVPAvailability
             return false;
         }
 
-        final JPATeamTypeMVPAvailability other;
+        final JPATeamTypeMvpAvailability other;
 
-        other = (JPATeamTypeMVPAvailability) obj;
+        other = (JPATeamTypeMvpAvailability) obj;
         return Objects.equals(teamType, other.teamType)
                 && Objects.equals(unit, other.unit);
     }
@@ -110,7 +113,7 @@ public final class JPATeamTypeMVPAvailability
     }
 
     @Override
-    public final UnitTemplate getUnit() {
+    public final Unit getUnit() {
         return unit;
     }
 
@@ -144,7 +147,7 @@ public final class JPATeamTypeMVPAvailability
      * @param unitType
      *            the unit for the availability
      */
-    public final void setUnit(final JPAUnitTemplate unitType) {
+    public final void setUnit(final JPAUnit unitType) {
         checkNotNull(unitType, "Received a null pointer as unit");
 
         unit = unitType;

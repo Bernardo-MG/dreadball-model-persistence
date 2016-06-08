@@ -16,4 +16,5 @@
 /**
  * Provides persistent classes for components and composite units.
  */
+
 package com.wandrell.tabletop.dreadball.model.persistence.unit.component;

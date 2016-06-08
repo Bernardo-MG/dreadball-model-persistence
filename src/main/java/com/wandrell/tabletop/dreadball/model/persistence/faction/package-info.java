@@ -16,4 +16,5 @@
 /**
  * Provides persistent classes for factions.
  */
+
 package com.wandrell.tabletop.dreadball.model.persistence.faction;

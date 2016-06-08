@@ -46,57 +46,68 @@ public final class JPASponsorAssetsAvailability
      * Serialization ID.
      */
     private static final long serialVersionUID = -7367447173870314061L;
+
     /**
      * Cost of an affinity group.
      */
     @Column(name = "cost_affinity")
     private Integer           costAffinity     = 0;
+
     /**
      * Cost of a cheerleader.
      */
     @Column(name = "cost_cheerleader")
     private Integer           costCheerleader  = 0;
+
     /**
      * Cost of unlocking the cheerleaders.
      */
     @Column(name = "cost_cheerleader_unlock")
     private Integer           costCheerUnlock  = 0;
+
     /**
      * Cost of a coaching dice.
      */
     @Column(name = "cost_dice")
     private Integer           costDice         = 0;
+
     /**
      * Cost of a medibot.
      */
     @Column(name = "cost_medibot")
     private Integer           costMedibot      = 0;
+
     /**
      * Cost of a sabotage card.
      */
     @Column(name = "cost_sabotage")
     private Integer           costSabotage     = 0;
+
     /**
      * Cost of a special movement card.
      */
     @Column(name = "cost_special_move")
     private Integer           costSpecialMove  = 0;
+
     /**
      * Cost of a wager.
      */
     @Column(name = "cost_wager")
     private Integer           costWager        = 0;
+
     /**
      * Availability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+
     /**
      * Maximum number of wagers.
      */
     @Column(name = "max_wager")
     private Integer           maxWager         = 0;
+
     /**
      * Minimum required cost for a team.
      */

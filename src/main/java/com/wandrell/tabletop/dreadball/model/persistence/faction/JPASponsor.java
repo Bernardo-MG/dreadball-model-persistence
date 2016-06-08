@@ -57,6 +57,7 @@ public final class JPASponsor
      * Serialization ID.
      */
     private static final long                  serialVersionUID = -6236019919297159189L;
+
     /**
      * Sponsor affinity groups.
      */
@@ -67,22 +68,26 @@ public final class JPASponsor
             inverseJoinColumns = { @JoinColumn(name = "group_id",
                     referencedColumnName = "id") })
     private final Collection<JPAAffinityGroup> affinities       = new LinkedHashSet<>();
+
     /**
      * Sponsor cash.
      */
     @Column(name = "cash")
     private Integer                            cash             = 0;
+
     /**
      * Sponsor's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer                            id               = -1;
+
     /**
      * Sponsor name.
      */
     @Column(name = "name", unique = true)
     private String                             name             = "";
+
     /**
      * Sponsor rank.
      */

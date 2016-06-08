@@ -51,9 +51,14 @@
 				Updated dependencies.
 			</action>
 		</release>
-        <release version="0.2.3" date="2015-12-8" description="Added base POM">
+        <release version="0.2.3" date="2015-12-08" description="Added base POM">
             <action dev="bmg" type="update">
                 Added base POM.
+            </action>
+        </release>
+        <release version="0.3.0" date="2016-06-08" description="Updated API">
+            <action dev="bmg" type="update">
+                Updated API.
             </action>
         </release>
 	</body>

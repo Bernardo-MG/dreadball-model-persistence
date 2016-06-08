@@ -26,19 +26,19 @@ import javax.persistence.Table;
 
 /**
  * Persistent JPA-based implementation of
- * {@link com.wandrell.tabletop.dreadball.model.unit.UnitTemplate UnitTemplate}.
+ * {@link com.wandrell.tabletop.dreadball.model.unit.Unit Unit}.
  * 
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "UnitTemplate")
+@Entity(name = "Unit")
 @Table(name = "units")
-public final class JPAUnitTemplate extends AbstractJPAUnit
-        implements Serializable {
+public final class JPAUnit extends AbstractJPAUnit implements Serializable {
 
     /**
      * Serialization ID.
      */
     private static final long serialVersionUID = -6317901977987115397L;
+
     /**
      * Unit cost.
      */
@@ -46,15 +46,25 @@ public final class JPAUnitTemplate extends AbstractJPAUnit
     private Integer           cost             = 0;
 
     /**
+     * Unit name.
+     */
+    private String            name             = "";
+
+    /**
      * Constructs a {@code JPAUnit}.
      */
-    public JPAUnitTemplate() {
+    public JPAUnit() {
         super();
     }
 
     @Override
     public final Integer getCost() {
         return cost;
+    }
+
+    @Override
+    public final String getName() {
+        return name;
     }
 
     /**
@@ -67,6 +77,16 @@ public final class JPAUnitTemplate extends AbstractJPAUnit
         checkNotNull(costUnit, "Received a null pointer as cost");
 
         cost = costUnit;
+    }
+
+    /**
+     * Sets the unit name.
+     * 
+     * @param name
+     *            the unit name
+     */
+    public final void setName(final String name) {
+        this.name = name;
     }
 
 }

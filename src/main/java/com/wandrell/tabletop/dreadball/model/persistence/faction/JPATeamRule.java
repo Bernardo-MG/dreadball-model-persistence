@@ -46,12 +46,14 @@ public final class JPATeamRule
      * Serialization ID.
      */
     private static final long serialVersionUID = 3815826961091481042L;
+
     /**
      * Team rule's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+
     /**
      * Team rule name.
      */

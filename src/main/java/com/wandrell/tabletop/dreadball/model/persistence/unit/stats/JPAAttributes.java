@@ -23,41 +23,45 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Persistent JPA-based embeddable implementation of {@link AttributesHolder}.
+ * Persistent JPA-based embeddable implementation of {@link Attributes}.
  * 
  * @author Bernardo Martínez Garrido
  */
 @Embeddable
-public final class JPAAttributesHolder
-        implements AttributesHolder, Serializable {
+public final class JPAAttributes implements Attributes, Serializable {
 
     /**
      * Serialization ID.
      */
     private static final long serialVersionUID = 1L;
+
     /**
      * Armor value.
      */
     @Column(name = "armor")
     private Integer           armor            = 0;
+
     /**
      * Movement value.
      */
     @Column(name = "movement")
     private Integer           movement         = 0;
+
     /**
      * Skill value.
      */
     @Column(name = "skill")
     private Integer           skill            = 0;
+
     /**
      * Speed value.
      */
     @Column(name = "speed")
     private Integer           speed            = 0;
+
     /**
      * Strength value.
      */
@@ -65,9 +69,9 @@ public final class JPAAttributesHolder
     private Integer           strength         = 0;
 
     /**
-     * Constructs a {@code JPAAttributesHolder}.
+     * Constructs a {@code JPAAttributes}.
      */
-    public JPAAttributesHolder() {
+    public JPAAttributes() {
         super();
     }
 

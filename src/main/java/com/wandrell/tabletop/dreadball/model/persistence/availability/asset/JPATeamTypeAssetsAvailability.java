@@ -51,77 +51,92 @@ public final class JPATeamTypeAssetsAvailability
      * Serialization ID.
      */
     private static final long serialVersionUID = -5016337593543278027L;
+
     /**
      * Dreadball card cost.
      */
     @Column(name = "cost_card")
     private Integer           costCard         = 0;
+
     /**
      * Cheerleader cost.
      */
     @Column(name = "cost_cheerleader")
     private Integer           costCheerleader  = 0;
+
     /**
      * Coaching staff cost.
      */
     @Column(name = "cost_coaching")
     private Integer           costCoaching     = 0;
+
     /**
      * Coaching dice cost.
      */
     @Column(name = "cost_dice")
     private Integer           costDice         = 0;
+
     /**
      * Flag indicating if the team begins with a defensive coaching staff.
      */
     @Column(name = "def_coach")
     private Boolean           defCoach         = false;
+
     /**
      * Availability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+
     /**
      * Initial number of Dreadball cards for the team.
      */
     @Column(name = "initial_card")
     private Integer           initialCard      = 0;
+
     /**
      * Initial number of cheerleaders for the team.
      */
     @Column(name = "initial_cheerleader")
     private Integer           initialCheer     = 0;
+
     /**
      * Initial number of coaching dice for the team.
      */
     @Column(name = "initial_dice")
     private Integer           initialDice      = 0;
+
     /**
      * Maximum number of Dreadball cards for the team.
      */
     @Column(name = "max_card")
     private Integer           maxCard          = 0;
+
     /**
      * Maximum number of cheerleaders for the team.
      */
     @Column(name = "max_cheerleader")
     private Integer           maxCheerleader   = 0;
+
     /**
      * Maximum number of Coaching dice for the team.
      */
     @Column(name = "max_dice")
     private Integer           maxDice          = 0;
+
     /**
      * Flag indicating if the team begins with an offensive coaching staff.
      */
     @Column(name = "off_coach")
     private Boolean           offCoach         = false;
+
     /**
      * Flag indicating if the team begins with a support coaching staff.
      */
     @Column(name = "sup_coach")
     private Boolean           supCoach         = false;
+
     /**
      * Team type for the availability.
      */

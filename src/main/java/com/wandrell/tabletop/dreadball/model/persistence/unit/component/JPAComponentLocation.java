@@ -44,12 +44,14 @@ public final class JPAComponentLocation
      * Serialization ID.
      */
     private static final long serialVersionUID = -7589272908184471999L;
+
     /**
      * Component location's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
+
     /**
      * Component location name.
      */

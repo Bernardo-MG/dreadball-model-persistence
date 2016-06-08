@@ -24,32 +24,35 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.wandrell.tabletop.dreadball.model.unit.component.AffinityUnitComponent;
+import com.wandrell.tabletop.dreadball.model.unit.component.AffinityComponent;
 
 /**
- * Persistent JPA-based implementation of {@link AffinityUnitComponent}.
+ * Persistent JPA-based implementation of {@link AffinityComponent}.
  * 
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "AffinityUnitComponent")
+@Entity(name = "AffinityComponent")
 @Table(name = "affinity_unit_components")
-public final class JPAAffinityUnitComponent extends AbstractJPAUnitComponent
-        implements AffinityUnitComponent, Serializable {
+public final class JPAAffinityComponent extends AbstractJPAComponent
+        implements AffinityComponent, Serializable {
 
     /**
      * Serialization ID.
      */
     private static final long serialVersionUID = 1L;
+
     /**
      * Ally cost.
      */
     @Column(name = "cost_ally")
     private Integer           costAlly         = 0;
+
     /**
      * Friend cost.
      */
     @Column(name = "cost_friend")
     private Integer           costFriend       = 0;
+
     /**
      * Stranger cost.
      */
@@ -57,9 +60,9 @@ public final class JPAAffinityUnitComponent extends AbstractJPAUnitComponent
     private Integer           costStranger     = 0;
 
     /**
-     * Constructs a {@code JPAAffinityUnitComponent}.
+     * Constructs a {@code JPAAffinityComponent}.
      */
-    public JPAAffinityUnitComponent() {
+    public JPAAffinityComponent() {
         super();
     }
 

@@ -58,6 +58,7 @@ public final class JPASponsorAffinityGroupAvailability implements
      * Serialization ID.
      */
     private static final long                  serialVersionUID = -6796465298138862022L;
+
     /**
      * Available affinity groups.
      */
@@ -68,17 +69,20 @@ public final class JPASponsorAffinityGroupAvailability implements
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
     private final Collection<JPAAffinityGroup> affinities       = new LinkedHashSet<>();
+
     /**
      * Availability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer                            id               = -1;
+
     /**
      * Availability's name.
      */
     @Column(name = "name", unique = true)
     private String                             name             = "";
+
     /**
      * Flag indicating if the availability allows increasing the rank.
      */

@@ -57,17 +57,20 @@ public final class JPATeamType
      * Serialization ID.
      */
     private static final long             serialVersionUID = -6484889622281976716L;
+
     /**
      * Team type's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer                       id               = -1;
+
     /**
      * Team type name.
      */
     @Column(name = "name", unique = true)
     private String                        name             = "";
+
     /**
      * Team type rules.
      */
