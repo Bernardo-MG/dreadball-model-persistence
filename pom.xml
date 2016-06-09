@@ -230,7 +230,7 @@
       <manifest.name>com/wandrell/tabletop/dreadball/model/persistent</manifest.name>
       <!-- Dependencies versions -->
       <guava.version>19.0</guava.version>
-      <hibernate.version>5.2.0.Final</hibernate.version>
+      <hibernate.version>5.1.0.Final</hibernate.version>
       <javaee.api.version>7.0</javaee.api.version>
       <log4j.version>2.6</log4j.version>
       <tabletop.dreadball.api.version>0.5.1</tabletop.dreadball.api.version>
