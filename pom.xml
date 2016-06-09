@@ -230,15 +230,10 @@
       <manifest.name>com/wandrell/tabletop/dreadball/model/persistent</manifest.name>
       <!-- Dependencies versions -->
       <guava.version>18.0</guava.version>
-      <h2.version>1.4.190</h2.version>
-      <hibernate.version>5.0.2.Final</hibernate.version>
-      <hibernate.jpa2.version>1.0.0.Final</hibernate.jpa2.version>
-      <hikari.version>2.3.12</hikari.version>
+      <hibernate.version>5.1.0.Final</hibernate.version>
       <javaee.api.version>7.0</javaee.api.version>
       <log4j.version>2.4.1</log4j.version>
       <mockito.version>1.10.19</mockito.version>
-      <spring.version>4.2.3.RELEASE</spring.version>
-      <spring.data.version>1.11.1.RELEASE</spring.data.version>
       <tabletop.dreadball.api.version>0.5.1</tabletop.dreadball.api.version>
       <testng.version>6.9.6</testng.version>
       <!-- Plugins versions -->
@@ -275,43 +270,9 @@
          <artifactId>javaee-api</artifactId>
          <version>${javaee.api.version}</version>
       </dependency>
-      <dependency>
-         <!-- Spring Data Commons -->
-         <groupId>org.springframework.data</groupId>
-         <artifactId>spring-data-commons</artifactId>
-         <version>${spring.data.version}</version>
-      </dependency>
       <!-- ============================================== -->
       <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
       <!-- ============================================== -->
-      <dependency>
-         <!-- H2 Database -->
-         <groupId>com.h2database</groupId>
-         <artifactId>h2</artifactId>
-         <version>${h2.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Hibernate Ehcache -->
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-ehcache</artifactId>
-         <version>${hibernate.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Hibernate Entity Manager -->
-         <groupId>org.hibernate</groupId>
-         <artifactId>hibernate-entitymanager</artifactId>
-         <version>${hibernate.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Hikari CP -->
-         <groupId>com.zaxxer</groupId>
-         <artifactId>HikariCP-java6</artifactId>
-         <version>${hikari.version}</version>
-         <scope>test</scope>
-      </dependency>
       <dependency>
          <!-- Log4j core -->
          <groupId>org.apache.logging.log4j</groupId>
@@ -331,48 +292,6 @@
          <groupId>org.mockito</groupId>
          <artifactId>mockito-all</artifactId>
          <version>${mockito.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Spring AOP -->
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-aop</artifactId>
-         <version>${spring.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Spring Core -->
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-core</artifactId>
-         <version>${spring.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Spring Beans -->
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-beans</artifactId>
-         <version>${spring.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Spring Framework Context -->
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-context</artifactId>
-         <version>${spring.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Spring Transactions -->
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-tx</artifactId>
-         <version>${spring.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Spring Test -->
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-test</artifactId>
-         <version>${spring.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
