@@ -229,15 +229,15 @@
       <!-- Manifest data -->
       <manifest.name>com/wandrell/tabletop/dreadball/model/persistent</manifest.name>
       <!-- Dependencies versions -->
-      <guava.version>18.0</guava.version>
-      <hibernate.version>5.1.0.Final</hibernate.version>
+      <guava.version>19.0</guava.version>
+      <hibernate.version>5.2.0.Final</hibernate.version>
       <javaee.api.version>7.0</javaee.api.version>
       <log4j.version>2.6</log4j.version>
       <tabletop.dreadball.api.version>0.5.1</tabletop.dreadball.api.version>
       <testng.version>6.9.10</testng.version>
       <!-- Plugins versions -->
       <plugin.buildhelp.version>1.10</plugin.buildhelp.version>
-      <plugin.changes.version>2.11</plugin.changes.version>
+      <plugin.changes.version>2.12</plugin.changes.version>
       <plugin.processor.version>3.1.0</plugin.processor.version>
       <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
       <!-- Maven Site -->
