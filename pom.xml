@@ -232,10 +232,9 @@
       <guava.version>18.0</guava.version>
       <hibernate.version>5.1.0.Final</hibernate.version>
       <javaee.api.version>7.0</javaee.api.version>
-      <log4j.version>2.4.1</log4j.version>
-      <mockito.version>1.10.19</mockito.version>
+      <log4j.version>2.6</log4j.version>
       <tabletop.dreadball.api.version>0.5.1</tabletop.dreadball.api.version>
-      <testng.version>6.9.6</testng.version>
+      <testng.version>6.9.10</testng.version>
       <!-- Plugins versions -->
       <plugin.buildhelp.version>1.10</plugin.buildhelp.version>
       <plugin.changes.version>2.11</plugin.changes.version>
@@ -285,13 +284,6 @@
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-slf4j-impl</artifactId>
          <version>${log4j.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- Mockito -->
-         <groupId>org.mockito</groupId>
-         <artifactId>mockito-all</artifactId>
-         <version>${mockito.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
