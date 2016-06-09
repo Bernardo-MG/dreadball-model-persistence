@@ -29,7 +29,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 
 /**
@@ -39,8 +38,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
  */
 @Entity(name = "Ability")
 @Table(name = "abilities")
-public final class JPAAbility
-        implements Ability, PersistenceEntity, Serializable {
+public final class JPAAbility implements Ability, Serializable {
 
     /**
      * Serialization ID.
@@ -87,7 +85,11 @@ public final class JPAAbility
         return Objects.equals(name, other.name);
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -102,7 +104,12 @@ public final class JPAAbility
         return Objects.hashCode(name);
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
 

@@ -31,7 +31,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.availability.unit.TeamTypeMvpAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
@@ -46,7 +45,7 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
 @Entity(name = "TeamTypeMVPAvailability")
 @Table(name = "team_type_mvp_avas")
 public final class JPATeamTypeMvpAvailability
-        implements TeamTypeMvpAvailability, PersistenceEntity, Serializable {
+        implements TeamTypeMvpAvailability, Serializable {
 
     /**
      * Serialization ID.
@@ -102,7 +101,11 @@ public final class JPATeamTypeMvpAvailability
                 && Objects.equals(unit, other.unit);
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -122,7 +125,12 @@ public final class JPATeamTypeMvpAvailability
         return Objects.hash(unit, teamType);
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as id");
 

@@ -29,7 +29,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
 /**
@@ -39,8 +38,7 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
  */
 @Entity(name = "AffinityGroup")
 @Table(name = "affinity_groups")
-public final class JPAAffinityGroup
-        implements AffinityGroup, PersistenceEntity, Serializable {
+public final class JPAAffinityGroup implements AffinityGroup, Serializable {
 
     /**
      * Serialization ID.
@@ -87,7 +85,11 @@ public final class JPAAffinityGroup
         return Objects.equals(name, other.name);
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -114,7 +116,12 @@ public final class JPAAffinityGroup
         name = nameAffinity;
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
 

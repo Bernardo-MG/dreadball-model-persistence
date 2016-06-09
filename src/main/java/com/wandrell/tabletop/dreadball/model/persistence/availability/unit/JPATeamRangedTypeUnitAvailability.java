@@ -32,7 +32,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.availability.unit.TeamTypeRangedUnitAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
@@ -46,8 +45,8 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  */
 @Entity(name = "TeamTypeUnitAvailability")
 @Table(name = "team_type_unit_avas")
-public final class JPATeamRangedTypeUnitAvailability implements
-        TeamTypeRangedUnitAvailability, PersistenceEntity, Serializable {
+public final class JPATeamRangedTypeUnitAvailability
+        implements TeamTypeRangedUnitAvailability, Serializable {
 
     /**
      * Serialization ID.
@@ -115,7 +114,11 @@ public final class JPATeamRangedTypeUnitAvailability implements
                 && Objects.equals(unit, other.unit);
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -145,7 +148,12 @@ public final class JPATeamRangedTypeUnitAvailability implements
         return Objects.hash(unit, teamType);
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
 

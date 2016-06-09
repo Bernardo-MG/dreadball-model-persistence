@@ -32,7 +32,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.availability.asset.TeamTypeAssetsAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
@@ -45,7 +44,7 @@ import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
 @Entity(name = "TeamTypeAssetsAvailability")
 @Table(name = "team_type_asset_avas")
 public final class JPATeamTypeAssetsAvailability
-        implements TeamTypeAssetsAvailability, PersistenceEntity, Serializable {
+        implements TeamTypeAssetsAvailability, Serializable {
 
     /**
      * Serialization ID.
@@ -221,7 +220,11 @@ public final class JPATeamTypeAssetsAvailability
         return maxCard;
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -371,7 +374,12 @@ public final class JPATeamTypeAssetsAvailability
         maxCard = max;
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as id");
 

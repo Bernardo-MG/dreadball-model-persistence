@@ -42,7 +42,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAttributes;
 import com.wandrell.tabletop.dreadball.model.unit.Role;
@@ -57,7 +56,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
+public abstract class AbstractJPAUnit implements Unit {
 
     /**
      * Unit abilities.
@@ -160,7 +159,11 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
         return attributes;
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this unit.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -243,7 +246,12 @@ public abstract class AbstractJPAUnit implements Unit, PersistenceEntity {
         giant = giantFlag;
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
 

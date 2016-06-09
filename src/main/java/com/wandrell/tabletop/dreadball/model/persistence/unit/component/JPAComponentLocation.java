@@ -27,7 +27,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.unit.component.ComponentLocation;
 
 /**
@@ -38,7 +37,7 @@ import com.wandrell.tabletop.dreadball.model.unit.component.ComponentLocation;
 @Entity(name = "ComponentLocation")
 @Table(name = "component_locations")
 public final class JPAComponentLocation
-        implements ComponentLocation, PersistenceEntity, Serializable {
+        implements ComponentLocation, Serializable {
 
     /**
      * Serialization ID.
@@ -65,7 +64,11 @@ public final class JPAComponentLocation
         super();
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -87,7 +90,12 @@ public final class JPAComponentLocation
         name = componentName;
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
 

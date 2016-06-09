@@ -38,7 +38,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
@@ -50,8 +49,7 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
  */
 @Entity(name = "Sponsor")
 @Table(name = "sponsors")
-public final class JPASponsor
-        implements Sponsor, PersistenceEntity, Serializable {
+public final class JPASponsor implements Sponsor, Serializable {
 
     /**
      * Serialization ID.
@@ -146,7 +144,11 @@ public final class JPASponsor
         return cash;
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -192,7 +194,12 @@ public final class JPASponsor
         cash = spareCash;
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
 

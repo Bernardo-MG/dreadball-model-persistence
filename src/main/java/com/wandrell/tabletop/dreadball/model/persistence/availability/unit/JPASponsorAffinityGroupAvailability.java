@@ -38,7 +38,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.availability.unit.SponsorAffinityGroupAvailability;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
@@ -51,8 +50,8 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
  */
 @Entity(name = "SponsorAffinityGroupAvailability")
 @Table(name = "sponsor_affinity_avas")
-public final class JPASponsorAffinityGroupAvailability implements
-        SponsorAffinityGroupAvailability, PersistenceEntity, Serializable {
+public final class JPASponsorAffinityGroupAvailability
+        implements SponsorAffinityGroupAvailability, Serializable {
 
     /**
      * Serialization ID.
@@ -141,7 +140,11 @@ public final class JPASponsorAffinityGroupAvailability implements
         return result;
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -188,7 +191,12 @@ public final class JPASponsorAffinityGroupAvailability implements
         getAffinityGroupsModifiable().addAll(affinityGroups);
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
 

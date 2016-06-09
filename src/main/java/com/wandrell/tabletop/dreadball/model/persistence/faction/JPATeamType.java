@@ -39,7 +39,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.faction.TeamRule;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
@@ -50,8 +49,7 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
  */
 @Entity(name = "TeamType")
 @Table(name = "team_types")
-public final class JPATeamType
-        implements TeamType, PersistenceEntity, Serializable {
+public final class JPATeamType implements TeamType, Serializable {
 
     /**
      * Serialization ID.
@@ -123,7 +121,11 @@ public final class JPATeamType
         return Objects.equals(name, other.name);
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -160,7 +162,12 @@ public final class JPATeamType
         getTeamRulesModifiable().remove(rule);
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
 

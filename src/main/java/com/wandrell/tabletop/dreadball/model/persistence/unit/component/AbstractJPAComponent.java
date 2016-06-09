@@ -42,7 +42,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.wandrell.persistence.PersistenceEntity;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAttributes;
 import com.wandrell.tabletop.dreadball.model.unit.Role;
@@ -58,8 +57,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AbstractJPAComponent
-        implements Component, PersistenceEntity {
+public abstract class AbstractJPAComponent implements Component {
 
     /**
      * Component abilities.
@@ -155,7 +153,11 @@ public abstract class AbstractJPAComponent
         return attributes;
     }
 
-    @Override
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -241,7 +243,12 @@ public abstract class AbstractJPAComponent
         name = componentName;
     }
 
-    @Override
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
     public final void setId(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
 
