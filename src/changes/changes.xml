@@ -58,7 +58,10 @@
         </release>
         <release version="0.3.0" date="2016-06-08" description="Updated API">
             <action dev="bmg" type="update">
-                Updated API.
+                Updated Dreadball API.
+            </action>
+            <action dev="bmg" type="update">
+                Changed JPA API to use the JEE one.
             </action>
         </release>
 	</body>
