@@ -26,12 +26,12 @@ import javax.persistence.Table;
 
 /**
  * Persistent JPA-based implementation of
- * {@link com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent
- * UnitComponent}.
+ * {@link com.wandrell.tabletop.dreadball.model.unit.component.Component
+ * Component}.
  * 
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "UnitComponent")
+@Entity(name = "Component")
 @Table(name = "unit_components")
 public final class JPAComponent extends AbstractJPAComponent
         implements Serializable {
@@ -48,7 +48,7 @@ public final class JPAComponent extends AbstractJPAComponent
     private Integer           cost             = 0;
 
     /**
-     * Constructs a {@code JPAUnitComponent}.
+     * Constructs a {@code JPAComponent}.
      */
     public JPAComponent() {
         super();

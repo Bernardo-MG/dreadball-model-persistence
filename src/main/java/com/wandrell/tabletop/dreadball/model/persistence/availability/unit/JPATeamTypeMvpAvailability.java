@@ -38,11 +38,11 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Persistent JPA-based implementation of {@link TeamTypeMVPAvailability}.
+ * Persistent JPA-based implementation of {@link TeamTypeMvpAvailability}.
  * 
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "TeamTypeMVPAvailability")
+@Entity(name = "TeamTypeMvpAvailability")
 @Table(name = "team_type_mvp_avas")
 public final class JPATeamTypeMvpAvailability
         implements TeamTypeMvpAvailability, Serializable {
@@ -74,7 +74,7 @@ public final class JPATeamTypeMvpAvailability
     private JPAUnit           unit;
 
     /**
-     * Constructs a {@code JPATeamTypeMVPAvailability}.
+     * Constructs a {@code JPATeamTypeMvpAvailability}.
      */
     public JPATeamTypeMvpAvailability() {
         super();
