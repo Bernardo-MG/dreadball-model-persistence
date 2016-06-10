@@ -63,6 +63,9 @@
             <action dev="bmg" type="update">
                 Changed JPA API to use the JEE one.
             </action>
+            <action dev="bmg" type="update">
+                Renamed entities to persistent entities, instead of JPA entities.
+            </action>
         </release>
 	</body>
 </document>
