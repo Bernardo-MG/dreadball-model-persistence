@@ -43,9 +43,9 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * 
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "TeamTypeUnitAvailability")
-@Table(name = "team_type_unit_avas")
-public final class PersistentTeamRangedTypeUnitAvailability
+@Entity(name = "TeamTypeRangedUnitAvailability")
+@Table(name = "team_type_ranged_unit_avas")
+public final class PersistentTeamTypeRangedUnitAvailability
         implements TeamTypeRangedUnitAvailability, Serializable {
 
     /**
@@ -89,7 +89,7 @@ public final class PersistentTeamRangedTypeUnitAvailability
     /**
      * Constructs a {@code JPATeamTypeUnitAvailability}.
      */
-    public PersistentTeamRangedTypeUnitAvailability() {
+    public PersistentTeamTypeRangedUnitAvailability() {
         super();
     }
 
@@ -107,9 +107,9 @@ public final class PersistentTeamRangedTypeUnitAvailability
             return false;
         }
 
-        final PersistentTeamRangedTypeUnitAvailability other;
+        final PersistentTeamTypeRangedUnitAvailability other;
 
-        other = (PersistentTeamRangedTypeUnitAvailability) obj;
+        other = (PersistentTeamTypeRangedUnitAvailability) obj;
         return Objects.equals(teamType, other.teamType)
                 && Objects.equals(unit, other.unit);
     }
