@@ -34,8 +34,8 @@ import javax.persistence.Table;
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.availability.unit.TeamTypeRangedUnitAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
-import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAUnit;
+import com.wandrell.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.PersistentUnit;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
@@ -45,51 +45,51 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  */
 @Entity(name = "TeamTypeUnitAvailability")
 @Table(name = "team_type_unit_avas")
-public final class JPATeamRangedTypeUnitAvailability
+public final class PersistentTeamRangedTypeUnitAvailability
         implements TeamTypeRangedUnitAvailability, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = -3725739240261330858L;
+    private static final long  serialVersionUID = -3725739240261330858L;
 
     /**
      * Ava's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer           id               = -1;
+    private Integer            id               = -1;
 
     /**
      * Initial number of units the team has.
      */
     @Column(name = "initial")
-    private Integer           initial          = 0;
+    private Integer            initial          = 0;
 
     /**
      * Maximum number of units the team can have.
      */
     @Column(name = "max")
-    private Integer           max              = 0;
+    private Integer            max              = 0;
 
     /**
      * Team type for the availability.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
-    private JPATeamType       teamType;
+    private PersistentTeamType teamType;
 
     /**
      * Unit for the availability.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
-    private JPAUnit           unit;
+    private PersistentUnit     unit;
 
     /**
      * Constructs a {@code JPATeamTypeUnitAvailability}.
      */
-    public JPATeamRangedTypeUnitAvailability() {
+    public PersistentTeamRangedTypeUnitAvailability() {
         super();
     }
 
@@ -107,9 +107,9 @@ public final class JPATeamRangedTypeUnitAvailability
             return false;
         }
 
-        final JPATeamRangedTypeUnitAvailability other;
+        final PersistentTeamRangedTypeUnitAvailability other;
 
-        other = (JPATeamRangedTypeUnitAvailability) obj;
+        other = (PersistentTeamRangedTypeUnitAvailability) obj;
         return Objects.equals(teamType, other.teamType)
                 && Objects.equals(unit, other.unit);
     }
@@ -190,7 +190,7 @@ public final class JPATeamRangedTypeUnitAvailability
      * @param team
      *            the team type for the availability
      */
-    public final void setTeamType(final JPATeamType team) {
+    public final void setTeamType(final PersistentTeamType team) {
         checkNotNull(team, "Received a null pointer as team type");
 
         teamType = team;
@@ -202,7 +202,7 @@ public final class JPATeamRangedTypeUnitAvailability
      * @param unitType
      *            the unit for the availability
      */
-    public final void setUnit(final JPAUnit unitType) {
+    public final void setUnit(final PersistentUnit unitType) {
         checkNotNull(unitType, "Received a null pointer as unit");
 
         unit = unitType;

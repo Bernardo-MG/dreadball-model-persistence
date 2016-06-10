@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.wandrell.tabletop.dreadball.model.persistence.unit;
+package com.wandrell.tabletop.dreadball.model.persistence.faction;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -29,39 +29,39 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
+import com.wandrell.tabletop.dreadball.model.faction.TeamRule;
 
 /**
- * Persistent JPA-based implementation of {@link AffinityGroup}.
+ * Persistent JPA-based implementation of {@link TeamRule}.
  * 
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "AffinityGroup")
-@Table(name = "affinity_groups")
-public final class JPAAffinityGroup implements AffinityGroup, Serializable {
+@Entity(name = "TeamRule")
+@Table(name = "team_rules")
+public final class PersistentTeamRule implements TeamRule, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = 3702432119601675635L;
+    private static final long serialVersionUID = 3815826961091481042L;
 
     /**
-     * Affinity group's primary key.
+     * Team rule's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
 
     /**
-     * Affinity group¡s name.
+     * Team rule name.
      */
     @Column(name = "name", unique = true)
     private String            name             = "";
 
     /**
-     * Constructs a {@code JPAAffinityGroup}.
+     * Constructs a {@code JPATeamRule}.
      */
-    public JPAAffinityGroup() {
+    public PersistentTeamRule() {
         super();
     }
 
@@ -79,9 +79,9 @@ public final class JPAAffinityGroup implements AffinityGroup, Serializable {
             return false;
         }
 
-        final JPAAffinityGroup other;
+        final PersistentTeamRule other;
 
-        other = (JPAAffinityGroup) obj;
+        other = (PersistentTeamRule) obj;
         return Objects.equals(name, other.name);
     }
 
@@ -105,18 +105,6 @@ public final class JPAAffinityGroup implements AffinityGroup, Serializable {
     }
 
     /**
-     * Sets the affinity group's name.
-     * 
-     * @param nameAffinity
-     *            the affinity group's name
-     */
-    public final void setAffinityGroupName(final String nameAffinity) {
-        checkNotNull(nameAffinity, "Received a null pointer as name");
-
-        name = nameAffinity;
-    }
-
-    /**
      * Sets the ID assigned to this entity.
      * 
      * @param identifier
@@ -126,6 +114,18 @@ public final class JPAAffinityGroup implements AffinityGroup, Serializable {
         checkNotNull(identifier, "Received a null pointer as identifier");
 
         id = identifier;
+    }
+
+    /**
+     * Sets the team rule name.
+     * 
+     * @param ruleName
+     *            the team rule name
+     */
+    public final void setTeamRuleName(final String ruleName) {
+        checkNotNull(ruleName, "Received a null pointer as name");
+
+        name = ruleName;
     }
 
     @Override

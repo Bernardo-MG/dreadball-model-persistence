@@ -42,8 +42,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
-import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAttributes;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.PersistentAbility;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.PersistentAttributes;
 import com.wandrell.tabletop.dreadball.model.unit.Role;
 import com.wandrell.tabletop.dreadball.model.unit.component.Component;
 import com.wandrell.tabletop.dreadball.model.unit.component.ComponentLocation;
@@ -57,7 +57,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AbstractJPAComponent implements Component {
+public abstract class AbstractPersistentComponent implements Component {
 
     /**
      * Component abilities.
@@ -68,33 +68,33 @@ public abstract class AbstractJPAComponent implements Component {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAbility> abilities  = new LinkedHashSet<>();
+    private final Collection<PersistentAbility> abilities  = new LinkedHashSet<>();
 
     /**
      * Component attributes bonus.
      */
     @Embedded
-    private JPAAttributes                attributes = new JPAAttributes();
+    private PersistentAttributes                attributes = new PersistentAttributes();
 
     /**
      * Component primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Integer                      id         = -1;
+    private Integer                             id         = -1;
 
     /**
      * Component location.
      */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")
-    private JPAComponentLocation         location;
+    private PersistentComponentLocation         location;
 
     /**
      * Component name.
      */
     @Column(name = "name", unique = true)
-    private String                       name       = "";
+    private String                              name       = "";
 
     /**
      * Component team positions.
@@ -104,12 +104,12 @@ public abstract class AbstractJPAComponent implements Component {
             joinColumns = @JoinColumn(name = "component_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "position")
-    private final Collection<Role>       positions  = new LinkedHashSet<Role>();
+    private final Collection<Role>              positions  = new LinkedHashSet<Role>();
 
     /**
      * Constructs a {@code AbstractJPAComponent}.
      */
-    public AbstractJPAComponent() {
+    public AbstractPersistentComponent() {
         super();
     }
 
@@ -120,10 +120,10 @@ public abstract class AbstractJPAComponent implements Component {
      *            the ability to add
      */
     public final void addAbility(final Ability ability) {
-        checkArgument(ability instanceof JPAAbility,
+        checkArgument(ability instanceof PersistentAbility,
                 "The Ability should be an instanceof JPAAbility");
 
-        getAbilitiesModifiable().add((JPAAbility) ability);
+        getAbilitiesModifiable().add((PersistentAbility) ability);
     }
 
     /**
@@ -210,10 +210,10 @@ public abstract class AbstractJPAComponent implements Component {
         checkNotNull(compAbilities, "Received a null pointer as abilities");
 
         for (final Ability ability : compAbilities) {
-            checkArgument(ability instanceof JPAAbility,
+            checkArgument(ability instanceof PersistentAbility,
                     "All the abilities should be an instanceof JPAAbility");
 
-            getAbilitiesModifiable().add((JPAAbility) ability);
+            getAbilitiesModifiable().add((PersistentAbility) ability);
         }
     }
 
@@ -225,10 +225,10 @@ public abstract class AbstractJPAComponent implements Component {
      */
     public final void setAttributes(final Attributes attrs) {
         checkNotNull(attrs, "Received a null pointer as attributes");
-        checkArgument(attrs instanceof JPAAttributes,
+        checkArgument(attrs instanceof PersistentAttributes,
                 "The Attributes should be an instanceof JPAAttributes");
 
-        this.attributes = (JPAAttributes) attrs;
+        this.attributes = (PersistentAttributes) attrs;
     }
 
     /**
@@ -261,7 +261,8 @@ public abstract class AbstractJPAComponent implements Component {
      * @param compLocation
      *            the component location
      */
-    public final void setLocation(final JPAComponentLocation compLocation) {
+    public final void
+            setLocation(final PersistentComponentLocation compLocation) {
         checkNotNull(compLocation,
                 "Received a null pointer as component location");
 
@@ -290,7 +291,7 @@ public abstract class AbstractJPAComponent implements Component {
      * 
      * @return the modifiable collection of the component's abilities
      */
-    private final Collection<JPAAbility> getAbilitiesModifiable() {
+    private final Collection<PersistentAbility> getAbilitiesModifiable() {
         return abilities;
     }
 

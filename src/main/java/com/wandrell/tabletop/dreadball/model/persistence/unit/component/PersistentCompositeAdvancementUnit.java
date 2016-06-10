@@ -33,24 +33,25 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.AbstractJPAAffinityUnit;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.AbstractPersistentAdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.component.Component;
-import com.wandrell.tabletop.dreadball.model.unit.component.CompositeAffinityUnit;
+import com.wandrell.tabletop.dreadball.model.unit.component.CompositeAdvancementUnit;
 
 /**
- * Persistent JPA-based implementation of {@link CompositeAffinityUnit}.
+ * Persistent JPA-based implementation of {@link CompositeAdvancementUnit}.
  * 
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "CompositeAffinityUnit")
-@Table(name = "composite_affinity_units")
-public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
-        implements CompositeAffinityUnit, Serializable {
+@Entity(name = "CompositeAdvancementUnit")
+@Table(name = "composite_advancement_units")
+public final class PersistentCompositeAdvancementUnit
+        extends AbstractPersistentAdvancementUnit
+        implements CompositeAdvancementUnit, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long              serialVersionUID = -5866596776570200158L;
+    private static final long                     serialVersionUID = 4751347276326003773L;
 
     /**
      * Unit components.
@@ -61,12 +62,12 @@ public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "component_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAComponent> components       = new LinkedHashSet<JPAComponent>();
+    private final Collection<PersistentComponent> components       = new LinkedHashSet<PersistentComponent>();
 
     /**
-     * Constructs a {@code JPACompositeAffinityUnit}.
+     * Constructs a {@code JPACompositeAdvancementUnit}.
      */
-    public JPACompositeAffinityUnit() {
+    public PersistentCompositeAdvancementUnit() {
         super();
     }
 
@@ -76,7 +77,7 @@ public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
      * @param component
      *            the component to add
      */
-    public final void addComponent(final JPAComponent component) {
+    public final void addComponent(final PersistentComponent component) {
         checkNotNull(component, "Received a null pointer as component");
 
         getComponentsModifiable().add(component);
@@ -100,7 +101,7 @@ public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
      * @param component
      *            the component to remove
      */
-    public final void removeComponent(final JPAComponent component) {
+    public final void removeComponent(final PersistentComponent component) {
         getComponentsModifiable().remove(component);
     }
 
@@ -120,10 +121,10 @@ public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
         getComponentsModifiable().clear();
 
         for (final Component component : unitComponents) {
-            checkArgument(component instanceof JPAComponent,
+            checkArgument(component instanceof PersistentComponent,
                     "All the components should be an instanceof JPAComponent");
 
-            getComponentsModifiable().add((JPAComponent) component);
+            getComponentsModifiable().add((PersistentComponent) component);
         }
     }
 
@@ -132,7 +133,7 @@ public final class JPACompositeAffinityUnit extends AbstractJPAAffinityUnit
      * 
      * @return the modifiable collection of the unit's components
      */
-    private final Collection<JPAComponent> getComponentsModifiable() {
+    private final Collection<PersistentComponent> getComponentsModifiable() {
         return components;
     }
 

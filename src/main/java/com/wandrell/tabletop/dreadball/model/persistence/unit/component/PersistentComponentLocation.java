@@ -36,7 +36,7 @@ import com.wandrell.tabletop.dreadball.model.unit.component.ComponentLocation;
  */
 @Entity(name = "ComponentLocation")
 @Table(name = "component_locations")
-public final class JPAComponentLocation
+public final class PersistentComponentLocation
         implements ComponentLocation, Serializable {
 
     /**
@@ -60,7 +60,7 @@ public final class JPAComponentLocation
     /**
      * Constructs a {@code JPAComponentLocation}.
      */
-    public JPAComponentLocation() {
+    public PersistentComponentLocation() {
         super();
     }
 

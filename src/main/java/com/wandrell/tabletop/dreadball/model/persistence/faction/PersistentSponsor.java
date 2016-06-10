@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.wandrell.tabletop.dreadball.model.persistence.availability.unit;
+package com.wandrell.tabletop.dreadball.model.persistence.faction;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -38,74 +38,73 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.tabletop.dreadball.model.availability.unit.SponsorAffinityGroupAvailability;
-import com.wandrell.tabletop.dreadball.model.persistence.unit.JPAAffinityGroup;
+import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.PersistentAffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
 /**
- * Persistent JPA-based implementation of
- * {@link SponsorAffinityGroupAvailability}.
+ * Persistent JPA-based implementation of {@link Sponsor}.
  * 
  * @author Bernardo Martínez Garrido
  */
-@Entity(name = "SponsorAffinityGroupAvailability")
-@Table(name = "sponsor_affinity_avas")
-public final class JPASponsorAffinityGroupAvailability
-        implements SponsorAffinityGroupAvailability, Serializable {
+@Entity(name = "Sponsor")
+@Table(name = "sponsors")
+public final class PersistentSponsor implements Sponsor, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long                  serialVersionUID = -6796465298138862022L;
+    private static final long                         serialVersionUID = -6236019919297159189L;
 
     /**
-     * Available affinity groups.
+     * Sponsor affinity groups.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "sponsor_affinity_avas_affinity_groups",
-            joinColumns = { @JoinColumn(name = "sponsor_affinity_ava_id",
+    @JoinTable(name = "sponsor_affinity_groups",
+            joinColumns = { @JoinColumn(name = "sponsor_id",
                     referencedColumnName = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "affinity_id",
+            inverseJoinColumns = { @JoinColumn(name = "group_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAffinityGroup> affinities       = new LinkedHashSet<>();
+    private final Collection<PersistentAffinityGroup> affinities       = new LinkedHashSet<>();
 
     /**
-     * Availability's primary key.
+     * Sponsor cash.
+     */
+    @Column(name = "cash")
+    private Integer                                   cash             = 0;
+
+    /**
+     * Sponsor's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer                            id               = -1;
+    private Integer                                   id               = -1;
 
     /**
-     * Availability's name.
+     * Sponsor name.
      */
     @Column(name = "name", unique = true)
-    private String                             name             = "";
+    private String                                    name             = "";
 
     /**
-     * Flag indicating if the availability allows increasing the rank.
+     * Sponsor rank.
      */
-    @Column(name = "rank_increase", unique = true)
-    private Boolean                            rankIncrease     = false;
+    @Column(name = "rank")
+    private Integer                                   rank             = 0;
 
     /**
-     * Constructs a {@code JPATeamType}.
+     * Constructs a {@code JPASponsor}.
      */
-    public JPASponsorAffinityGroupAvailability() {
+    public PersistentSponsor() {
         super();
     }
 
-    /**
-     * Adds an affinity group.
-     * 
-     * @param affinity
-     *            the affinity group to add
-     */
+    @Override
     public final void addAffinityGroup(final AffinityGroup affinity) {
-        checkArgument(affinity instanceof JPAAffinityGroup,
+        checkArgument(affinity instanceof PersistentAffinityGroup,
                 "The AffinityGroup should be an instance of JPAAffinityGroup");
 
-        getAffinityGroupsModifiable().add((JPAAffinityGroup) affinity);
+        getAffinityGroupsModifiable().add((PersistentAffinityGroup) affinity);
     }
 
     @Override
@@ -122,10 +121,10 @@ public final class JPASponsorAffinityGroupAvailability
             return false;
         }
 
-        final JPASponsorAffinityGroupAvailability other;
+        final PersistentSponsor other;
 
-        other = (JPASponsorAffinityGroupAvailability) obj;
-        return Objects.equals(id, other.id);
+        other = (PersistentSponsor) obj;
+        return Objects.equals(name, other.name);
     }
 
     @Override
@@ -138,6 +137,11 @@ public final class JPASponsorAffinityGroupAvailability
         }
 
         return result;
+    }
+
+    @Override
+    public final Integer getCash() {
+        return cash;
     }
 
     /**
@@ -155,40 +159,40 @@ public final class JPASponsorAffinityGroupAvailability
     }
 
     @Override
-    public final int hashCode() {
-        return Objects.hash(id);
+    public final Integer getRank() {
+        return rank;
     }
 
     @Override
-    public final Boolean isIncludingRankIncrease() {
-        return rankIncrease;
+    public final int hashCode() {
+        return Objects.hashCode(name);
     }
 
-    /**
-     * Removes an affinity group.
-     * 
-     * @param affinity
-     *            the affinity group to remove
-     */
+    @Override
     public final void removeAffinityGroup(final AffinityGroup affinity) {
         getAffinityGroupsModifiable().remove(affinity);
     }
 
-    /**
-     * Sets the availability affinity groups.
-     * <p>
-     * All the affinity groups which the availability currently has will be
-     * removed and swapped with the received ones.
-     * 
-     * @param affinityGroups
-     *            the affinity groups to set on the unit
-     */
-    public final void setAffinityGroups(
-            final Collection<JPAAffinityGroup> affinityGroups) {
+    @Override
+    public final void
+            setAffinityGroups(final Collection<AffinityGroup> affinityGroups) {
         checkNotNull(affinityGroups, "Received a null pointer as groups");
 
         getAffinityGroupsModifiable().clear();
-        getAffinityGroupsModifiable().addAll(affinityGroups);
+
+        for (final AffinityGroup affinity : affinityGroups) {
+            checkArgument(affinity instanceof PersistentAffinityGroup,
+                    "The affinities should be an instance of JPAAffinityGroup");
+            getAffinityGroupsModifiable()
+                    .add((PersistentAffinityGroup) affinity);
+        }
+    }
+
+    @Override
+    public final void setCash(final Integer spareCash) {
+        checkNotNull(spareCash, "Received a null pointer as cash");
+
+        cash = spareCash;
     }
 
     /**
@@ -203,39 +207,42 @@ public final class JPASponsorAffinityGroupAvailability
         id = identifier;
     }
 
-    /**
-     * Sets the flag indicating if the availability allows increasing the rank.
-     * 
-     * @param increase
-     *            flag indicating if the availability allows increasing the rank
-     */
-    public final void setIncludingRankIncrease(final Boolean increase) {
-        rankIncrease = increase;
+    @Override
+    public final void setName(final String sponsorName) {
+        name = sponsorName;
+    }
+
+    @Override
+    public final void setRank(final Integer sponsorRank) {
+        checkNotNull(sponsorRank, "Received a null pointer as rank");
+
+        rank = sponsorRank;
     }
 
     /**
-     * Sets the availability's name.
+     * Sets the sponsor name.
      * 
-     * @param nameAva
-     *            the availability's name
+     * @param sponsorName
+     *            the sponsor name
      */
-    public final void setName(final String nameAva) {
-        checkNotNull(nameAva, "Received a null pointer as name");
+    public final void setSponsorName(final String sponsorName) {
+        checkNotNull(sponsorName, "Received a null pointer as name");
 
-        name = nameAva;
+        name = sponsorName;
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).toString();
+        return MoreObjects.toStringHelper(this).add("name", name).toString();
     }
 
     /**
-     * Returns the modifiable collection of the availability's affinity groups.
+     * Returns the modifiable collection of the sponsor's affinity groups.
      * 
-     * @return the modifiable collection of the availability's affinity groups
+     * @return the modifiable collection of the sponsor's affinity groups
      */
-    private final Collection<JPAAffinityGroup> getAffinityGroupsModifiable() {
+    private final Collection<PersistentAffinityGroup>
+            getAffinityGroupsModifiable() {
         return affinities;
     }
 

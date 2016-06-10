@@ -38,7 +38,7 @@ import com.wandrell.tabletop.dreadball.model.availability.asset.SponsorAssetsAva
  */
 @Entity(name = "SponsorAssetsAvailability")
 @Table(name = "sponsor_asset_avas")
-public final class JPASponsorAssetsAvailability
+public final class PersistentSponsorAssetsAvailability
         implements SponsorAssetsAvailability, Serializable {
 
     /**
@@ -116,7 +116,7 @@ public final class JPASponsorAssetsAvailability
     /**
      * Constructs a {@code JPASponsorAssetsAvailability}.
      */
-    public JPASponsorAssetsAvailability() {
+    public PersistentSponsorAssetsAvailability() {
         super();
     }
 
@@ -134,9 +134,9 @@ public final class JPASponsorAssetsAvailability
             return false;
         }
 
-        final JPASponsorAssetsAvailability other;
+        final PersistentSponsorAssetsAvailability other;
 
-        other = (JPASponsorAssetsAvailability) obj;
+        other = (PersistentSponsorAssetsAvailability) obj;
         return Objects.equals(id, other.id);
     }
 

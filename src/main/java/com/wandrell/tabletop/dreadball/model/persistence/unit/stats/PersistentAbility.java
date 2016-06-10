@@ -38,7 +38,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
  */
 @Entity(name = "Ability")
 @Table(name = "abilities")
-public final class JPAAbility implements Ability, Serializable {
+public final class PersistentAbility implements Ability, Serializable {
 
     /**
      * Serialization ID.
@@ -61,7 +61,7 @@ public final class JPAAbility implements Ability, Serializable {
     /**
      * Constructs a {@code JPAAbility}.
      */
-    public JPAAbility() {
+    public PersistentAbility() {
         super();
     }
 
@@ -79,9 +79,9 @@ public final class JPAAbility implements Ability, Serializable {
             return false;
         }
 
-        final JPAAbility other;
+        final PersistentAbility other;
 
-        other = (JPAAbility) obj;
+        other = (PersistentAbility) obj;
         return Objects.equals(name, other.name);
     }
 

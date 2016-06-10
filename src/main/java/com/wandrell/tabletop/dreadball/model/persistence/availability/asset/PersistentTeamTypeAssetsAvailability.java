@@ -34,7 +34,7 @@ import javax.persistence.Table;
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.availability.asset.TeamTypeAssetsAvailability;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
-import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
+import com.wandrell.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
 
 /**
  * Persistent JPA-based implementation of {@link TeamTypeAssetsAvailability}.
@@ -43,110 +43,110 @@ import com.wandrell.tabletop.dreadball.model.persistence.faction.JPATeamType;
  */
 @Entity(name = "TeamTypeAssetsAvailability")
 @Table(name = "team_type_asset_avas")
-public final class JPATeamTypeAssetsAvailability
+public final class PersistentTeamTypeAssetsAvailability
         implements TeamTypeAssetsAvailability, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = -5016337593543278027L;
+    private static final long  serialVersionUID = -5016337593543278027L;
 
     /**
      * Dreadball card cost.
      */
     @Column(name = "cost_card")
-    private Integer           costCard         = 0;
+    private Integer            costCard         = 0;
 
     /**
      * Cheerleader cost.
      */
     @Column(name = "cost_cheerleader")
-    private Integer           costCheerleader  = 0;
+    private Integer            costCheerleader  = 0;
 
     /**
      * Coaching staff cost.
      */
     @Column(name = "cost_coaching")
-    private Integer           costCoaching     = 0;
+    private Integer            costCoaching     = 0;
 
     /**
      * Coaching dice cost.
      */
     @Column(name = "cost_dice")
-    private Integer           costDice         = 0;
+    private Integer            costDice         = 0;
 
     /**
      * Flag indicating if the team begins with a defensive coaching staff.
      */
     @Column(name = "def_coach")
-    private Boolean           defCoach         = false;
+    private Boolean            defCoach         = false;
 
     /**
      * Availability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer           id               = -1;
+    private Integer            id               = -1;
 
     /**
      * Initial number of Dreadball cards for the team.
      */
     @Column(name = "initial_card")
-    private Integer           initialCard      = 0;
+    private Integer            initialCard      = 0;
 
     /**
      * Initial number of cheerleaders for the team.
      */
     @Column(name = "initial_cheerleader")
-    private Integer           initialCheer     = 0;
+    private Integer            initialCheer     = 0;
 
     /**
      * Initial number of coaching dice for the team.
      */
     @Column(name = "initial_dice")
-    private Integer           initialDice      = 0;
+    private Integer            initialDice      = 0;
 
     /**
      * Maximum number of Dreadball cards for the team.
      */
     @Column(name = "max_card")
-    private Integer           maxCard          = 0;
+    private Integer            maxCard          = 0;
 
     /**
      * Maximum number of cheerleaders for the team.
      */
     @Column(name = "max_cheerleader")
-    private Integer           maxCheerleader   = 0;
+    private Integer            maxCheerleader   = 0;
 
     /**
      * Maximum number of Coaching dice for the team.
      */
     @Column(name = "max_dice")
-    private Integer           maxDice          = 0;
+    private Integer            maxDice          = 0;
 
     /**
      * Flag indicating if the team begins with an offensive coaching staff.
      */
     @Column(name = "off_coach")
-    private Boolean           offCoach         = false;
+    private Boolean            offCoach         = false;
 
     /**
      * Flag indicating if the team begins with a support coaching staff.
      */
     @Column(name = "sup_coach")
-    private Boolean           supCoach         = false;
+    private Boolean            supCoach         = false;
 
     /**
      * Team type for the availability.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
-    private JPATeamType       teamType;
+    private PersistentTeamType teamType;
 
     /**
      * Constructs a {@code JPATeamTypeAssetsAvailability}.
      */
-    public JPATeamTypeAssetsAvailability() {
+    public PersistentTeamTypeAssetsAvailability() {
         super();
     }
 
@@ -164,9 +164,9 @@ public final class JPATeamTypeAssetsAvailability
             return false;
         }
 
-        final JPATeamTypeAssetsAvailability other;
+        final PersistentTeamTypeAssetsAvailability other;
 
-        other = (JPATeamTypeAssetsAvailability) obj;
+        other = (PersistentTeamTypeAssetsAvailability) obj;
         return Objects.equals(id, other.id);
     }
 
@@ -436,7 +436,7 @@ public final class JPATeamTypeAssetsAvailability
      * @param team
      *            the availability's team type
      */
-    public final void setTeamType(final JPATeamType team) {
+    public final void setTeamType(final PersistentTeamType team) {
         checkNotNull(team, "Received a null pointer as team type");
 
         teamType = team;

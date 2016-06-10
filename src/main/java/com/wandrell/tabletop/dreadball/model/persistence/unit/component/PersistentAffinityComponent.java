@@ -33,8 +33,8 @@ import com.wandrell.tabletop.dreadball.model.unit.component.AffinityComponent;
  */
 @Entity(name = "AffinityComponent")
 @Table(name = "affinity_unit_components")
-public final class JPAAffinityComponent extends AbstractJPAComponent
-        implements AffinityComponent, Serializable {
+public final class PersistentAffinityComponent extends
+        AbstractPersistentComponent implements AffinityComponent, Serializable {
 
     /**
      * Serialization ID.
@@ -62,7 +62,7 @@ public final class JPAAffinityComponent extends AbstractJPAComponent
     /**
      * Constructs a {@code JPAAffinityComponent}.
      */
-    public JPAAffinityComponent() {
+    public PersistentAffinityComponent() {
         super();
     }
 

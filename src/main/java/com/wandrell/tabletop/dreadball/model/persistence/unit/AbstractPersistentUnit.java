@@ -42,8 +42,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAbility;
-import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.JPAAttributes;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.PersistentAbility;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.PersistentAttributes;
 import com.wandrell.tabletop.dreadball.model.unit.Role;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
@@ -56,7 +56,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AbstractJPAUnit implements Unit {
+public abstract class AbstractPersistentUnit implements Unit {
 
     /**
      * Unit abilities.
@@ -67,44 +67,44 @@ public abstract class AbstractJPAUnit implements Unit {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAbility> abilities    = new LinkedHashSet<>();
+    private final Collection<PersistentAbility> abilities    = new LinkedHashSet<>();
 
     /**
      * Unit attributes.
      */
     @Embedded
-    private JPAAttributes                attributes   = new JPAAttributes();
+    private PersistentAttributes                attributes   = new PersistentAttributes();
 
     /**
      * Flag indicating if the unit is a giant.
      */
     @Column(name = "giant")
-    private Boolean                      giant        = false;
+    private Boolean                             giant        = false;
 
     /**
      * Unit's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Integer                      id           = -1;
+    private Integer                             id           = -1;
 
     /**
      * Unit team position.
      */
     @Column(name = "position")
     @Enumerated(EnumType.STRING)
-    private Role                         position     = Role.JACK;
+    private Role                                position     = Role.JACK;
 
     /**
      * Unit template name.
      */
     @Column(name = "template_name", unique = true)
-    private String                       templateName = "";
+    private String                              templateName = "";
 
     /**
      * Constructs a {@code AbstractJPAUnit}.
      */
-    public AbstractJPAUnit() {
+    public AbstractPersistentUnit() {
         super();
     }
 
@@ -116,10 +116,10 @@ public abstract class AbstractJPAUnit implements Unit {
      */
     public final void addAbility(final Ability ability) {
         checkNotNull(ability, "Received a null pointer as ability");
-        checkArgument(ability instanceof JPAAbility,
+        checkArgument(ability instanceof PersistentAbility,
                 "The Ability should be an instanceof JPAAbility");
 
-        getAbilitiesModifiable().add((JPAAbility) ability);
+        getAbilitiesModifiable().add((PersistentAbility) ability);
     }
 
     @Override
@@ -136,9 +136,9 @@ public abstract class AbstractJPAUnit implements Unit {
             return false;
         }
 
-        final AbstractJPAUnit other;
+        final AbstractPersistentUnit other;
 
-        other = (AbstractJPAUnit) obj;
+        other = (AbstractPersistentUnit) obj;
         return Objects.equals(id, other.id);
     }
 
@@ -213,10 +213,10 @@ public abstract class AbstractJPAUnit implements Unit {
         getAbilitiesModifiable().clear();
 
         for (final Ability ability : unitAbilities) {
-            checkArgument(ability instanceof JPAAbility,
+            checkArgument(ability instanceof PersistentAbility,
                     "All the abilities should be an instanceof JPAAbility");
 
-            getAbilitiesModifiable().add((JPAAbility) ability);
+            getAbilitiesModifiable().add((PersistentAbility) ability);
         }
     }
 
@@ -228,10 +228,10 @@ public abstract class AbstractJPAUnit implements Unit {
      */
     public final void setAttributes(final Attributes attrs) {
         checkNotNull(attrs, "Received a null pointer as attributes");
-        checkArgument(attrs instanceof JPAAttributes,
+        checkArgument(attrs instanceof PersistentAttributes,
                 "The Attributes should be an instanceof JPAAttributes");
 
-        attributes = (JPAAttributes) attrs;
+        attributes = (PersistentAttributes) attrs;
     }
 
     /**
@@ -293,7 +293,7 @@ public abstract class AbstractJPAUnit implements Unit {
      * 
      * @return the modifiable collection of the unit's abilities
      */
-    private final Collection<JPAAbility> getAbilitiesModifiable() {
+    private final Collection<PersistentAbility> getAbilitiesModifiable() {
         return abilities;
     }
 

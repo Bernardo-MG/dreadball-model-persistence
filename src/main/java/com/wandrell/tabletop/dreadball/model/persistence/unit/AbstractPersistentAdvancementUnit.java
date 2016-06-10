@@ -25,7 +25,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
-import com.wandrell.tabletop.dreadball.model.persistence.unit.component.JPAComponent;
+import com.wandrell.tabletop.dreadball.model.persistence.unit.component.PersistentComponent;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.component.Component;
 
@@ -35,44 +35,44 @@ import com.wandrell.tabletop.dreadball.model.unit.component.Component;
  * @author Bernardo Martínez Garrido
  */
 @MappedSuperclass
-public abstract class AbstractJPAAdvancementUnit extends AbstractJPAUnit
-        implements AdvancementUnit {
+public abstract class AbstractPersistentAdvancementUnit
+        extends AbstractPersistentUnit implements AdvancementUnit {
 
     /**
      * Unit cost.
      */
     @Column(name = "cost")
-    private Integer      cost       = 0;
+    private Integer             cost       = 0;
 
     /**
      * Unit experience.
      */
     @Column(name = "experience")
-    private Integer      experience = 0;
+    private Integer             experience = 0;
 
     /**
      * Unit grafted implant.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grafted_implant_id")
-    private JPAComponent implant;
+    private PersistentComponent implant;
 
     /**
      * Unit name.
      */
     @Column(name = "name")
-    private String       name       = "";
+    private String              name       = "";
 
     /**
      * Unit rank.
      */
     @Column(name = "rank")
-    private Integer      rank       = 0;
+    private Integer             rank       = 0;
 
     /**
      * Constructs a {@code AbstractJPAAdvancementUnit}.
      */
-    public AbstractJPAAdvancementUnit() {
+    public AbstractPersistentAdvancementUnit() {
         super();
     }
 
@@ -122,10 +122,10 @@ public abstract class AbstractJPAAdvancementUnit extends AbstractJPAUnit
     @Override
     public final void setGraftedImplant(final Component graft) {
         checkNotNull(graft, "Received a null pointer as implant");
-        checkArgument(graft instanceof JPAComponent,
+        checkArgument(graft instanceof PersistentComponent,
                 "The implant should be an instance of JPAComponent");
 
-        implant = (JPAComponent) graft;
+        implant = (PersistentComponent) graft;
     }
 
     @Override

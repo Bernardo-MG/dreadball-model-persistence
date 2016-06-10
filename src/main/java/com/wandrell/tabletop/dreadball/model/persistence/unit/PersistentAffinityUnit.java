@@ -29,7 +29,7 @@ import javax.persistence.Table;
  */
 @Entity(name = "AffinityUnit")
 @Table(name = "affinity_units")
-public final class JPAAffinityUnit extends AbstractJPAAffinityUnit
+public final class PersistentAffinityUnit extends AbstractPersistentAffinityUnit
         implements Serializable {
 
     /**
@@ -40,7 +40,7 @@ public final class JPAAffinityUnit extends AbstractJPAAffinityUnit
     /**
      * Constructs a {@code JPAAffinityUnit}.
      */
-    public JPAAffinityUnit() {
+    public PersistentAffinityUnit() {
         super();
     }
 

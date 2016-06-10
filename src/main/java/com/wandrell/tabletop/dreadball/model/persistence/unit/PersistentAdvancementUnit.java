@@ -30,8 +30,8 @@ import javax.persistence.Table;
  */
 @Entity(name = "AdvancementUnit")
 @Table(name = "advancement_units")
-public final class JPAAdvancementUnit extends AbstractJPAAdvancementUnit
-        implements Serializable {
+public final class PersistentAdvancementUnit
+        extends AbstractPersistentAdvancementUnit implements Serializable {
 
     /**
      * Serialization ID.
@@ -41,7 +41,7 @@ public final class JPAAdvancementUnit extends AbstractJPAAdvancementUnit
     /**
      * Constructs a {@code JPAAdvancementUnit}.
      */
-    public JPAAdvancementUnit() {
+    public PersistentAdvancementUnit() {
         super();
     }
 

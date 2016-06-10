@@ -33,7 +33,7 @@ import javax.persistence.Table;
  */
 @Entity(name = "Component")
 @Table(name = "unit_components")
-public final class JPAComponent extends AbstractJPAComponent
+public final class PersistentComponent extends AbstractPersistentComponent
         implements Serializable {
 
     /**
@@ -50,7 +50,7 @@ public final class JPAComponent extends AbstractJPAComponent
     /**
      * Constructs a {@code JPAComponent}.
      */
-    public JPAComponent() {
+    public PersistentComponent() {
         super();
     }
 

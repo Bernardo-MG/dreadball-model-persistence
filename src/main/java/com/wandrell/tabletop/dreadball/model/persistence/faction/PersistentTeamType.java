@@ -49,25 +49,25 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
  */
 @Entity(name = "TeamType")
 @Table(name = "team_types")
-public final class JPATeamType implements TeamType, Serializable {
+public final class PersistentTeamType implements TeamType, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long             serialVersionUID = -6484889622281976716L;
+    private static final long                    serialVersionUID = -6484889622281976716L;
 
     /**
      * Team type's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer                       id               = -1;
+    private Integer                              id               = -1;
 
     /**
      * Team type name.
      */
     @Column(name = "name", unique = true)
-    private String                        name             = "";
+    private String                               name             = "";
 
     /**
      * Team type rules.
@@ -78,12 +78,12 @@ public final class JPATeamType implements TeamType, Serializable {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "team_rule_id",
                     referencedColumnName = "id") })
-    private final Collection<JPATeamRule> rules            = new LinkedHashSet<JPATeamRule>();
+    private final Collection<PersistentTeamRule> rules            = new LinkedHashSet<PersistentTeamRule>();
 
     /**
      * Constructs a {@code JPATeamType}.
      */
-    public JPATeamType() {
+    public PersistentTeamType() {
         super();
     }
 
@@ -95,10 +95,10 @@ public final class JPATeamType implements TeamType, Serializable {
      */
     public final void addTeamRule(final TeamRule rule) {
         checkNotNull(rule, "Received a null pointer as rule");
-        checkArgument(rule instanceof JPATeamRule,
+        checkArgument(rule instanceof PersistentTeamRule,
                 "The TeamRule should be an instanceof JPATeamRule");
 
-        getTeamRulesModifiable().add((JPATeamRule) rule);
+        getTeamRulesModifiable().add((PersistentTeamRule) rule);
     }
 
     @Override
@@ -115,9 +115,9 @@ public final class JPATeamType implements TeamType, Serializable {
             return false;
         }
 
-        final JPATeamType other;
+        final PersistentTeamType other;
 
-        other = (JPATeamType) obj;
+        other = (PersistentTeamType) obj;
         return Objects.equals(name, other.name);
     }
 
@@ -189,10 +189,10 @@ public final class JPATeamType implements TeamType, Serializable {
         getTeamRulesModifiable().clear();
 
         for (final TeamRule rule : teamRules) {
-            checkArgument(rule instanceof JPATeamRule,
+            checkArgument(rule instanceof PersistentTeamRule,
                     "All the rules should be an instanceof JPATeamRule");
 
-            getTeamRulesModifiable().add((JPATeamRule) rule);
+            getTeamRulesModifiable().add((PersistentTeamRule) rule);
         }
     }
 
@@ -218,7 +218,7 @@ public final class JPATeamType implements TeamType, Serializable {
      * 
      * @return the modifiable collection of the team type's team rules
      */
-    private final Collection<JPATeamRule> getTeamRulesModifiable() {
+    private final Collection<PersistentTeamRule> getTeamRulesModifiable() {
         return rules;
     }
 

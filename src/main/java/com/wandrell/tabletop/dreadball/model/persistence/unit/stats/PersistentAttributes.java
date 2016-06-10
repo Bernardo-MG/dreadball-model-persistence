@@ -31,7 +31,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * @author Bernardo Martínez Garrido
  */
 @Embeddable
-public final class JPAAttributes implements Attributes, Serializable {
+public final class PersistentAttributes implements Attributes, Serializable {
 
     /**
      * Serialization ID.
@@ -71,7 +71,7 @@ public final class JPAAttributes implements Attributes, Serializable {
     /**
      * Constructs a {@code JPAAttributes}.
      */
-    public JPAAttributes() {
+    public PersistentAttributes() {
         super();
     }
 

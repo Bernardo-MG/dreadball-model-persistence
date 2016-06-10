@@ -41,8 +41,8 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityUnit;
  * @author Bernardo Martínez Garrido
  */
 @MappedSuperclass
-public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
-        implements AffinityUnit {
+public abstract class AbstractPersistentAffinityUnit
+        extends AbstractPersistentUnit implements AffinityUnit {
 
     /**
      * Unit affinities.
@@ -53,25 +53,25 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAffinityGroup> affinities   = new LinkedHashSet<JPAAffinityGroup>();
+    private final Collection<PersistentAffinityGroup> affinities   = new LinkedHashSet<PersistentAffinityGroup>();
 
     /**
      * Ally cost.
      */
     @Column(name = "cost_ally")
-    private Integer                            costAlly     = 0;
+    private Integer                                   costAlly     = 0;
 
     /**
      * Friend cost.
      */
     @Column(name = "cost_friend")
-    private Integer                            costFriend   = 0;
+    private Integer                                   costFriend   = 0;
 
     /**
      * Stranger cost.
      */
     @Column(name = "cost_stranger")
-    private Integer                            costStranger = 0;
+    private Integer                                   costStranger = 0;
 
     /**
      * Unit hated affinities.
@@ -82,18 +82,18 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<JPAAffinityGroup> hated        = new LinkedHashSet<JPAAffinityGroup>();
+    private final Collection<PersistentAffinityGroup> hated        = new LinkedHashSet<PersistentAffinityGroup>();
 
     /**
      * Unit name.
      */
     @Column(name = "name")
-    private String                             name         = "";
+    private String                                    name         = "";
 
     /**
      * Constructs a {@code AbstractJPAAffinityUnit}.
      */
-    public AbstractJPAAffinityUnit() {
+    public AbstractPersistentAffinityUnit() {
         super();
     }
 
@@ -103,7 +103,7 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
      * @param affinity
      *            affinity group to add
      */
-    public final void addAffinityGroup(final JPAAffinityGroup affinity) {
+    public final void addAffinityGroup(final PersistentAffinityGroup affinity) {
         checkNotNull(affinity, "Received a null pointer as the affinity group");
 
         getAffinityGroupsModifiable().add(affinity);
@@ -115,7 +115,8 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
      * @param affinity
      *            affinity group to add
      */
-    public final void addHatedAffinityGroup(final JPAAffinityGroup affinity) {
+    public final void
+            addHatedAffinityGroup(final PersistentAffinityGroup affinity) {
         checkNotNull(affinity,
                 "Received a null pointer as the hated affinity group");
 
@@ -212,10 +213,11 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
         getAffinityGroupsModifiable().clear();
 
         for (final AffinityGroup affinity : affinityGroups) {
-            checkArgument(affinity instanceof JPAAffinityGroup,
+            checkArgument(affinity instanceof PersistentAffinityGroup,
                     "All the affinities should be an instanceof JPAAffinityGroup");
 
-            getAffinityGroupsModifiable().add((JPAAffinityGroup) affinity);
+            getAffinityGroupsModifiable()
+                    .add((PersistentAffinityGroup) affinity);
         }
     }
 
@@ -260,10 +262,11 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
         getHatedAffinityGroupsModifiable().clear();
 
         for (final AffinityGroup affinity : affinityGroups) {
-            checkArgument(affinity instanceof JPAAffinityGroup,
+            checkArgument(affinity instanceof PersistentAffinityGroup,
                     "All the affinities should be an instanceof JPAAffinityGroup");
 
-            getHatedAffinityGroupsModifiable().add((JPAAffinityGroup) affinity);
+            getHatedAffinityGroupsModifiable()
+                    .add((PersistentAffinityGroup) affinity);
         }
     }
 
@@ -289,7 +292,8 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
      * 
      * @return the modifiable collection of the unit's affinity groups
      */
-    private final Collection<JPAAffinityGroup> getAffinityGroupsModifiable() {
+    private final Collection<PersistentAffinityGroup>
+            getAffinityGroupsModifiable() {
         return affinities;
     }
 
@@ -298,7 +302,7 @@ public abstract class AbstractJPAAffinityUnit extends AbstractJPAUnit
      * 
      * @return the modifiable collection of the unit's hated affinity groups
      */
-    private final Collection<JPAAffinityGroup>
+    private final Collection<PersistentAffinityGroup>
             getHatedAffinityGroupsModifiable() {
         return hated;
     }
