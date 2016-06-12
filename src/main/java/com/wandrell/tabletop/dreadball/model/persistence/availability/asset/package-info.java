@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Provides persistent classes for team assets availability classes.
+ * Assets availabilities.
  */
 
 package com.wandrell.tabletop.dreadball.model.persistence.availability.asset;

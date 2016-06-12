@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Provides persistent classes for factions.
+ * Factions.
  */
 
 package com.wandrell.tabletop.dreadball.model.persistence.faction;

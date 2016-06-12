@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Provides persistent classes for units.
+ * Dreadball units, also called players.
  */
 
 package com.wandrell.tabletop.dreadball.model.persistence.unit;
