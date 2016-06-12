@@ -85,11 +85,11 @@ public final class PersistentUnit extends AbstractPersistentUnit
     /**
      * Sets the unit name.
      * 
-     * @param name
+     * @param unitName
      *            the unit name
      */
     public final void setName(final String unitName) {
-        this.name = unitName;
+        name = unitName;
     }
 
 }

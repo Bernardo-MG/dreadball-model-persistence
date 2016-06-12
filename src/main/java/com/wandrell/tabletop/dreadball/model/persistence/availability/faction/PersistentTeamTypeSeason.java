@@ -99,7 +99,7 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
     /**
      * Sets the season number.
      * 
-     * @param seasonNumber
+     * @param season
      *            the season number
      */
     public final void setSeasonNumber(final Integer season) {
