@@ -56,7 +56,7 @@
                 Added base POM.
             </action>
         </release>
-        <release version="0.3.0" date="2016-06-08" description="Updated API">
+        <release version="0.3.0" date="2016-06-12" description="Updated API">
             <action dev="bmg" type="update">
                 Updated Dreadball API.
             </action>
