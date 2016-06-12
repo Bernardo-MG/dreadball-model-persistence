@@ -95,7 +95,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
     private Integer                                   rank             = 0;
 
     /**
-     * Constructs a {@code JPASponsor}.
+     * Default constructor.
      */
     public PersistentSponsor() {
         super();

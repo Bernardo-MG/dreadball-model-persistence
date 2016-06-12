@@ -73,7 +73,7 @@ public abstract class AbstractPersistentAdvancementUnit
     private Integer             rank       = 0;
 
     /**
-     * Constructs a {@code AbstractJPAAdvancementUnit}.
+     * Default constructor.
      */
     public AbstractPersistentAdvancementUnit() {
         super();

@@ -99,7 +99,8 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
     /**
      * Sets the season number.
      * 
-     * @param seasonNumber the season number
+     * @param seasonNumber
+     *            the season number
      */
     public final void setSeasonNumber(final Integer season) {
         seasonNumber = season;
@@ -107,7 +108,9 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
 
     /**
      * Sets the team.
-     * @param teamType the team
+     * 
+     * @param teamType
+     *            the team
      */
     public final void setTeam(final TeamType teamType) {
         team = teamType;

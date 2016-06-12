@@ -62,7 +62,7 @@ public final class PersistentAffinityGroup
     private String            name             = "";
 
     /**
-     * Constructs a {@code JPAAffinityGroup}.
+     * Default constructor.
      */
     public PersistentAffinityGroup() {
         super();

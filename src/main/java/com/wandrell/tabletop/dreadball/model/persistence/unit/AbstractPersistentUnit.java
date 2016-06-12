@@ -105,7 +105,7 @@ public abstract class AbstractPersistentUnit implements Unit {
     private String                              templateName = "";
 
     /**
-     * Constructs a {@code AbstractJPAUnit}.
+     * Default constructor.
      */
     public AbstractPersistentUnit() {
         super();

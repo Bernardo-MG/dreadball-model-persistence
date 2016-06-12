@@ -39,7 +39,7 @@ public final class PersistentAdvancementUnit
     private static final long serialVersionUID = -6317901977987115397L;
 
     /**
-     * Constructs a {@code JPAAdvancementUnit}.
+     * Default constructor.
      */
     public PersistentAdvancementUnit() {
         super();

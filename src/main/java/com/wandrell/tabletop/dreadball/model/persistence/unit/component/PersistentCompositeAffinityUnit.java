@@ -67,7 +67,7 @@ public final class PersistentCompositeAffinityUnit
     private final Collection<PersistentComponent> components       = new LinkedHashSet<PersistentComponent>();
 
     /**
-     * Constructs a {@code JPACompositeAffinityUnit}.
+     * Default constructor.
      */
     public PersistentCompositeAffinityUnit() {
         super();

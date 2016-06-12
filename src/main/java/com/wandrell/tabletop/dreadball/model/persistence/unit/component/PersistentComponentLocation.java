@@ -60,7 +60,7 @@ public final class PersistentComponentLocation
     private String            name             = "";
 
     /**
-     * Constructs a {@code JPAComponentLocation}.
+     * Default constructor.
      */
     public PersistentComponentLocation() {
         super();

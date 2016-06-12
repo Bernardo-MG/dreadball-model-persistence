@@ -109,7 +109,7 @@ public abstract class AbstractPersistentComponent implements Component {
     private final Collection<Role>              positions  = new LinkedHashSet<Role>();
 
     /**
-     * Constructs a {@code AbstractJPAComponent}.
+     * Default constructor.
      */
     public AbstractPersistentComponent() {
         super();

@@ -54,7 +54,7 @@ public final class PersistentUnit extends AbstractPersistentUnit
     private String            name             = "";
 
     /**
-     * Constructs a {@code JPAUnit}.
+     * Default constructor.
      */
     public PersistentUnit() {
         super();

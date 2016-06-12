@@ -61,7 +61,7 @@ public final class PersistentTeamRule implements TeamRule, Serializable {
     private String            name             = "";
 
     /**
-     * Constructs a {@code JPATeamRule}.
+     * Default constructor.
      */
     public PersistentTeamRule() {
         super();

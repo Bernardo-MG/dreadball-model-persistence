@@ -92,7 +92,7 @@ public final class PersistentSponsorAffinityGroupAvailability
     private Boolean                                   rankIncrease     = false;
 
     /**
-     * Constructs a {@code JPATeamType}.
+     * Default constructor.
      */
     public PersistentSponsorAffinityGroupAvailability() {
         super();

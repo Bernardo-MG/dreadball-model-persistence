@@ -84,7 +84,7 @@ public final class PersistentTeamType implements TeamType, Serializable {
     private final Collection<PersistentTeamRule> rules            = new LinkedHashSet<PersistentTeamRule>();
 
     /**
-     * Constructs a {@code JPATeamType}.
+     * Default constructor.
      */
     public PersistentTeamType() {
         super();

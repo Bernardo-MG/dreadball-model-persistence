@@ -40,7 +40,7 @@ public final class PersistentAffinityUnit extends AbstractPersistentAffinityUnit
     private static final long serialVersionUID = -6317901977987115397L;
 
     /**
-     * Constructs a {@code JPAAffinityUnit}.
+     * Default constructor.
      */
     public PersistentAffinityUnit() {
         super();

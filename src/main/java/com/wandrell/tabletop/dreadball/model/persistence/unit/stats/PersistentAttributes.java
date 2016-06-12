@@ -71,7 +71,7 @@ public final class PersistentAttributes implements Attributes, Serializable {
     private Integer           strength         = 0;
 
     /**
-     * Constructs a {@code JPAAttributes}.
+     * Default constructor.
      */
     public PersistentAttributes() {
         super();

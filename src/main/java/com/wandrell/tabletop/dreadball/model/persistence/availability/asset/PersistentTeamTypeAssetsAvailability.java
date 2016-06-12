@@ -147,7 +147,7 @@ public final class PersistentTeamTypeAssetsAvailability
     private PersistentTeamType teamType;
 
     /**
-     * Constructs a {@code JPATeamTypeAssetsAvailability}.
+     * Default constructor.
      */
     public PersistentTeamTypeAssetsAvailability() {
         super();

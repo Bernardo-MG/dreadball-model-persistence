@@ -94,7 +94,7 @@ public abstract class AbstractPersistentAffinityUnit
     private String                                    name         = "";
 
     /**
-     * Constructs a {@code AbstractJPAAffinityUnit}.
+     * Default constructor.
      */
     public AbstractPersistentAffinityUnit() {
         super();

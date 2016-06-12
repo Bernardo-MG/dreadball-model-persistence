@@ -67,7 +67,7 @@ public final class PersistentCompositeAdvancementUnit
     private final Collection<PersistentComponent> components       = new LinkedHashSet<PersistentComponent>();
 
     /**
-     * Constructs a {@code JPACompositeAdvancementUnit}.
+     * Default constructor.
      */
     public PersistentCompositeAdvancementUnit() {
         super();

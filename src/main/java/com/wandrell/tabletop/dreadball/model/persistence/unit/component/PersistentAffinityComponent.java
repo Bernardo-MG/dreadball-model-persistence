@@ -63,7 +63,7 @@ public final class PersistentAffinityComponent extends
     private Integer           costStranger     = 0;
 
     /**
-     * Constructs a {@code JPAAffinityComponent}.
+     * Default constructor.
      */
     public PersistentAffinityComponent() {
         super();

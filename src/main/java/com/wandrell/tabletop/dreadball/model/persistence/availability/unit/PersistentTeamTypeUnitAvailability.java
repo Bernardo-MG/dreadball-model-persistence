@@ -77,7 +77,7 @@ public final class PersistentTeamTypeUnitAvailability
     private PersistentUnit     unit;
 
     /**
-     * Constructs a {@code JPATeamTypeUnitAvailability}.
+     * Default constructor.
      */
     public PersistentTeamTypeUnitAvailability() {
         super();

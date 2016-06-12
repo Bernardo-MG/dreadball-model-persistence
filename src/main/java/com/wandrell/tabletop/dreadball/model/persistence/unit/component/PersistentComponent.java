@@ -48,7 +48,7 @@ public final class PersistentComponent extends AbstractPersistentComponent
     private Integer           cost             = 0;
 
     /**
-     * Constructs a {@code JPAComponent}.
+     * Default constructor.
      */
     public PersistentComponent() {
         super();

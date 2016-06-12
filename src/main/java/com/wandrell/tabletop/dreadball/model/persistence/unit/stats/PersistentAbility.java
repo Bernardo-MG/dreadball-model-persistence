@@ -61,7 +61,7 @@ public final class PersistentAbility implements Ability, Serializable {
     private String            name             = "";
 
     /**
-     * Constructs a {@code JPAAbility}.
+     * Default constructor.
      */
     public PersistentAbility() {
         super();

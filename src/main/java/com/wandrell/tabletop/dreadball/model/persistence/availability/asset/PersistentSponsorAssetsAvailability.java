@@ -117,7 +117,7 @@ public final class PersistentSponsorAssetsAvailability
     private Integer           minTeamCost      = 0;
 
     /**
-     * Constructs a {@code JPASponsorAssetsAvailability}.
+     * Default constructor.
      */
     public PersistentSponsorAssetsAvailability() {
         super();
