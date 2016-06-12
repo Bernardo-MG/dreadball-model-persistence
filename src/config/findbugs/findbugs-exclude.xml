@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<FindBugsFilter>
+   <Match>
+      <Or>
+         <!-- Ignores generated packages -->
+         <Package name="~.*\.generated\.*" />
+         <!-- Ignores metamodel -->
+         <Class name="~.*\..*_" />
+      </Or>
+   </Match>
+</FindBugsFilter>

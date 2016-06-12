@@ -14,6 +14,7 @@
  * the License.
  */
 /**
- * Provides persistent classes for unit statistics.
+ * Unit statistics.
  */
+
 package com.wandrell.tabletop.dreadball.model.persistence.unit.stats;

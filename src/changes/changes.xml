@@ -51,10 +51,21 @@
 				Updated dependencies.
 			</action>
 		</release>
-		<release version="0.2.3" date="2015-11-22" description="Updated configuration">
-			<action dev="bmg" type="update">
-				Updated project configuration.
-			</action>
-		</release>
+        <release version="0.2.3" date="2015-12-08" description="Added base POM">
+            <action dev="bmg" type="update">
+                Added base POM.
+            </action>
+        </release>
+        <release version="0.3.0" date="2016-06-12" description="Updated API">
+            <action dev="bmg" type="update">
+                Updated Dreadball API.
+            </action>
+            <action dev="bmg" type="update">
+                Changed JPA API to use the JEE one.
+            </action>
+            <action dev="bmg" type="update">
+                Renamed entities to persistent entities, instead of JPA entities.
+            </action>
+        </release>
 	</body>
 </document>

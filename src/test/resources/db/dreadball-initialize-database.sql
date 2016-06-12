@@ -14,6 +14,12 @@
 --  the License.
 --
 
+
+-- ****************************************
+-- This SQL script creates the tables to hold the data for the Dreadball entities.
+-- ****************************************
+
+
 -- ****************************************
 --                DROPS
 -- ****************************************
@@ -21,57 +27,58 @@
 
 -- Aggregation tables
 
-DROP TABLE unit_abilities IF EXISTS;
+DROP TABLE IF EXISTS unit_abilities;
 
-DROP TABLE unit_affinities IF EXISTS;
-DROP TABLE unit_hated_affinities IF EXISTS;
+DROP TABLE IF EXISTS unit_affinities;
+DROP TABLE IF EXISTS unit_hated_affinities;
 
-DROP TABLE team_type_rules IF EXISTS;
+DROP TABLE IF EXISTS team_type_rules;
 
-DROP TABLE sponsor_affinity_groups IF EXISTS;
+DROP TABLE IF EXISTS sponsor_affinity_groups;
 
-DROP TABLE component_abilities IF EXISTS;
+DROP TABLE IF EXISTS component_abilities;
 
-DROP TABLE composite_unit_components IF EXISTS;
+DROP TABLE IF EXISTS composite_unit_components;
 
-DROP TABLE sponsor_affinity_avas_affinity_groups IF EXISTS;
+DROP TABLE IF EXISTS sponsor_affinity_avas_affinity_groups;
 
 
 -- Availabilities tables
 
-DROP TABLE team_type_unit_avas IF EXISTS;
-DROP TABLE team_type_mvp_avas IF EXISTS;
+DROP TABLE IF EXISTS team_type_unit_avas;
+DROP TABLE IF EXISTS team_type_mvp_avas;
 
-DROP TABLE team_type_asset_avas IF EXISTS;
+DROP TABLE IF EXISTS team_type_asset_avas;
 
-DROP TABLE sponsor_affinity_avas IF EXISTS;
+DROP TABLE IF EXISTS sponsor_affinity_avas;
 
-DROP TABLE sponsor_asset_avas IF EXISTS;
+DROP TABLE IF EXISTS sponsor_asset_avas;
 
 
 -- Team tables
 
-DROP TABLE team_types IF EXISTS;
-DROP TABLE team_rules IF EXISTS;
+DROP TABLE IF EXISTS team_types;
+DROP TABLE IF EXISTS team_rules;
 
-DROP TABLE sponsors IF EXISTS;
+DROP TABLE IF EXISTS sponsors;
 
 
 -- Unit tables
 
-DROP TABLE units IF EXISTS;
-DROP TABLE affinity_units IF EXISTS;
-DROP TABLE composite_affinity_units IF EXISTS;
-DROP TABLE advancement_units IF EXISTS;
+DROP TABLE IF EXISTS units;
+DROP TABLE IF EXISTS affinity_units;
+DROP TABLE IF EXISTS composite_affinity_units;
+DROP TABLE IF EXISTS advancement_units;
+DROP TABLE IF EXISTS composite_advancement_units;
 
-DROP TABLE component_positions IF EXISTS;
-DROP TABLE affinity_unit_components IF EXISTS;
-DROP TABLE unit_components IF EXISTS;
-DROP TABLE component_locations IF EXISTS;
+DROP TABLE IF EXISTS component_positions;
+DROP TABLE IF EXISTS affinity_unit_components;
+DROP TABLE IF EXISTS unit_components;
+DROP TABLE IF EXISTS component_locations;
 
-DROP TABLE affinity_groups IF EXISTS;
+DROP TABLE IF EXISTS affinity_groups;
 
-DROP TABLE abilities IF EXISTS;
+DROP TABLE IF EXISTS abilities;
 
 
 -- ****************************************
@@ -82,263 +89,271 @@ DROP TABLE abilities IF EXISTS;
 -- Unit tables
 
 CREATE TABLE abilities (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30)
+    id                      INTEGER PRIMARY KEY,
+    name                    VARCHAR(30) NOT NULL UNIQUE
 );
-ALTER TABLE abilities ADD CONSTRAINT uc_abilities UNIQUE (name);
 
 CREATE TABLE affinity_groups (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30)
+    id                      INTEGER PRIMARY KEY,
+    name                    VARCHAR(30) NOT NULL UNIQUE
 );
-ALTER TABLE affinity_groups ADD CONSTRAINT uc_affinity_groups UNIQUE (name);
 
 CREATE TABLE component_locations (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30)
+    id                      INTEGER PRIMARY KEY,
+    name                    VARCHAR(30) NOT NULL UNIQUE
 );
-ALTER TABLE component_locations ADD CONSTRAINT uc_component_locations UNIQUE (name);
 
 CREATE TABLE unit_components (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30),
-	location_id			INTEGER,
-	cost				INTEGER DEFAULT 0,
-	armor				INTEGER DEFAULT 0,
-	movement			INTEGER DEFAULT 0,
-	skill				INTEGER DEFAULT 0,
-	speed				INTEGER DEFAULT 0,
-	strength			INTEGER DEFAULT 0
+    id                      INTEGER PRIMARY KEY,
+    name                    VARCHAR(30) NOT NULL UNIQUE,
+    location_id             INTEGER NOT NULL DEFAULT 0,
+    cost                    INTEGER NOT NULL DEFAULT 0,
+    armor                   INTEGER NOT NULL DEFAULT 0,
+    movement                INTEGER NOT NULL DEFAULT 0,
+    skill                   INTEGER NOT NULL DEFAULT 0,
+    speed                   INTEGER NOT NULL DEFAULT 0,
+    strength                INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (location_id) REFERENCES component_locations (id) ON DELETE CASCADE
 );
-ALTER TABLE unit_components ADD CONSTRAINT uc_unit_components_name UNIQUE (name);
-ALTER TABLE unit_components ADD CONSTRAINT fk_unit_components_location FOREIGN KEY (location_id) REFERENCES component_locations (id);
 
 CREATE TABLE affinity_unit_components (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30),
-	location_id			INTEGER,
-	cost				INTEGER DEFAULT 0,
-	armor				INTEGER DEFAULT 0,
-	movement			INTEGER DEFAULT 0,
-	skill				INTEGER DEFAULT 0,
-	speed				INTEGER DEFAULT 0,
-	strength			INTEGER DEFAULT 0,
-	cost_ally			INTEGER DEFAULT 0,
-	cost_friend			INTEGER DEFAULT 0,
-	cost_stranger		INTEGER DEFAULT 0
+    id                      INTEGER PRIMARY KEY,
+    name                    VARCHAR(30) NOT NULL UNIQUE,
+    location_id             INTEGER NOT NULL DEFAULT 0,
+    cost                    INTEGER NOT NULL DEFAULT 0,
+    armor                   INTEGER NOT NULL DEFAULT 0,
+    movement                INTEGER NOT NULL DEFAULT 0,
+    skill                   INTEGER NOT NULL DEFAULT 0,
+    speed                   INTEGER NOT NULL DEFAULT 0,
+    strength                INTEGER NOT NULL DEFAULT 0,
+    cost_ally               INTEGER NOT NULL DEFAULT 0,
+    cost_friend             INTEGER NOT NULL DEFAULT 0,
+    cost_stranger           INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (location_id) REFERENCES component_locations (id) ON DELETE CASCADE
 );
-ALTER TABLE affinity_unit_components ADD CONSTRAINT uc_affinity_unit_components_name UNIQUE (name);
-ALTER TABLE affinity_unit_components ADD CONSTRAINT fk_affinity_unit_components_location FOREIGN KEY (location_id) REFERENCES component_locations (id);
 
 CREATE TABLE component_positions (
-	component_id		INTEGER,
-  	position			VARCHAR(30)
+    component_id            INTEGER,
+      position                VARCHAR(30) NOT NULL DEFAULT 'JACK',
+    FOREIGN KEY (component_id) REFERENCES unit_components (id) ON DELETE CASCADE
 );
-ALTER TABLE component_positions ADD CONSTRAINT fk_component_positions_component FOREIGN KEY (component_id) REFERENCES unit_components (id);
+
+CREATE TABLE composite_advancement_units (
+    id                      INTEGER PRIMARY KEY,
+    template_name           VARCHAR(30) NOT NULL DEFAULT '',
+    name                    VARCHAR(30) NOT NULL DEFAULT '',
+    cost                    INTEGER NOT NULL DEFAULT 0,
+    armor                   INTEGER NOT NULL DEFAULT 0,
+    movement                INTEGER NOT NULL DEFAULT 0,
+    skill                   INTEGER NOT NULL DEFAULT 0,
+    speed                   INTEGER NOT NULL DEFAULT 0,
+    strength                INTEGER NOT NULL DEFAULT 0,
+    position                VARCHAR(30) NOT NULL DEFAULT 'JACK',
+    giant                   BOOLEAN NOT NULL DEFAULT FALSE,
+    experience              INTEGER NOT NULL DEFAULT 0,
+    rank                    INTEGER NOT NULL DEFAULT 0,
+    grafted_implant_id      INTEGER,
+    FOREIGN KEY (grafted_implant_id) REFERENCES unit_components (id) ON DELETE CASCADE
+);
 
 CREATE TABLE advancement_units (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	template_name		VARCHAR(30),
-	name				VARCHAR(30) DEFAULT '',
-	cost				INTEGER DEFAULT 0,
-	armor				INTEGER DEFAULT 0,
-	movement			INTEGER DEFAULT 0,
-	skill				INTEGER DEFAULT 0,
-	speed				INTEGER DEFAULT 0,
-	strength			INTEGER DEFAULT 0,
-	position			VARCHAR(30),
-	giant				BOOLEAN DEFAULT FALSE,
-	experience			INTEGER DEFAULT 0,
-	rank				INTEGER DEFAULT 0,
-	grafted_implant_id 	INTEGER
+    id                      INTEGER PRIMARY KEY,
+    template_name           VARCHAR(30) NOT NULL DEFAULT '',
+    name                    VARCHAR(30) NOT NULL DEFAULT '',
+    cost                    INTEGER NOT NULL DEFAULT 0,
+    armor                   INTEGER NOT NULL DEFAULT 0,
+    movement                INTEGER NOT NULL DEFAULT 0,
+    skill                   INTEGER NOT NULL DEFAULT 0,
+    speed                   INTEGER NOT NULL DEFAULT 0,
+    strength                INTEGER NOT NULL DEFAULT 0,
+    position                VARCHAR(30) NOT NULL DEFAULT 'JACK',
+    giant                   BOOLEAN NOT NULL DEFAULT FALSE,
+    experience              INTEGER NOT NULL DEFAULT 0,
+    rank                    INTEGER NOT NULL DEFAULT 0,
+    grafted_implant_id      INTEGER,
+    FOREIGN KEY (grafted_implant_id) REFERENCES unit_components (id) ON DELETE CASCADE
 );
-ALTER TABLE advancement_units ADD CONSTRAINT fk_advancement_units_component FOREIGN KEY (grafted_implant_id) REFERENCES unit_components (id);
 
 CREATE TABLE composite_affinity_units (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	template_name		VARCHAR(30),
-	name				VARCHAR(30) DEFAULT '',
-	armor				INTEGER DEFAULT 0,
-	movement			INTEGER DEFAULT 0,
-	skill				INTEGER DEFAULT 0,
-	speed				INTEGER DEFAULT 0,
-	strength			INTEGER DEFAULT 0,
-	position			VARCHAR(30),
-	giant				BOOLEAN DEFAULT FALSE,
-	cost_ally			INTEGER DEFAULT 0,
-	cost_friend			INTEGER DEFAULT 0,
-	cost_stranger		INTEGER DEFAULT 0
+    id                      INTEGER PRIMARY KEY,
+    template_name           VARCHAR(30) NOT NULL UNIQUE,
+    name                    VARCHAR(30) NOT NULL DEFAULT '',
+    armor                   INTEGER NOT NULL DEFAULT 0,
+    movement                INTEGER NOT NULL DEFAULT 0,
+    skill                   INTEGER NOT NULL DEFAULT 0,
+    speed                   INTEGER NOT NULL DEFAULT 0,
+    strength                INTEGER NOT NULL DEFAULT 0,
+    position                VARCHAR(30) NOT NULL DEFAULT 'JACK',
+    giant                   BOOLEAN NOT NULL DEFAULT FALSE,
+    cost_ally               INTEGER NOT NULL DEFAULT 0,
+    cost_friend             INTEGER NOT NULL DEFAULT 0,
+    cost_stranger           INTEGER NOT NULL DEFAULT 0
 );
-ALTER TABLE composite_affinity_units ADD CONSTRAINT uc_composite_affinity_units_name UNIQUE (template_name);
 
 CREATE TABLE affinity_units (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	template_name		VARCHAR(30),
-	name				VARCHAR(30) DEFAULT '',
-	armor				INTEGER DEFAULT 0,
-	movement			INTEGER DEFAULT 0,
-	skill				INTEGER DEFAULT 0,
-	speed				INTEGER DEFAULT 0,
-	strength			INTEGER DEFAULT 0,
-	position			VARCHAR(30),
-	giant				BOOLEAN DEFAULT FALSE,
-	cost_ally			INTEGER DEFAULT 0,
-	cost_friend			INTEGER DEFAULT 0,
-	cost_stranger		INTEGER DEFAULT 0
+    id                      INTEGER PRIMARY KEY,
+    template_name           VARCHAR(30) NOT NULL UNIQUE,
+    name                    VARCHAR(30) NOT NULL DEFAULT '',
+    armor                   INTEGER NOT NULL DEFAULT 0,
+    movement                INTEGER NOT NULL DEFAULT 0,
+    skill                   INTEGER NOT NULL DEFAULT 0,
+    speed                   INTEGER NOT NULL DEFAULT 0,
+    strength                INTEGER NOT NULL DEFAULT 0,
+    position                VARCHAR(30) NOT NULL DEFAULT 'JACK',
+    giant                   BOOLEAN NOT NULL DEFAULT FALSE,
+    cost_ally               INTEGER NOT NULL DEFAULT 0,
+    cost_friend             INTEGER NOT NULL DEFAULT 0,
+    cost_stranger           INTEGER NOT NULL DEFAULT 0
 );
-ALTER TABLE affinity_units ADD CONSTRAINT uc_affinity_units_name UNIQUE (template_name);
 
 CREATE TABLE units (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	template_name		VARCHAR(30),
-	cost				INTEGER DEFAULT 0,
-	armor				INTEGER DEFAULT 0,
-	movement			INTEGER DEFAULT 0,
-	skill				INTEGER DEFAULT 0,
-	speed				INTEGER DEFAULT 0,
-	strength			INTEGER DEFAULT 0,
-	position			VARCHAR(30),
-	giant				BOOLEAN DEFAULT FALSE
+    id                      INTEGER PRIMARY KEY,
+    template_name           VARCHAR(30) NOT NULL UNIQUE,
+    cost                    INTEGER NOT NULL DEFAULT 0,
+    armor                   INTEGER NOT NULL DEFAULT 0,
+    movement                INTEGER NOT NULL DEFAULT 0,
+    skill                   INTEGER NOT NULL DEFAULT 0,
+    speed                   INTEGER NOT NULL DEFAULT 0,
+    strength                INTEGER NOT NULL DEFAULT 0,
+    position                VARCHAR(30) NOT NULL DEFAULT 'JACK',
+    giant                   BOOLEAN NOT NULL DEFAULT FALSE
 );
-ALTER TABLE units ADD CONSTRAINT uc_units_name UNIQUE (template_name);
 
 
 -- Team tables
 
 CREATE TABLE sponsors (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30),
-	cash				INTEGER DEFAULT 0,
-	rank				INTEGER DEFAULT 0
+    id                      INTEGER PRIMARY KEY,
+    name                    VARCHAR(30) NOT NULL DEFAULT '',
+    cash                    INTEGER NOT NULL DEFAULT 0,
+    rank                    INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE team_rules (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30)
+    id                      INTEGER PRIMARY KEY,
+    name                    VARCHAR(30) NOT NULL UNIQUE
 );
-ALTER TABLE team_rules ADD CONSTRAINT uc_team_rules UNIQUE (name);
 
 CREATE TABLE team_types (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30)
+    id                      INTEGER PRIMARY KEY,
+    name                    VARCHAR(30) NOT NULL UNIQUE
 );
-ALTER TABLE team_types ADD CONSTRAINT uc_team_types UNIQUE (name);
 
 
 -- Availabilities tables
 
 CREATE TABLE sponsor_asset_avas (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	cost_affinity		INTEGER,
-	cost_cheerleader	INTEGER,
-	cost_cheerleader_unlock	INTEGER,
-	cost_dice			INTEGER,
-	cost_medibot		INTEGER,
-	cost_sabotage		INTEGER,
-	cost_special_move	INTEGER,
-	cost_wager			INTEGER,
-	max_wager			INTEGER,
-	min_team_cost		INTEGER
+    id                      INTEGER PRIMARY KEY,
+    cost_affinity           INTEGER NOT NULL DEFAULT 0,
+    cost_cheerleader        INTEGER NOT NULL DEFAULT 0,
+    cost_cheerleader_unlock INTEGER NOT NULL DEFAULT 0,
+    cost_dice               INTEGER NOT NULL DEFAULT 0,
+    cost_medibot            INTEGER NOT NULL DEFAULT 0,
+    cost_sabotage           INTEGER NOT NULL DEFAULT 0,
+    cost_special_move       INTEGER NOT NULL DEFAULT 0,
+    cost_wager              INTEGER NOT NULL DEFAULT 0,
+    max_wager               INTEGER NOT NULL DEFAULT 0,
+    min_team_cost           INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE sponsor_affinity_avas (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	name				VARCHAR(30),
-	rank_increase		BOOLEAN
+    id                      INTEGER PRIMARY KEY,
+    name                    VARCHAR(30) NOT NULL DEFAULT '',
+    rank_increase           BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE team_type_asset_avas (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	team_type_id		INTEGER,
-	cost_card			INTEGER,
-	cost_cheerleader	INTEGER,
-	cost_coaching		INTEGER,
-	cost_dice			INTEGER,
-	initial_card		INTEGER,
-	initial_cheerleader	INTEGER,
-	initial_dice		INTEGER,
-	max_card			INTEGER,
-	max_cheerleader		INTEGER,
-	max_dice			INTEGER,
-	def_coach			BOOLEAN,
-	off_coach			BOOLEAN,
-	sup_coach			BOOLEAN,
+    id                      INTEGER PRIMARY KEY,
+    team_type_id            INTEGER NOT NULL DEFAULT 0,
+    cost_card               INTEGER NOT NULL DEFAULT 0,
+    cost_cheerleader        INTEGER NOT NULL DEFAULT 0,
+    cost_coaching           INTEGER NOT NULL DEFAULT 0,
+    cost_dice               INTEGER NOT NULL DEFAULT 0,
+    initial_card            INTEGER NOT NULL DEFAULT 0,
+    initial_cheerleader     INTEGER NOT NULL DEFAULT 0,
+    initial_dice            INTEGER NOT NULL DEFAULT 0,
+    max_card                INTEGER NOT NULL DEFAULT 0,
+    max_cheerleader         INTEGER NOT NULL DEFAULT 0,
+    max_dice                INTEGER NOT NULL DEFAULT 0,
+    def_coach               BOOLEAN NOT NULL DEFAULT FALSE,
+    off_coach               BOOLEAN NOT NULL DEFAULT FALSE,
+    sup_coach               BOOLEAN NOT NULL DEFAULT FALSE,
+    FOREIGN KEY (team_type_id) REFERENCES team_types (id) ON DELETE CASCADE
 );
-ALTER TABLE team_type_asset_avas ADD CONSTRAINT fk_team_type_asset_avas_team FOREIGN KEY (team_type_id) REFERENCES team_types (id);
 
 CREATE TABLE team_type_mvp_avas (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	team_type_id		INTEGER,
-	unit_id				INTEGER
+    id                      INTEGER PRIMARY KEY,
+    team_type_id            INTEGER NOT NULL DEFAULT 0,
+    unit_id                 INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (team_type_id) REFERENCES team_types (id) ON DELETE CASCADE,
+    FOREIGN KEY (unit_id) REFERENCES units (id) ON DELETE CASCADE
 );
-ALTER TABLE team_type_mvp_avas ADD CONSTRAINT fk_team_type_mvp_avas_team FOREIGN KEY (team_type_id) REFERENCES team_types (id);
-ALTER TABLE team_type_mvp_avas ADD CONSTRAINT fk_team_type_mvp_avas_unit FOREIGN KEY (unit_id) REFERENCES units (id);
 
 CREATE TABLE team_type_unit_avas (
-	id					INTEGER IDENTITY PRIMARY KEY,
-	initial				INTEGER,
-	max					INTEGER,
-	team_type_id		INTEGER,
-	unit_id				INTEGER
+    id                      INTEGER PRIMARY KEY,
+    team_type_id            INTEGER,
+    unit_id                 INTEGER,
+    initial                 INTEGER NOT NULL DEFAULT 0,
+    max                     INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (team_type_id) REFERENCES team_types (id) ON DELETE CASCADE,
+    FOREIGN KEY (unit_id) REFERENCES units (id) ON DELETE CASCADE
 );
-ALTER TABLE team_type_unit_avas ADD CONSTRAINT fk_team_type_unit_avas_team FOREIGN KEY (team_type_id) REFERENCES team_types (id);
-ALTER TABLE team_type_unit_avas ADD CONSTRAINT fk_team_type_unit_avas_unit FOREIGN KEY (unit_id) REFERENCES units (id);
 
 
 -- Aggregation tables
 
 CREATE TABLE unit_abilities (
-	unit_id				INTEGER,
-  	ability_id			INTEGER
+    unit_id                 INTEGER,
+    ability_id              INTEGER,
+    FOREIGN KEY (ability_id) REFERENCES abilities (id) ON DELETE CASCADE,
+    FOREIGN KEY (unit_id) REFERENCES units (id) ON DELETE CASCADE
 );
-ALTER TABLE unit_abilities ADD CONSTRAINT fk_unit_abilities_ability FOREIGN KEY (ability_id) REFERENCES abilities (id);
-ALTER TABLE unit_abilities ADD CONSTRAINT fk_unit_abilities_unit FOREIGN KEY (unit_id) REFERENCES units (id);
 
 CREATE TABLE unit_affinities (
-	unit_id				INTEGER,
-  	affinity_id			INTEGER
+    unit_id                 INTEGER,
+    affinity_id             INTEGER,
+    FOREIGN KEY (affinity_id) REFERENCES affinity_groups (id) ON DELETE CASCADE,
+    FOREIGN KEY (unit_id) REFERENCES affinity_units (id) ON DELETE CASCADE
 );
-ALTER TABLE unit_affinities ADD CONSTRAINT fk_unit_affinities_affinity FOREIGN KEY (affinity_id) REFERENCES affinity_groups (id);
-ALTER TABLE unit_affinities ADD CONSTRAINT fk_unit_affinities_unit FOREIGN KEY (unit_id) REFERENCES affinity_units (id);
 
 CREATE TABLE unit_hated_affinities (
-	unit_id				INTEGER,
-  	affinity_id			INTEGER
+    unit_id                 INTEGER,
+    affinity_id             INTEGER,
+    FOREIGN KEY (affinity_id) REFERENCES affinity_groups (id) ON DELETE CASCADE,
+    FOREIGN KEY (unit_id) REFERENCES affinity_units (id) ON DELETE CASCADE
 );
-ALTER TABLE unit_hated_affinities ADD CONSTRAINT fk_unit_hated_affinities_affinity FOREIGN KEY (affinity_id) REFERENCES affinity_groups (id);
-ALTER TABLE unit_hated_affinities ADD CONSTRAINT fk_unit_hated_affinities_unit FOREIGN KEY (unit_id) REFERENCES affinity_units (id);
 
 CREATE TABLE team_type_rules (
-	team_type_id		INTEGER,
-  	team_rule_id		INTEGER
+    team_type_id            INTEGER,
+    team_rule_id            INTEGER,
+    FOREIGN KEY (team_type_id) REFERENCES team_types (id) ON DELETE CASCADE,
+    FOREIGN KEY (team_rule_id) REFERENCES team_rules (id) ON DELETE CASCADE
 );
-ALTER TABLE team_type_rules ADD CONSTRAINT fk_team_type_rules_team_type FOREIGN KEY (team_type_id) REFERENCES team_types (id);
-ALTER TABLE team_type_rules ADD CONSTRAINT fk_team_type_rules_team_rule FOREIGN KEY (team_rule_id) REFERENCES team_rules (id);
 
 CREATE TABLE sponsor_affinity_groups (
-	sponsor_id			INTEGER,
-  	group_id			INTEGER
+    sponsor_id              INTEGER,
+    group_id                INTEGER,
+    FOREIGN KEY (sponsor_id) REFERENCES sponsors (id) ON DELETE CASCADE,
+    FOREIGN KEY (group_id) REFERENCES affinity_groups (id) ON DELETE CASCADE
 );
-ALTER TABLE sponsor_affinity_groups ADD CONSTRAINT fk_sponsor_affinity_groups_sponsor FOREIGN KEY (sponsor_id) REFERENCES sponsors (id);
-ALTER TABLE sponsor_affinity_groups ADD CONSTRAINT fk_sponsor_affinity_groups_group FOREIGN KEY (group_id) REFERENCES affinity_groups (id);
 
 CREATE TABLE component_abilities (
-	component_id		INTEGER,
-  	ability_id			INTEGER
+    component_id            INTEGER,
+    ability_id              INTEGER,
+    FOREIGN KEY (ability_id) REFERENCES abilities (id) ON DELETE CASCADE,
+    FOREIGN KEY (component_id) REFERENCES unit_components (id) ON DELETE CASCADE
 );
-ALTER TABLE component_abilities ADD CONSTRAINT fk_component_abilities_ability FOREIGN KEY (ability_id) REFERENCES abilities (id);
-ALTER TABLE component_abilities ADD CONSTRAINT fk_component_abilities_component FOREIGN KEY (component_id) REFERENCES unit_components (id);
 
 CREATE TABLE composite_unit_components (
-	unit_id				INTEGER,
-  	component_id		INTEGER
+    unit_id                 INTEGER,
+    component_id            INTEGER,
+    FOREIGN KEY (unit_id) REFERENCES units (id) ON DELETE CASCADE,
+    FOREIGN KEY (component_id) REFERENCES unit_components (id) ON DELETE CASCADE
 );
-ALTER TABLE composite_unit_components ADD CONSTRAINT fk_composite_unit_components_unit FOREIGN KEY (unit_id) REFERENCES units (id);
-ALTER TABLE composite_unit_components ADD CONSTRAINT fk_composite_unit_components_component FOREIGN KEY (component_id) REFERENCES unit_components (id);
 
 CREATE TABLE sponsor_affinity_avas_affinity_groups (
-	sponsor_affinity_ava_id	INTEGER,
-  	affinity_id			VARCHAR(30)
+    sponsor_affinity_ava_id    INTEGER,
+    affinity_id                INTEGER,
+    FOREIGN KEY (sponsor_affinity_ava_id) REFERENCES sponsor_affinity_avas (id) ON DELETE CASCADE,
+    FOREIGN KEY (affinity_id) REFERENCES affinity_groups (id) ON DELETE CASCADE
 );
-ALTER TABLE sponsor_affinity_avas_affinity_groups ADD CONSTRAINT fk_sponsor_affinity_groups_ava FOREIGN KEY (sponsor_affinity_ava_id) REFERENCES sponsor_affinity_avas (id);
-ALTER TABLE sponsor_affinity_avas_affinity_groups ADD CONSTRAINT fk_sponsor_affinity_groups_affinity FOREIGN KEY (affinity_id) REFERENCES affinity_groups (id);

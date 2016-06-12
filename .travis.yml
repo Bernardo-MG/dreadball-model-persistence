@@ -1,28 +1,29 @@
+# Travis CI Configuration file
+# @link https://travis-ci.org/
+
+# Using Java for the project
 language: java
 jdk:
-  - oraclejdk8
-  - oraclejdk7
+#  - oraclejdk8
+#  - oraclejdk7
   - openjdk7
-env:
-  # Deployments are disabled by default
-  - DEPLOY=false DEPLOY_DOCS=false
 matrix:
-  exclude:
-    - jdk: oraclejdk7
-    - jdk: oraclejdk8
   include:
     # Code artifacts deployed with JDK7
     - jdk: oraclejdk7
-      env: DEPLOY=true DEPLOY_DOCS=false PULL_REQUEST=$TRAVIS_PULL_REQUEST SCM_BRANCH=$TRAVIS_BRANCH
+      env: DEPLOY=true
     # Documentation deployed with JDK8
     - jdk: oraclejdk8
-      env: DEPLOY=false DEPLOY_DOCS=true PULL_REQUEST=$TRAVIS_PULL_REQUEST SCM_BRANCH=$TRAVIS_BRANCH
+      env: DEPLOY_DOCS=true
     
 before_install:
   # Scripts are set as executable
+  - chmod +x ./.scripts/load-travis-environment.sh
   - chmod +x ./.scripts/create-maven-settings.sh
   - chmod +x ./.scripts/deploy.sh
   - chmod +x ./.scripts/deploy-site.sh
+  # Prepares CI environment
+  - source ./.scripts/load-travis-environment.sh
   # Creates Maven settings
   - ./.scripts/create-maven-settings.sh
 script:
