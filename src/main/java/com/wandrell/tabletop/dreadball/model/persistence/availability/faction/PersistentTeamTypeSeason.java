@@ -47,17 +47,31 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer  id           = -1;
 
+    /**
+     * The season in which the team type appeared.
+     */
     @Column(name = "season")
     private Integer  seasonNumber = 0;
 
+    /**
+     * The team which appeared in this season.
+     */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
     private TeamType team;
 
+    /**
+     * Default constructor.
+     */
     public PersistentTeamTypeSeason() {
         super();
     }
 
+    /**
+     * Returns the ID assigned to this entity.
+     * 
+     * @return the entity's ID
+     */
     public final Integer getId() {
         return id;
     }
@@ -72,16 +86,31 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
         return team;
     }
 
-    public final void setId(final Integer id) {
-        this.id = id;
+    /**
+     * Sets the ID assigned to this entity.
+     * 
+     * @param identifier
+     *            the ID for the entity
+     */
+    public final void setId(final Integer identifier) {
+        id = identifier;
     }
 
-    public final void setSeasonNumber(final Integer seasonNumber) {
-        this.seasonNumber = seasonNumber;
+    /**
+     * Sets the season number.
+     * 
+     * @param seasonNumber the season number
+     */
+    public final void setSeasonNumber(final Integer season) {
+        seasonNumber = season;
     }
 
+    /**
+     * Sets the team.
+     * @param teamType the team
+     */
     public final void setTeam(final TeamType teamType) {
-        this.team = teamType;
+        team = teamType;
     }
 
 }
