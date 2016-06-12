@@ -32,7 +32,9 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 
 /**
- * Persistent JPA-based implementation of {@link Ability}.
+ * Interface for representing a unit's ability.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

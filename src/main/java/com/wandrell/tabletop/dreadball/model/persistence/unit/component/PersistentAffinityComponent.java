@@ -27,7 +27,10 @@ import javax.persistence.Table;
 import com.wandrell.tabletop.dreadball.model.unit.component.AffinityComponent;
 
 /**
- * Persistent JPA-based implementation of {@link AffinityComponent}.
+ * Component with affinity groups, and various costs which will depend on how
+ * many of such affinities are shared.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

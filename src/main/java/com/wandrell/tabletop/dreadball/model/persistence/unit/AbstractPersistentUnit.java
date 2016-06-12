@@ -50,7 +50,10 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Abstract persistent JPA-based implementation of {@link Unit}.
+ * Abstract root for the basic features all the Dreadball units have, no matter
+ * if they come from Dreadball Original (DBO) or Dreadball Xtreme (DBX).
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

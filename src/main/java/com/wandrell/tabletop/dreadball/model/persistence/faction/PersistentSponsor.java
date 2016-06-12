@@ -43,7 +43,9 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.PersistentAffinity
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
 /**
- * Persistent JPA-based implementation of {@link Sponsor}.
+ * Sponsor, which are the Dreadball Xtreme (DBX) factions.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

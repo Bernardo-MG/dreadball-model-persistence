@@ -43,8 +43,11 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.PersistentAffinity
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
 /**
- * Persistent JPA-based implementation of
- * {@link SponsorAffinityGroupAvailability}.
+ * Affinity group availabilities for a
+ * {@link com.wandrell.tabletop.dreadball.model.faction.Sponsor Sponsors}, to be
+ * acquired during their creation.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

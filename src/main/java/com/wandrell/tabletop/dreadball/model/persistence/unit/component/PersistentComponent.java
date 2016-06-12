@@ -25,9 +25,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Persistent JPA-based implementation of
- * {@link com.wandrell.tabletop.dreadball.model.unit.component.Component
- * Component}.
+ * Component used for creating a composite unit.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

@@ -39,7 +39,11 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.PersistentUnit;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Persistent JPA-based implementation of {@link TeamType}.
+ * Unit availabilities for a
+ * {@link com.wandrell.tabletop.dreadball.model.faction.TeamType TeamType},
+ * where there is a range of how many times it can be acquired.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

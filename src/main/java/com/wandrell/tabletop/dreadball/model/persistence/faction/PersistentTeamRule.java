@@ -32,7 +32,9 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.faction.TeamRule;
 
 /**
- * Persistent JPA-based implementation of {@link TeamRule}.
+ * Special rule for teams.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

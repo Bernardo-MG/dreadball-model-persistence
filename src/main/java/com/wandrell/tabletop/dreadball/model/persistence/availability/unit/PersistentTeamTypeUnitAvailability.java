@@ -38,7 +38,10 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.PersistentUnit;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Persistent JPA-based implementation of {@link TeamType}.
+ * Unit availabilities for a {@link TeamType}, to be used for both Dreadball
+ * Original (DBO) and Dreadball Xtreme (DBX).
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

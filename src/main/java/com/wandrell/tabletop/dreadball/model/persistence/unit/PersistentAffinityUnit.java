@@ -22,8 +22,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Persistent JPA-based implementation of
- * {@link com.wandrell.tabletop.dreadball.model.unit.AffinityUnit AffinityUnit}.
+ * Unit with affinity groups, and various costs which will depend on how many of
+ * such affinities are shared.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

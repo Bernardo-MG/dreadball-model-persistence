@@ -30,7 +30,9 @@ import javax.persistence.Table;
 import com.wandrell.tabletop.dreadball.model.unit.component.ComponentLocation;
 
 /**
- * Persistent JPA-based implementation of {@link ComponentLocation}.
+ * Location where a unit component may be applied.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

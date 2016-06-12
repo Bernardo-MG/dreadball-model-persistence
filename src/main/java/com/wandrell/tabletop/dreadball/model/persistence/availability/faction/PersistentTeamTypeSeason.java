@@ -31,6 +31,8 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
 /**
  * Season in which a team appeared.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

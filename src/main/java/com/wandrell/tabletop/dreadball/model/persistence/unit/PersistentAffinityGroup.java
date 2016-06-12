@@ -32,7 +32,9 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
 /**
- * Persistent JPA-based implementation of {@link AffinityGroup}.
+ * Affinity group.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

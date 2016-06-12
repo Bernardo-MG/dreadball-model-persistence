@@ -38,7 +38,10 @@ import com.wandrell.tabletop.dreadball.model.persistence.unit.PersistentUnit;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Persistent JPA-based implementation of {@link TeamTypeMvpAvailability}.
+ * MVP availabilities for a {@link TeamType}, which are the Dreadball Original
+ * (DBO) factions.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

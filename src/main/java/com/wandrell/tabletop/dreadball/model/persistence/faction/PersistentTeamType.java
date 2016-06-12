@@ -43,7 +43,10 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamRule;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
 /**
- * Persistent JPA-based implementation of {@link TeamType}.
+ * Team type, which are the Dreadball Original (DBO) factions. They are also
+ * used to group together Dreadball Xtreme (DBX) units.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

@@ -37,7 +37,10 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
 
 /**
- * Persistent JPA-based implementation of {@link TeamTypeAssetsAvailability}.
+ * Assets availabilities for a {@link TeamType}, which are the Dreadball
+ * Original (DBO) factions.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

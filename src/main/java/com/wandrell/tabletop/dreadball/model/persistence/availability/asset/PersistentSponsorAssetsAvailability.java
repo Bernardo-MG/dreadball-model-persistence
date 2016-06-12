@@ -32,7 +32,10 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.availability.asset.SponsorAssetsAvailability;
 
 /**
- * Persistent JPA-based implementation of {@link SponsorAssetsAvailability}.
+ * Asset availabilities for a
+ * {@link com.wandrell.tabletop.dreadball.model.faction.Sponsor Sponsors}.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

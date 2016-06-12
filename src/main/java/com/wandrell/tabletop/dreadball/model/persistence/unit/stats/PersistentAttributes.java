@@ -26,7 +26,9 @@ import javax.persistence.Embeddable;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Persistent JPA-based embeddable implementation of {@link Attributes}.
+ * Interface representing unit attributes.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

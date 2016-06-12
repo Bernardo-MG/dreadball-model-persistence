@@ -22,9 +22,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Persistent JPA-based implementation of
- * {@link com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit
- * AdvancementUnit}.
+ * Unit which may change and evolve over time, usually between matches.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

@@ -30,7 +30,10 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.component.Component;
 
 /**
- * Abstract persistent JPA-based implementation of {@link AdvancementUnit}.
+ * Abstract root for a unit which may change and evolve over time, usually
+ * between matches.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

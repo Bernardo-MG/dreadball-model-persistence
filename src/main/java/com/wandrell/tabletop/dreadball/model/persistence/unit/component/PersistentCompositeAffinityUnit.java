@@ -38,7 +38,9 @@ import com.wandrell.tabletop.dreadball.model.unit.component.Component;
 import com.wandrell.tabletop.dreadball.model.unit.component.CompositeAffinityUnit;
 
 /**
- * Persistent JPA-based implementation of {@link CompositeAffinityUnit}.
+ * Composite affinity unit.
+ * <p>
+ * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Martínez Garrido
  */
