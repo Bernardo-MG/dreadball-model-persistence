@@ -454,6 +454,8 @@
                <configLocation>${project.basedir}/src/config/checkstyle/checkstyle-rules.xml</configLocation>
                <!-- Excludes generated code -->
                <excludes>**/generated/**/*</excludes>
+               <!-- Excludes metamodel -->
+               <exclude>**/*_.java</exclude>
             </configuration>
          </plugin>
          <plugin>
@@ -465,6 +467,8 @@
                <sourceFileExcludes>
                   <!-- Excludes generated code -->
                   <exclude>**/generated/**/*</exclude>
+                  <!-- Excludes metamodel -->
+                  <exclude>**/*_.java</exclude>
                </sourceFileExcludes>
             </configuration>
          </plugin>
@@ -481,6 +485,8 @@
                <excludes>
                   <!-- Excludes generated code -->
                   <exclude>**/generated/**/*</exclude>
+                  <!-- Excludes metamodel -->
+                  <exclude>**/*_.java</exclude>
                </excludes>
             </configuration>
          </plugin>
