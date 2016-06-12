@@ -37,7 +37,7 @@ import com.wandrell.tabletop.dreadball.model.availability.asset.SponsorAssetsAva
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SponsorAssetsAvailability")
 @Table(name = "sponsor_asset_avas")

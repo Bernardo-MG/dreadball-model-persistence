@@ -36,7 +36,7 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamRule;
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TeamRule")
 @Table(name = "team_rules")

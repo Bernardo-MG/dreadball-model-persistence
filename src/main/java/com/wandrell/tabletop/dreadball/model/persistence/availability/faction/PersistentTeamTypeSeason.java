@@ -34,7 +34,7 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "PersistentTeamTypeSeason")
 @Table(name = "team_type_seasons")

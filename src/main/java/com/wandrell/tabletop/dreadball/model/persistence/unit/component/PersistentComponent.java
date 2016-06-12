@@ -29,7 +29,7 @@ import javax.persistence.Table;
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "Component")
 @Table(name = "unit_components")

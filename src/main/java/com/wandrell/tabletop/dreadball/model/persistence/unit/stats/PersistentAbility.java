@@ -36,7 +36,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "Ability")
 @Table(name = "abilities")

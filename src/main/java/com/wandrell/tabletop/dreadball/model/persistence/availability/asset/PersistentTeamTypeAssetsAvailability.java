@@ -42,7 +42,7 @@ import com.wandrell.tabletop.dreadball.model.persistence.faction.PersistentTeamT
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TeamTypeAssetsAvailability")
 @Table(name = "team_type_asset_avas")

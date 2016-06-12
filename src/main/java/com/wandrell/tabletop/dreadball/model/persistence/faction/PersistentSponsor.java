@@ -47,7 +47,7 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "Sponsor")
 @Table(name = "sponsors")

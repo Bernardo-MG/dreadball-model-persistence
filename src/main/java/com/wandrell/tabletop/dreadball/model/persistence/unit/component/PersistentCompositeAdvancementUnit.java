@@ -42,7 +42,7 @@ import com.wandrell.tabletop.dreadball.model.unit.component.CompositeAdvancement
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "CompositeAdvancementUnit")
 @Table(name = "composite_advancement_units")

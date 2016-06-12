@@ -43,7 +43,7 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TeamTypeMvpAvailability")
 @Table(name = "team_type_mvp_avas")
