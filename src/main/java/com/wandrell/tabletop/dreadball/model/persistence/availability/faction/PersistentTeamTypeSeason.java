@@ -27,7 +27,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.wandrell.tabletop.dreadball.model.availability.faction.TeamTypeSeason;
-import com.wandrell.tabletop.dreadball.model.faction.TeamType;
+import com.wandrell.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
 
 /**
  * Season in which a team appeared.
@@ -58,7 +58,7 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
-    private TeamType team;
+    private PersistentTeamType team;
 
     /**
      * Default constructor.
@@ -82,7 +82,7 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
     }
 
     @Override
-    public final TeamType getTeam() {
+    public final PersistentTeamType getTeam() {
         return team;
     }
 
@@ -112,7 +112,7 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
      * @param teamType
      *            the team
      */
-    public final void setTeam(final TeamType teamType) {
+    public final void setTeam(final PersistentTeamType teamType) {
         team = teamType;
     }
 
