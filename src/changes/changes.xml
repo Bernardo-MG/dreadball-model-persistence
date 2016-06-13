@@ -67,7 +67,7 @@
                 Renamed entities to persistent entities, instead of JPA entities.
             </action>
         </release>
-        <release version="0.3.1" date="2016-06-12" description="Fixed entities">
+        <release version="0.3.1" date="2016-06-13" description="Fixed entities">
             <action dev="bmg" type="update">
                 Corrected the PersistentTeamTypeSeason relationships.
             </action>
