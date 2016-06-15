@@ -42,12 +42,6 @@ public abstract class AbstractPersistentAdvancementUnit
         extends AbstractPersistentUnit implements AdvancementUnit {
 
     /**
-     * Unit cost.
-     */
-    @Column(name = "cost")
-    private Integer             cost       = 0;
-
-    /**
      * Unit experience.
      */
     @Column(name = "experience")
@@ -80,18 +74,8 @@ public abstract class AbstractPersistentAdvancementUnit
     }
 
     @Override
-    public final Integer getCost() {
-        return cost;
-    }
-
-    @Override
     public final Component getGraftedImplant() {
         return implant;
-    }
-
-    @Override
-    public final String getName() {
-        return name;
     }
 
     @Override
@@ -110,18 +94,6 @@ public abstract class AbstractPersistentAdvancementUnit
         return null;
     }
 
-    /**
-     * Sets the unit cost.
-     * 
-     * @param costUnit
-     *            unit cost
-     */
-    public final void setCost(final Integer costUnit) {
-        checkNotNull(costUnit, "Received a null pointer as cost");
-
-        cost = costUnit;
-    }
-
     @Override
     public final void setGraftedImplant(final Component graft) {
         checkNotNull(graft, "Received a null pointer as implant");
@@ -129,11 +101,6 @@ public abstract class AbstractPersistentAdvancementUnit
                 "The implant should be an instance of JPAComponent");
 
         implant = (PersistentComponent) graft;
-    }
-
-    @Override
-    public final void setName(final String unitName) {
-        name = unitName;
     }
 
     @Override

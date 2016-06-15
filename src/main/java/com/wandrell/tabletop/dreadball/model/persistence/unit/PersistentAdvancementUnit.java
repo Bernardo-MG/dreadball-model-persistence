@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.persistence.unit;
 
 import java.io.Serializable;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -29,6 +30,7 @@ import javax.persistence.Table;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "AdvancementUnit")
+@DiscriminatorValue("advancement")
 @Table(name = "advancement_units")
 public final class PersistentAdvancementUnit
         extends AbstractPersistentAdvancementUnit implements Serializable {

@@ -27,6 +27,7 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -40,6 +41,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.persistence.unit.stats.PersistentAbility;
@@ -57,8 +59,10 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity(name = "Unit")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "unit_type")
+@Table(name = "units")
 public abstract class AbstractPersistentUnit implements Unit {
 
     /**
@@ -79,6 +83,12 @@ public abstract class AbstractPersistentUnit implements Unit {
     private PersistentAttributes                attributes   = new PersistentAttributes();
 
     /**
+     * Unit cost.
+     */
+    @Column(name = "cost")
+    private Integer                             cost         = 0;
+
+    /**
      * Flag indicating if the unit is a giant.
      */
     @Column(name = "giant")
@@ -90,6 +100,12 @@ public abstract class AbstractPersistentUnit implements Unit {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer                             id           = -1;
+
+    /**
+     * Unit name.
+     */
+    @Column(name = "name")
+    private String                              name         = "";
 
     /**
      * Unit team position.
@@ -162,6 +178,11 @@ public abstract class AbstractPersistentUnit implements Unit {
         return attributes;
     }
 
+    @Override
+    public final Integer getCost() {
+        return cost;
+    }
+
     /**
      * Returns the ID assigned to this unit.
      * 
@@ -169,6 +190,11 @@ public abstract class AbstractPersistentUnit implements Unit {
      */
     public final Integer getId() {
         return id;
+    }
+
+    @Override
+    public final String getName() {
+        return name;
     }
 
     @Override
@@ -238,6 +264,18 @@ public abstract class AbstractPersistentUnit implements Unit {
     }
 
     /**
+     * Sets the unit's cost.
+     * 
+     * @param costUnit
+     *            the unit's cost
+     */
+    public final void setCost(final Integer costUnit) {
+        checkNotNull(costUnit, "Received a null pointer as cost");
+
+        cost = costUnit;
+    }
+
+    /**
      * Sets the unit giant flag.
      * 
      * @param giantFlag
@@ -259,6 +297,16 @@ public abstract class AbstractPersistentUnit implements Unit {
         checkNotNull(identifier, "Received a null pointer as identifier");
 
         id = identifier;
+    }
+
+    /**
+     * Sets the unit name.
+     * 
+     * @param unitName
+     *            the unit name
+     */
+    public final void setName(final String unitName) {
+        name = unitName;
     }
 
     /**

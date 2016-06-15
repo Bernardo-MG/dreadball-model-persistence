@@ -26,6 +26,7 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -45,6 +46,7 @@ import com.wandrell.tabletop.dreadball.model.unit.component.CompositeAffinityUni
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "CompositeAffinityUnit")
+@DiscriminatorValue("composite_affinity")
 @Table(name = "composite_affinity_units")
 public final class PersistentCompositeAffinityUnit
         extends AbstractPersistentAffinityUnit

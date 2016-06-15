@@ -45,13 +45,13 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer  id           = -1;
+    private Integer            id           = -1;
 
     /**
      * The season in which the team type appeared.
      */
     @Column(name = "season")
-    private Integer  seasonNumber = 0;
+    private Integer            seasonNumber = 0;
 
     /**
      * The team which appeared in this season.
