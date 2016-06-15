@@ -16,11 +16,9 @@
 
 package com.wandrell.tabletop.dreadball.model.persistence.unit;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 
-import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -33,7 +31,8 @@ import javax.persistence.Table;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "Unit")
-@Table(name = "units")
+@DiscriminatorValue("simple")
+@Table(name = "simple_units")
 public final class PersistentUnit extends AbstractPersistentUnit
         implements Serializable {
 
@@ -43,53 +42,10 @@ public final class PersistentUnit extends AbstractPersistentUnit
     private static final long serialVersionUID = -6317901977987115397L;
 
     /**
-     * Unit cost.
-     */
-    @Column(name = "cost")
-    private Integer           cost             = 0;
-
-    /**
-     * Unit name.
-     */
-    private String            name             = "";
-
-    /**
      * Default constructor.
      */
     public PersistentUnit() {
         super();
-    }
-
-    @Override
-    public final Integer getCost() {
-        return cost;
-    }
-
-    @Override
-    public final String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the unit's cost.
-     * 
-     * @param costUnit
-     *            the unit's cost
-     */
-    public final void setCost(final Integer costUnit) {
-        checkNotNull(costUnit, "Received a null pointer as cost");
-
-        cost = costUnit;
-    }
-
-    /**
-     * Sets the unit name.
-     * 
-     * @param unitName
-     *            the unit name
-     */
-    public final void setName(final String unitName) {
-        name = unitName;
     }
 
 }

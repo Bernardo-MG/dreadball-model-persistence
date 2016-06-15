@@ -88,12 +88,6 @@ public abstract class AbstractPersistentAffinityUnit
     private final Collection<PersistentAffinityGroup> hated        = new LinkedHashSet<PersistentAffinityGroup>();
 
     /**
-     * Unit name.
-     */
-    @Column(name = "name")
-    private String                                    name         = "";
-
-    /**
      * Default constructor.
      */
     public AbstractPersistentAffinityUnit() {
@@ -144,11 +138,6 @@ public abstract class AbstractPersistentAffinityUnit
     }
 
     @Override
-    public final Integer getCost() {
-        return 0;
-    }
-
-    @Override
     public final Integer getFriendCost() {
         return costFriend;
     }
@@ -163,11 +152,6 @@ public abstract class AbstractPersistentAffinityUnit
         }
 
         return Collections.unmodifiableCollection(col);
-    }
-
-    @Override
-    public final String getName() {
-        return name;
     }
 
     @Override
@@ -271,11 +255,6 @@ public abstract class AbstractPersistentAffinityUnit
             getHatedAffinityGroupsModifiable()
                     .add((PersistentAffinityGroup) affinity);
         }
-    }
-
-    @Override
-    public final void setName(final String unitName) {
-        name = unitName;
     }
 
     /**

@@ -1,76 +1,80 @@
-<document xmlns="http://maven.apache.org/changes/1.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
-	<properties>
-		<title>Project Changes</title>
-		<author email="programming@wandrell.com">Bernardo Martínez Garrido</author>
-	</properties>
-	<body>
-		<release version="0.1.0" date="2015-09-09" description="First release">
-			<action dev="bmg" type="update">
-				First release of the library.
-			</action>
-		</release>
-		<release version="0.1.1" date="2015-09-14" description="Small updates">
-			<action dev="bmg" type="fix">
-				Tests no longer give table drop errors.
-			</action>
-			<action dev="bmg" type="update">
-				Updated dependencies.
-			</action>
-		</release>
-		<release version="0.1.2" date="2015-10-14" description="Added hated affinities">
-			<action dev="bmg" type="add">
-				Added hated affinities to affinity
-				units.
-			</action>
-		</release>
-		<release version="0.1.3" date="2015-10-14" description="Enhanced sample DB scripts">
-			<action dev="bmg" type="add">
-				Added unique name constraints for the
-				sample and testing database creation script.
-			</action>
-		</release>
-		<release version="0.1.4" date="2015-10-16" description="Maven Site Skin">
-			<action dev="bmg" type="update">
-				Updated Maven Site Skin.
-			</action>
-		</release>
-		<release version="0.2.0" date="2015-10-22" description="Adapted to new API">
-			<action dev="bmg" type="update">
-				Adapted to version 0.4.0 of the API.
-			</action>
-		</release>
-		<release version="0.2.1" date="2015-10-24" description="Corrected class name">
-			<action dev="bmg" type="fix">
-				Corrected the name of the JPAUnitTemplate.
-			</action>
-		</release>
-		<release version="0.2.2" date="2015-10-25" description="Dependencies correction">
-			<action dev="bmg" type="update">
-				Updated dependencies.
-			</action>
-		</release>
-        <release version="0.2.3" date="2015-12-08" description="Added base POM">
-            <action dev="bmg" type="update">
-                Added base POM.
-            </action>
-        </release>
-        <release version="0.3.0" date="2016-06-12" description="Updated API">
-            <action dev="bmg" type="update">
-                Updated Dreadball API.
-            </action>
-            <action dev="bmg" type="update">
-                Changed JPA API to use the JEE one.
-            </action>
-            <action dev="bmg" type="update">
-                Renamed entities to persistent entities, instead of JPA entities.
-            </action>
-        </release>
-        <release version="0.3.1" date="2016-06-13" description="Fixed entities">
-            <action dev="bmg" type="update">
-                Corrected the PersistentTeamTypeSeason relationships.
-            </action>
-        </release>
-	</body>
+<document xmlns="http://maven.apache.org/changes/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+   <properties>
+      <title>Project Changes</title>
+      <author email="programming@wandrell.com">Bernardo Martínez Garrido</author>
+   </properties>
+   <body>
+      <release version="0.1.0" date="2015-09-09" description="First release">
+         <action dev="bmg" type="update">
+            First release of the library.
+         </action>
+      </release>
+      <release version="0.1.1" date="2015-09-14" description="Small updates">
+         <action dev="bmg" type="fix">
+            Tests no longer give table drop errors.
+         </action>
+         <action dev="bmg" type="update">
+            Updated dependencies.
+         </action>
+      </release>
+      <release version="0.1.2" date="2015-10-14" description="Added hated affinities">
+         <action dev="bmg" type="add">
+            Added hated affinities to affinity
+            units.
+         </action>
+      </release>
+      <release version="0.1.3" date="2015-10-14" description="Enhanced sample DB scripts">
+         <action dev="bmg" type="add">
+            Added unique name constraints for the
+            sample and testing database creation script.
+         </action>
+      </release>
+      <release version="0.1.4" date="2015-10-16" description="Maven Site Skin">
+         <action dev="bmg" type="update">
+            Updated Maven Site Skin.
+         </action>
+      </release>
+      <release version="0.2.0" date="2015-10-22" description="Adapted to new API">
+         <action dev="bmg" type="update">
+            Adapted to version 0.4.0 of the API.
+         </action>
+      </release>
+      <release version="0.2.1" date="2015-10-24" description="Corrected class name">
+         <action dev="bmg" type="fix">
+            Corrected the name of the JPAUnitTemplate.
+         </action>
+      </release>
+      <release version="0.2.2" date="2015-10-25" description="Dependencies correction">
+         <action dev="bmg" type="update">
+            Updated dependencies.
+         </action>
+      </release>
+      <release version="0.2.3" date="2015-12-08" description="Added base POM">
+         <action dev="bmg" type="update">
+            Added base POM.
+         </action>
+      </release>
+      <release version="0.3.0" date="2016-06-12" description="Updated API">
+         <action dev="bmg" type="update">
+            Updated Dreadball API.
+         </action>
+         <action dev="bmg" type="update">
+            Changed JPA API to use the JEE one.
+         </action>
+         <action dev="bmg" type="update">
+            Renamed entities to persistent entities, instead of JPA entities.
+         </action>
+      </release>
+      <release version="0.3.1" date="2016-06-13" description="Fixed entities">
+         <action dev="bmg" type="update">
+            Corrected the PersistentTeamTypeSeason relationships.
+         </action>
+      </release>
+      <release version="0.4.0" date="2016-06-15" description="Changed units structure">
+         <action dev="bmg" type="update">
+            Changed the table structure for units. They now share a common root table.
+         </action>
+      </release>
+   </body>
 </document>
