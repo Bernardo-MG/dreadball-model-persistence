@@ -76,5 +76,13 @@
             Changed the table structure for units. They now share a common root table.
          </action>
       </release>
+      <release version="0.5.0" date="2016-06-19" description="Added MVP flag">
+            <action dev="bmg" type="update">
+                Added the MVP flag to the units.
+            </action>
+            <action dev="bmg" type="update">
+                Removed the MVP availability class.
+            </action>
+        </release>
    </body>
 </document>
