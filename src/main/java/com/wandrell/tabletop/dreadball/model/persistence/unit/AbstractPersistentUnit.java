@@ -102,6 +102,12 @@ public abstract class AbstractPersistentUnit implements Unit {
     private Integer                             id           = -1;
 
     /**
+     * Flag indicating if the unit is a MVP.
+     */
+    @Column(name = "mvp")
+    private Boolean                             mvp          = false;
+
+    /**
      * Unit name.
      */
     @Column(name = "name")
@@ -183,6 +189,11 @@ public abstract class AbstractPersistentUnit implements Unit {
         return cost;
     }
 
+    @Override
+    public final Boolean getGiant() {
+        return giant;
+    }
+
     /**
      * Returns the ID assigned to this unit.
      * 
@@ -190,6 +201,11 @@ public abstract class AbstractPersistentUnit implements Unit {
      */
     public final Integer getId() {
         return id;
+    }
+
+    @Override
+    public final Boolean getMvp() {
+        return mvp;
     }
 
     @Override
@@ -210,11 +226,6 @@ public abstract class AbstractPersistentUnit implements Unit {
     @Override
     public final int hashCode() {
         return Objects.hashCode(id);
-    }
-
-    @Override
-    public final Boolean isGiant() {
-        return giant;
     }
 
     /**
