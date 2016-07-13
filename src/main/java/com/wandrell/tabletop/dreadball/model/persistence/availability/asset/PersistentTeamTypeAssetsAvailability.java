@@ -170,7 +170,7 @@ public final class PersistentTeamTypeAssetsAvailability
         final PersistentTeamTypeAssetsAvailability other;
 
         other = (PersistentTeamTypeAssetsAvailability) obj;
-        return Objects.equals(id, other.id);
+        return Objects.equals(teamType, other.teamType);
     }
 
     @Override
@@ -239,7 +239,7 @@ public final class PersistentTeamTypeAssetsAvailability
 
     @Override
     public final int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(teamType);
     }
 
     @Override

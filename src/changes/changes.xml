@@ -84,5 +84,10 @@
                 Removed the MVP availability class.
             </action>
         </release>
+      <release version="0.5.1" date="2016-07-13" description="Corrected comparations">
+            <action dev="bmg" type="update">
+                Changed hashcode and equals methods to avoid using ids.
+            </action>
+        </release>
    </body>
 </document>

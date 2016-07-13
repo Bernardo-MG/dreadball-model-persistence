@@ -164,7 +164,8 @@ public abstract class AbstractPersistentUnit implements Unit {
         final AbstractPersistentUnit other;
 
         other = (AbstractPersistentUnit) obj;
-        return Objects.equals(id, other.id);
+        return Objects.equals(templateName, other.templateName)
+                && Objects.equals(name, other.name);
     }
 
     @Override
@@ -225,7 +226,7 @@ public abstract class AbstractPersistentUnit implements Unit {
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(templateName, name);
     }
 
     /**

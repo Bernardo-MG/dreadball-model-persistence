@@ -128,7 +128,7 @@ public final class PersistentSponsorAffinityGroupAvailability
         final PersistentSponsorAffinityGroupAvailability other;
 
         other = (PersistentSponsorAffinityGroupAvailability) obj;
-        return Objects.equals(id, other.id);
+        return Objects.equals(name, other.name);
     }
 
     @Override
@@ -159,7 +159,7 @@ public final class PersistentSponsorAffinityGroupAvailability
 
     @Override
     public final int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(name);
     }
 
     @Override
