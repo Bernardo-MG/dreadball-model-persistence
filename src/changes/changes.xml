@@ -42,7 +42,8 @@
       </release>
       <release version="0.2.1" date="2015-10-24" description="Corrected class name">
          <action dev="bmg" type="fix">
-            Corrected the name of the JPAUnitTemplate.
+            Corrected the name of the
+            JPAUnitTemplate.
          </action>
       </release>
       <release version="0.2.2" date="2015-10-25" description="Dependencies correction">
@@ -63,26 +64,37 @@
             Changed JPA API to use the JEE one.
          </action>
          <action dev="bmg" type="update">
-            Renamed entities to persistent entities, instead of JPA entities.
+            Renamed entities to persistent entities,
+            instead of JPA entities.
          </action>
       </release>
       <release version="0.3.1" date="2016-06-13" description="Fixed entities">
          <action dev="bmg" type="update">
-            Corrected the PersistentTeamTypeSeason relationships.
+            Corrected the PersistentTeamTypeSeason
+            relationships.
          </action>
       </release>
       <release version="0.4.0" date="2016-06-15" description="Changed units structure">
          <action dev="bmg" type="update">
-            Changed the table structure for units. They now share a common root table.
+            Changed the table structure for units.
+            They now share a common root table.
          </action>
       </release>
       <release version="0.5.0" date="2016-06-19" description="Added MVP flag">
-            <action dev="bmg" type="update">
-                Added the MVP flag to the units.
-            </action>
-            <action dev="bmg" type="update">
-                Removed the MVP availability class.
-            </action>
-        </release>
+         <action dev="bmg" type="update">
+            Added the MVP flag to the units.
+         </action>
+         <action dev="bmg" type="update">
+            Removed the MVP availability class.
+         </action>
+      </release>
+      <release version="0.6.0" date="2016-07-14" description="Updated API">
+         <action dev="bmg" type="update">
+            Updated API.
+         </action>
+         <action dev="bmg" type="update">
+            Changed hashcode and equals methods to avoid using ids.
+         </action>
+      </release>
    </body>
 </document>

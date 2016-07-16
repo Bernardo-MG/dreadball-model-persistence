@@ -16,6 +16,8 @@
 
 package com.wandrell.tabletop.dreadball.model.persistence.availability.faction;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -67,6 +69,22 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
         super();
     }
 
+    @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PersistentTeamTypeSeason other = (PersistentTeamTypeSeason) obj;
+        return Objects.equals(team, other.team)
+                && Objects.equals(seasonNumber, other.seasonNumber);
+    }
+
     /**
      * Returns the ID assigned to this entity.
      * 
@@ -84,6 +102,11 @@ public final class PersistentTeamTypeSeason implements TeamTypeSeason {
     @Override
     public final PersistentTeamType getTeam() {
         return team;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hash(team, seasonNumber);
     }
 
     /**

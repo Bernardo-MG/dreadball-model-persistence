@@ -19,6 +19,7 @@ package com.wandrell.tabletop.dreadball.model.persistence.unit.stats;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -78,6 +79,25 @@ public final class PersistentAttributes implements Attributes, Serializable {
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PersistentAttributes other = (PersistentAttributes) obj;
+        return Objects.equals(armor, other.armor)
+                && Objects.equals(movement, other.movement)
+                && Objects.equals(skill, other.skill)
+                && Objects.equals(speed, other.speed)
+                && Objects.equals(strength, other.strength);
+    }
+
+    @Override
     public final Integer getArmor() {
         return armor;
     }
@@ -100,6 +120,11 @@ public final class PersistentAttributes implements Attributes, Serializable {
     @Override
     public final Integer getStrength() {
         return strength;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hash(armor, movement, skill, speed, strength);
     }
 
     /**

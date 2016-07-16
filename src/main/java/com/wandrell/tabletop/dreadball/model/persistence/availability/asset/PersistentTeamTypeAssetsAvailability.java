@@ -170,7 +170,7 @@ public final class PersistentTeamTypeAssetsAvailability
         final PersistentTeamTypeAssetsAvailability other;
 
         other = (PersistentTeamTypeAssetsAvailability) obj;
-        return Objects.equals(id, other.id);
+        return Objects.equals(teamType, other.teamType);
     }
 
     @Override
@@ -233,28 +233,28 @@ public final class PersistentTeamTypeAssetsAvailability
     }
 
     @Override
+    public final Boolean getStartingWithDefensiveCoachingStaff() {
+        return defCoach;
+    }
+
+    @Override
+    public final Boolean getStartingWithOffensiveCoachingStaff() {
+        return offCoach;
+    }
+
+    @Override
+    public final Boolean getStartingWithSupportCoachingStaff() {
+        return supCoach;
+    }
+
+    @Override
     public final TeamType getTeamType() {
         return teamType;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public final Boolean isStartingWithDefensiveCoachingStaff() {
-        return defCoach;
-    }
-
-    @Override
-    public final Boolean isStartingWithOffensiveCoachingStaff() {
-        return offCoach;
-    }
-
-    @Override
-    public final Boolean isStartingWithSupportCoachingStaff() {
-        return supCoach;
+        return Objects.hash(teamType);
     }
 
     /**

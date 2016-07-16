@@ -19,6 +19,7 @@ package com.wandrell.tabletop.dreadball.model.persistence.unit.component;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -66,6 +67,21 @@ public final class PersistentComponentLocation
         super();
     }
 
+    @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PersistentComponentLocation other = (PersistentComponentLocation) obj;
+        return Objects.equals(name, other.name);
+    }
+
     /**
      * Returns the ID assigned to this entity.
      * 
@@ -78,6 +94,11 @@ public final class PersistentComponentLocation
     @Override
     public final String getName() {
         return name;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hashCode(name);
     }
 
     /**

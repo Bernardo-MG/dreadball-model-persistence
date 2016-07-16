@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -139,6 +140,21 @@ public abstract class AbstractPersistentComponent implements Component {
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AbstractPersistentComponent other = (AbstractPersistentComponent) obj;
+        return Objects.equals(name, other.name);
+    }
+
+    @Override
     public final Collection<Ability> getAbilities() {
         final Collection<Ability> col;
 
@@ -177,6 +193,11 @@ public abstract class AbstractPersistentComponent implements Component {
     @Override
     public final Collection<Role> getRoles() {
         return Collections.unmodifiableCollection(getRolesModifiable());
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hashCode(name);
     }
 
     /**
