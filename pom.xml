@@ -233,7 +233,7 @@
       <hibernate.version>5.1.0.Final</hibernate.version>
       <javaee.api.version>7.0</javaee.api.version>
       <log4j.version>2.6.2</log4j.version>
-      <dreadball.api.version>0.6.0</dreadball.api.version>
+      <dreadball.api.version>0.7.0</dreadball.api.version>
       <testng.version>6.9.10</testng.version>
       <!-- Plugins versions -->
       <plugin.buildhelp.version>1.11</plugin.buildhelp.version>
