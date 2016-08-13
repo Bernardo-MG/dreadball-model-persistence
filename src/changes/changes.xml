@@ -96,5 +96,10 @@
             Changed hashcode and equals methods to avoid using ids.
          </action>
       </release>
+      <release version="0.6.1" date="2016-08-13" description="Removed Java EE dependency">
+         <action dev="bmg" type="update">
+            The JPA API is now taken from the Eclipselink API.
+         </action>
+      </release>
    </body>
 </document>
