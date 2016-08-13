@@ -20,7 +20,7 @@
 
    <groupId>com.wandrell.tabletop.dreadball</groupId>
    <artifactId>dreadball-model-persistence</artifactId>
-   <version>0.6.0</version>
+   <version>0.6.1</version>
    <packaging>jar</packaging>
 
    <name>Dreadball Persistence Model Implementation</name>
@@ -229,14 +229,14 @@
       <!-- Manifest data -->
       <manifest.name>com/wandrell/tabletop/dreadball/model/persistent</manifest.name>
       <!-- Dependencies versions -->
+      <eclipse.jpa.version>2.1.1</eclipse.jpa.version>
       <guava.version>19.0</guava.version>
       <hibernate.version>5.1.0.Final</hibernate.version>
-      <javaee.api.version>7.0</javaee.api.version>
       <log4j.version>2.6.2</log4j.version>
       <dreadball.api.version>0.7.0</dreadball.api.version>
       <testng.version>6.9.10</testng.version>
       <!-- Plugins versions -->
-      <plugin.buildhelp.version>1.11</plugin.buildhelp.version>
+      <plugin.buildhelp.version>1.12</plugin.buildhelp.version>
       <plugin.changes.version>2.12</plugin.changes.version>
       <plugin.processor.version>3.1.0</plugin.processor.version>
       <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
@@ -258,16 +258,16 @@
          <version>${dreadball.api.version}</version>
       </dependency>
       <dependency>
+         <!-- Eclipselink JPA -->
+         <groupId>org.eclipse.persistence</groupId>
+         <artifactId>javax.persistence</artifactId>
+         <version>${eclipse.jpa.version}</version>
+      </dependency>
+      <dependency>
          <!-- Guava -->
          <groupId>com.google.guava</groupId>
          <artifactId>guava</artifactId>
          <version>${guava.version}</version>
-      </dependency>
-      <dependency>
-         <!-- JEE API -->
-         <groupId>javax</groupId>
-         <artifactId>javaee-api</artifactId>
-         <version>${javaee.api.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
