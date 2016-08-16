@@ -101,5 +101,10 @@
             The JPA API is now taken from the Eclipselink API.
          </action>
       </release>
+      <release version="0.6.2" date="2016-08-16" description="API update">
+         <action dev="bmg" type="update">
+            Updated API.
+         </action>
+      </release>
    </body>
 </document>

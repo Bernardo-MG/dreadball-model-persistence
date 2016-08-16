@@ -20,7 +20,7 @@
 
    <groupId>com.wandrell.tabletop.dreadball</groupId>
    <artifactId>dreadball-model-persistence</artifactId>
-   <version>0.6.1</version>
+   <version>0.6.2</version>
    <packaging>jar</packaging>
 
    <name>Dreadball Persistence Model Implementation</name>
@@ -233,7 +233,7 @@
       <guava.version>19.0</guava.version>
       <hibernate.version>5.1.0.Final</hibernate.version>
       <log4j.version>2.6.2</log4j.version>
-      <dreadball.api.version>0.7.0</dreadball.api.version>
+      <dreadball.api.version>0.7.1</dreadball.api.version>
       <testng.version>6.9.10</testng.version>
       <!-- Plugins versions -->
       <plugin.buildhelp.version>1.12</plugin.buildhelp.version>
