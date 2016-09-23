@@ -16,6 +16,7 @@
 
 package com.wandrell.tabletop.dreadball.model.persistence.availability.faction;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -40,20 +41,26 @@ import com.wandrell.tabletop.dreadball.model.persistence.faction.PersistentTeamT
  */
 @Entity(name = "PersistentTeamTypeSeason")
 @Table(name = "team_type_seasons")
-public final class PersistentTeamTypeSeason implements TeamTypeSeason {
+public final class PersistentTeamTypeSeason
+        implements TeamTypeSeason, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long  serialVersionUID = 2784127994970421161L;
 
     /**
      * Availability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer            id           = -1;
+    private Integer            id               = -1;
 
     /**
      * The season in which the team type appeared.
      */
     @Column(name = "season")
-    private Integer            seasonNumber = 0;
+    private Integer            seasonNumber     = 0;
 
     /**
      * The team which appeared in this season.
