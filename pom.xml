@@ -169,7 +169,7 @@
             <site>
                <id>site</id>
                <name>Project Documentation Site</name>
-               <url>ftp://docs.wandrell.com/dreadball-model-persistence</url>
+               <url>scp://docs.wandrell.com:2222/home1/duenco/www/maven/dreadball-model-persistence</url>
             </site>
          </distributionManagement>
       </profile>
@@ -181,7 +181,7 @@
             <site>
                <id>site-development</id>
                <name>Project Development Documentation Site</name>
-               <url>ftp://docs.wandrell.com/dreadball-model-persistence</url>
+               <url>scp://docs.wandrell.com:2222/home1/duenco/www/development/maven/dreadball-model-persistence</url>
             </site>
          </distributionManagement>
       </profile>
