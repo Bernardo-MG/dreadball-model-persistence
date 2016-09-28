@@ -11,7 +11,7 @@
    <parent>
       <groupId>com.wandrell.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.5</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -69,7 +69,7 @@
          <uniqueVersion>false</uniqueVersion>
          <id>snapshots</id>
          <name>Snapshots Repository</name>
-         <url>ftp://maven.wandrell.com</url>
+         <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
       </snapshotRepository>
    </distributionManagement>
 
@@ -241,7 +241,7 @@
       <plugin.processor.version>3.1.0</plugin.processor.version>
       <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
       <!-- Maven Site -->
-      <site.skin.version>0.3.0</site.skin.version>
+      <site.skin.version>0.4.0</site.skin.version>
       <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view</bintrayURL>
       <mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-persistence</mavenURL>
    </properties>

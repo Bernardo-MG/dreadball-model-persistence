@@ -106,5 +106,10 @@
             Updated API.
          </action>
       </release>
+      <release version="0.6.3" date="2016-09-28" description="Site deployment">
+         <action dev="bmg" type="update">
+            Maven site is now deployed through SSH.
+         </action>
+      </release>
    </body>
 </document>
