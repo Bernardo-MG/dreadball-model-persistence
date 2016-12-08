@@ -226,19 +226,21 @@
    <!-- ********************************************** -->
 
    <properties>
+      <!-- Maven version -->
+      <maven.version>3.1.0</maven.version>
       <!-- Manifest data -->
       <manifest.name>com/wandrell/tabletop/dreadball/model/persistent</manifest.name>
       <!-- Dependencies versions -->
       <eclipse.jpa.version>2.1.1</eclipse.jpa.version>
-      <guava.version>19.0</guava.version>
+      <guava.version>20.0</guava.version>
       <hibernate.version>5.1.0.Final</hibernate.version>
-      <log4j.version>2.6.2</log4j.version>
+      <log4j.version>2.7</log4j.version>
       <dreadball.api.version>0.7.1</dreadball.api.version>
-      <testng.version>6.9.10</testng.version>
+      <testng.version>6.10</testng.version>
       <!-- Plugins versions -->
       <plugin.buildhelp.version>1.12</plugin.buildhelp.version>
       <plugin.changes.version>2.12</plugin.changes.version>
-      <plugin.processor.version>3.1.0</plugin.processor.version>
+      <plugin.processor.version>3.2.0</plugin.processor.version>
       <!-- Maven Site -->
       <site.skin.version>0.5.0</site.skin.version>
       <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view</bintrayURL>
