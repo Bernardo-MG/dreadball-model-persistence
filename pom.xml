@@ -4,6 +4,10 @@
 
    <modelVersion>4.0.0</modelVersion>
 
+   <prerequisites>
+      <maven>${maven.version}</maven>
+   </prerequisites>
+
    <!-- ********************************************** -->
    <!-- ****************** BASE POM ****************** -->
    <!-- ********************************************** -->
@@ -238,8 +242,7 @@
       <dreadball.api.version>0.7.1</dreadball.api.version>
       <testng.version>6.10</testng.version>
       <!-- Plugins versions -->
-      <plugin.buildhelp.version>1.12</plugin.buildhelp.version>
-      <plugin.changes.version>2.12</plugin.changes.version>
+      <plugin.buildhelp.version>3.0.0</plugin.buildhelp.version>
       <plugin.processor.version>3.2.0</plugin.processor.version>
       <!-- Maven Site -->
       <site.skin.version>0.5.3</site.skin.version>
