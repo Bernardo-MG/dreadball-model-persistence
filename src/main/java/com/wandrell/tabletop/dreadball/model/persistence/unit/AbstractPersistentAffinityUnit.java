@@ -19,10 +19,10 @@ package com.wandrell.tabletop.dreadball.model.persistence.unit;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -124,7 +124,7 @@ public abstract class AbstractPersistentAffinityUnit
     public final Collection<AffinityGroup> getAffinityGroups() {
         final Collection<AffinityGroup> col;
 
-        col = new LinkedList<>();
+        col = new ArrayList<>();
         for (final AffinityGroup affinity : getAffinityGroupsModifiable()) {
             col.add(affinity);
         }
@@ -146,7 +146,7 @@ public abstract class AbstractPersistentAffinityUnit
     public final Collection<AffinityGroup> getHatedAffinityGroups() {
         final Collection<AffinityGroup> col;
 
-        col = new LinkedList<>();
+        col = new ArrayList<>();
         for (final AffinityGroup affinity : getHatedAffinityGroupsModifiable()) {
             col.add(affinity);
         }

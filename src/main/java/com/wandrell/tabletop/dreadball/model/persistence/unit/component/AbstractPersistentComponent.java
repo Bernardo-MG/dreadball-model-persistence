@@ -19,10 +19,10 @@ package com.wandrell.tabletop.dreadball.model.persistence.unit.component;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -158,7 +158,7 @@ public abstract class AbstractPersistentComponent implements Component {
     public final Collection<Ability> getAbilities() {
         final Collection<Ability> col;
 
-        col = new LinkedList<>();
+        col = new ArrayList<>();
         for (final Ability ability : getAbilitiesModifiable()) {
             col.add(ability);
         }

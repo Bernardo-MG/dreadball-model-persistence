@@ -20,9 +20,9 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -133,7 +133,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
     public final Collection<AffinityGroup> getAffinityGroups() {
         final Collection<AffinityGroup> result;
 
-        result = new LinkedList<>();
+        result = new ArrayList<>();
         for (final AffinityGroup group : getAffinityGroupsModifiable()) {
             result.add(group);
         }

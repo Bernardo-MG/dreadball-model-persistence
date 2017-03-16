@@ -20,10 +20,10 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -142,7 +142,7 @@ public final class PersistentTeamType implements TeamType, Serializable {
     public final Collection<TeamRule> getTeamRules() {
         final Collection<TeamRule> col;
 
-        col = new LinkedList<>();
+        col = new ArrayList<>();
         for (final TeamRule rule : getTeamRulesModifiable()) {
             col.add(rule);
         }
