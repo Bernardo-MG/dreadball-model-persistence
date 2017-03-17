@@ -4,9 +4,7 @@
    <Match>
       <Or>
          <!-- Ignores generated packages -->
-         <Package name="~.*\.generated\.*" />
-         <!-- Ignores metamodel -->
-         <Class name="~.*\..*_" />
+         <Package name="~.*\.generated-sources\.*" />
       </Or>
    </Match>
 </FindBugsFilter>
