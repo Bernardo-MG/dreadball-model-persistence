@@ -106,7 +106,7 @@
             Updated API.
          </action>
       </release>
-      <release version="0.6.3" date="2017-03-16" description="Site deployment">
+      <release version="0.6.3" date="2017-03-17" description="Site deployment">
          <action dev="bmg" type="update">
             Updated API.
          </action>
