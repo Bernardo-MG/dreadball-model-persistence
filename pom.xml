@@ -435,6 +435,10 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <configuration>
+               <links>
+                  <link>http://docs.oracle.com/javaee/7/api/</link>
+                  <link>http://docs.wandrell.com/maven/dreadball-model-api/apidocs/</link>
+               </links>
                <sourceFileExcludes>
                   <!-- Excludes generated code -->
                   <exclude>**/generated-sources/**/*</exclude>
