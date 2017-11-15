@@ -248,7 +248,7 @@
       <plugin.buildhelp.version>3.0.0</plugin.buildhelp.version>
       <plugin.processor.version>3.2.0</plugin.processor.version>
       <!-- Maven Site -->
-      <site.skin.version>0.6.1</site.skin.version>
+      <site.skin.version>1.2.0</site.skin.version>
       <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view</bintrayURL>
       <mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-persistence</mavenURL>
    </properties>
@@ -344,7 +344,7 @@
             <dependencies>
                <dependency>
                   <!-- Docs Maven Skin -->
-                  <groupId>com.wandrell.maven.skins</groupId>
+                  <groupId>com.bernardomg.maven.skins</groupId>
                   <artifactId>docs-maven-skin</artifactId>
                   <version>${site.skin.version}</version>
                </dependency>
