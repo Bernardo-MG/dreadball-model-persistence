@@ -13,16 +13,16 @@
    <!-- ********************************************** -->
 
    <parent>
-      <groupId>com.wandrell.maven</groupId>
+      <groupId>com.bernardomg.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.1.6</version>
+      <version>1.2.0</version>
    </parent>
 
    <!-- ********************************************** -->
    <!-- **************** PROJECT INFO **************** -->
    <!-- ********************************************** -->
 
-   <groupId>com.wandrell.tabletop.dreadball</groupId>
+   <groupId>com.bernardomg.tabletop.dreadball</groupId>
    <artifactId>dreadball-model-persistence</artifactId>
    <version>0.6.4-SNAPSHOT</version>
    <packaging>jar</packaging>
@@ -218,7 +218,7 @@
       <developer>
          <id>bmg</id>
          <name>Bernardo Martínez Garrido</name>
-         <email>programming@wandrell.com</email>
+         <email>programming@bernardomg.com</email>
          <url>https://github.com/Bernardo-MG</url>
          <organization>Bernardo Martínez Garrido</organization>
          <organizationUrl>https://github.com/Bernardo-MG</organizationUrl>
@@ -238,13 +238,13 @@
       <!-- Maven version -->
       <maven.version>3.1.0</maven.version>
       <!-- Manifest data -->
-      <manifest.name>com/wandrell/tabletop/dreadball/model/persistent</manifest.name>
+      <manifest.name>com/bernardomg/tabletop/dreadball/model/persistent</manifest.name>
       <!-- Dependencies versions -->
       <eclipse.jpa.version>2.1.1</eclipse.jpa.version>
       <guava.version>21.0</guava.version>
       <hibernate.version>5.1.0.Final</hibernate.version>
       <log4j.version>2.8</log4j.version>
-      <dreadball.api.version>0.7.3</dreadball.api.version>
+      <dreadball.api.version>0.8.1</dreadball.api.version>
       <testng.version>6.10</testng.version>
       <!-- Plugins versions -->
       <plugin.buildhelp.version>3.0.0</plugin.buildhelp.version>
@@ -252,7 +252,7 @@
       <!-- Maven Site -->
       <site.skin.version>1.2.0</site.skin.version>
       <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view</bintrayURL>
-      <mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-persistence</mavenURL>
+      <mavenURL>http://mvnrepository.com/artifact/com.bernardomg.tabletop.dreadball/dreadball-model-persistence</mavenURL>
    </properties>
 
    <!-- ********************************************** -->
@@ -262,7 +262,7 @@
    <dependencies>
       <dependency>
          <!-- Dreadball Model API -->
-         <groupId>com.wandrell.tabletop.dreadball</groupId>
+         <groupId>com.bernardomg.tabletop.dreadball</groupId>
          <artifactId>dreadball-model-api</artifactId>
          <version>${dreadball.api.version}</version>
       </dependency>
@@ -442,7 +442,7 @@
             <configuration>
                <links>
                   <link>http://docs.oracle.com/javaee/7/api/</link>
-                  <link>http://docs.wandrell.com/maven/dreadball-model-api/apidocs/</link>
+                  <link>http://docs.bernardomg.com/maven/dreadball-model-api/apidocs/</link>
                </links>
                <sourceFileExcludes>
                   <!-- Excludes generated code -->
