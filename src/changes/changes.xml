@@ -114,7 +114,7 @@
             Maven site is now deployed through SSH.
          </action>
       </release>
-      <release version="0.6.4" date="2017-11-13" description="Relocation">
+      <release version="0.6.4" date="2017-11-17" description="Relocation">
          <action dev="bmg" type="add">
             Prepared for relocation.
          </action>
