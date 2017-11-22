@@ -20,7 +20,7 @@
 	</Appenders>
 
 	<Loggers>
-		<Logger name="com.wandrell.tabletop" level="debug" additivity="false">
+		<Logger name="com.bernardomg.tabletop" level="debug" additivity="false">
 			<AppenderRef ref="file" />
 		</Logger>
 

@@ -2,7 +2,7 @@
 
 Persistent implementation of the [Dreadball Model API][dreadball-model-api].
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.wandrell.tabletop.dreadball/dreadball-model-persistence.svg)][maven-repo]
+[![Maven Central](https://img.shields.io/maven-central/v/com.bernardomg.tabletop.dreadball/dreadball-model-persistence.svg)][maven-repo]
 [![Bintray](https://api.bintray.com/packages/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/images/download.svg)][bintray-repo]
 
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
@@ -77,11 +77,11 @@ The project has been released under version 2.0 of the [Apache License][license]
 
 [dreadball-model-api]: https://github.com/Bernardo-MG/dreadball-model-api
 [bintray-repo]: https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view
-[maven-repo]: http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-persistence
+[maven-repo]: http://mvnrepository.com/artifact/com.bernardomg.tabletop.dreadball/dreadball-model-persistence
 [issues]: https://github.com/bernardo-mg/dreadball-model-persistence/issues
-[javadoc-develop]: http://docs.wandrell.com/development/maven/dreadball-model-persistence/apidocs
-[javadoc-release]: http://docs.wandrell.com/maven/dreadball-model-persistence/apidocs
+[javadoc-develop]: http://docs.bernardomg.com/development/maven/dreadball-model-persistence/apidocs
+[javadoc-release]: http://docs.bernardomg.com/maven/dreadball-model-persistence/apidocs
 [license]: http://www.apache.org/licenses/LICENSE-2.0
 [scm]: https://github.com/bernardo-mg/dreadball-model-persistence
-[site-develop]: http://docs.wandrell.com/development/maven/dreadball-model-persistence
-[site-release]: http://docs.wandrell.com/maven/dreadball-model-persistence
+[site-develop]: http://docs.bernardomg.com/development/maven/dreadball-model-persistence
+[site-release]: http://docs.bernardomg.com/maven/dreadball-model-persistence
