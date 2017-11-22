@@ -115,8 +115,13 @@
          </action>
       </release>
       <release version="0.6.4" date="2017-11-17" description="Relocation">
-         <action dev="bmg" type="add">
+         <action dev="bmg" type="update">
             Prepared for relocation.
+         </action>
+      </release>
+      <release version="0.7.0" date="2017-11-22" description="Relocation">
+         <action dev="bmg" type="update">
+            Relocation.
          </action>
       </release>
    </body>
