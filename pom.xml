@@ -24,7 +24,7 @@
 
    <groupId>com.bernardomg.tabletop.dreadball</groupId>
    <artifactId>dreadball-model-persistence</artifactId>
-   <version>0.6.4</version>
+   <version>0.6.4-SNAPSHOT</version>
    <packaging>jar</packaging>
 
    <name>Dreadball Persistence Model Implementation</name>
@@ -247,7 +247,6 @@
       <dreadball.api.version>0.8.1</dreadball.api.version>
       <testng.version>6.10</testng.version>
       <!-- Plugins versions -->
-      <plugin.buildhelp.version>3.0.0</plugin.buildhelp.version>
       <plugin.processor.version>3.2.0</plugin.processor.version>
       <!-- Maven Site -->
       <site.skin.version>1.2.0</site.skin.version>
@@ -357,7 +356,6 @@
             <!-- Adds the generated files to the Maven classpath -->
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>build-helper-maven-plugin</artifactId>
-            <version>${plugin.buildhelp.version}</version>
             <executions>
                <execution>
                   <id>add-source</id>
