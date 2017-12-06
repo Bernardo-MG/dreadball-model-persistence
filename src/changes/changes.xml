@@ -124,5 +124,16 @@
             Relocation.
          </action>
       </release>
+      <release version="0.7.1" date="2017-12-06" description="Relocation">
+         <action dev="bmg" type="update">
+            Removed relocation tags.
+         </action>
+         <action dev="bmg" type="update">
+            Using new JEE JPA API.
+         </action>
+         <action dev="bmg" type="remove">
+            Removed JDK7 support.
+         </action>
+      </release>
    </body>
 </document>
