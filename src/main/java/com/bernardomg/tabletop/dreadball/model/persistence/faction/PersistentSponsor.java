@@ -37,10 +37,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.PersistentAffinityGroup;
-import com.google.common.base.MoreObjects;
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
+import com.bernardomg.tabletop.dreadball.model.persistence.unit.PersistentAffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
+import com.google.common.base.MoreObjects;
 
 /**
  * Sponsor, which are the Dreadball Xtreme (DBX) factions.

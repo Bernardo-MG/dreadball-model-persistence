@@ -28,8 +28,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.google.common.base.MoreObjects;
 import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
+import com.google.common.base.MoreObjects;
 
 /**
  * Affinity group.

@@ -37,15 +37,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.PersistentAffinityGroup;
-import com.google.common.base.MoreObjects;
 import com.bernardomg.tabletop.dreadball.model.availability.unit.SponsorAffinityGroupAvailability;
+import com.bernardomg.tabletop.dreadball.model.persistence.unit.PersistentAffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
+import com.google.common.base.MoreObjects;
 
 /**
  * Affinity group availabilities for a
- * {@link com.bernardomg.tabletop.dreadball.model.faction.Sponsor Sponsors}, to be
- * acquired during their creation.
+ * {@link com.bernardomg.tabletop.dreadball.model.faction.Sponsor Sponsors}, to
+ * be acquired during their creation.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 

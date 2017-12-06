@@ -29,8 +29,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
 import com.bernardomg.tabletop.dreadball.model.availability.faction.TeamTypeSeason;
+import com.bernardomg.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
 
 /**
  * Season in which a team appeared.

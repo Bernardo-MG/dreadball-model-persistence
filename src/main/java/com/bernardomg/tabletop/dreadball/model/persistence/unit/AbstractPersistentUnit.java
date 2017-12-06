@@ -45,11 +45,11 @@ import javax.persistence.Table;
 
 import com.bernardomg.tabletop.dreadball.model.persistence.unit.stats.PersistentAbility;
 import com.bernardomg.tabletop.dreadball.model.persistence.unit.stats.PersistentAttributes;
-import com.google.common.base.MoreObjects;
 import com.bernardomg.tabletop.dreadball.model.unit.Role;
 import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
+import com.google.common.base.MoreObjects;
 
 /**
  * Abstract root for the basic features all the Dreadball units have, no matter
@@ -105,7 +105,7 @@ public abstract class AbstractPersistentUnit implements Unit {
      * Flag indicating if the unit is a MVP.
      */
     @Column(name = "mvp")
-    private Boolean                             mvp          = false;
+    private final Boolean                       mvp          = false;
 
     /**
      * Unit name.
