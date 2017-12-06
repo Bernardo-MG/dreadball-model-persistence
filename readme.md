@@ -40,9 +40,7 @@ It is a Java library, meant to be included as a dependency on any project which 
 ### Prerequisites
 
 The project has been tested on the following Java versions:
-* JDK 7
 * JDK 8
-* OpenJDK 7
 
 All other dependencies are handled through Maven, and noted in the included POM file.
 
