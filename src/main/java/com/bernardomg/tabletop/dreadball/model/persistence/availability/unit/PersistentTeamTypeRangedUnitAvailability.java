@@ -31,12 +31,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.PersistentUnit;
-import com.google.common.base.MoreObjects;
 import com.bernardomg.tabletop.dreadball.model.availability.unit.TeamTypeRangedUnitAvailability;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
+import com.bernardomg.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
+import com.bernardomg.tabletop.dreadball.model.persistence.unit.PersistentUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.Unit;
+import com.google.common.base.MoreObjects;
 
 /**
  * Unit availabilities for a

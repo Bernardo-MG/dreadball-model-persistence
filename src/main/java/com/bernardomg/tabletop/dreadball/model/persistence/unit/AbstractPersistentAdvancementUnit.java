@@ -58,7 +58,7 @@ public abstract class AbstractPersistentAdvancementUnit
      * Unit name.
      */
     @Column(name = "name")
-    private String              name       = "";
+    private final String        name       = "";
 
     /**
      * Unit rank.

@@ -5,10 +5,7 @@
 language: java
 matrix:
   include:
-    # Code artifacts deployed with OpenJDK7
-    - jdk: openjdk7
-      env: DEPLOY=true
-    # Documentation deployed with JDK8
+    # Code artifacts and documentation deployed with JDK8
     - jdk: oraclejdk8
       env: DEPLOY_DOCS=true
 

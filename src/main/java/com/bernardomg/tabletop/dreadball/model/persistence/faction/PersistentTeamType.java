@@ -38,9 +38,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.google.common.base.MoreObjects;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamRule;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
+import com.google.common.base.MoreObjects;
 
 /**
  * Team type, which are the Dreadball Original (DBO) factions. They are also

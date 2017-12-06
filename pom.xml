@@ -24,7 +24,7 @@
 
    <groupId>com.bernardomg.tabletop.dreadball</groupId>
    <artifactId>dreadball-model-persistence</artifactId>
-   <version>0.7.0</version>
+   <version>0.7.1</version>
    <packaging>jar</packaging>
 
    <name>Dreadball Persistence Model Implementation</name>
@@ -63,9 +63,6 @@
    </ciManagement>
 
    <distributionManagement>
-      <relocation>
-         <groupId>com.bernardomg.tabletop.dreadball</groupId>
-      </relocation>
       <repository>
          <uniqueVersion>false</uniqueVersion>
          <id>releases</id>
@@ -235,20 +232,33 @@
    <!-- ********************************************** -->
 
    <properties>
-      <!-- Maven version -->
+      <!-- ============================================== -->
+      <!-- ================ JAVA VERSION ================ -->
+      <!-- ============================================== -->
+      <java.version>1.8</java.version>
+      <!-- ============================================== -->
+      <!-- =============== MAVEN VERSION ================ -->
+      <!-- ============================================== -->
       <maven.version>3.1.0</maven.version>
-      <!-- Manifest data -->
+      <!-- ============================================== -->
+      <!-- =============== MANIFEST DATA ================ -->
+      <!-- ============================================== -->
       <manifest.name>com/bernardomg/tabletop/dreadball/model/persistent</manifest.name>
-      <!-- Dependencies versions -->
-      <eclipse.jpa.version>2.1.1</eclipse.jpa.version>
-      <guava.version>21.0</guava.version>
-      <hibernate.version>5.1.0.Final</hibernate.version>
-      <log4j.version>2.8</log4j.version>
+      <!-- ============================================== -->
+      <!-- =========== DEPENDENCIES VERSIONS ============ -->
+      <!-- ============================================== -->
+      <guava.version>23.5-jre</guava.version>
+      <hibernate.version>5.2.12.Final</hibernate.version>
+      <javaee.api.version>2.2</javaee.api.version>
+      <log4j.version>2.10.0</log4j.version>
       <dreadball.api.version>0.8.1</dreadball.api.version>
-      <testng.version>6.10</testng.version>
-      <!-- Plugins versions -->
-      <plugin.processor.version>3.2.0</plugin.processor.version>
-      <!-- Maven Site -->
+      <!-- ============================================== -->
+      <!-- ============== PLUGINS VERSIONS ============== -->
+      <!-- ============================================== -->
+      <plugin.processor.version>3.3.2</plugin.processor.version>
+      <!-- ============================================== -->
+      <!-- ================= MAVEN SITE ================= -->
+      <!-- ============================================== -->
       <site.skin.version>1.2.0</site.skin.version>
       <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view</bintrayURL>
       <mavenURL>http://mvnrepository.com/artifact/com.bernardomg.tabletop.dreadball/dreadball-model-persistence</mavenURL>
@@ -266,16 +276,19 @@
          <version>${dreadball.api.version}</version>
       </dependency>
       <dependency>
-         <!-- Eclipselink JPA -->
-         <groupId>org.eclipse.persistence</groupId>
-         <artifactId>javax.persistence</artifactId>
-         <version>${eclipse.jpa.version}</version>
-      </dependency>
-      <dependency>
          <!-- Guava -->
          <groupId>com.google.guava</groupId>
          <artifactId>guava</artifactId>
          <version>${guava.version}</version>
+      </dependency>
+      <!-- ============================================== -->
+      <!-- ============== JPA DEPENDENCIES ============== -->
+      <!-- ============================================== -->
+      <dependency>
+         <!-- JPA API -->
+         <groupId>javax.persistence</groupId>
+         <artifactId>javax.persistence-api</artifactId>
+         <version>${javaee.api.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
@@ -292,13 +305,6 @@
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-slf4j-impl</artifactId>
          <version>${log4j.version}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- TestNG -->
-         <groupId>org.testng</groupId>
-         <artifactId>testng</artifactId>
-         <version>${testng.version}</version>
          <scope>test</scope>
       </dependency>
    </dependencies>

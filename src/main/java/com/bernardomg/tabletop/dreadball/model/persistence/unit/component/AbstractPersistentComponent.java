@@ -251,7 +251,7 @@ public abstract class AbstractPersistentComponent implements Component {
         checkArgument(attrs instanceof PersistentAttributes,
                 "The Attributes should be an instanceof JPAAttributes");
 
-        this.attributes = (PersistentAttributes) attrs;
+        attributes = (PersistentAttributes) attrs;
     }
 
     /**
