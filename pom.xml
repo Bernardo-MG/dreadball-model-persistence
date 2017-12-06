@@ -242,12 +242,12 @@
       <!-- Dependencies versions -->
       <eclipse.jpa.version>2.1.1</eclipse.jpa.version>
       <guava.version>21.0</guava.version>
-      <hibernate.version>5.1.0.Final</hibernate.version>
+      <hibernate.version>5.2.12.Final</hibernate.version>
       <log4j.version>2.8</log4j.version>
       <dreadball.api.version>0.8.1</dreadball.api.version>
       <testng.version>6.10</testng.version>
       <!-- Plugins versions -->
-      <plugin.processor.version>3.2.0</plugin.processor.version>
+      <plugin.processor.version>3.3.2</plugin.processor.version>
       <!-- Maven Site -->
       <site.skin.version>1.2.0</site.skin.version>
       <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-persistence/view</bintrayURL>
