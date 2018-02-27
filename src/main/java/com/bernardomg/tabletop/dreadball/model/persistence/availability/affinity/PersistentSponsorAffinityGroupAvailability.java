@@ -17,7 +17,6 @@
 package com.bernardomg.tabletop.dreadball.model.persistence.availability.affinity;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -188,10 +187,11 @@ public final class PersistentSponsorAffinityGroupAvailability
      */
     public final void setAffinityGroups(
             final Collection<PersistentAffinityGroup> affinityGroups) {
-        checkNotNull(affinityGroups, "Received a null pointer as groups");
-
         getAffinityGroupsModifiable().clear();
-        getAffinityGroupsModifiable().addAll(affinityGroups);
+
+        if (affinityGroups != null) {
+            getAffinityGroupsModifiable().addAll(affinityGroups);
+        }
     }
 
     /**
@@ -201,8 +201,6 @@ public final class PersistentSponsorAffinityGroupAvailability
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
@@ -223,8 +221,6 @@ public final class PersistentSponsorAffinityGroupAvailability
      *            the availability's name
      */
     public final void setName(final String nameAva) {
-        checkNotNull(nameAva, "Received a null pointer as name");
-
         name = nameAva;
     }
 

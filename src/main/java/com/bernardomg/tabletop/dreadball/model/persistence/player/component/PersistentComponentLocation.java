@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -108,8 +106,6 @@ public final class PersistentComponentLocation
      *            the component location name
      */
     public final void setComponentLocationName(final String componentName) {
-        checkNotNull(componentName, "Received a null pointer as name");
-
         name = componentName;
     }
 
@@ -120,8 +116,6 @@ public final class PersistentComponentLocation
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 

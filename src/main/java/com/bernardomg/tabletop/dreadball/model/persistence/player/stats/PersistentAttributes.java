@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.player.stats;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -134,8 +132,6 @@ public final class PersistentAttributes implements Attributes, Serializable {
      *            the armor value
      */
     public final void setArmor(final Integer armorValue) {
-        checkNotNull(armorValue, "Received a null pointer as armor");
-
         armor = armorValue;
     }
 
@@ -146,8 +142,6 @@ public final class PersistentAttributes implements Attributes, Serializable {
      *            the movement value
      */
     public final void setMovement(final Integer movementValue) {
-        checkNotNull(movementValue, "Received a null pointer as movement");
-
         movement = movementValue;
     }
 
@@ -158,8 +152,6 @@ public final class PersistentAttributes implements Attributes, Serializable {
      *            the skill value
      */
     public final void setSkill(final Integer skillValue) {
-        checkNotNull(skillValue, "Received a null pointer as skill");
-
         skill = skillValue;
     }
 
@@ -170,8 +162,6 @@ public final class PersistentAttributes implements Attributes, Serializable {
      *            the speed value
      */
     public final void setSpeed(final Integer speedValue) {
-        checkNotNull(speedValue, "Received a null pointer as speed");
-
         speed = speedValue;
     }
 
@@ -182,8 +172,6 @@ public final class PersistentAttributes implements Attributes, Serializable {
      *            the strength value
      */
     public final void setStrength(final Integer strengthValue) {
-        checkNotNull(strengthValue, "Received a null pointer as strength");
-
         strength = strengthValue;
     }
 

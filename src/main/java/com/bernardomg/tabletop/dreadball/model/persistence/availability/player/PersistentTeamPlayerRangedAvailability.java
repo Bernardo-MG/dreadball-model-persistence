@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.availability.player;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -68,13 +66,13 @@ public final class PersistentTeamPlayerRangedAvailability
      * Initial number of players the team has.
      */
     @Column(name = "initial")
-    private Integer              initialNumber          = 0;
+    private Integer              initialNumber    = 0;
 
     /**
      * Maximum number of players the team can have.
      */
     @Column(name = "max")
-    private Integer              maxNumber              = 0;
+    private Integer              maxNumber        = 0;
 
     /**
      * Player for the availability.
@@ -159,8 +157,6 @@ public final class PersistentTeamPlayerRangedAvailability
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
@@ -171,8 +167,6 @@ public final class PersistentTeamPlayerRangedAvailability
      *            the initial number of players for the team type
      */
     public final void setInitialNumber(final Integer initialCount) {
-        checkNotNull(initialCount, "Received a null pointer as initial count");
-
         initialNumber = initialCount;
     }
 
@@ -183,8 +177,6 @@ public final class PersistentTeamPlayerRangedAvailability
      *            the max number of players for the team type
      */
     public final void setMaxNumber(final Integer maxCount) {
-        checkNotNull(maxCount, "Received a null pointer as max count");
-
         maxNumber = maxCount;
     }
 
@@ -195,8 +187,6 @@ public final class PersistentTeamPlayerRangedAvailability
      *            the player for the availability
      */
     public final void setTeamPlayer(final PersistentTeamPlayer playerType) {
-        checkNotNull(playerType, "Received a null pointer as player");
-
         teamPlayer = playerType;
     }
 
@@ -207,8 +197,6 @@ public final class PersistentTeamPlayerRangedAvailability
      *            the team type for the availability
      */
     public final void setTeamType(final PersistentTeamType team) {
-        checkNotNull(team, "Received a null pointer as team type");
-
         teamType = team;
     }
 

@@ -17,7 +17,6 @@
 package com.bernardomg.tabletop.dreadball.model.persistence.faction;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -178,22 +177,20 @@ public final class PersistentSponsor implements Sponsor, Serializable {
     @Override
     public final void
             setAffinityGroups(final Collection<AffinityGroup> affinityGroups) {
-        checkNotNull(affinityGroups, "Received a null pointer as groups");
-
         getAffinityGroupsModifiable().clear();
 
-        for (final AffinityGroup affinity : affinityGroups) {
-            checkArgument(affinity instanceof PersistentAffinityGroup,
-                    "The affinities should be an instance of JPAAffinityGroup");
-            getAffinityGroupsModifiable()
-                    .add((PersistentAffinityGroup) affinity);
+        if (affinityGroups != null) {
+            for (final AffinityGroup affinity : affinityGroups) {
+                checkArgument(affinity instanceof PersistentAffinityGroup,
+                        "The affinities should be an instance of JPAAffinityGroup");
+                getAffinityGroupsModifiable()
+                        .add((PersistentAffinityGroup) affinity);
+            }
         }
     }
 
     @Override
     public final void setCash(final Integer spareCash) {
-        checkNotNull(spareCash, "Received a null pointer as cash");
-
         cash = spareCash;
     }
 
@@ -204,8 +201,6 @@ public final class PersistentSponsor implements Sponsor, Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
@@ -216,8 +211,6 @@ public final class PersistentSponsor implements Sponsor, Serializable {
 
     @Override
     public final void setRank(final Integer sponsorRank) {
-        checkNotNull(sponsorRank, "Received a null pointer as rank");
-
         rank = sponsorRank;
     }
 
@@ -228,8 +221,6 @@ public final class PersistentSponsor implements Sponsor, Serializable {
      *            the sponsor name
      */
     public final void setSponsorName(final String sponsorName) {
-        checkNotNull(sponsorName, "Received a null pointer as name");
-
         name = sponsorName;
     }
 

@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -114,8 +112,6 @@ public final class PersistentAffinityGroup
      *            the affinity group's name
      */
     public final void setAffinityGroupName(final String nameAffinity) {
-        checkNotNull(nameAffinity, "Received a null pointer as name");
-
         name = nameAffinity;
     }
 
@@ -126,8 +122,6 @@ public final class PersistentAffinityGroup
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 

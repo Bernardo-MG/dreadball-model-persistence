@@ -17,7 +17,6 @@
 package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -230,13 +229,13 @@ public abstract class AbstractPersistentComponent implements Component {
      *            the abilities to set on the component
      */
     public final void setAbilities(final Collection<Ability> compAbilities) {
-        checkNotNull(compAbilities, "Received a null pointer as abilities");
+        if (compAbilities != null) {
+            for (final Ability ability : compAbilities) {
+                checkArgument(ability instanceof PersistentAbility,
+                        "All the abilities should be an instanceof JPAAbility");
 
-        for (final Ability ability : compAbilities) {
-            checkArgument(ability instanceof PersistentAbility,
-                    "All the abilities should be an instanceof JPAAbility");
-
-            getAbilitiesModifiable().add((PersistentAbility) ability);
+                getAbilitiesModifiable().add((PersistentAbility) ability);
+            }
         }
     }
 
@@ -247,7 +246,6 @@ public abstract class AbstractPersistentComponent implements Component {
      *            the attributes bonus for the component
      */
     public final void setAttributes(final Attributes attrs) {
-        checkNotNull(attrs, "Received a null pointer as attributes");
         checkArgument(attrs instanceof PersistentAttributes,
                 "The Attributes should be an instanceof JPAAttributes");
 
@@ -261,8 +259,6 @@ public abstract class AbstractPersistentComponent implements Component {
      *            the component name
      */
     public final void setComponentName(final String componentName) {
-        checkNotNull(componentName, "Received a null pointer as name");
-
         name = componentName;
     }
 
@@ -273,8 +269,6 @@ public abstract class AbstractPersistentComponent implements Component {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
@@ -286,9 +280,6 @@ public abstract class AbstractPersistentComponent implements Component {
      */
     public final void
             setLocation(final PersistentComponentLocation compLocation) {
-        checkNotNull(compLocation,
-                "Received a null pointer as component location");
-
         location = compLocation;
     }
 
@@ -302,11 +293,11 @@ public abstract class AbstractPersistentComponent implements Component {
      *            the team position roles to set on the component
      */
     public final void setRole(final Collection<Role> comPositions) {
-        checkNotNull(comPositions,
-                "Received a null pointer as team position roles");
-
         getRolesModifiable().clear();
-        getRolesModifiable().addAll(comPositions);
+
+        if (comPositions != null) {
+            getRolesModifiable().addAll(comPositions);
+        }
     }
 
     /**

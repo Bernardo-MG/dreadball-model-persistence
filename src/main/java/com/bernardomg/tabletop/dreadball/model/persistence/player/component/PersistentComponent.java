@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -66,8 +64,6 @@ public final class PersistentComponent extends AbstractPersistentComponent
      *            the component cost
      */
     public final void setCost(final Integer costComponent) {
-        checkNotNull(costComponent, "Received a null pointer as cost");
-
         cost = costComponent;
     }
 

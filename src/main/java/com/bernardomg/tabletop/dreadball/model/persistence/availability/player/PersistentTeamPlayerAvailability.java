@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.availability.player;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -135,8 +133,6 @@ public final class PersistentTeamPlayerAvailability
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
@@ -147,8 +143,6 @@ public final class PersistentTeamPlayerAvailability
      *            the player for the availability
      */
     public final void setTeamPlayer(final PersistentTeamPlayer playerType) {
-        checkNotNull(playerType, "Received a null pointer as player");
-
         teamPlayer = playerType;
     }
 
@@ -159,8 +153,6 @@ public final class PersistentTeamPlayerAvailability
      *            the team type for the availability
      */
     public final void setTeamType(final PersistentTeamType team) {
-        checkNotNull(team, "Received a null pointer as team type");
-
         teamType = team;
     }
 

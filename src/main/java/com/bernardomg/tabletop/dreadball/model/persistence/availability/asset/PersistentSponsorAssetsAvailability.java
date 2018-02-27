@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.availability.asset;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -90,7 +88,7 @@ public final class PersistentSponsorAssetsAvailability
      * Cost of a special movement card.
      */
     @Column(name = "cost_special_move")
-    private Integer           specialMoveCardCost       = 0;
+    private Integer           specialMoveCardCost   = 0;
 
     /**
      * Cost of a wager.
@@ -181,8 +179,6 @@ public final class PersistentSponsorAssetsAvailability
      *            the cost of an affinity group
      */
     public final void setAffinityGroupCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         affinityCost = cost;
     }
 
@@ -193,8 +189,6 @@ public final class PersistentSponsorAssetsAvailability
      *            the cost of a cheerleader
      */
     public final void setCheerleaderCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         cheerleaderCost = cost;
     }
 
@@ -205,8 +199,6 @@ public final class PersistentSponsorAssetsAvailability
      *            the cost of a coaching die
      */
     public final void setCoachingDieCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         diceCost = cost;
     }
 
@@ -217,8 +209,6 @@ public final class PersistentSponsorAssetsAvailability
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as id");
-
         id = identifier;
     }
 
@@ -229,8 +219,6 @@ public final class PersistentSponsorAssetsAvailability
      *            the cost of a medibot
      */
     public final void setMediBotCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         medibotCost = cost;
     }
 
@@ -241,8 +229,6 @@ public final class PersistentSponsorAssetsAvailability
      *            the cost of a sabotage card
      */
     public final void setSabotageCardCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         nastySurpriseCardCost = cost;
     }
 
@@ -253,8 +239,6 @@ public final class PersistentSponsorAssetsAvailability
      *            the cost of a special movement card
      */
     public final void setSpecialMovementCardCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         specialMoveCardCost = cost;
     }
 
@@ -265,8 +249,6 @@ public final class PersistentSponsorAssetsAvailability
      *            the cost of a wager
      */
     public final void setWagerCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         wagerCost = cost;
     }
 

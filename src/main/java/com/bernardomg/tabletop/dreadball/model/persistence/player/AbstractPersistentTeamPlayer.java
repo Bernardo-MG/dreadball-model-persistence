@@ -17,7 +17,6 @@
 package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -118,7 +117,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      */
     @Column(name = "position")
     @Enumerated(EnumType.STRING)
-    private Role                                role     = Role.JACK;
+    private Role                                role         = Role.JACK;
 
     /**
      * Player template name.
@@ -140,7 +139,6 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      *            the ability to add
      */
     public final void addAbility(final Ability ability) {
-        checkNotNull(ability, "Received a null pointer as ability");
         checkArgument(ability instanceof PersistentAbility,
                 "The Ability should be an instanceof JPAAbility");
 
@@ -249,15 +247,15 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      *            the abilities to set on the player
      */
     public final void setAbilities(final Collection<Ability> playerAbilities) {
-        checkNotNull(playerAbilities, "Received a null pointer as abilities");
-
         getAbilitiesModifiable().clear();
 
-        for (final Ability ability : playerAbilities) {
-            checkArgument(ability instanceof PersistentAbility,
-                    "All the abilities should be an instanceof JPAAbility");
+        if (playerAbilities != null) {
+            for (final Ability ability : playerAbilities) {
+                checkArgument(ability instanceof PersistentAbility,
+                        "All the abilities should be an instanceof JPAAbility");
 
-            getAbilitiesModifiable().add((PersistentAbility) ability);
+                getAbilitiesModifiable().add((PersistentAbility) ability);
+            }
         }
     }
 
@@ -268,7 +266,6 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      *            the attributes for the player
      */
     public final void setAttributes(final Attributes attrs) {
-        checkNotNull(attrs, "Received a null pointer as attributes");
         checkArgument(attrs instanceof PersistentAttributes,
                 "The Attributes should be an instanceof JPAAttributes");
 
@@ -282,8 +279,6 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      *            the player's cost
      */
     public final void setCost(final Integer costPlayer) {
-        checkNotNull(costPlayer, "Received a null pointer as cost");
-
         cost = costPlayer;
     }
 
@@ -294,8 +289,6 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      *            the flag indicating if the player is a giant
      */
     public final void setGiant(final Boolean giantFlag) {
-        checkNotNull(giantFlag, "Received a null pointer as giant flag");
-
         giant = giantFlag;
     }
 
@@ -306,8 +299,6 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
@@ -328,8 +319,6 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      *            the team position for the player
      */
     public final void setRole(final Role pos) {
-        checkNotNull(pos, "Received a null pointer as team position role");
-
         role = pos;
     }
 
@@ -340,8 +329,6 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      *            the template name
      */
     public final void setTemplateName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
-
         templateName = name;
     }
 

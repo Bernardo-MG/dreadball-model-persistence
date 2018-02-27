@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.availability.asset;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -52,92 +50,92 @@ public final class PersistentTeamTypeAssetsAvailability
     /**
      * Serialization ID.
      */
-    private static final long  serialVersionUID = -5016337593543278027L;
+    private static final long  serialVersionUID                   = -5016337593543278027L;
 
     /**
      * Cheerleader cost.
      */
     @Column(name = "cost_cheerleader")
-    private Integer            cheerleaderCost  = 0;
+    private Integer            cheerleaderCost                    = 0;
 
     /**
      * Initial number of cheerleaders for the team.
      */
     @Column(name = "initial_cheerleader")
-    private Integer            cheerleaderInitial     = 0;
+    private Integer            cheerleaderInitial                 = 0;
 
     /**
      * Maximum number of cheerleaders for the team.
      */
     @Column(name = "max_cheerleader")
-    private Integer            cheerleaderMax   = 0;
+    private Integer            cheerleaderMax                     = 0;
 
     /**
      * Coaching dice cost.
      */
     @Column(name = "cost_dice")
-    private Integer            coachingDieCost         = 0;
+    private Integer            coachingDieCost                    = 0;
 
     /**
      * Initial number of coaching dice for the team.
      */
     @Column(name = "initial_dice")
-    private Integer            coachingDieInitial      = 0;
+    private Integer            coachingDieInitial                 = 0;
 
     /**
      * Maximum number of Coaching dice for the team.
      */
     @Column(name = "max_dice")
-    private Integer            coachingDieMax          = 0;
+    private Integer            coachingDieMax                     = 0;
 
     /**
      * Coaching staff cost.
      */
     @Column(name = "cost_coaching")
-    private Integer            coachingStaffCost     = 0;
+    private Integer            coachingStaffCost                  = 0;
 
     /**
      * Dreadball card cost.
      */
     @Column(name = "cost_card")
-    private Integer            dreadballCardCost         = 0;
+    private Integer            dreadballCardCost                  = 0;
 
     /**
      * Initial number of Dreadball cards for the team.
      */
     @Column(name = "initial_card")
-    private Integer            dreadballCardInitial      = 0;
+    private Integer            dreadballCardInitial               = 0;
 
     /**
      * Maximum number of Dreadball cards for the team.
      */
     @Column(name = "max_card")
-    private Integer            dreadballCardMax          = 0;
+    private Integer            dreadballCardMax                   = 0;
 
     /**
      * Availability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer            id               = -1;
+    private Integer            id                                 = -1;
 
     /**
      * Flag indicating if the team begins with a defensive coaching staff.
      */
     @Column(name = "def_coach")
-    private Boolean            startingWithDefensiveCoachingStaff         = false;
+    private Boolean            startingWithDefensiveCoachingStaff = false;
 
     /**
      * Flag indicating if the team begins with an offensive coaching staff.
      */
     @Column(name = "off_coach")
-    private Boolean            startingWithOffensiveCoachingStaff         = false;
+    private Boolean            startingWithOffensiveCoachingStaff = false;
 
     /**
      * Flag indicating if the team begins with a support coaching staff.
      */
     @Column(name = "sup_coach")
-    private Boolean            startingWithSupportCoachingStaff         = false;
+    private Boolean            startingWithSupportCoachingStaff   = false;
 
     /**
      * Team type for the availability.
@@ -264,8 +262,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the cheerleaders cost
      */
     public final void setCheerleadersCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         cheerleaderCost = cost;
     }
 
@@ -276,8 +272,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the initial number of cheerleaders
      */
     public final void setCheerleadersInitial(final Integer initial) {
-        checkNotNull(initial, "Received a null pointer as initial count");
-
         cheerleaderInitial = initial;
     }
 
@@ -288,8 +282,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the maximum number of cheerleaders
      */
     public final void setCheerleadersMax(final Integer max) {
-        checkNotNull(max, "Received a null pointer as max count");
-
         cheerleaderMax = max;
     }
 
@@ -300,8 +292,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the coaching dice cost
      */
     public final void setCoachingDieCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         coachingDieCost = cost;
     }
 
@@ -312,8 +302,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the initial number of coaching dice
      */
     public final void setCoachingDieInitial(final Integer initial) {
-        checkNotNull(initial, "Received a null pointer as initial count");
-
         coachingDieInitial = initial;
     }
 
@@ -324,8 +312,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the maximum number of coaching dice
      */
     public final void setCoachingDieMax(final Integer max) {
-        checkNotNull(max, "Received a null pointer as max count");
-
         coachingDieMax = max;
     }
 
@@ -336,8 +322,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the coaching staff cost
      */
     public final void setCoachingStaffCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         coachingStaffCost = cost;
     }
 
@@ -348,8 +332,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the Dreadball cards cost
      */
     public final void setDreadballCardCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         dreadballCardCost = cost;
     }
 
@@ -360,8 +342,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the initial number of Dreadball cards
      */
     public final void setDreadballCardInitial(final Integer initial) {
-        checkNotNull(initial, "Received a null pointer as initial count");
-
         dreadballCardInitial = initial;
     }
 
@@ -372,8 +352,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the maximum number of Dreadball cards
      */
     public final void setDreadballCardMax(final Integer max) {
-        checkNotNull(max, "Received a null pointer as max count");
-
         dreadballCardMax = max;
     }
 
@@ -384,8 +362,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as id");
-
         id = identifier;
     }
 
@@ -399,8 +375,6 @@ public final class PersistentTeamTypeAssetsAvailability
      */
     public final void
             setStartingWithDefensiveCoachingStaff(final Boolean coach) {
-        checkNotNull(coach, "Received a null pointer as coach flag");
-
         startingWithDefensiveCoachingStaff = coach;
     }
 
@@ -414,8 +388,6 @@ public final class PersistentTeamTypeAssetsAvailability
      */
     public final void
             setStartingWithOffensiveCoachingStaff(final Boolean coach) {
-        checkNotNull(coach, "Received a null pointer as coach flag");
-
         startingWithOffensiveCoachingStaff = coach;
     }
 
@@ -428,8 +400,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            staff
      */
     public final void setStartingWithSupportCoachingStaff(final Boolean coach) {
-        checkNotNull(coach, "Received a null pointer as coach flag");
-
         startingWithSupportCoachingStaff = coach;
     }
 
@@ -440,8 +410,6 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the availability's team type
      */
     public final void setTeamType(final PersistentTeamType team) {
-        checkNotNull(team, "Received a null pointer as team type");
-
         teamType = team;
     }
 

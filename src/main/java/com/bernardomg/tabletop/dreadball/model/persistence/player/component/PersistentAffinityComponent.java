@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -97,8 +95,6 @@ public final class PersistentAffinityComponent extends
      *            the ally cost
      */
     public final void setAllyCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         allyCost = cost;
     }
 
@@ -109,8 +105,6 @@ public final class PersistentAffinityComponent extends
      *            the friend cost
      */
     public final void setFriendCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         friendCost = cost;
     }
 
@@ -121,8 +115,6 @@ public final class PersistentAffinityComponent extends
      *            the stranger cost
      */
     public final void setStrangerCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
         strangerCost = cost;
     }
 

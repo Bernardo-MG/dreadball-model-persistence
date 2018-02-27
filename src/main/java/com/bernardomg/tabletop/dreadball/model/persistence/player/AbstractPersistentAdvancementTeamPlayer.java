@@ -17,7 +17,6 @@
 package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
@@ -52,13 +51,13 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
      * Player name.
      */
     @Column(name = "name")
-    private final String        name       = "";
+    private final String        name              = "";
 
     /**
      * Player rank.
      */
     @Column(name = "rank")
-    private Integer             rank       = 0;
+    private Integer             rank              = 0;
 
     /**
      * Player experience.
@@ -96,7 +95,6 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
 
     @Override
     public final void setGraftedImplant(final Component graft) {
-        checkNotNull(graft, "Received a null pointer as implant");
         checkArgument(graft instanceof PersistentComponent,
                 "The implant should be an instance of JPAComponent");
 
@@ -105,15 +103,11 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
 
     @Override
     public final void setRank(final Integer rankPlayer) {
-        checkNotNull(rankPlayer, "Received a null pointer as rank");
-
         rank = rankPlayer;
     }
 
     @Override
     public final void setUnspentExperience(final Integer exp) {
-        checkNotNull(exp, "Received a null pointer as experience");
-
         unspentExperience = exp;
     }
 

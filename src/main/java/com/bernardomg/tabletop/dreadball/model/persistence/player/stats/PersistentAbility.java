@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.persistence.player.stats;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -113,8 +111,6 @@ public final class PersistentAbility implements Ability, Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
@@ -125,8 +121,6 @@ public final class PersistentAbility implements Ability, Serializable {
      *            the ability name
      */
     public final void setName(final String nameAbility) {
-        checkNotNull(nameAbility, "Received a null pointer as name");
-
         name = nameAbility;
     }
 

@@ -17,7 +17,6 @@
 package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -82,8 +81,6 @@ public final class PersistentCompositeAdvancementTeamPlayer
      *            the component to add
      */
     public final void addComponent(final PersistentComponent component) {
-        checkNotNull(component, "Received a null pointer as component");
-
         getComponentsModifiable().add(component);
     }
 
@@ -120,8 +117,6 @@ public final class PersistentCompositeAdvancementTeamPlayer
      */
     public final void
             setComponents(final Collection<Component> playerComponents) {
-        checkNotNull(playerComponents, "Received a null pointer as components");
-
         getComponentsModifiable().clear();
 
         for (final Component component : playerComponents) {

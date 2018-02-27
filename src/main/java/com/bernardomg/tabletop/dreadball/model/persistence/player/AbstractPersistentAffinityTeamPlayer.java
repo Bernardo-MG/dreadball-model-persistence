@@ -17,7 +17,6 @@
 package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -101,8 +100,6 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      *            affinity group to add
      */
     public final void addAffinityGroup(final PersistentAffinityGroup affinity) {
-        checkNotNull(affinity, "Received a null pointer as the affinity group");
-
         getAffinityGroupsModifiable().add(affinity);
     }
 
@@ -114,9 +111,6 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      */
     public final void
             addHatedAffinityGroup(final PersistentAffinityGroup affinity) {
-        checkNotNull(affinity,
-                "Received a null pointer as the hated affinity group");
-
         getHatedAffinityGroupsModifiable().add(affinity);
     }
 
@@ -166,8 +160,6 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      *            the affinity group to remove
      */
     public final void removeAffinityGroup(final AffinityGroup affinity) {
-        checkNotNull(affinity, "Received a null pointer as the affinity group");
-
         getAffinityGroupsModifiable().remove(affinity);
     }
 
@@ -178,9 +170,6 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      *            the hated affinity group to remove
      */
     public final void removeHatedAffinityGroup(final AffinityGroup affinity) {
-        checkNotNull(affinity,
-                "Received a null pointer as the hated affinity group");
-
         getHatedAffinityGroupsModifiable().remove(affinity);
     }
 
@@ -195,16 +184,16 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      */
     public final void
             setAffinityGroups(final Collection<AffinityGroup> affinityGroups) {
-        checkNotNull(affinityGroups, "Received a null pointer as affinities");
-
         getAffinityGroupsModifiable().clear();
 
-        for (final AffinityGroup affinity : affinityGroups) {
-            checkArgument(affinity instanceof PersistentAffinityGroup,
-                    "All the affinities should be an instanceof JPAAffinityGroup");
+        if (affinityGroups != null) {
+            for (final AffinityGroup affinity : affinityGroups) {
+                checkArgument(affinity instanceof PersistentAffinityGroup,
+                        "All the affinities should be an instanceof JPAAffinityGroup");
 
-            getAffinityGroupsModifiable()
-                    .add((PersistentAffinityGroup) affinity);
+                getAffinityGroupsModifiable()
+                        .add((PersistentAffinityGroup) affinity);
+            }
         }
     }
 
@@ -215,8 +204,6 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      *            the player's ally cost
      */
     public final void setAllyCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as ally cost");
-
         allyCost = cost;
     }
 
@@ -227,8 +214,6 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      *            the player's friend cost
      */
     public final void setFriendCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as friend cost");
-
         friendCost = cost;
     }
 
@@ -243,17 +228,16 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      */
     public final void setHatedAffinityGroups(
             final Collection<AffinityGroup> affinityGroups) {
-        checkNotNull(affinityGroups,
-                "Received a null pointer as hated affinities");
-
         getHatedAffinityGroupsModifiable().clear();
 
-        for (final AffinityGroup affinity : affinityGroups) {
-            checkArgument(affinity instanceof PersistentAffinityGroup,
-                    "All the affinities should be an instanceof JPAAffinityGroup");
+        if (affinityGroups != null) {
+            for (final AffinityGroup affinity : affinityGroups) {
+                checkArgument(affinity instanceof PersistentAffinityGroup,
+                        "All the affinities should be an instanceof JPAAffinityGroup");
 
-            getHatedAffinityGroupsModifiable()
-                    .add((PersistentAffinityGroup) affinity);
+                getHatedAffinityGroupsModifiable()
+                        .add((PersistentAffinityGroup) affinity);
+            }
         }
     }
 
@@ -264,8 +248,6 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      *            the player's stranger cost
      */
     public final void setStrangerCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as stranger cost");
-
         strangerCost = cost;
     }
 
