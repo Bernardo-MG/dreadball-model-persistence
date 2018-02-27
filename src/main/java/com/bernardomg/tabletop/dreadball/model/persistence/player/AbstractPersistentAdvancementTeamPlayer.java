@@ -42,17 +42,11 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
         extends AbstractPersistentTeamPlayer implements AdvancementTeamPlayer {
 
     /**
-     * Player experience.
-     */
-    @Column(name = "experience")
-    private Integer             experience = 0;
-
-    /**
      * Player grafted implant.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grafted_implant_id")
-    private PersistentComponent implant;
+    private PersistentComponent graftedImplant;
 
     /**
      * Player name.
@@ -67,6 +61,12 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
     private Integer             rank       = 0;
 
     /**
+     * Player experience.
+     */
+    @Column(name = "experience")
+    private Integer             unspentExperience = 0;
+
+    /**
      * Default constructor.
      */
     public AbstractPersistentAdvancementTeamPlayer() {
@@ -75,7 +75,7 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
 
     @Override
     public final Component getGraftedImplant() {
-        return implant;
+        return graftedImplant;
     }
 
     @Override
@@ -85,7 +85,7 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
 
     @Override
     public final Integer getUnspentExperience() {
-        return experience;
+        return unspentExperience;
     }
 
     @Override
@@ -100,7 +100,7 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
         checkArgument(graft instanceof PersistentComponent,
                 "The implant should be an instance of JPAComponent");
 
-        implant = (PersistentComponent) graft;
+        graftedImplant = (PersistentComponent) graft;
     }
 
     @Override
@@ -114,7 +114,7 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
     public final void setUnspentExperience(final Integer exp) {
         checkNotNull(exp, "Received a null pointer as experience");
 
-        experience = exp;
+        unspentExperience = exp;
     }
 
 }

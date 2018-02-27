@@ -53,37 +53,19 @@ public final class PersistentSponsorAssetsAvailability
      * Cost of an affinity group.
      */
     @Column(name = "cost_affinity")
-    private Integer           costAffinity          = 0;
+    private Integer           affinityCost          = 0;
 
     /**
      * Cost of a cheerleader.
      */
     @Column(name = "cost_cheerleader")
-    private Integer           costCheerleader       = 0;
+    private Integer           cheerleaderCost       = 0;
 
     /**
      * Cost of a coaching dice.
      */
     @Column(name = "cost_dice")
-    private Integer           costDice              = 0;
-
-    /**
-     * Cost of a medibot.
-     */
-    @Column(name = "cost_medibot")
-    private Integer           costMedibot           = 0;
-
-    /**
-     * Cost of a special movement card.
-     */
-    @Column(name = "cost_special_move")
-    private Integer           costSpecialMove       = 0;
-
-    /**
-     * Cost of a wager.
-     */
-    @Column(name = "cost_wager")
-    private Integer           costWager             = 0;
+    private Integer           diceCost              = 0;
 
     /**
      * Availability's primary key.
@@ -93,10 +75,28 @@ public final class PersistentSponsorAssetsAvailability
     private Integer           id                    = -1;
 
     /**
+     * Cost of a medibot.
+     */
+    @Column(name = "cost_medibot")
+    private Integer           medibotCost           = 0;
+
+    /**
      * Cost of a sabotage card.
      */
     @Column(name = "cost_sabotage")
     private Integer           nastySurpriseCardCost = 0;
+
+    /**
+     * Cost of a special movement card.
+     */
+    @Column(name = "cost_special_move")
+    private Integer           specialMoveCardCost       = 0;
+
+    /**
+     * Cost of a wager.
+     */
+    @Column(name = "cost_wager")
+    private Integer           wagerCost             = 0;
 
     /**
      * Default constructor.
@@ -127,17 +127,17 @@ public final class PersistentSponsorAssetsAvailability
 
     @Override
     public final Integer getAffinityGroupCost() {
-        return costAffinity;
+        return affinityCost;
     }
 
     @Override
     public final Integer getCheerleaderCost() {
-        return costCheerleader;
+        return cheerleaderCost;
     }
 
     @Override
     public final Integer getCoachingDieCost() {
-        return costDice;
+        return diceCost;
     }
 
     /**
@@ -151,7 +151,7 @@ public final class PersistentSponsorAssetsAvailability
 
     @Override
     public final Integer getMediBotCost() {
-        return costMedibot;
+        return medibotCost;
     }
 
     @Override
@@ -161,12 +161,12 @@ public final class PersistentSponsorAssetsAvailability
 
     @Override
     public final Integer getSpecialMoveCardCost() {
-        return costSpecialMove;
+        return specialMoveCardCost;
     }
 
     @Override
     public final Integer getWagerCost() {
-        return costWager;
+        return wagerCost;
     }
 
     @Override
@@ -183,7 +183,7 @@ public final class PersistentSponsorAssetsAvailability
     public final void setAffinityGroupCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costAffinity = cost;
+        affinityCost = cost;
     }
 
     /**
@@ -195,7 +195,7 @@ public final class PersistentSponsorAssetsAvailability
     public final void setCheerleaderCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costCheerleader = cost;
+        cheerleaderCost = cost;
     }
 
     /**
@@ -207,7 +207,7 @@ public final class PersistentSponsorAssetsAvailability
     public final void setCoachingDieCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costDice = cost;
+        diceCost = cost;
     }
 
     /**
@@ -231,7 +231,7 @@ public final class PersistentSponsorAssetsAvailability
     public final void setMediBotCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costMedibot = cost;
+        medibotCost = cost;
     }
 
     /**
@@ -255,7 +255,7 @@ public final class PersistentSponsorAssetsAvailability
     public final void setSpecialMovementCardCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costSpecialMove = cost;
+        specialMoveCardCost = cost;
     }
 
     /**
@@ -267,7 +267,7 @@ public final class PersistentSponsorAssetsAvailability
     public final void setWagerCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costWager = cost;
+        wagerCost = cost;
     }
 
     @Override

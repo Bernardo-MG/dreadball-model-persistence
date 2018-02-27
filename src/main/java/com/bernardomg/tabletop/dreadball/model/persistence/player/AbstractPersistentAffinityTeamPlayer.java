@@ -62,19 +62,13 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      * Ally cost.
      */
     @Column(name = "cost_ally")
-    private Integer                                   costAlly     = 0;
+    private Integer                                   allyCost     = 0;
 
     /**
      * Friend cost.
      */
     @Column(name = "cost_friend")
-    private Integer                                   costFriend   = 0;
-
-    /**
-     * Stranger cost.
-     */
-    @Column(name = "cost_stranger")
-    private Integer                                   costStranger = 0;
+    private Integer                                   friendCost   = 0;
 
     /**
      * Player hated affinities.
@@ -86,6 +80,12 @@ public abstract class AbstractPersistentAffinityTeamPlayer
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
     private final Collection<PersistentAffinityGroup> hated        = new LinkedHashSet<PersistentAffinityGroup>();
+
+    /**
+     * Stranger cost.
+     */
+    @Column(name = "cost_stranger")
+    private Integer                                   strangerCost = 0;
 
     /**
      * Default constructor.
@@ -134,12 +134,12 @@ public abstract class AbstractPersistentAffinityTeamPlayer
 
     @Override
     public final Integer getAllyCost() {
-        return costAlly;
+        return allyCost;
     }
 
     @Override
     public final Integer getFriendCost() {
-        return costFriend;
+        return friendCost;
     }
 
     @Override
@@ -156,7 +156,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
 
     @Override
     public final Integer getStrangerCost() {
-        return costStranger;
+        return strangerCost;
     }
 
     /**
@@ -217,7 +217,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
     public final void setAllyCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as ally cost");
 
-        costAlly = cost;
+        allyCost = cost;
     }
 
     /**
@@ -229,7 +229,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
     public final void setFriendCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as friend cost");
 
-        costFriend = cost;
+        friendCost = cost;
     }
 
     /**
@@ -266,7 +266,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
     public final void setStrangerCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as stranger cost");
 
-        costStranger = cost;
+        strangerCost = cost;
     }
 
     /**

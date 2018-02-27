@@ -67,7 +67,7 @@ public final class PersistentTeamPlayerAvailability
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "player_id")
-    private PersistentTeamPlayer player;
+    private PersistentTeamPlayer teamPlayer;
 
     /**
      * Team type for the availability.
@@ -101,7 +101,7 @@ public final class PersistentTeamPlayerAvailability
 
         other = (PersistentTeamPlayerAvailability) obj;
         return Objects.equals(teamType, other.teamType)
-                && Objects.equals(player, other.player);
+                && Objects.equals(teamPlayer, other.teamPlayer);
     }
 
     /**
@@ -115,7 +115,7 @@ public final class PersistentTeamPlayerAvailability
 
     @Override
     public final TeamPlayer getTeamPlayer() {
-        return player;
+        return teamPlayer;
     }
 
     @Override
@@ -125,7 +125,7 @@ public final class PersistentTeamPlayerAvailability
 
     @Override
     public final int hashCode() {
-        return Objects.hash(player, teamType);
+        return Objects.hash(teamPlayer, teamType);
     }
 
     /**
@@ -146,10 +146,10 @@ public final class PersistentTeamPlayerAvailability
      * @param playerType
      *            the player for the availability
      */
-    public final void setPlayer(final PersistentTeamPlayer playerType) {
+    public final void setTeamPlayer(final PersistentTeamPlayer playerType) {
         checkNotNull(playerType, "Received a null pointer as player");
 
-        player = playerType;
+        teamPlayer = playerType;
     }
 
     /**
@@ -167,7 +167,7 @@ public final class PersistentTeamPlayerAvailability
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("team", teamType)
-                .add("player", player).toString();
+                .add("player", teamPlayer).toString();
     }
 
 }

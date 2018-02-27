@@ -68,20 +68,20 @@ public final class PersistentTeamPlayerRangedAvailability
      * Initial number of players the team has.
      */
     @Column(name = "initial")
-    private Integer              initial          = 0;
+    private Integer              initialNumber          = 0;
 
     /**
      * Maximum number of players the team can have.
      */
     @Column(name = "max")
-    private Integer              max              = 0;
+    private Integer              maxNumber              = 0;
 
     /**
      * Player for the availability.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "player_id")
-    private PersistentTeamPlayer player;
+    private PersistentTeamPlayer teamPlayer;
 
     /**
      * Team type for the availability.
@@ -115,7 +115,7 @@ public final class PersistentTeamPlayerRangedAvailability
 
         other = (PersistentTeamPlayerRangedAvailability) obj;
         return Objects.equals(teamType, other.teamType)
-                && Objects.equals(player, other.player);
+                && Objects.equals(teamPlayer, other.teamPlayer);
     }
 
     /**
@@ -129,17 +129,17 @@ public final class PersistentTeamPlayerRangedAvailability
 
     @Override
     public final Integer getInitialNumber() {
-        return initial;
+        return initialNumber;
     }
 
     @Override
     public final Integer getMaxNumber() {
-        return max;
+        return maxNumber;
     }
 
     @Override
     public final TeamPlayer getTeamPlayer() {
-        return player;
+        return teamPlayer;
     }
 
     @Override
@@ -149,7 +149,7 @@ public final class PersistentTeamPlayerRangedAvailability
 
     @Override
     public final int hashCode() {
-        return Objects.hash(player, teamType);
+        return Objects.hash(teamPlayer, teamType);
     }
 
     /**
@@ -173,7 +173,7 @@ public final class PersistentTeamPlayerRangedAvailability
     public final void setInitialNumber(final Integer initialCount) {
         checkNotNull(initialCount, "Received a null pointer as initial count");
 
-        initial = initialCount;
+        initialNumber = initialCount;
     }
 
     /**
@@ -185,7 +185,7 @@ public final class PersistentTeamPlayerRangedAvailability
     public final void setMaxNumber(final Integer maxCount) {
         checkNotNull(maxCount, "Received a null pointer as max count");
 
-        max = maxCount;
+        maxNumber = maxCount;
     }
 
     /**
@@ -194,10 +194,10 @@ public final class PersistentTeamPlayerRangedAvailability
      * @param playerType
      *            the player for the availability
      */
-    public final void setPlayer(final PersistentTeamPlayer playerType) {
+    public final void setTeamPlayer(final PersistentTeamPlayer playerType) {
         checkNotNull(playerType, "Received a null pointer as player");
 
-        player = playerType;
+        teamPlayer = playerType;
     }
 
     /**
@@ -215,7 +215,7 @@ public final class PersistentTeamPlayerRangedAvailability
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("team", teamType)
-                .add("player", player).toString();
+                .add("player", teamPlayer).toString();
     }
 
 }

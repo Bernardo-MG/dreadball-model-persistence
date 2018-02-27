@@ -48,19 +48,19 @@ public final class PersistentAffinityComponent extends
      * Ally cost.
      */
     @Column(name = "cost_ally")
-    private Integer           costAlly         = 0;
+    private Integer           allyCost         = 0;
 
     /**
      * Friend cost.
      */
     @Column(name = "cost_friend")
-    private Integer           costFriend       = 0;
+    private Integer           friendCost       = 0;
 
     /**
      * Stranger cost.
      */
     @Column(name = "cost_stranger")
-    private Integer           costStranger     = 0;
+    private Integer           strangerCost     = 0;
 
     /**
      * Default constructor.
@@ -71,7 +71,7 @@ public final class PersistentAffinityComponent extends
 
     @Override
     public final Integer getAllyCost() {
-        return costAlly;
+        return allyCost;
     }
 
     @Override
@@ -82,12 +82,12 @@ public final class PersistentAffinityComponent extends
 
     @Override
     public final Integer getFriendCost() {
-        return costFriend;
+        return friendCost;
     }
 
     @Override
     public final Integer getStrangerCost() {
-        return costStranger;
+        return strangerCost;
     }
 
     /**
@@ -99,7 +99,7 @@ public final class PersistentAffinityComponent extends
     public final void setAllyCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costAlly = cost;
+        allyCost = cost;
     }
 
     /**
@@ -111,7 +111,7 @@ public final class PersistentAffinityComponent extends
     public final void setFriendCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costFriend = cost;
+        friendCost = cost;
     }
 
     /**
@@ -123,7 +123,7 @@ public final class PersistentAffinityComponent extends
     public final void setStrangerCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costStranger = cost;
+        strangerCost = cost;
     }
 
 }

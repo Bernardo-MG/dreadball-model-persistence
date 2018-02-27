@@ -118,7 +118,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      */
     @Column(name = "position")
     @Enumerated(EnumType.STRING)
-    private Role                                position     = Role.JACK;
+    private Role                                role     = Role.JACK;
 
     /**
      * Player template name.
@@ -216,7 +216,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
 
     @Override
     public final Role getRole() {
-        return position;
+        return role;
     }
 
     @Override
@@ -327,10 +327,10 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param pos
      *            the team position for the player
      */
-    public final void setPosition(final Role pos) {
+    public final void setRole(final Role pos) {
         checkNotNull(pos, "Received a null pointer as team position role");
 
-        position = pos;
+        role = pos;
     }
 
     /**
