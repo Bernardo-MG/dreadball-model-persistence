@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Dreadball units, also called players.
+ * Dreadball players.
  */
 
 package com.bernardomg.tabletop.dreadball.model.persistence.player;

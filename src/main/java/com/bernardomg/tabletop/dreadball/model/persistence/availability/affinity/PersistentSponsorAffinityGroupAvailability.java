@@ -184,7 +184,7 @@ public final class PersistentSponsorAffinityGroupAvailability
      * removed and swapped with the received ones.
      * 
      * @param affinityGroups
-     *            the affinity groups to set on the unit
+     *            the affinity groups to set on the player
      */
     public final void setAffinityGroups(
             final Collection<PersistentAffinityGroup> affinityGroups) {

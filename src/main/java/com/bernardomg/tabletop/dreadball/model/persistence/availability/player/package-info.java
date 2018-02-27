@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Unit availabilities.
+ * Player availabilities.
  */
 
 package com.bernardomg.tabletop.dreadball.model.persistence.availability.player;

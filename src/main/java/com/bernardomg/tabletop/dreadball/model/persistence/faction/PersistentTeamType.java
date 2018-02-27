@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
 
 /**
  * Team type, which are the Dreadball Original (DBO) factions. They are also
- * used to group together Dreadball Xtreme (DBX) units.
+ * used to group together Dreadball Xtreme (DBX) players.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 

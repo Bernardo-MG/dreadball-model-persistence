@@ -25,14 +25,14 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Component used for creating a composite unit.
+ * Component used for creating a composite player.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "Component")
-@Table(name = "unit_components")
+@Table(name = "player_components")
 public final class PersistentComponent extends AbstractPersistentComponent
         implements Serializable {
 

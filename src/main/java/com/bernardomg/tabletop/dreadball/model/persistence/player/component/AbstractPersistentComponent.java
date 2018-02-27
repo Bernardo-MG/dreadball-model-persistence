@@ -52,7 +52,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
- * Abstract root for a component used for creating a composite unit.
+ * Abstract root for a component used for creating a composite player.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 

@@ -32,7 +32,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.google.common.base.MoreObjects;
 
 /**
- * Interface for representing a unit's ability.
+ * Interface for representing a player's ability.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 

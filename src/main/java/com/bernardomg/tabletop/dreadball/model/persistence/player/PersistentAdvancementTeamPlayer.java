@@ -23,15 +23,15 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Unit which may change and evolve over time, usually between matches.
+ * Player which may change and evolve over time, usually between matches.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "AdvancementUnit")
+@Entity(name = "AdvancementPlayer")
 @DiscriminatorValue("advancement")
-@Table(name = "advancement_units")
+@Table(name = "advancement_players")
 public final class PersistentAdvancementTeamPlayer extends
         AbstractPersistentAdvancementTeamPlayer implements Serializable {
 

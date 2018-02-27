@@ -21,7 +21,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,7 +30,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.availability.player.TeamPlayerRangedAvailability;
+import com.bernardomg.tabletop.dreadball.model.availability.player.TeamPlayerAvailability;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 import com.bernardomg.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
 import com.bernardomg.tabletop.dreadball.model.persistence.player.PersistentTeamPlayer;
@@ -39,18 +38,17 @@ import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.google.common.base.MoreObjects;
 
 /**
- * Unit availabilities for a
- * {@link com.bernardomg.tabletop.dreadball.model.faction.TeamType TeamType},
- * where there is a range of how many times it can be acquired.
+ * Player availabilities for a {@link TeamType}, to be used for both Dreadball
+ * Original (DBO) and Dreadball Xtreme (DBX).
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "TeamTypeRangedUnitAvailability")
-@Table(name = "team_type_ranged_unit_avas")
-public final class PersistentTeamTypeRangedUnitAvailability
-        implements TeamPlayerRangedAvailability, Serializable {
+@Entity(name = "TeamTypePlayerAvailability")
+@Table(name = "team_type_player_avas")
+public final class PersistentTeamPlayerAvailability
+        implements TeamPlayerAvailability, Serializable {
 
     /**
      * Serialization ID.
@@ -65,16 +63,11 @@ public final class PersistentTeamTypeRangedUnitAvailability
     private Integer              id               = -1;
 
     /**
-     * Initial number of units the team has.
+     * Player for the availability.
      */
-    @Column(name = "initial")
-    private Integer              initial          = 0;
-
-    /**
-     * Maximum number of units the team can have.
-     */
-    @Column(name = "max")
-    private Integer              max              = 0;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "player_id")
+    private PersistentTeamPlayer player;
 
     /**
      * Team type for the availability.
@@ -84,16 +77,9 @@ public final class PersistentTeamTypeRangedUnitAvailability
     private PersistentTeamType   teamType;
 
     /**
-     * Unit for the availability.
-     */
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "unit_id")
-    private PersistentTeamPlayer unit;
-
-    /**
      * Default constructor.
      */
-    public PersistentTeamTypeRangedUnitAvailability() {
+    public PersistentTeamPlayerAvailability() {
         super();
     }
 
@@ -111,11 +97,11 @@ public final class PersistentTeamTypeRangedUnitAvailability
             return false;
         }
 
-        final PersistentTeamTypeRangedUnitAvailability other;
+        final PersistentTeamPlayerAvailability other;
 
-        other = (PersistentTeamTypeRangedUnitAvailability) obj;
+        other = (PersistentTeamPlayerAvailability) obj;
         return Objects.equals(teamType, other.teamType)
-                && Objects.equals(unit, other.unit);
+                && Objects.equals(player, other.player);
     }
 
     /**
@@ -128,18 +114,8 @@ public final class PersistentTeamTypeRangedUnitAvailability
     }
 
     @Override
-    public final Integer getInitialNumber() {
-        return initial;
-    }
-
-    @Override
-    public final Integer getMaxNumber() {
-        return max;
-    }
-
-    @Override
     public final TeamPlayer getTeamPlayer() {
-        return unit;
+        return player;
     }
 
     @Override
@@ -149,7 +125,7 @@ public final class PersistentTeamTypeRangedUnitAvailability
 
     @Override
     public final int hashCode() {
-        return Objects.hash(unit, teamType);
+        return Objects.hash(player, teamType);
     }
 
     /**
@@ -165,27 +141,15 @@ public final class PersistentTeamTypeRangedUnitAvailability
     }
 
     /**
-     * Sets the initial number of units for the team type.
+     * Sets the player for the availability.
      * 
-     * @param initialCount
-     *            the initial number of units for the team type
+     * @param playerType
+     *            the player for the availability
      */
-    public final void setInitialNumber(final Integer initialCount) {
-        checkNotNull(initialCount, "Received a null pointer as initial count");
+    public final void setPlayer(final PersistentTeamPlayer playerType) {
+        checkNotNull(playerType, "Received a null pointer as player");
 
-        initial = initialCount;
-    }
-
-    /**
-     * Sets the max number of units for the team type.
-     * 
-     * @param maxCount
-     *            the max number of units for the team type
-     */
-    public final void setMaxNumber(final Integer maxCount) {
-        checkNotNull(maxCount, "Received a null pointer as max count");
-
-        max = maxCount;
+        player = playerType;
     }
 
     /**
@@ -200,22 +164,10 @@ public final class PersistentTeamTypeRangedUnitAvailability
         teamType = team;
     }
 
-    /**
-     * Sets the unit for the availability.
-     * 
-     * @param unitType
-     *            the unit for the availability
-     */
-    public final void setUnit(final PersistentTeamPlayer unitType) {
-        checkNotNull(unitType, "Received a null pointer as unit");
-
-        unit = unitType;
-    }
-
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("team", teamType)
-                .add("unit", unit).toString();
+                .add("player", player).toString();
     }
 
 }

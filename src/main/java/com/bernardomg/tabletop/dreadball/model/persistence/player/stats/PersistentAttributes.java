@@ -27,7 +27,7 @@ import javax.persistence.Embeddable;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
- * Interface representing unit attributes.
+ * Interface representing player attributes.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 

@@ -31,7 +31,7 @@ import javax.persistence.Table;
 import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocation;
 
 /**
- * Location where a unit component may be applied.
+ * Location where a player component may be applied.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 

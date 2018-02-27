@@ -30,7 +30,7 @@ import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.component.Component;
 
 /**
- * Abstract root for a unit which may change and evolve over time, usually
+ * Abstract root for a player which may change and evolve over time, usually
  * between matches.
  * <p>
  * This is a persistent JPA-Based implementation.
@@ -42,26 +42,26 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
         extends AbstractPersistentTeamPlayer implements AdvancementTeamPlayer {
 
     /**
-     * Unit experience.
+     * Player experience.
      */
     @Column(name = "experience")
     private Integer             experience = 0;
 
     /**
-     * Unit grafted implant.
+     * Player grafted implant.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grafted_implant_id")
     private PersistentComponent implant;
 
     /**
-     * Unit name.
+     * Player name.
      */
     @Column(name = "name")
     private final String        name       = "";
 
     /**
-     * Unit rank.
+     * Player rank.
      */
     @Column(name = "rank")
     private Integer             rank       = 0;
@@ -104,10 +104,10 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
     }
 
     @Override
-    public final void setRank(final Integer rankUnit) {
-        checkNotNull(rankUnit, "Received a null pointer as rank");
+    public final void setRank(final Integer rankPlayer) {
+        checkNotNull(rankPlayer, "Received a null pointer as rank");
 
-        rank = rankUnit;
+        rank = rankPlayer;
     }
 
     @Override

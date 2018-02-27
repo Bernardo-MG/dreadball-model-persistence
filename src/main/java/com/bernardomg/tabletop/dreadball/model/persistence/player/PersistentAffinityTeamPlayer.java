@@ -23,16 +23,16 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Unit with affinity groups, and various costs which will depend on how many of
- * such affinities are shared.
+ * Player with affinity groups, and various costs which will depend on how many
+ * of such affinities are shared.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "AffinityUnit")
+@Entity(name = "AffinityPlayer")
 @DiscriminatorValue("affinity")
-@Table(name = "affinity_units")
+@Table(name = "affinity_players")
 public final class PersistentAffinityTeamPlayer
         extends AbstractPersistentAffinityTeamPlayer implements Serializable {
 

@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Components and composite units. These are such units as those from the
+ * Components and composite players. These are such players as those from the
  * Mechanite or Plague teams.
  */
 
