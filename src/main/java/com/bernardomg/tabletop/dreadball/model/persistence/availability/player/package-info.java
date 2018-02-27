@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Unit statistics.
+ * Unit availabilities.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit.stats;
+package com.bernardomg.tabletop.dreadball.model.persistence.availability.player;

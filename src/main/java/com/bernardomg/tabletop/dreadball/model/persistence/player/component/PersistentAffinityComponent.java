@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit.component;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -24,7 +24,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.unit.component.AffinityComponent;
+import com.bernardomg.tabletop.dreadball.model.player.component.AffinityComponent;
 
 /**
  * Component with affinity groups, and various costs which will depend on how

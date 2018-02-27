@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Dreadball units, also called players.
+ * Affinity availabilities.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.availability.affinity;

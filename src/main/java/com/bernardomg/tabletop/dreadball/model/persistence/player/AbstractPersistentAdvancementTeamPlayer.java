@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -25,9 +25,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.component.PersistentComponent;
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.component.PersistentComponent;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
 
 /**
  * Abstract root for a unit which may change and evolve over time, usually
@@ -38,8 +38,8 @@ import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @MappedSuperclass
-public abstract class AbstractPersistentAdvancementUnit
-        extends AbstractPersistentUnit implements AdvancementUnit {
+public abstract class AbstractPersistentAdvancementTeamPlayer
+        extends AbstractPersistentTeamPlayer implements AdvancementTeamPlayer {
 
     /**
      * Unit experience.
@@ -69,7 +69,7 @@ public abstract class AbstractPersistentAdvancementUnit
     /**
      * Default constructor.
      */
-    public AbstractPersistentAdvancementUnit() {
+    public AbstractPersistentAdvancementTeamPlayer() {
         super();
     }
 

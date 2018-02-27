@@ -18,4 +18,4 @@
  * Mechanite or Plague teams.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit.component;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.component;

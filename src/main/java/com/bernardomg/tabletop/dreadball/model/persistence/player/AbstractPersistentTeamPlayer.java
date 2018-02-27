@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -43,12 +43,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.stats.PersistentAbility;
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.stats.PersistentAttributes;
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.stats.PersistentAbility;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.stats.PersistentAttributes;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -63,7 +63,7 @@ import com.google.common.base.MoreObjects;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "unit_type")
 @Table(name = "units")
-public abstract class AbstractPersistentUnit implements Unit {
+public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
 
     /**
      * Unit abilities.
@@ -129,7 +129,7 @@ public abstract class AbstractPersistentUnit implements Unit {
     /**
      * Default constructor.
      */
-    public AbstractPersistentUnit() {
+    public AbstractPersistentTeamPlayer() {
         super();
     }
 
@@ -161,9 +161,9 @@ public abstract class AbstractPersistentUnit implements Unit {
             return false;
         }
 
-        final AbstractPersistentUnit other;
+        final AbstractPersistentTeamPlayer other;
 
-        other = (AbstractPersistentUnit) obj;
+        other = (AbstractPersistentTeamPlayer) obj;
         return Objects.equals(templateName, other.templateName)
                 && Objects.equals(name, other.name);
     }

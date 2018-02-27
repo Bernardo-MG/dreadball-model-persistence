@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import java.io.Serializable;
 
@@ -33,8 +33,8 @@ import javax.persistence.Table;
 @Entity(name = "AffinityUnit")
 @DiscriminatorValue("affinity")
 @Table(name = "affinity_units")
-public final class PersistentAffinityUnit extends AbstractPersistentAffinityUnit
-        implements Serializable {
+public final class PersistentAffinityTeamPlayer
+        extends AbstractPersistentAffinityTeamPlayer implements Serializable {
 
     /**
      * Serialization ID.
@@ -44,7 +44,7 @@ public final class PersistentAffinityUnit extends AbstractPersistentAffinityUnit
     /**
      * Default constructor.
      */
-    public PersistentAffinityUnit() {
+    public PersistentAffinityTeamPlayer() {
         super();
     }
 

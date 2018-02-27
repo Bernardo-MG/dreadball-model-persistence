@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit.component;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -34,28 +34,28 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.AbstractPersistentAffinityUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
-import com.bernardomg.tabletop.dreadball.model.unit.component.CompositeAffinityUnit;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.AbstractPersistentAdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
+import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAdvancementTeamPlayer;
 
 /**
- * Composite affinity unit.
+ * Composite advancement unit.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "CompositeAffinityUnit")
-@DiscriminatorValue("composite_affinity")
-@Table(name = "composite_affinity_units")
-public final class PersistentCompositeAffinityUnit
-        extends AbstractPersistentAffinityUnit
-        implements CompositeAffinityUnit, Serializable {
+@Entity(name = "CompositeAdvancementUnit")
+@DiscriminatorValue("composite_advancement")
+@Table(name = "composite_advancement_units")
+public final class PersistentCompositeAdvancementTeamPlayer
+        extends AbstractPersistentAdvancementTeamPlayer
+        implements CompositeAdvancementTeamPlayer, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long                     serialVersionUID = -5866596776570200158L;
+    private static final long                     serialVersionUID = 4751347276326003773L;
 
     /**
      * Unit components.
@@ -71,7 +71,7 @@ public final class PersistentCompositeAffinityUnit
     /**
      * Default constructor.
      */
-    public PersistentCompositeAffinityUnit() {
+    public PersistentCompositeAdvancementTeamPlayer() {
         super();
     }
 

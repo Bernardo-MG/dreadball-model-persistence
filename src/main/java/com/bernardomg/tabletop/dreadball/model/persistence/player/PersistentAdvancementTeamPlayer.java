@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import java.io.Serializable;
 
@@ -32,8 +32,8 @@ import javax.persistence.Table;
 @Entity(name = "AdvancementUnit")
 @DiscriminatorValue("advancement")
 @Table(name = "advancement_units")
-public final class PersistentAdvancementUnit
-        extends AbstractPersistentAdvancementUnit implements Serializable {
+public final class PersistentAdvancementTeamPlayer extends
+        AbstractPersistentAdvancementTeamPlayer implements Serializable {
 
     /**
      * Serialization ID.
@@ -43,7 +43,7 @@ public final class PersistentAdvancementUnit
     /**
      * Default constructor.
      */
-    public PersistentAdvancementUnit() {
+    public PersistentAdvancementTeamPlayer() {
         super();
     }
 

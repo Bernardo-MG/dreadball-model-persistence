@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.availability.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.availability.player;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -31,11 +31,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.availability.unit.TeamTypeRangedUnitAvailability;
+import com.bernardomg.tabletop.dreadball.model.availability.player.TeamPlayerRangedAvailability;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 import com.bernardomg.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.PersistentUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.PersistentTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -50,45 +50,45 @@ import com.google.common.base.MoreObjects;
 @Entity(name = "TeamTypeRangedUnitAvailability")
 @Table(name = "team_type_ranged_unit_avas")
 public final class PersistentTeamTypeRangedUnitAvailability
-        implements TeamTypeRangedUnitAvailability, Serializable {
+        implements TeamPlayerRangedAvailability, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long  serialVersionUID = -3725739240261330858L;
+    private static final long    serialVersionUID = -3725739240261330858L;
 
     /**
      * Ava's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer            id               = -1;
+    private Integer              id               = -1;
 
     /**
      * Initial number of units the team has.
      */
     @Column(name = "initial")
-    private Integer            initial          = 0;
+    private Integer              initial          = 0;
 
     /**
      * Maximum number of units the team can have.
      */
     @Column(name = "max")
-    private Integer            max              = 0;
+    private Integer              max              = 0;
 
     /**
      * Team type for the availability.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
-    private PersistentTeamType teamType;
+    private PersistentTeamType   teamType;
 
     /**
      * Unit for the availability.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_id")
-    private PersistentUnit     unit;
+    private PersistentTeamPlayer unit;
 
     /**
      * Default constructor.
@@ -138,13 +138,13 @@ public final class PersistentTeamTypeRangedUnitAvailability
     }
 
     @Override
-    public final TeamType getTeamType() {
-        return teamType;
+    public final TeamPlayer getTeamPlayer() {
+        return unit;
     }
 
     @Override
-    public final Unit getUnit() {
-        return unit;
+    public final TeamType getTeamType() {
+        return teamType;
     }
 
     @Override
@@ -206,7 +206,7 @@ public final class PersistentTeamTypeRangedUnitAvailability
      * @param unitType
      *            the unit for the availability
      */
-    public final void setUnit(final PersistentUnit unitType) {
+    public final void setUnit(final PersistentTeamPlayer unitType) {
         checkNotNull(unitType, "Received a null pointer as unit");
 
         unit = unitType;

@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit.component;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.stats;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -28,34 +28,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.unit.component.ComponentLocation;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.google.common.base.MoreObjects;
 
 /**
- * Location where a unit component may be applied.
+ * Interface for representing a unit's ability.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "ComponentLocation")
-@Table(name = "component_locations")
-public final class PersistentComponentLocation
-        implements ComponentLocation, Serializable {
+@Entity(name = "Ability")
+@Table(name = "abilities")
+public final class PersistentAbility implements Ability, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = -7589272908184471999L;
+    private static final long serialVersionUID = 1853450793663114595L;
 
     /**
-     * Component location's primary key.
+     * Ability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
 
     /**
-     * Component location name.
+     * Ability name.
      */
     @Column(name = "name", unique = true)
     private String            name             = "";
@@ -63,7 +63,7 @@ public final class PersistentComponentLocation
     /**
      * Default constructor.
      */
-    public PersistentComponentLocation() {
+    public PersistentAbility() {
         super();
     }
 
@@ -72,13 +72,18 @@ public final class PersistentComponentLocation
         if (this == obj) {
             return true;
         }
+
         if (obj == null) {
             return false;
         }
+
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final PersistentComponentLocation other = (PersistentComponentLocation) obj;
+
+        final PersistentAbility other;
+
+        other = (PersistentAbility) obj;
         return Objects.equals(name, other.name);
     }
 
@@ -102,18 +107,6 @@ public final class PersistentComponentLocation
     }
 
     /**
-     * Sets the component location name.
-     * 
-     * @param componentName
-     *            the component location name
-     */
-    public final void setComponentLocationName(final String componentName) {
-        checkNotNull(componentName, "Received a null pointer as name");
-
-        name = componentName;
-    }
-
-    /**
      * Sets the ID assigned to this entity.
      * 
      * @param identifier
@@ -123,6 +116,23 @@ public final class PersistentComponentLocation
         checkNotNull(identifier, "Received a null pointer as identifier");
 
         id = identifier;
+    }
+
+    /**
+     * Sets the ability name.
+     * 
+     * @param nameAbility
+     *            the ability name
+     */
+    public final void setName(final String nameAbility) {
+        checkNotNull(nameAbility, "Received a null pointer as name");
+
+        name = nameAbility;
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("name", name).toString();
     }
 
 }

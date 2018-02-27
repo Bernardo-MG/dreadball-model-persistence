@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -32,8 +32,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityUnit;
+import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 
 /**
  * Abstract root for a unit with affinity groups, and various costs which will
@@ -44,8 +44,8 @@ import com.bernardomg.tabletop.dreadball.model.unit.AffinityUnit;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @MappedSuperclass
-public abstract class AbstractPersistentAffinityUnit
-        extends AbstractPersistentUnit implements AffinityUnit {
+public abstract class AbstractPersistentAffinityTeamPlayer
+        extends AbstractPersistentTeamPlayer implements AffinityTeamPlayer {
 
     /**
      * Unit affinities.
@@ -90,7 +90,7 @@ public abstract class AbstractPersistentAffinityUnit
     /**
      * Default constructor.
      */
-    public AbstractPersistentAffinityUnit() {
+    public AbstractPersistentAffinityTeamPlayer() {
         super();
     }
 

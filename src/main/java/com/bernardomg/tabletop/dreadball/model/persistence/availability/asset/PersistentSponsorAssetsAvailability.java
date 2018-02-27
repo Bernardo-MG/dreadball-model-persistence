@@ -47,74 +47,56 @@ public final class PersistentSponsorAssetsAvailability
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = -7367447173870314061L;
+    private static final long serialVersionUID      = -7367447173870314061L;
 
     /**
      * Cost of an affinity group.
      */
     @Column(name = "cost_affinity")
-    private Integer           costAffinity     = 0;
+    private Integer           costAffinity          = 0;
 
     /**
      * Cost of a cheerleader.
      */
     @Column(name = "cost_cheerleader")
-    private Integer           costCheerleader  = 0;
-
-    /**
-     * Cost of unlocking the cheerleaders.
-     */
-    @Column(name = "cost_cheerleader_unlock")
-    private Integer           costCheerUnlock  = 0;
+    private Integer           costCheerleader       = 0;
 
     /**
      * Cost of a coaching dice.
      */
     @Column(name = "cost_dice")
-    private Integer           costDice         = 0;
+    private Integer           costDice              = 0;
 
     /**
      * Cost of a medibot.
      */
     @Column(name = "cost_medibot")
-    private Integer           costMedibot      = 0;
-
-    /**
-     * Cost of a sabotage card.
-     */
-    @Column(name = "cost_sabotage")
-    private Integer           costSabotage     = 0;
+    private Integer           costMedibot           = 0;
 
     /**
      * Cost of a special movement card.
      */
     @Column(name = "cost_special_move")
-    private Integer           costSpecialMove  = 0;
+    private Integer           costSpecialMove       = 0;
 
     /**
      * Cost of a wager.
      */
     @Column(name = "cost_wager")
-    private Integer           costWager        = 0;
+    private Integer           costWager             = 0;
 
     /**
      * Availability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer           id               = -1;
+    private Integer           id                    = -1;
 
     /**
-     * Maximum number of wagers.
+     * Cost of a sabotage card.
      */
-    @Column(name = "max_wager")
-    private Integer           maxWager         = 0;
-
-    /**
-     * Minimum required cost for a team.
-     */
-    @Column(name = "min_team_cost")
-    private Integer           minTeamCost      = 0;
+    @Column(name = "cost_sabotage")
+    private Integer           nastySurpriseCardCost = 0;
 
     /**
      * Default constructor.
@@ -154,11 +136,6 @@ public final class PersistentSponsorAssetsAvailability
     }
 
     @Override
-    public final Integer getCheerleaderUnlockCost() {
-        return costCheerUnlock;
-    }
-
-    @Override
     public final Integer getCoachingDieCost() {
         return costDice;
     }
@@ -178,28 +155,18 @@ public final class PersistentSponsorAssetsAvailability
     }
 
     @Override
-    public final Integer getSabotageCardCost() {
-        return costSabotage;
+    public final Integer getNastySurpriseCardCost() {
+        return nastySurpriseCardCost;
     }
 
     @Override
-    public final Integer getSpecialMovementCardCost() {
+    public final Integer getSpecialMoveCardCost() {
         return costSpecialMove;
-    }
-
-    @Override
-    public final Integer getTeamCostMin() {
-        return minTeamCost;
     }
 
     @Override
     public final Integer getWagerCost() {
         return costWager;
-    }
-
-    @Override
-    public final Integer getWagerMaxCount() {
-        return maxWager;
     }
 
     @Override
@@ -229,18 +196,6 @@ public final class PersistentSponsorAssetsAvailability
         checkNotNull(cost, "Received a null pointer as cost");
 
         costCheerleader = cost;
-    }
-
-    /**
-     * Sets the cost of unlocking the cheerleaders.
-     * 
-     * @param cost
-     *            the cost of unlocking the cheerleaders
-     */
-    public final void setCheerleaderUnlockCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
-        costCheerUnlock = cost;
     }
 
     /**
@@ -288,7 +243,7 @@ public final class PersistentSponsorAssetsAvailability
     public final void setSabotageCardCost(final Integer cost) {
         checkNotNull(cost, "Received a null pointer as cost");
 
-        costSabotage = cost;
+        nastySurpriseCardCost = cost;
     }
 
     /**
@@ -304,18 +259,6 @@ public final class PersistentSponsorAssetsAvailability
     }
 
     /**
-     * Sets the minimum allowed cost for a team.
-     * 
-     * @param cost
-     *            the minimum allowed cost for a team
-     */
-    public final void setTeamCostMin(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
-        minTeamCost = cost;
-    }
-
-    /**
      * Sets the cost of a wager.
      * 
      * @param cost
@@ -325,19 +268,6 @@ public final class PersistentSponsorAssetsAvailability
         checkNotNull(cost, "Received a null pointer as cost");
 
         costWager = cost;
-    }
-
-    /**
-     * Sets the maximum number of wagers.
-     * 
-     * @param max
-     *            the maximum number of wagers
-     */
-    public final void setWagerMaxCount(final Integer max) {
-        checkNotNull(max,
-                "Received a null pointer as maximum number of wagers");
-
-        maxWager = max;
     }
 
     @Override
