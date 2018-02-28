@@ -325,11 +325,11 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
     /**
      * Sets the player's template name.
      * 
-     * @param name
+     * @param tname
      *            the template name
      */
-    public final void setTemplateName(final String name) {
-        templateName = name;
+    public final void setTemplateName(final String tname) {
+        templateName = tname;
     }
 
     @Override
