@@ -30,7 +30,7 @@ import javax.persistence.Table;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "AffinityPlayer")
+@Entity(name = "AffinityTeamPlayer")
 @DiscriminatorValue("affinity")
 @Table(name = "affinity_players")
 public final class PersistentAffinityTeamPlayer

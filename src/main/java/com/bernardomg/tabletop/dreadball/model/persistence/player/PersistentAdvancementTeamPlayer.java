@@ -29,7 +29,7 @@ import javax.persistence.Table;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "AdvancementPlayer")
+@Entity(name = "AdvancementTeamPlayer")
 @DiscriminatorValue("advancement")
 @Table(name = "advancement_players")
 public final class PersistentAdvancementTeamPlayer extends

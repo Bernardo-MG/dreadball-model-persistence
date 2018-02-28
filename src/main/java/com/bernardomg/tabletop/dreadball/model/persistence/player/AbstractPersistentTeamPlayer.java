@@ -58,7 +58,7 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "Player")
+@Entity(name = "TeamPlayer")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "player_type")
 @Table(name = "players")
