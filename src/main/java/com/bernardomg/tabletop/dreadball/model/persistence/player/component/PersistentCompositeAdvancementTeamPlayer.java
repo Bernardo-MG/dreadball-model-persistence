@@ -14,10 +14,9 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit.component;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,23 +33,23 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.AbstractPersistentAdvancementUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
-import com.bernardomg.tabletop.dreadball.model.unit.component.CompositeAdvancementUnit;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.AbstractPersistentAdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
+import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAdvancementTeamPlayer;
 
 /**
- * Composite advancement unit.
+ * Composite advancement player.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "CompositeAdvancementUnit")
+@Entity(name = "CompositeAdvancementPlayer")
 @DiscriminatorValue("composite_advancement")
-@Table(name = "composite_advancement_units")
-public final class PersistentCompositeAdvancementUnit
-        extends AbstractPersistentAdvancementUnit
-        implements CompositeAdvancementUnit, Serializable {
+@Table(name = "composite_advancement_players")
+public final class PersistentCompositeAdvancementTeamPlayer
+        extends AbstractPersistentAdvancementTeamPlayer
+        implements CompositeAdvancementTeamPlayer, Serializable {
 
     /**
      * Serialization ID.
@@ -58,11 +57,11 @@ public final class PersistentCompositeAdvancementUnit
     private static final long                     serialVersionUID = 4751347276326003773L;
 
     /**
-     * Unit components.
+     * Player components.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "composite_unit_components",
-            joinColumns = { @JoinColumn(name = "unit_id",
+    @JoinTable(name = "composite_player_components",
+            joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "component_id",
                     referencedColumnName = "id") })
@@ -71,7 +70,7 @@ public final class PersistentCompositeAdvancementUnit
     /**
      * Default constructor.
      */
-    public PersistentCompositeAdvancementUnit() {
+    public PersistentCompositeAdvancementTeamPlayer() {
         super();
     }
 
@@ -82,8 +81,6 @@ public final class PersistentCompositeAdvancementUnit
      *            the component to add
      */
     public final void addComponent(final PersistentComponent component) {
-        checkNotNull(component, "Received a null pointer as component");
-
         getComponentsModifiable().add(component);
     }
 
@@ -110,21 +107,19 @@ public final class PersistentCompositeAdvancementUnit
     }
 
     /**
-     * Sets the unit components.
+     * Sets the player components.
      * <p>
-     * If the unit has any component these are removed and swapped with the
+     * If the player has any component these are removed and swapped with the
      * received ones.
      * 
-     * @param unitComponents
-     *            the components to set on the unit
+     * @param playerComponents
+     *            the components to set on the player
      */
     public final void
-            setComponents(final Collection<Component> unitComponents) {
-        checkNotNull(unitComponents, "Received a null pointer as components");
-
+            setComponents(final Collection<Component> playerComponents) {
         getComponentsModifiable().clear();
 
-        for (final Component component : unitComponents) {
+        for (final Component component : playerComponents) {
             checkArgument(component instanceof PersistentComponent,
                     "All the components should be an instanceof JPAComponent");
 
@@ -133,9 +128,9 @@ public final class PersistentCompositeAdvancementUnit
     }
 
     /**
-     * Returns the modifiable collection of the unit's components.
+     * Returns the modifiable collection of the player's components.
      * 
-     * @return the modifiable collection of the unit's components
+     * @return the modifiable collection of the player's components
      */
     private final Collection<PersistentComponent> getComponentsModifiable() {
         return components;

@@ -14,9 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit.component;
-
-import static com.google.common.base.Preconditions.checkNotNull;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
 import java.io.Serializable;
 
@@ -24,7 +22,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.unit.component.AffinityComponent;
+import com.bernardomg.tabletop.dreadball.model.player.component.AffinityComponent;
 
 /**
  * Component with affinity groups, and various costs which will depend on how
@@ -35,7 +33,7 @@ import com.bernardomg.tabletop.dreadball.model.unit.component.AffinityComponent;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "AffinityComponent")
-@Table(name = "affinity_unit_components")
+@Table(name = "affinity_player_components")
 public final class PersistentAffinityComponent extends
         AbstractPersistentComponent implements AffinityComponent, Serializable {
 
@@ -48,19 +46,19 @@ public final class PersistentAffinityComponent extends
      * Ally cost.
      */
     @Column(name = "cost_ally")
-    private Integer           costAlly         = 0;
+    private Integer           allyCost         = 0;
 
     /**
      * Friend cost.
      */
     @Column(name = "cost_friend")
-    private Integer           costFriend       = 0;
+    private Integer           friendCost       = 0;
 
     /**
      * Stranger cost.
      */
     @Column(name = "cost_stranger")
-    private Integer           costStranger     = 0;
+    private Integer           strangerCost     = 0;
 
     /**
      * Default constructor.
@@ -71,7 +69,7 @@ public final class PersistentAffinityComponent extends
 
     @Override
     public final Integer getAllyCost() {
-        return costAlly;
+        return allyCost;
     }
 
     @Override
@@ -82,12 +80,12 @@ public final class PersistentAffinityComponent extends
 
     @Override
     public final Integer getFriendCost() {
-        return costFriend;
+        return friendCost;
     }
 
     @Override
     public final Integer getStrangerCost() {
-        return costStranger;
+        return strangerCost;
     }
 
     /**
@@ -97,9 +95,7 @@ public final class PersistentAffinityComponent extends
      *            the ally cost
      */
     public final void setAllyCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
-        costAlly = cost;
+        allyCost = cost;
     }
 
     /**
@@ -109,9 +105,7 @@ public final class PersistentAffinityComponent extends
      *            the friend cost
      */
     public final void setFriendCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
-        costFriend = cost;
+        friendCost = cost;
     }
 
     /**
@@ -121,9 +115,7 @@ public final class PersistentAffinityComponent extends
      *            the stranger cost
      */
     public final void setStrangerCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as cost");
-
-        costStranger = cost;
+        strangerCost = cost;
     }
 
 }

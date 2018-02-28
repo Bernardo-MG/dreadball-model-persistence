@@ -14,10 +14,9 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -43,85 +42,85 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.stats.PersistentAbility;
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.stats.PersistentAttributes;
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.stats.PersistentAbility;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.stats.PersistentAttributes;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.google.common.base.MoreObjects;
 
 /**
- * Abstract root for the basic features all the Dreadball units have, no matter
- * if they come from Dreadball Original (DBO) or Dreadball Xtreme (DBX).
+ * Abstract root for the basic features all the Dreadball players have, no
+ * matter if they come from Dreadball Original (DBO) or Dreadball Xtreme (DBX).
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "Unit")
+@Entity(name = "Player")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "unit_type")
-@Table(name = "units")
-public abstract class AbstractPersistentUnit implements Unit {
+@DiscriminatorColumn(name = "player_type")
+@Table(name = "players")
+public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
 
     /**
-     * Unit abilities.
+     * Player abilities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "unit_abilities",
-            joinColumns = { @JoinColumn(name = "unit_id",
+    @JoinTable(name = "player_abilities",
+            joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
     private final Collection<PersistentAbility> abilities    = new LinkedHashSet<>();
 
     /**
-     * Unit attributes.
+     * Player attributes.
      */
     @Embedded
     private PersistentAttributes                attributes   = new PersistentAttributes();
 
     /**
-     * Unit cost.
+     * Player cost.
      */
     @Column(name = "cost")
     private Integer                             cost         = 0;
 
     /**
-     * Flag indicating if the unit is a giant.
+     * Flag indicating if the player is a giant.
      */
     @Column(name = "giant")
     private Boolean                             giant        = false;
 
     /**
-     * Unit's primary key.
+     * Player's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer                             id           = -1;
 
     /**
-     * Flag indicating if the unit is a MVP.
+     * Flag indicating if the player is a MVP.
      */
     @Column(name = "mvp")
     private final Boolean                       mvp          = false;
 
     /**
-     * Unit name.
+     * Player name.
      */
     @Column(name = "name")
     private String                              name         = "";
 
     /**
-     * Unit team position.
+     * Player team position.
      */
     @Column(name = "position")
     @Enumerated(EnumType.STRING)
-    private Role                                position     = Role.JACK;
+    private Role                                role         = Role.JACK;
 
     /**
-     * Unit template name.
+     * Player template name.
      */
     @Column(name = "template_name", unique = true)
     private String                              templateName = "";
@@ -129,18 +128,17 @@ public abstract class AbstractPersistentUnit implements Unit {
     /**
      * Default constructor.
      */
-    public AbstractPersistentUnit() {
+    public AbstractPersistentTeamPlayer() {
         super();
     }
 
     /**
-     * Adds an ability to the unit.
+     * Adds an ability to the player.
      * 
      * @param ability
      *            the ability to add
      */
     public final void addAbility(final Ability ability) {
-        checkNotNull(ability, "Received a null pointer as ability");
         checkArgument(ability instanceof PersistentAbility,
                 "The Ability should be an instanceof JPAAbility");
 
@@ -161,9 +159,9 @@ public abstract class AbstractPersistentUnit implements Unit {
             return false;
         }
 
-        final AbstractPersistentUnit other;
+        final AbstractPersistentTeamPlayer other;
 
-        other = (AbstractPersistentUnit) obj;
+        other = (AbstractPersistentTeamPlayer) obj;
         return Objects.equals(templateName, other.templateName)
                 && Objects.equals(name, other.name);
     }
@@ -196,7 +194,7 @@ public abstract class AbstractPersistentUnit implements Unit {
     }
 
     /**
-     * Returns the ID assigned to this unit.
+     * Returns the ID assigned to this player.
      * 
      * @return the entity's ID
      */
@@ -216,7 +214,7 @@ public abstract class AbstractPersistentUnit implements Unit {
 
     @Override
     public final Role getRole() {
-        return position;
+        return role;
     }
 
     @Override
@@ -230,7 +228,7 @@ public abstract class AbstractPersistentUnit implements Unit {
     }
 
     /**
-     * Removes an ability from the unit.
+     * Removes an ability from the player.
      * 
      * @param ability
      *            the ability to remove
@@ -240,35 +238,34 @@ public abstract class AbstractPersistentUnit implements Unit {
     }
 
     /**
-     * Sets the unit abilities.
+     * Sets the player abilities.
      * <p>
-     * All the abilities which the unit currently has will be removed and
+     * All the abilities which the player currently has will be removed and
      * swapped with the received ones.
      * 
-     * @param unitAbilities
-     *            the abilities to set on the unit
+     * @param playerAbilities
+     *            the abilities to set on the player
      */
-    public final void setAbilities(final Collection<Ability> unitAbilities) {
-        checkNotNull(unitAbilities, "Received a null pointer as abilities");
-
+    public final void setAbilities(final Collection<Ability> playerAbilities) {
         getAbilitiesModifiable().clear();
 
-        for (final Ability ability : unitAbilities) {
-            checkArgument(ability instanceof PersistentAbility,
-                    "All the abilities should be an instanceof JPAAbility");
+        if (playerAbilities != null) {
+            for (final Ability ability : playerAbilities) {
+                checkArgument(ability instanceof PersistentAbility,
+                        "All the abilities should be an instanceof JPAAbility");
 
-            getAbilitiesModifiable().add((PersistentAbility) ability);
+                getAbilitiesModifiable().add((PersistentAbility) ability);
+            }
         }
     }
 
     /**
-     * Sets the unit attributes.
+     * Sets the player attributes.
      * 
      * @param attrs
-     *            the attributes for the unit
+     *            the attributes for the player
      */
     public final void setAttributes(final Attributes attrs) {
-        checkNotNull(attrs, "Received a null pointer as attributes");
         checkArgument(attrs instanceof PersistentAttributes,
                 "The Attributes should be an instanceof JPAAttributes");
 
@@ -276,26 +273,22 @@ public abstract class AbstractPersistentUnit implements Unit {
     }
 
     /**
-     * Sets the unit's cost.
+     * Sets the player's cost.
      * 
-     * @param costUnit
-     *            the unit's cost
+     * @param costPlayer
+     *            the player's cost
      */
-    public final void setCost(final Integer costUnit) {
-        checkNotNull(costUnit, "Received a null pointer as cost");
-
-        cost = costUnit;
+    public final void setCost(final Integer costPlayer) {
+        cost = costPlayer;
     }
 
     /**
-     * Sets the unit giant flag.
+     * Sets the player giant flag.
      * 
      * @param giantFlag
-     *            the flag indicating if the unit is a giant
+     *            the flag indicating if the player is a giant
      */
     public final void setGiant(final Boolean giantFlag) {
-        checkNotNull(giantFlag, "Received a null pointer as giant flag");
-
         giant = giantFlag;
     }
 
@@ -306,43 +299,37 @@ public abstract class AbstractPersistentUnit implements Unit {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
     /**
-     * Sets the unit name.
+     * Sets the player name.
      * 
-     * @param unitName
-     *            the unit name
+     * @param playerName
+     *            the player name
      */
-    public final void setName(final String unitName) {
-        name = unitName;
+    public final void setName(final String playerName) {
+        name = playerName;
     }
 
     /**
-     * Sets the unit team position.
+     * Sets the player team position.
      * 
      * @param pos
-     *            the team position for the unit
+     *            the team position for the player
      */
-    public final void setPosition(final Role pos) {
-        checkNotNull(pos, "Received a null pointer as team position role");
-
-        position = pos;
+    public final void setRole(final Role pos) {
+        role = pos;
     }
 
     /**
-     * Sets the unit's template name.
+     * Sets the player's template name.
      * 
-     * @param name
+     * @param tname
      *            the template name
      */
-    public final void setTemplateName(final String name) {
-        checkNotNull(name, "Received a null pointer as name");
-
-        templateName = name;
+    public final void setTemplateName(final String tname) {
+        templateName = tname;
     }
 
     @Override
@@ -352,9 +339,9 @@ public abstract class AbstractPersistentUnit implements Unit {
     }
 
     /**
-     * Returns the modifiable collection of the unit's abilities.
+     * Returns the modifiable collection of the player's abilities.
      * 
-     * @return the modifiable collection of the unit's abilities
+     * @return the modifiable collection of the player's abilities
      */
     private final Collection<PersistentAbility> getAbilitiesModifiable() {
         return abilities;

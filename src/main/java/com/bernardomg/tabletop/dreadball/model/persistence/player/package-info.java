@@ -14,8 +14,7 @@
  * the License.
  */
 /**
- * Components and composite units. These are such units as those from the
- * Mechanite or Plague teams.
+ * Dreadball players.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit.component;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;

@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import java.io.Serializable;
 
@@ -23,18 +23,17 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Unit with affinity groups, and various costs which will depend on how many of
- * such affinities are shared.
+ * Player which may change and evolve over time, usually between matches.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "AffinityUnit")
-@DiscriminatorValue("affinity")
-@Table(name = "affinity_units")
-public final class PersistentAffinityUnit extends AbstractPersistentAffinityUnit
-        implements Serializable {
+@Entity(name = "AdvancementPlayer")
+@DiscriminatorValue("advancement")
+@Table(name = "advancement_players")
+public final class PersistentAdvancementTeamPlayer extends
+        AbstractPersistentAdvancementTeamPlayer implements Serializable {
 
     /**
      * Serialization ID.
@@ -44,7 +43,7 @@ public final class PersistentAffinityUnit extends AbstractPersistentAffinityUnit
     /**
      * Default constructor.
      */
-    public PersistentAffinityUnit() {
+    public PersistentAdvancementTeamPlayer() {
         super();
     }
 

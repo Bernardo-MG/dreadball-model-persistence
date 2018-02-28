@@ -14,10 +14,9 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,11 +31,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityUnit;
+import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 
 /**
- * Abstract root for a unit with affinity groups, and various costs which will
+ * Abstract root for a player with affinity groups, and various costs which will
  * depend on how many of such affinities are shared.
  * <p>
  * This is a persistent JPA-Based implementation.
@@ -44,15 +43,15 @@ import com.bernardomg.tabletop.dreadball.model.unit.AffinityUnit;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @MappedSuperclass
-public abstract class AbstractPersistentAffinityUnit
-        extends AbstractPersistentUnit implements AffinityUnit {
+public abstract class AbstractPersistentAffinityTeamPlayer
+        extends AbstractPersistentTeamPlayer implements AffinityTeamPlayer {
 
     /**
-     * Unit affinities.
+     * Player affinities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "unit_affinities",
-            joinColumns = { @JoinColumn(name = "unit_id",
+    @JoinTable(name = "player_affinities",
+            joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
@@ -62,61 +61,56 @@ public abstract class AbstractPersistentAffinityUnit
      * Ally cost.
      */
     @Column(name = "cost_ally")
-    private Integer                                   costAlly     = 0;
+    private Integer                                   allyCost     = 0;
 
     /**
      * Friend cost.
      */
     @Column(name = "cost_friend")
-    private Integer                                   costFriend   = 0;
+    private Integer                                   friendCost   = 0;
 
     /**
-     * Stranger cost.
-     */
-    @Column(name = "cost_stranger")
-    private Integer                                   costStranger = 0;
-
-    /**
-     * Unit hated affinities.
+     * Player hated affinities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "unit_hated_affinities",
-            joinColumns = { @JoinColumn(name = "unit_id",
+    @JoinTable(name = "player_hated_affinities",
+            joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
     private final Collection<PersistentAffinityGroup> hated        = new LinkedHashSet<PersistentAffinityGroup>();
 
     /**
+     * Stranger cost.
+     */
+    @Column(name = "cost_stranger")
+    private Integer                                   strangerCost = 0;
+
+    /**
      * Default constructor.
      */
-    public AbstractPersistentAffinityUnit() {
+    public AbstractPersistentAffinityTeamPlayer() {
         super();
     }
 
     /**
-     * Adds an affinity group to the unit.
+     * Adds an affinity group to the player.
      * 
      * @param affinity
      *            affinity group to add
      */
     public final void addAffinityGroup(final PersistentAffinityGroup affinity) {
-        checkNotNull(affinity, "Received a null pointer as the affinity group");
-
         getAffinityGroupsModifiable().add(affinity);
     }
 
     /**
-     * Adds a hated affinity group to the unit.
+     * Adds a hated affinity group to the player.
      * 
      * @param affinity
      *            affinity group to add
      */
     public final void
             addHatedAffinityGroup(final PersistentAffinityGroup affinity) {
-        checkNotNull(affinity,
-                "Received a null pointer as the hated affinity group");
-
         getHatedAffinityGroupsModifiable().add(affinity);
     }
 
@@ -134,12 +128,12 @@ public abstract class AbstractPersistentAffinityUnit
 
     @Override
     public final Integer getAllyCost() {
-        return costAlly;
+        return allyCost;
     }
 
     @Override
     public final Integer getFriendCost() {
-        return costFriend;
+        return friendCost;
     }
 
     @Override
@@ -156,123 +150,111 @@ public abstract class AbstractPersistentAffinityUnit
 
     @Override
     public final Integer getStrangerCost() {
-        return costStranger;
+        return strangerCost;
     }
 
     /**
-     * Removes an affinity group from the unit.
+     * Removes an affinity group from the player.
      * 
      * @param affinity
      *            the affinity group to remove
      */
     public final void removeAffinityGroup(final AffinityGroup affinity) {
-        checkNotNull(affinity, "Received a null pointer as the affinity group");
-
         getAffinityGroupsModifiable().remove(affinity);
     }
 
     /**
-     * Removes a hated affinity group from the unit.
+     * Removes a hated affinity group from the player.
      * 
      * @param affinity
      *            the hated affinity group to remove
      */
     public final void removeHatedAffinityGroup(final AffinityGroup affinity) {
-        checkNotNull(affinity,
-                "Received a null pointer as the hated affinity group");
-
         getHatedAffinityGroupsModifiable().remove(affinity);
     }
 
     /**
-     * Sets the unit affinities.
+     * Sets the player affinities.
      * <p>
-     * All the affinities in the unit will be removed and swapped with the
+     * All the affinities in the player will be removed and swapped with the
      * received ones.
      * 
      * @param affinityGroups
-     *            the affinities to set on the unit
+     *            the affinities to set on the player
      */
     public final void
             setAffinityGroups(final Collection<AffinityGroup> affinityGroups) {
-        checkNotNull(affinityGroups, "Received a null pointer as affinities");
-
         getAffinityGroupsModifiable().clear();
 
-        for (final AffinityGroup affinity : affinityGroups) {
-            checkArgument(affinity instanceof PersistentAffinityGroup,
-                    "All the affinities should be an instanceof JPAAffinityGroup");
+        if (affinityGroups != null) {
+            for (final AffinityGroup affinity : affinityGroups) {
+                checkArgument(affinity instanceof PersistentAffinityGroup,
+                        "All the affinities should be an instanceof JPAAffinityGroup");
 
-            getAffinityGroupsModifiable()
-                    .add((PersistentAffinityGroup) affinity);
+                getAffinityGroupsModifiable()
+                        .add((PersistentAffinityGroup) affinity);
+            }
         }
     }
 
     /**
-     * Sets the unit's ally cost.
+     * Sets the player's ally cost.
      * 
      * @param cost
-     *            the unit's ally cost
+     *            the player's ally cost
      */
     public final void setAllyCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as ally cost");
-
-        costAlly = cost;
+        allyCost = cost;
     }
 
     /**
-     * Sets the unit's friend cost.
+     * Sets the player's friend cost.
      * 
      * @param cost
-     *            the unit's friend cost
+     *            the player's friend cost
      */
     public final void setFriendCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as friend cost");
-
-        costFriend = cost;
+        friendCost = cost;
     }
 
     /**
-     * Sets the unit hated affinities.
+     * Sets the player hated affinities.
      * <p>
-     * All the hated affinities in the unit will be removed and swapped with the
-     * received ones.
+     * All the hated affinities in the player will be removed and swapped with
+     * the received ones.
      * 
      * @param affinityGroups
-     *            the hated affinities to set on the unit
+     *            the hated affinities to set on the player
      */
     public final void setHatedAffinityGroups(
             final Collection<AffinityGroup> affinityGroups) {
-        checkNotNull(affinityGroups,
-                "Received a null pointer as hated affinities");
-
         getHatedAffinityGroupsModifiable().clear();
 
-        for (final AffinityGroup affinity : affinityGroups) {
-            checkArgument(affinity instanceof PersistentAffinityGroup,
-                    "All the affinities should be an instanceof JPAAffinityGroup");
+        if (affinityGroups != null) {
+            for (final AffinityGroup affinity : affinityGroups) {
+                checkArgument(affinity instanceof PersistentAffinityGroup,
+                        "All the affinities should be an instanceof JPAAffinityGroup");
 
-            getHatedAffinityGroupsModifiable()
-                    .add((PersistentAffinityGroup) affinity);
+                getHatedAffinityGroupsModifiable()
+                        .add((PersistentAffinityGroup) affinity);
+            }
         }
     }
 
     /**
-     * Sets the unit's stranger cost.
+     * Sets the player's stranger cost.
      * 
      * @param cost
-     *            the unit's stranger cost
+     *            the player's stranger cost
      */
     public final void setStrangerCost(final Integer cost) {
-        checkNotNull(cost, "Received a null pointer as stranger cost");
-
-        costStranger = cost;
+        strangerCost = cost;
     }
 
     /**
-     * Returns the modifiable collection of the unit's affinity groups.
+     * Returns the modifiable collection of the player's affinity groups.
      * 
-     * @return the modifiable collection of the unit's affinity groups
+     * @return the modifiable collection of the player's affinity groups
      */
     private final Collection<PersistentAffinityGroup>
             getAffinityGroupsModifiable() {
@@ -280,9 +262,9 @@ public abstract class AbstractPersistentAffinityUnit
     }
 
     /**
-     * Returns the modifiable collection of the unit's hated affinity groups.
+     * Returns the modifiable collection of the player's hated affinity groups.
      * 
-     * @return the modifiable collection of the unit's hated affinity groups
+     * @return the modifiable collection of the player's hated affinity groups
      */
     private final Collection<PersistentAffinityGroup>
             getHatedAffinityGroupsModifiable() {

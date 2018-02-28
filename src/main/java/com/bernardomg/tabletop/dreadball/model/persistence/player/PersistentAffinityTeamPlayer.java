@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import java.io.Serializable;
 
@@ -23,18 +23,18 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Root for the basic features all the Dreadball units have, no matter if they
- * come from Dreadball Original (DBO) or Dreadball Xtreme (DBX).
+ * Player with affinity groups, and various costs which will depend on how many
+ * of such affinities are shared.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "Unit")
-@DiscriminatorValue("simple")
-@Table(name = "simple_units")
-public final class PersistentUnit extends AbstractPersistentUnit
-        implements Serializable {
+@Entity(name = "AffinityPlayer")
+@DiscriminatorValue("affinity")
+@Table(name = "affinity_players")
+public final class PersistentAffinityTeamPlayer
+        extends AbstractPersistentAffinityTeamPlayer implements Serializable {
 
     /**
      * Serialization ID.
@@ -44,7 +44,7 @@ public final class PersistentUnit extends AbstractPersistentUnit
     /**
      * Default constructor.
      */
-    public PersistentUnit() {
+    public PersistentAffinityTeamPlayer() {
         super();
     }
 

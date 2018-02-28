@@ -14,37 +14,57 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
 import java.io.Serializable;
 
-import javax.persistence.DiscriminatorValue;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Unit which may change and evolve over time, usually between matches.
+ * Component used for creating a composite player.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "AdvancementUnit")
-@DiscriminatorValue("advancement")
-@Table(name = "advancement_units")
-public final class PersistentAdvancementUnit
-        extends AbstractPersistentAdvancementUnit implements Serializable {
+@Entity(name = "Component")
+@Table(name = "player_components")
+public final class PersistentComponent extends AbstractPersistentComponent
+        implements Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = -6317901977987115397L;
+    private static final long serialVersionUID = -5547831116001472121L;
+
+    /**
+     * Component cost.
+     */
+    @Column(name = "cost")
+    private Integer           cost             = 0;
 
     /**
      * Default constructor.
      */
-    public PersistentAdvancementUnit() {
+    public PersistentComponent() {
         super();
+    }
+
+    @Override
+    public final Integer getCost() {
+        return cost;
+    }
+
+    /**
+     * Sets the component cost.
+     * 
+     * @param costComponent
+     *            the component cost
+     */
+    public final void setCost(final Integer costComponent) {
+        cost = costComponent;
     }
 
 }

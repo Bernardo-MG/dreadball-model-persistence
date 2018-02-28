@@ -14,10 +14,9 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.availability.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.availability.affinity;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -37,9 +36,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.availability.unit.SponsorAffinityGroupAvailability;
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.PersistentAffinityGroup;
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.availability.affinity.SponsorAffinityGroupAvailability;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.PersistentAffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -184,14 +183,15 @@ public final class PersistentSponsorAffinityGroupAvailability
      * removed and swapped with the received ones.
      * 
      * @param affinityGroups
-     *            the affinity groups to set on the unit
+     *            the affinity groups to set on the player
      */
     public final void setAffinityGroups(
             final Collection<PersistentAffinityGroup> affinityGroups) {
-        checkNotNull(affinityGroups, "Received a null pointer as groups");
-
         getAffinityGroupsModifiable().clear();
-        getAffinityGroupsModifiable().addAll(affinityGroups);
+
+        if (affinityGroups != null) {
+            getAffinityGroupsModifiable().addAll(affinityGroups);
+        }
     }
 
     /**
@@ -201,8 +201,6 @@ public final class PersistentSponsorAffinityGroupAvailability
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
@@ -223,8 +221,6 @@ public final class PersistentSponsorAffinityGroupAvailability
      *            the availability's name
      */
     public final void setName(final String nameAva) {
-        checkNotNull(nameAva, "Received a null pointer as name");
-
         name = nameAva;
     }
 

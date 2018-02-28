@@ -14,10 +14,9 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.player;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
@@ -25,12 +24,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.component.PersistentComponent;
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.component.PersistentComponent;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
 
 /**
- * Abstract root for a unit which may change and evolve over time, usually
+ * Abstract root for a player which may change and evolve over time, usually
  * between matches.
  * <p>
  * This is a persistent JPA-Based implementation.
@@ -38,44 +37,44 @@ import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @MappedSuperclass
-public abstract class AbstractPersistentAdvancementUnit
-        extends AbstractPersistentUnit implements AdvancementUnit {
+public abstract class AbstractPersistentAdvancementTeamPlayer
+        extends AbstractPersistentTeamPlayer implements AdvancementTeamPlayer {
 
     /**
-     * Unit experience.
-     */
-    @Column(name = "experience")
-    private Integer             experience = 0;
-
-    /**
-     * Unit grafted implant.
+     * Player grafted implant.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grafted_implant_id")
-    private PersistentComponent implant;
+    private PersistentComponent graftedImplant;
 
     /**
-     * Unit name.
+     * Player name.
      */
     @Column(name = "name")
-    private final String        name       = "";
+    private final String        name              = "";
 
     /**
-     * Unit rank.
+     * Player rank.
      */
     @Column(name = "rank")
-    private Integer             rank       = 0;
+    private Integer             rank              = 0;
+
+    /**
+     * Player experience.
+     */
+    @Column(name = "experience")
+    private Integer             unspentExperience = 0;
 
     /**
      * Default constructor.
      */
-    public AbstractPersistentAdvancementUnit() {
+    public AbstractPersistentAdvancementTeamPlayer() {
         super();
     }
 
     @Override
     public final Component getGraftedImplant() {
-        return implant;
+        return graftedImplant;
     }
 
     @Override
@@ -85,7 +84,7 @@ public abstract class AbstractPersistentAdvancementUnit
 
     @Override
     public final Integer getUnspentExperience() {
-        return experience;
+        return unspentExperience;
     }
 
     @Override
@@ -96,25 +95,20 @@ public abstract class AbstractPersistentAdvancementUnit
 
     @Override
     public final void setGraftedImplant(final Component graft) {
-        checkNotNull(graft, "Received a null pointer as implant");
         checkArgument(graft instanceof PersistentComponent,
                 "The implant should be an instance of JPAComponent");
 
-        implant = (PersistentComponent) graft;
+        graftedImplant = (PersistentComponent) graft;
     }
 
     @Override
-    public final void setRank(final Integer rankUnit) {
-        checkNotNull(rankUnit, "Received a null pointer as rank");
-
-        rank = rankUnit;
+    public final void setRank(final Integer rankPlayer) {
+        rank = rankPlayer;
     }
 
     @Override
     public final void setUnspentExperience(final Integer exp) {
-        checkNotNull(exp, "Received a null pointer as experience");
-
-        experience = exp;
+        unspentExperience = exp;
     }
 
 }

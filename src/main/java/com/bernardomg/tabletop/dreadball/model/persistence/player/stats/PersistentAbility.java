@@ -14,9 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit;
-
-import static com.google.common.base.Preconditions.checkNotNull;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.stats;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -28,35 +26,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.google.common.base.MoreObjects;
 
 /**
- * Affinity group.
+ * Interface for representing a player's ability.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "AffinityGroup")
-@Table(name = "affinity_groups")
-public final class PersistentAffinityGroup
-        implements AffinityGroup, Serializable {
+@Entity(name = "Ability")
+@Table(name = "abilities")
+public final class PersistentAbility implements Ability, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long serialVersionUID = 3702432119601675635L;
+    private static final long serialVersionUID = 1853450793663114595L;
 
     /**
-     * Affinity group's primary key.
+     * Ability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer           id               = -1;
 
     /**
-     * Affinity group¡s name.
+     * Ability name.
      */
     @Column(name = "name", unique = true)
     private String            name             = "";
@@ -64,7 +61,7 @@ public final class PersistentAffinityGroup
     /**
      * Default constructor.
      */
-    public PersistentAffinityGroup() {
+    public PersistentAbility() {
         super();
     }
 
@@ -82,9 +79,9 @@ public final class PersistentAffinityGroup
             return false;
         }
 
-        final PersistentAffinityGroup other;
+        final PersistentAbility other;
 
-        other = (PersistentAffinityGroup) obj;
+        other = (PersistentAbility) obj;
         return Objects.equals(name, other.name);
     }
 
@@ -108,27 +105,23 @@ public final class PersistentAffinityGroup
     }
 
     /**
-     * Sets the affinity group's name.
-     * 
-     * @param nameAffinity
-     *            the affinity group's name
-     */
-    public final void setAffinityGroupName(final String nameAffinity) {
-        checkNotNull(nameAffinity, "Received a null pointer as name");
-
-        name = nameAffinity;
-    }
-
-    /**
      * Sets the ID assigned to this entity.
      * 
      * @param identifier
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
+    }
+
+    /**
+     * Sets the ability name.
+     * 
+     * @param nameAbility
+     *            the ability name
+     */
+    public final void setName(final String nameAbility) {
+        name = nameAbility;
     }
 
     @Override

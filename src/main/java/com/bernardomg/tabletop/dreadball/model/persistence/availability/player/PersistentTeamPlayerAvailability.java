@@ -14,9 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.availability.unit;
-
-import static com.google.common.base.Preconditions.checkNotNull;
+package com.bernardomg.tabletop.dreadball.model.persistence.availability.player;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -30,56 +28,56 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.availability.unit.TeamTypeUnitAvailability;
+import com.bernardomg.tabletop.dreadball.model.availability.player.TeamPlayerAvailability;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 import com.bernardomg.tabletop.dreadball.model.persistence.faction.PersistentTeamType;
-import com.bernardomg.tabletop.dreadball.model.persistence.unit.PersistentUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.PersistentTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.google.common.base.MoreObjects;
 
 /**
- * Unit availabilities for a {@link TeamType}, to be used for both Dreadball
+ * Player availabilities for a {@link TeamType}, to be used for both Dreadball
  * Original (DBO) and Dreadball Xtreme (DBX).
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "TeamTypeUnitAvailability")
-@Table(name = "team_type_unit_avas")
-public final class PersistentTeamTypeUnitAvailability
-        implements TeamTypeUnitAvailability, Serializable {
+@Entity(name = "TeamTypePlayerAvailability")
+@Table(name = "team_type_player_avas")
+public final class PersistentTeamPlayerAvailability
+        implements TeamPlayerAvailability, Serializable {
 
     /**
      * Serialization ID.
      */
-    private static final long  serialVersionUID = -3725739240261330858L;
+    private static final long    serialVersionUID = -3725739240261330858L;
 
     /**
      * Ava's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer            id               = -1;
+    private Integer              id               = -1;
+
+    /**
+     * Player for the availability.
+     */
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "player_id")
+    private PersistentTeamPlayer teamPlayer;
 
     /**
      * Team type for the availability.
      */
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_type_id")
-    private PersistentTeamType teamType;
-
-    /**
-     * Unit for the availability.
-     */
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "unit_id")
-    private PersistentUnit     unit;
+    private PersistentTeamType   teamType;
 
     /**
      * Default constructor.
      */
-    public PersistentTeamTypeUnitAvailability() {
+    public PersistentTeamPlayerAvailability() {
         super();
     }
 
@@ -97,11 +95,11 @@ public final class PersistentTeamTypeUnitAvailability
             return false;
         }
 
-        final PersistentTeamTypeUnitAvailability other;
+        final PersistentTeamPlayerAvailability other;
 
-        other = (PersistentTeamTypeUnitAvailability) obj;
+        other = (PersistentTeamPlayerAvailability) obj;
         return Objects.equals(teamType, other.teamType)
-                && Objects.equals(unit, other.unit);
+                && Objects.equals(teamPlayer, other.teamPlayer);
     }
 
     /**
@@ -114,18 +112,18 @@ public final class PersistentTeamTypeUnitAvailability
     }
 
     @Override
+    public final TeamPlayer getTeamPlayer() {
+        return teamPlayer;
+    }
+
+    @Override
     public final TeamType getTeamType() {
         return teamType;
     }
 
     @Override
-    public final Unit getUnit() {
-        return unit;
-    }
-
-    @Override
     public final int hashCode() {
-        return Objects.hash(unit, teamType);
+        return Objects.hash(teamPlayer, teamType);
     }
 
     /**
@@ -135,9 +133,17 @@ public final class PersistentTeamTypeUnitAvailability
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
+    }
+
+    /**
+     * Sets the player for the availability.
+     * 
+     * @param playerType
+     *            the player for the availability
+     */
+    public final void setTeamPlayer(final PersistentTeamPlayer playerType) {
+        teamPlayer = playerType;
     }
 
     /**
@@ -147,27 +153,13 @@ public final class PersistentTeamTypeUnitAvailability
      *            the team type for the availability
      */
     public final void setTeamType(final PersistentTeamType team) {
-        checkNotNull(team, "Received a null pointer as team type");
-
         teamType = team;
-    }
-
-    /**
-     * Sets the unit for the availability.
-     * 
-     * @param unitType
-     *            the unit for the availability
-     */
-    public final void setUnit(final PersistentUnit unitType) {
-        checkNotNull(unitType, "Received a null pointer as unit");
-
-        unit = unitType;
     }
 
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("team", teamType)
-                .add("unit", unit).toString();
+                .add("player", teamPlayer).toString();
     }
 
 }

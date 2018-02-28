@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Unit availabilities.
+ * Affinity availabilities.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.availability.unit;
+package com.bernardomg.tabletop.dreadball.model.persistence.availability.affinity;

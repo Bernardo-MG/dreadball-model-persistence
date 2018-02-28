@@ -17,7 +17,6 @@
 package com.bernardomg.tabletop.dreadball.model.persistence.faction;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ import com.google.common.base.MoreObjects;
 
 /**
  * Team type, which are the Dreadball Original (DBO) factions. They are also
- * used to group together Dreadball Xtreme (DBX) units.
+ * used to group together Dreadball Xtreme (DBX) players.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
@@ -97,7 +96,6 @@ public final class PersistentTeamType implements TeamType, Serializable {
      *            the team rule to add
      */
     public final void addTeamRule(final TeamRule rule) {
-        checkNotNull(rule, "Received a null pointer as rule");
         checkArgument(rule instanceof PersistentTeamRule,
                 "The TeamRule should be an instanceof JPATeamRule");
 
@@ -172,8 +170,6 @@ public final class PersistentTeamType implements TeamType, Serializable {
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
@@ -187,15 +183,15 @@ public final class PersistentTeamType implements TeamType, Serializable {
      *            the team rules to set on the team type
      */
     public final void setTeamRules(final Collection<TeamRule> teamRules) {
-        checkNotNull(teamRules, "Received a null pointer as rules");
-
         getTeamRulesModifiable().clear();
 
-        for (final TeamRule rule : teamRules) {
-            checkArgument(rule instanceof PersistentTeamRule,
-                    "All the rules should be an instanceof JPATeamRule");
+        if (teamRules != null) {
+            for (final TeamRule rule : teamRules) {
+                checkArgument(rule instanceof PersistentTeamRule,
+                        "All the rules should be an instanceof JPATeamRule");
 
-            getTeamRulesModifiable().add((PersistentTeamRule) rule);
+                getTeamRulesModifiable().add((PersistentTeamRule) rule);
+            }
         }
     }
 
@@ -206,8 +202,6 @@ public final class PersistentTeamType implements TeamType, Serializable {
      *            team type name
      */
     public final void setTeamTypeName(final String typeName) {
-        checkNotNull(typeName, "Received a null pointer as name");
-
         name = typeName;
     }
 

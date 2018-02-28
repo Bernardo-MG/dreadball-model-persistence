@@ -14,9 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.unit.component;
-
-import static com.google.common.base.Preconditions.checkNotNull;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.component;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -28,10 +26,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.unit.component.ComponentLocation;
+import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocation;
 
 /**
- * Location where a unit component may be applied.
+ * Location where a player component may be applied.
  * <p>
  * This is a persistent JPA-Based implementation.
  * 
@@ -108,8 +106,6 @@ public final class PersistentComponentLocation
      *            the component location name
      */
     public final void setComponentLocationName(final String componentName) {
-        checkNotNull(componentName, "Received a null pointer as name");
-
         name = componentName;
     }
 
@@ -120,8 +116,6 @@ public final class PersistentComponentLocation
      *            the ID for the entity
      */
     public final void setId(final Integer identifier) {
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
         id = identifier;
     }
 
