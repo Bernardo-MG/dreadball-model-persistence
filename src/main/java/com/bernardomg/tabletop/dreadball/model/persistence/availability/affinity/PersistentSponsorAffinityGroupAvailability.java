@@ -64,7 +64,7 @@ public final class PersistentSponsorAffinityGroupAvailability
      * Available affinity groups.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "sponsor_affinity_avas_affinity_groups",
+    @JoinTable(name = "sponsor_affinity_avas_affinities",
             joinColumns = { @JoinColumn(name = "sponsor_affinity_ava_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
