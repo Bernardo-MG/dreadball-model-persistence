@@ -81,7 +81,7 @@ public final class PersistentSponsorAssetsAvailability
     /**
      * Cost of a sabotage card.
      */
-    @Column(name = "cost_sabotage")
+    @Column(name = "cost_nasty_surprise")
     private Integer           nastySurpriseCardCost = 0;
 
     /**
