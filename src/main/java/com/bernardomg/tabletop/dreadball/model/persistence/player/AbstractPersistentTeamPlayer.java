@@ -113,9 +113,9 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
     private String                              name         = "";
 
     /**
-     * Player team position.
+     * Player team role.
      */
-    @Column(name = "position")
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role                                role         = Role.JACK;
 
@@ -313,13 +313,13 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
     }
 
     /**
-     * Sets the player team position.
+     * Sets the player team role.
      * 
-     * @param pos
-     *            the team position for the player
+     * @param playerRole
+     *            the team role for the player
      */
-    public final void setRole(final Role pos) {
-        role = pos;
+    public final void setRole(final Role playerRole) {
+        role = playerRole;
     }
 
     /**
