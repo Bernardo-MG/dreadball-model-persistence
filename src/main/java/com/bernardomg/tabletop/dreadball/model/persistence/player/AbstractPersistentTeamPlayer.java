@@ -68,7 +68,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * Player abilities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "player_abilities",
+    @JoinTable(name = "PLAYER_ABILITIES",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",

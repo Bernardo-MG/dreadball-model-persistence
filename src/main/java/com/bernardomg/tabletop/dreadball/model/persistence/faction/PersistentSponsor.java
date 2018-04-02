@@ -61,7 +61,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
      * Sponsor affinity groups.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "sponsor_affinities",
+    @JoinTable(name = "SPONSOR_AFFINITIES",
             joinColumns = { @JoinColumn(name = "sponsor_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "group_id",

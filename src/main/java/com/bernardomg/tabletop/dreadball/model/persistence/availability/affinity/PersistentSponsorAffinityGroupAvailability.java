@@ -51,7 +51,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SponsorAffinityGroupAvailability")
-@Table(name = "SPONSOR_AFFINITY_AVAS")
+@Table(name = "AFFINITY_SETS")
 public final class PersistentSponsorAffinityGroupAvailability
         implements SponsorAffinityGroupAvailability, Serializable {
 
@@ -64,7 +64,7 @@ public final class PersistentSponsorAffinityGroupAvailability
      * Available affinity groups.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "sponsor_affinity_avas_affinities",
+    @JoinTable(name = "AFFINITY_OPTION",
             joinColumns = { @JoinColumn(name = "sponsor_affinity_ava_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",

@@ -50,7 +50,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      * Player affinities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "player_affinities",
+    @JoinTable(name = "PLAYER_AFFINITIES",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
@@ -73,7 +73,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      * Player hated affinities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "player_hated_affinities",
+    @JoinTable(name = "PLAYER_HATED_AFFINITIES",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",

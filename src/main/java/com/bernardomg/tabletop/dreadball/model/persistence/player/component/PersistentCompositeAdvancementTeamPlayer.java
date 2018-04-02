@@ -60,7 +60,7 @@ public final class PersistentCompositeAdvancementTeamPlayer
      * Player components.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "composite_player_components",
+    @JoinTable(name = "PLAYER_COMPONENTS",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "component_id",

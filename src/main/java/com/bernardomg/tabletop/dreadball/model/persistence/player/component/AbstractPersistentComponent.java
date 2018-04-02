@@ -65,7 +65,7 @@ public abstract class AbstractPersistentComponent implements Component {
      * Component abilities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "component_abilities",
+    @JoinTable(name = "COMPONENT_ABILITIES",
             joinColumns = { @JoinColumn(name = "component_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
@@ -102,7 +102,7 @@ public abstract class AbstractPersistentComponent implements Component {
      * Component team roles.
      */
     @ElementCollection(targetClass = Role.class)
-    @JoinTable(name = "component_roles",
+    @JoinTable(name = "COMPONENT_ROLES",
             joinColumns = @JoinColumn(name = "component_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
