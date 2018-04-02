@@ -26,7 +26,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.bernardomg.tabletop.dreadball.model.availability.asset.SponsorAssetsAvailability;
+import com.bernardomg.tabletop.dreadball.model.availability.asset.SponsorAssetsCosts;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -39,8 +39,8 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "SponsorAssetsAvailability")
 @Table(name = "sponsor_asset_avas")
-public final class PersistentSponsorAssetsAvailability
-        implements SponsorAssetsAvailability, Serializable {
+public final class PersistentSponsorAssetsCosts
+        implements SponsorAssetsCosts, Serializable {
 
     /**
      * Serialization ID.
@@ -99,7 +99,7 @@ public final class PersistentSponsorAssetsAvailability
     /**
      * Default constructor.
      */
-    public PersistentSponsorAssetsAvailability() {
+    public PersistentSponsorAssetsCosts() {
         super();
     }
 
@@ -117,9 +117,9 @@ public final class PersistentSponsorAssetsAvailability
             return false;
         }
 
-        final PersistentSponsorAssetsAvailability other;
+        final PersistentSponsorAssetsCosts other;
 
-        other = (PersistentSponsorAssetsAvailability) obj;
+        other = (PersistentSponsorAssetsCosts) obj;
         return Objects.equals(id, other.id);
     }
 
