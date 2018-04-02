@@ -38,7 +38,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SponsorAssetsAvailability")
-@Table(name = "SPONSOR_ASSET_COSTS")
+@Table(name = "ASSET_COSTS")
 public final class PersistentSponsorAssetsCosts
         implements SponsorAssetsCosts, Serializable {
 
@@ -50,19 +50,19 @@ public final class PersistentSponsorAssetsCosts
     /**
      * Cost of an affinity group.
      */
-    @Column(name = "cost_affinity")
+    @Column(name = "affinity")
     private Integer           affinityCost          = 0;
 
     /**
      * Cost of a cheerleader.
      */
-    @Column(name = "cost_cheerleader")
+    @Column(name = "cheerleader")
     private Integer           cheerleaderCost       = 0;
 
     /**
      * Cost of a coaching dice.
      */
-    @Column(name = "cost_dice")
+    @Column(name = "dice")
     private Integer           diceCost              = 0;
 
     /**
@@ -75,25 +75,25 @@ public final class PersistentSponsorAssetsCosts
     /**
      * Cost of a medibot.
      */
-    @Column(name = "cost_medibot")
+    @Column(name = "medibot")
     private Integer           medibotCost           = 0;
 
     /**
      * Cost of a sabotage card.
      */
-    @Column(name = "cost_nasty_surprise")
+    @Column(name = "nasty_surprise")
     private Integer           nastySurpriseCardCost = 0;
 
     /**
      * Cost of a special movement card.
      */
-    @Column(name = "cost_special_move")
+    @Column(name = "special_move")
     private Integer           specialMoveCardCost   = 0;
 
     /**
      * Cost of a wager.
      */
-    @Column(name = "cost_wager")
+    @Column(name = "wager")
     private Integer           wagerCost             = 0;
 
     /**

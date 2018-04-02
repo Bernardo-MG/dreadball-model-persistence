@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.persistence.player;
+package com.bernardomg.tabletop.dreadball.model.persistence.player.stats;
 
 import java.io.Serializable;
 import java.util.Objects;
