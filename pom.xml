@@ -24,7 +24,11 @@
 
    <groupId>com.bernardomg.tabletop.dreadball</groupId>
    <artifactId>dreadball-model-persistence</artifactId>
+<<<<<<< HEAD
    <version>0.8.1-SNAPSHOT</version>
+=======
+   <version>0.8.0</version>
+>>>>>>> refs/remotes/origin/master
    <packaging>jar</packaging>
 
    <name>Dreadball Persistence Model Implementation</name>
