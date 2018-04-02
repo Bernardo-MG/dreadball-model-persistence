@@ -50,7 +50,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TeamType")
-@Table(name = "team_types")
+@Table(name = "TEAM_TYPES")
 public final class PersistentTeamType implements TeamType, Serializable {
 
     /**

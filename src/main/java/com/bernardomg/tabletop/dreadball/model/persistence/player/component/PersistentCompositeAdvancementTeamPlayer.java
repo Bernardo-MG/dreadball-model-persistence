@@ -46,7 +46,7 @@ import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAdvance
  */
 @Entity(name = "CompositeAdvancementPlayer")
 @DiscriminatorValue("composite_advancement")
-@Table(name = "composite_advancement_players")
+@Table(name = "COMPOSITE_ADVANCEMENT_PLAYERS")
 public final class PersistentCompositeAdvancementTeamPlayer
         extends AbstractPersistentAdvancementTeamPlayer
         implements CompositeAdvancementTeamPlayer, Serializable {

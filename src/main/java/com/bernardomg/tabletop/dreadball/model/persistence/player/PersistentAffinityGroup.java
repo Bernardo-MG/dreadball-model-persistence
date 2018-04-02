@@ -37,7 +37,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "AffinityGroup")
-@Table(name = "affinity_groups")
+@Table(name = "AFFINITY_GROUPS")
 public final class PersistentAffinityGroup
         implements AffinityGroup, Serializable {
 

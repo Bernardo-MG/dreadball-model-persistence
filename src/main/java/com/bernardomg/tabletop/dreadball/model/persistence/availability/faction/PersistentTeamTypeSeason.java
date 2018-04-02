@@ -40,7 +40,7 @@ import com.bernardomg.tabletop.dreadball.model.persistence.faction.PersistentTea
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "PersistentTeamTypeSeason")
-@Table(name = "team_type_seasons")
+@Table(name = "TEAM_TYPE_SEASONS")
 public final class PersistentTeamTypeSeason
         implements TeamTypeSeason, Serializable {
 

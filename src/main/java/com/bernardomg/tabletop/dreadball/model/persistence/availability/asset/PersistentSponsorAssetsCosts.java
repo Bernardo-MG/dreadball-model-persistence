@@ -38,7 +38,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SponsorAssetsAvailability")
-@Table(name = "sponsor_asset_avas")
+@Table(name = "SPONSOR_ASSET_COSTS")
 public final class PersistentSponsorAssetsCosts
         implements SponsorAssetsCosts, Serializable {
 

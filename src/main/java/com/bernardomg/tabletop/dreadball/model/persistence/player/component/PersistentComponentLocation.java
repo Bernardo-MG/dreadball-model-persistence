@@ -36,7 +36,7 @@ import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocatio
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "ComponentLocation")
-@Table(name = "component_locations")
+@Table(name = "COMPONENT_LOCATIONS")
 public final class PersistentComponentLocation
         implements ComponentLocation, Serializable {
 

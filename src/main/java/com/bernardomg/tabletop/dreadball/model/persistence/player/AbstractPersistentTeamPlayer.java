@@ -61,7 +61,7 @@ import com.google.common.base.MoreObjects;
 @Entity(name = "TeamPlayer")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "player_type")
-@Table(name = "players")
+@Table(name = "PLAYERS")
 public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
 
     /**

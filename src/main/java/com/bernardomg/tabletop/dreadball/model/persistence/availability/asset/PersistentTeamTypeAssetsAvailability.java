@@ -43,7 +43,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TeamTypeAssetsAvailability")
-@Table(name = "team_type_asset_avas")
+@Table(name = "TEAM_TYPE_ASSETS")
 public final class PersistentTeamTypeAssetsAvailability
         implements TeamTypeAssetsAvailability, Serializable {
 

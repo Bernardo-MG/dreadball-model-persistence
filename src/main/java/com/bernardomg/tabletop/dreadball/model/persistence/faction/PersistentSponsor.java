@@ -49,7 +49,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "Sponsor")
-@Table(name = "sponsors")
+@Table(name = "SPONSORS")
 public final class PersistentSponsor implements Sponsor, Serializable {
 
     /**

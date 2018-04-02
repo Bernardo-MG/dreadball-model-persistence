@@ -51,7 +51,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SponsorAffinityGroupAvailability")
-@Table(name = "sponsor_affinity_avas")
+@Table(name = "SPONSOR_AFFINITY_AVAS")
 public final class PersistentSponsorAffinityGroupAvailability
         implements SponsorAffinityGroupAvailability, Serializable {
 

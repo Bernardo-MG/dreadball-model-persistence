@@ -30,7 +30,7 @@ import javax.persistence.Table;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "Component")
-@Table(name = "player_components")
+@Table(name = "PLAYER_COMPONENTS")
 public final class PersistentComponent extends AbstractPersistentComponent
         implements Serializable {
 
