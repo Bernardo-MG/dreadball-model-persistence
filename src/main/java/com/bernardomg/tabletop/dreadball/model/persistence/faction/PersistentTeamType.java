@@ -50,7 +50,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TeamType")
-@Table(name = "team_types")
+@Table(name = "TEAM_TYPES")
 public final class PersistentTeamType implements TeamType, Serializable {
 
     /**
@@ -75,7 +75,7 @@ public final class PersistentTeamType implements TeamType, Serializable {
      * Team type rules.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "team_type_rules",
+    @JoinTable(name = "TEAM_TYPE_RULES",
             joinColumns = { @JoinColumn(name = "team_type_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "team_rule_id",

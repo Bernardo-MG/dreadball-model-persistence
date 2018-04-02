@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TeamTypePlayerAvailability")
-@Table(name = "team_type_player_avas")
+@Table(name = "TEAM_TYPE_PLAYERS")
 public final class PersistentTeamPlayerAvailability
         implements TeamPlayerAvailability, Serializable {
 

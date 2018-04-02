@@ -32,7 +32,7 @@ import javax.persistence.Table;
  */
 @Entity(name = "Player")
 @DiscriminatorValue("simple")
-@Table(name = "simple_players")
+@Table(name = "SIMPLE_PLAYERS")
 public final class PersistentTeamPlayer extends AbstractPersistentTeamPlayer
         implements Serializable {
 

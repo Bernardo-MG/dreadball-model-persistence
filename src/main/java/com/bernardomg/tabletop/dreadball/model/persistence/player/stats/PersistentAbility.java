@@ -37,7 +37,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "Ability")
-@Table(name = "abilities")
+@Table(name = "ABILITIES")
 public final class PersistentAbility implements Ability, Serializable {
 
     /**

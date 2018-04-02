@@ -37,7 +37,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "TeamRule")
-@Table(name = "team_rules")
+@Table(name = "TEAM_RULES")
 public final class PersistentTeamRule implements TeamRule, Serializable {
 
     /**

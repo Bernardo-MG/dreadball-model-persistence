@@ -58,17 +58,17 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Entity(name = "Player")
+@Entity(name = "TeamPlayer")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "player_type")
-@Table(name = "players")
+@Table(name = "PLAYERS")
 public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
 
     /**
      * Player abilities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "player_abilities",
+    @JoinTable(name = "PLAYER_ABILITIES",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
@@ -113,9 +113,9 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
     private String                              name         = "";
 
     /**
-     * Player team position.
+     * Player team role.
      */
-    @Column(name = "position")
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role                                role         = Role.JACK;
 
@@ -313,13 +313,13 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
     }
 
     /**
-     * Sets the player team position.
+     * Sets the player team role.
      * 
-     * @param pos
-     *            the team position for the player
+     * @param playerRole
+     *            the team role for the player
      */
-    public final void setRole(final Role pos) {
-        role = pos;
+    public final void setRole(final Role playerRole) {
+        role = playerRole;
     }
 
     /**

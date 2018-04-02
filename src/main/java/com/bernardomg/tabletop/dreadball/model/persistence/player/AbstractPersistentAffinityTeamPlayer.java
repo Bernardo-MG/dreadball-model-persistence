@@ -31,6 +31,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
 
+import com.bernardomg.tabletop.dreadball.model.persistence.player.stats.PersistentAffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 
@@ -50,40 +51,40 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      * Player affinities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "player_affinities",
+    @JoinTable(name = "PLAYER_AFFINITIES",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAffinityGroup> affinities   = new LinkedHashSet<PersistentAffinityGroup>();
+    private final Collection<PersistentAffinityGroup> affinities   = new LinkedHashSet<>();
 
     /**
      * Ally cost.
      */
-    @Column(name = "cost_ally")
+    @Column(name = "ally_cost")
     private Integer                                   allyCost     = 0;
 
     /**
      * Friend cost.
      */
-    @Column(name = "cost_friend")
+    @Column(name = "friend")
     private Integer                                   friendCost   = 0;
 
     /**
      * Player hated affinities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "player_hated_affinities",
+    @JoinTable(name = "PLAYER_HATED_AFFINITIES",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAffinityGroup> hated        = new LinkedHashSet<PersistentAffinityGroup>();
+    private final Collection<PersistentAffinityGroup> hated        = new LinkedHashSet<>();
 
     /**
      * Stranger cost.
      */
-    @Column(name = "cost_stranger")
+    @Column(name = "stranger_cost")
     private Integer                                   strangerCost = 0;
 
     /**

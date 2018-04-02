@@ -33,7 +33,7 @@ import com.bernardomg.tabletop.dreadball.model.player.component.AffinityComponen
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "AffinityComponent")
-@Table(name = "affinity_player_components")
+@Table(name = "AFFINITY_PLAYER_COMPONENTS")
 public final class PersistentAffinityComponent extends
         AbstractPersistentComponent implements AffinityComponent, Serializable {
 

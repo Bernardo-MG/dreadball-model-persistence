@@ -46,7 +46,7 @@ import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAdvance
  */
 @Entity(name = "CompositeAdvancementPlayer")
 @DiscriminatorValue("composite_advancement")
-@Table(name = "composite_advancement_players")
+@Table(name = "COMPOSITE_ADVANCEMENT_PLAYERS")
 public final class PersistentCompositeAdvancementTeamPlayer
         extends AbstractPersistentAdvancementTeamPlayer
         implements CompositeAdvancementTeamPlayer, Serializable {
@@ -60,7 +60,7 @@ public final class PersistentCompositeAdvancementTeamPlayer
      * Player components.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "composite_player_components",
+    @JoinTable(name = "PLAYER_COMPONENTS",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "component_id",

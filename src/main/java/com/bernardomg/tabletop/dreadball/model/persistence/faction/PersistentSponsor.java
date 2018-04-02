@@ -37,7 +37,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
-import com.bernardomg.tabletop.dreadball.model.persistence.player.PersistentAffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.stats.PersistentAffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.google.common.base.MoreObjects;
 
@@ -49,7 +49,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "Sponsor")
-@Table(name = "sponsors")
+@Table(name = "SPONSORS")
 public final class PersistentSponsor implements Sponsor, Serializable {
 
     /**
@@ -61,7 +61,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
      * Sponsor affinity groups.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "sponsor_affinity_groups",
+    @JoinTable(name = "SPONSOR_AFFINITIES",
             joinColumns = { @JoinColumn(name = "sponsor_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "group_id",

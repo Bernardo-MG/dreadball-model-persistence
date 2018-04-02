@@ -65,7 +65,7 @@ public abstract class AbstractPersistentComponent implements Component {
      * Component abilities.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "component_abilities",
+    @JoinTable(name = "COMPONENT_ABILITIES",
             joinColumns = { @JoinColumn(name = "component_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
@@ -99,14 +99,14 @@ public abstract class AbstractPersistentComponent implements Component {
     private String                              name       = "";
 
     /**
-     * Component team positions.
+     * Component team roles.
      */
     @ElementCollection(targetClass = Role.class)
-    @JoinTable(name = "component_positions",
+    @JoinTable(name = "COMPONENT_ROLES",
             joinColumns = @JoinColumn(name = "component_id"))
     @Enumerated(EnumType.STRING)
-    @Column(name = "position")
-    private final Collection<Role>              positions  = new LinkedHashSet<Role>();
+    @Column(name = "role")
+    private final Collection<Role>              roles      = new LinkedHashSet<Role>();
 
     /**
      * Default constructor.
@@ -129,13 +129,13 @@ public abstract class AbstractPersistentComponent implements Component {
     }
 
     /**
-     * Adds a team position role.
+     * Adds a team role role.
      * 
-     * @param position
-     *            the team position role to add
+     * @param role
+     *            the team role role to add
      */
-    public final void addRole(final Role position) {
-        getRolesModifiable().add(position);
+    public final void addRole(final Role role) {
+        getRolesModifiable().add(role);
     }
 
     @Override
@@ -210,13 +210,13 @@ public abstract class AbstractPersistentComponent implements Component {
     }
 
     /**
-     * Removes a team position role.
+     * Removes a team role role.
      * 
-     * @param position
-     *            the team position role to remove
+     * @param role
+     *            the team role role to remove
      */
-    public final void removeRole(final Role position) {
-        getRolesModifiable().remove(position);
+    public final void removeRole(final Role role) {
+        getRolesModifiable().remove(role);
     }
 
     /**
@@ -284,19 +284,19 @@ public abstract class AbstractPersistentComponent implements Component {
     }
 
     /**
-     * Sets the component team position roles.
+     * Sets the component team role roles.
      * <p>
-     * All the team position roles which the component currently has will be
-     * removed and swapped with the received ones.
+     * All the team role roles which the component currently has will be removed
+     * and swapped with the received ones.
      * 
-     * @param comPositions
-     *            the team position roles to set on the component
+     * @param comRoles
+     *            the team role roles to set on the component
      */
-    public final void setRole(final Collection<Role> comPositions) {
+    public final void setRole(final Collection<Role> comRoles) {
         getRolesModifiable().clear();
 
-        if (comPositions != null) {
-            getRolesModifiable().addAll(comPositions);
+        if (comRoles != null) {
+            getRolesModifiable().addAll(comRoles);
         }
     }
 
@@ -310,12 +310,12 @@ public abstract class AbstractPersistentComponent implements Component {
     }
 
     /**
-     * Returns the modifiable collection of the component's team position roles.
+     * Returns the modifiable collection of the component's team role roles.
      * 
-     * @return the modifiable collection of the component's team position roles
+     * @return the modifiable collection of the component's team role roles
      */
     private final Collection<Role> getRolesModifiable() {
-        return positions;
+        return roles;
     }
 
 }

@@ -37,7 +37,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.bernardomg.tabletop.dreadball.model.availability.affinity.SponsorAffinityGroupAvailability;
-import com.bernardomg.tabletop.dreadball.model.persistence.player.PersistentAffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.persistence.player.stats.PersistentAffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.google.common.base.MoreObjects;
 
@@ -51,7 +51,7 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "SponsorAffinityGroupAvailability")
-@Table(name = "sponsor_affinity_avas")
+@Table(name = "AFFINITY_SETS")
 public final class PersistentSponsorAffinityGroupAvailability
         implements SponsorAffinityGroupAvailability, Serializable {
 
@@ -64,7 +64,7 @@ public final class PersistentSponsorAffinityGroupAvailability
      * Available affinity groups.
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "sponsor_affinity_avas_affinity_groups",
+    @JoinTable(name = "AFFINITY_OPTIONS",
             joinColumns = { @JoinColumn(name = "sponsor_affinity_ava_id",
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
