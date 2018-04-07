@@ -45,19 +45,19 @@ public final class PersistentAffinityComponent extends
     /**
      * Ally cost.
      */
-    @Column(name = "cost_ally")
+    @Column(name = "ally_cost")
     private Integer           allyCost         = 0;
 
     /**
      * Friend cost.
      */
-    @Column(name = "cost_friend")
+    @Column(name = "friend_cost")
     private Integer           friendCost       = 0;
 
     /**
      * Stranger cost.
      */
-    @Column(name = "cost_stranger")
+    @Column(name = "stranger_cost")
     private Integer           strangerCost     = 0;
 
     /**
