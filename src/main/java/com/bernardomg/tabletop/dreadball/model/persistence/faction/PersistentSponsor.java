@@ -64,7 +64,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
     @JoinTable(name = "SPONSOR_AFFINITIES",
             joinColumns = { @JoinColumn(name = "sponsor_id",
                     referencedColumnName = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "group_id",
+            inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
     private final Collection<PersistentAffinityGroup> affinities       = new LinkedHashSet<>();
 
