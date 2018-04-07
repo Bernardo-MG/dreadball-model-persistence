@@ -67,7 +67,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
     /**
      * Friend cost.
      */
-    @Column(name = "friend")
+    @Column(name = "friend_cost")
     private Integer                                   friendCost   = 0;
 
     /**
