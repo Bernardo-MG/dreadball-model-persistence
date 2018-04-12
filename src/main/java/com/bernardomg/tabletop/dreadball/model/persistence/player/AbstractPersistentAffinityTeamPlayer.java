@@ -25,7 +25,6 @@ import java.util.LinkedHashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -50,7 +49,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
     /**
      * Player affinities.
      */
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "PLAYER_AFFINITIES",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
@@ -73,7 +72,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
     /**
      * Player hated affinities.
      */
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "PLAYER_HATED_AFFINITIES",
             joinColumns = { @JoinColumn(name = "player_id",
                     referencedColumnName = "id") },
