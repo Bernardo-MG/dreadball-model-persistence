@@ -31,7 +31,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -64,7 +63,7 @@ public abstract class AbstractPersistentComponent implements Component {
     /**
      * Component abilities.
      */
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "COMPONENT_ABILITIES",
             joinColumns = { @JoinColumn(name = "component_id",
                     referencedColumnName = "id") },
@@ -88,7 +87,7 @@ public abstract class AbstractPersistentComponent implements Component {
     /**
      * Component location.
      */
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "location_id")
     private PersistentComponentLocation         location;
 

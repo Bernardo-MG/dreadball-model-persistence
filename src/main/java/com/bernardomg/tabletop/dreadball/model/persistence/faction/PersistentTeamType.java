@@ -28,7 +28,6 @@ import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -74,7 +73,7 @@ public final class PersistentTeamType implements TeamType, Serializable {
     /**
      * Team type rules.
      */
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "TEAM_TYPE_RULES",
             joinColumns = { @JoinColumn(name = "team_type_id",
                     referencedColumnName = "id") },

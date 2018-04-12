@@ -21,7 +21,6 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -77,14 +76,14 @@ public final class PersistentTeamPlayerRangedAvailability
     /**
      * Player for the availability.
      */
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     @JoinColumn(name = "player_id")
     private PersistentTeamPlayer teamPlayer;
 
     /**
      * Team type for the availability.
      */
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     @JoinColumn(name = "team_type_id")
     private PersistentTeamType   teamType;
 
