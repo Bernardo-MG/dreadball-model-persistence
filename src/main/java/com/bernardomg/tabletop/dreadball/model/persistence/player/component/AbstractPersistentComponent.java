@@ -153,7 +153,7 @@ public abstract class AbstractPersistentComponent implements Component {
     }
 
     @Override
-    public final Collection<Ability> getAbilities() {
+    public Collection<Ability> getAbilities() {
         final Collection<Ability> col;
 
         col = new ArrayList<>();
@@ -165,7 +165,7 @@ public abstract class AbstractPersistentComponent implements Component {
     }
 
     @Override
-    public final Attributes getAttributes() {
+    public Attributes getAttributes() {
         return attributes;
     }
 
@@ -174,22 +174,22 @@ public abstract class AbstractPersistentComponent implements Component {
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final ComponentLocation getLocation() {
+    public ComponentLocation getLocation() {
         return location;
     }
 
     @Override
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
     @Override
-    public final Collection<Role> getRoles() {
+    public Collection<Role> getRoles() {
         return Collections.unmodifiableCollection(getRolesModifiable());
     }
 
@@ -227,7 +227,7 @@ public abstract class AbstractPersistentComponent implements Component {
      * @param compAbilities
      *            the abilities to set on the component
      */
-    public final void setAbilities(final Collection<Ability> compAbilities) {
+    public void setAbilities(final Collection<Ability> compAbilities) {
         if (compAbilities != null) {
             for (final Ability ability : compAbilities) {
                 checkArgument(ability instanceof PersistentAbility,
@@ -244,21 +244,11 @@ public abstract class AbstractPersistentComponent implements Component {
      * @param attrs
      *            the attributes bonus for the component
      */
-    public final void setAttributes(final Attributes attrs) {
+    public void setAttributes(final Attributes attrs) {
         checkArgument(attrs instanceof PersistentAttributes,
                 "The Attributes should be an instanceof JPAAttributes");
 
         attributes = (PersistentAttributes) attrs;
-    }
-
-    /**
-     * Sets the component name.
-     * 
-     * @param componentName
-     *            the component name
-     */
-    public final void setComponentName(final String componentName) {
-        name = componentName;
     }
 
     /**
@@ -267,7 +257,7 @@ public abstract class AbstractPersistentComponent implements Component {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -277,9 +267,18 @@ public abstract class AbstractPersistentComponent implements Component {
      * @param compLocation
      *            the component location
      */
-    public final void
-            setLocation(final PersistentComponentLocation compLocation) {
+    public void setLocation(final PersistentComponentLocation compLocation) {
         location = compLocation;
+    }
+
+    /**
+     * Sets the component name.
+     * 
+     * @param componentName
+     *            the component name
+     */
+    public void setName(final String componentName) {
+        name = componentName;
     }
 
     /**
@@ -291,7 +290,7 @@ public abstract class AbstractPersistentComponent implements Component {
      * @param comRoles
      *            the team role roles to set on the component
      */
-    public final void setRole(final Collection<Role> comRoles) {
+    public void setRoles(final Collection<Role> comRoles) {
         getRolesModifiable().clear();
 
         if (comRoles != null) {

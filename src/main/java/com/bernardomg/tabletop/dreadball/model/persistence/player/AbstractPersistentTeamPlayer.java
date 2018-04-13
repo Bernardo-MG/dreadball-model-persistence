@@ -166,7 +166,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
     }
 
     @Override
-    public final Collection<Ability> getAbilities() {
+    public Collection<Ability> getAbilities() {
         final Collection<Ability> col;
 
         col = new ArrayList<>();
@@ -178,17 +178,17 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
     }
 
     @Override
-    public final Attributes getAttributes() {
+    public Attributes getAttributes() {
         return attributes;
     }
 
     @Override
-    public final Integer getCost() {
+    public Integer getCost() {
         return cost;
     }
 
     @Override
-    public final Boolean getGiant() {
+    public Boolean getGiant() {
         return giant;
     }
 
@@ -197,27 +197,27 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final Boolean getMvp() {
+    public Boolean getMvp() {
         return mvp;
     }
 
     @Override
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
     @Override
-    public final Role getRole() {
+    public Role getRole() {
         return role;
     }
 
     @Override
-    public final String getTemplateName() {
+    public String getTemplateName() {
         return templateName;
     }
 
@@ -245,7 +245,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param playerAbilities
      *            the abilities to set on the player
      */
-    public final void setAbilities(final Collection<Ability> playerAbilities) {
+    public void setAbilities(final Collection<Ability> playerAbilities) {
         getAbilitiesModifiable().clear();
 
         if (playerAbilities != null) {
@@ -264,7 +264,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param attrs
      *            the attributes for the player
      */
-    public final void setAttributes(final Attributes attrs) {
+    public void setAttributes(final Attributes attrs) {
         checkArgument(attrs instanceof PersistentAttributes,
                 "The Attributes should be an instanceof JPAAttributes");
 
@@ -277,7 +277,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param costPlayer
      *            the player's cost
      */
-    public final void setCost(final Integer costPlayer) {
+    public void setCost(final Integer costPlayer) {
         cost = costPlayer;
     }
 
@@ -287,7 +287,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param giantFlag
      *            the flag indicating if the player is a giant
      */
-    public final void setGiant(final Boolean giantFlag) {
+    public void setGiant(final Boolean giantFlag) {
         giant = giantFlag;
     }
 
@@ -297,8 +297,18 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
+    }
+
+    /**
+     * Sets the player MVP flag.
+     * 
+     * @param mvpFlag
+     *            the flag indicating if the player is a mvp
+     */
+    public void setMvp(final Boolean mvpFlag) {
+        giant = mvpFlag;
     }
 
     /**
@@ -307,7 +317,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param playerName
      *            the player name
      */
-    public final void setName(final String playerName) {
+    public void setName(final String playerName) {
         name = playerName;
     }
 
@@ -317,7 +327,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param playerRole
      *            the team role for the player
      */
-    public final void setRole(final Role playerRole) {
+    public void setRole(final Role playerRole) {
         role = playerRole;
     }
 
@@ -327,7 +337,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param tname
      *            the template name
      */
-    public final void setTemplateName(final String tname) {
+    public void setTemplateName(final String tname) {
         templateName = tname;
     }
 

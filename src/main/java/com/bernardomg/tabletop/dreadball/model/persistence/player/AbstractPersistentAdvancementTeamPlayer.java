@@ -72,28 +72,28 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
     }
 
     @Override
-    public final Component getGraftedImplant() {
+    public Component getGraftedImplant() {
         return graftedImplant;
     }
 
     @Override
-    public final Integer getRank() {
+    public Integer getRank() {
         return rank;
     }
 
     @Override
-    public final Integer getUnspentExperience() {
+    public Integer getUnspentExperience() {
         return unspentExperience;
     }
 
     @Override
-    public final Integer getValoration() {
+    public Integer getValoration() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public final void setGraftedImplant(final Component graft) {
+    public void setGraftedImplant(final Component graft) {
         checkArgument(graft instanceof PersistentComponent,
                 "The implant should be an instance of JPAComponent");
 
@@ -101,12 +101,12 @@ public abstract class AbstractPersistentAdvancementTeamPlayer
     }
 
     @Override
-    public final void setRank(final Integer rankPlayer) {
+    public void setRank(final Integer rankPlayer) {
         rank = rankPlayer;
     }
 
     @Override
-    public final void setUnspentExperience(final Integer exp) {
+    public void setUnspentExperience(final Integer exp) {
         unspentExperience = exp;
     }
 

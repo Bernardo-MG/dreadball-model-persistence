@@ -37,7 +37,7 @@ import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocatio
  */
 @Entity(name = "ComponentLocation")
 @Table(name = "COMPONENT_LOCATIONS")
-public final class PersistentComponentLocation
+public class PersistentComponentLocation
         implements ComponentLocation, Serializable {
 
     /**
@@ -85,12 +85,12 @@ public final class PersistentComponentLocation
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -100,23 +100,23 @@ public final class PersistentComponentLocation
     }
 
     /**
-     * Sets the component location name.
-     * 
-     * @param componentName
-     *            the component location name
-     */
-    public final void setComponentLocationName(final String componentName) {
-        name = componentName;
-    }
-
-    /**
      * Sets the ID assigned to this entity.
      * 
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
+    }
+
+    /**
+     * Sets the component location name.
+     * 
+     * @param componentName
+     *            the component location name
+     */
+    public void setName(final String componentName) {
+        name = componentName;
     }
 
 }

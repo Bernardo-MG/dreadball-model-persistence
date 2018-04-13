@@ -115,7 +115,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
     }
 
     @Override
-    public final Collection<AffinityGroup> getAffinityGroups() {
+    public Collection<AffinityGroup> getAffinityGroups() {
         final Collection<AffinityGroup> col;
 
         col = new ArrayList<>();
@@ -127,17 +127,17 @@ public abstract class AbstractPersistentAffinityTeamPlayer
     }
 
     @Override
-    public final Integer getAllyCost() {
+    public Integer getAllyCost() {
         return allyCost;
     }
 
     @Override
-    public final Integer getFriendCost() {
+    public Integer getFriendCost() {
         return friendCost;
     }
 
     @Override
-    public final Collection<AffinityGroup> getHatedAffinityGroups() {
+    public Collection<AffinityGroup> getHatedAffinityGroups() {
         final Collection<AffinityGroup> col;
 
         col = new ArrayList<>();
@@ -149,7 +149,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
     }
 
     @Override
-    public final Integer getStrangerCost() {
+    public Integer getStrangerCost() {
         return strangerCost;
     }
 
@@ -182,7 +182,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      * @param affinityGroups
      *            the affinities to set on the player
      */
-    public final void
+    public void
             setAffinityGroups(final Collection<AffinityGroup> affinityGroups) {
         getAffinityGroupsModifiable().clear();
 
@@ -203,7 +203,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      * @param cost
      *            the player's ally cost
      */
-    public final void setAllyCost(final Integer cost) {
+    public void setAllyCost(final Integer cost) {
         allyCost = cost;
     }
 
@@ -213,7 +213,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      * @param cost
      *            the player's friend cost
      */
-    public final void setFriendCost(final Integer cost) {
+    public void setFriendCost(final Integer cost) {
         friendCost = cost;
     }
 
@@ -226,7 +226,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      * @param affinityGroups
      *            the hated affinities to set on the player
      */
-    public final void setHatedAffinityGroups(
+    public void setHatedAffinityGroups(
             final Collection<AffinityGroup> affinityGroups) {
         getHatedAffinityGroupsModifiable().clear();
 
@@ -247,7 +247,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
      * @param cost
      *            the player's stranger cost
      */
-    public final void setStrangerCost(final Integer cost) {
+    public void setStrangerCost(final Integer cost) {
         strangerCost = cost;
     }
 

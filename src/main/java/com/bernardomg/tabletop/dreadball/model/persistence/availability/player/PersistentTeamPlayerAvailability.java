@@ -44,7 +44,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "TeamTypePlayerAvailability")
 @Table(name = "TEAM_TYPE_PLAYERS")
-public final class PersistentTeamPlayerAvailability
+public class PersistentTeamPlayerAvailability
         implements TeamPlayerAvailability, Serializable {
 
     /**
@@ -106,17 +106,17 @@ public final class PersistentTeamPlayerAvailability
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final TeamPlayer getTeamPlayer() {
+    public TeamPlayer getTeamPlayer() {
         return teamPlayer;
     }
 
     @Override
-    public final TeamType getTeamType() {
+    public TeamType getTeamType() {
         return teamType;
     }
 
@@ -131,7 +131,7 @@ public final class PersistentTeamPlayerAvailability
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -141,7 +141,7 @@ public final class PersistentTeamPlayerAvailability
      * @param playerType
      *            the player for the availability
      */
-    public final void setTeamPlayer(final PersistentTeamPlayer playerType) {
+    public void setTeamPlayer(final PersistentTeamPlayer playerType) {
         teamPlayer = playerType;
     }
 
@@ -151,7 +151,7 @@ public final class PersistentTeamPlayerAvailability
      * @param team
      *            the team type for the availability
      */
-    public final void setTeamType(final PersistentTeamType team) {
+    public void setTeamType(final PersistentTeamType team) {
         teamType = team;
     }
 

@@ -38,8 +38,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "AffinityGroup")
 @Table(name = "AFFINITY_GROUPS")
-public final class PersistentAffinityGroup
-        implements AffinityGroup, Serializable {
+public class PersistentAffinityGroup implements AffinityGroup, Serializable {
 
     /**
      * Serialization ID.
@@ -91,12 +90,12 @@ public final class PersistentAffinityGroup
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -111,7 +110,7 @@ public final class PersistentAffinityGroup
      * @param nameAffinity
      *            the affinity group's name
      */
-    public final void setAffinityGroupName(final String nameAffinity) {
+    public void setAffinityGroupName(final String nameAffinity) {
         name = nameAffinity;
     }
 
@@ -121,7 +120,7 @@ public final class PersistentAffinityGroup
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 

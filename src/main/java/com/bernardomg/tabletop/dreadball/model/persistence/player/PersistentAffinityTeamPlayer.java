@@ -33,7 +33,7 @@ import javax.persistence.Table;
 @Entity(name = "AffinityTeamPlayer")
 @DiscriminatorValue("affinity")
 @Table(name = "AFFINITY_PLAYERS")
-public final class PersistentAffinityTeamPlayer
+public class PersistentAffinityTeamPlayer
         extends AbstractPersistentAffinityTeamPlayer implements Serializable {
 
     /**

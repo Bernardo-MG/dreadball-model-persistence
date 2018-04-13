@@ -32,7 +32,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Embeddable
-public final class PersistentAttributes implements Attributes, Serializable {
+public class PersistentAttributes implements Attributes, Serializable {
 
     /**
      * Serialization ID.
@@ -96,27 +96,27 @@ public final class PersistentAttributes implements Attributes, Serializable {
     }
 
     @Override
-    public final Integer getArmor() {
+    public Integer getArmor() {
         return armor;
     }
 
     @Override
-    public final Integer getMovement() {
+    public Integer getMovement() {
         return movement;
     }
 
     @Override
-    public final Integer getSkill() {
+    public Integer getSkill() {
         return skill;
     }
 
     @Override
-    public final Integer getSpeed() {
+    public Integer getSpeed() {
         return speed;
     }
 
     @Override
-    public final Integer getStrength() {
+    public Integer getStrength() {
         return strength;
     }
 
@@ -131,7 +131,7 @@ public final class PersistentAttributes implements Attributes, Serializable {
      * @param armorValue
      *            the armor value
      */
-    public final void setArmor(final Integer armorValue) {
+    public void setArmor(final Integer armorValue) {
         armor = armorValue;
     }
 
@@ -141,7 +141,7 @@ public final class PersistentAttributes implements Attributes, Serializable {
      * @param movementValue
      *            the movement value
      */
-    public final void setMovement(final Integer movementValue) {
+    public void setMovement(final Integer movementValue) {
         movement = movementValue;
     }
 
@@ -151,7 +151,7 @@ public final class PersistentAttributes implements Attributes, Serializable {
      * @param skillValue
      *            the skill value
      */
-    public final void setSkill(final Integer skillValue) {
+    public void setSkill(final Integer skillValue) {
         skill = skillValue;
     }
 
@@ -161,7 +161,7 @@ public final class PersistentAttributes implements Attributes, Serializable {
      * @param speedValue
      *            the speed value
      */
-    public final void setSpeed(final Integer speedValue) {
+    public void setSpeed(final Integer speedValue) {
         speed = speedValue;
     }
 
@@ -171,7 +171,7 @@ public final class PersistentAttributes implements Attributes, Serializable {
      * @param strengthValue
      *            the strength value
      */
-    public final void setStrength(final Integer strengthValue) {
+    public void setStrength(final Integer strengthValue) {
         strength = strengthValue;
     }
 

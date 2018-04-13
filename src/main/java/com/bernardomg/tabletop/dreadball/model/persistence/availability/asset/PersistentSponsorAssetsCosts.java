@@ -39,7 +39,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "SponsorAssetsAvailability")
 @Table(name = "ASSET_COSTS")
-public final class PersistentSponsorAssetsCosts
+public class PersistentSponsorAssetsCosts
         implements SponsorAssetsCosts, Serializable {
 
     /**
@@ -124,17 +124,17 @@ public final class PersistentSponsorAssetsCosts
     }
 
     @Override
-    public final Integer getAffinityGroupCost() {
+    public Integer getAffinityGroupCost() {
         return affinityCost;
     }
 
     @Override
-    public final Integer getCheerleaderCost() {
+    public Integer getCheerleaderCost() {
         return cheerleaderCost;
     }
 
     @Override
-    public final Integer getCoachingDieCost() {
+    public Integer getCoachingDieCost() {
         return diceCost;
     }
 
@@ -143,27 +143,27 @@ public final class PersistentSponsorAssetsCosts
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final Integer getMediBotCost() {
+    public Integer getMediBotCost() {
         return medibotCost;
     }
 
     @Override
-    public final Integer getNastySurpriseCardCost() {
+    public Integer getNastySurpriseCardCost() {
         return nastySurpriseCardCost;
     }
 
     @Override
-    public final Integer getSpecialMoveCardCost() {
+    public Integer getSpecialMoveCardCost() {
         return specialMoveCardCost;
     }
 
     @Override
-    public final Integer getWagerCost() {
+    public Integer getWagerCost() {
         return wagerCost;
     }
 
@@ -178,7 +178,7 @@ public final class PersistentSponsorAssetsCosts
      * @param cost
      *            the cost of an affinity group
      */
-    public final void setAffinityGroupCost(final Integer cost) {
+    public void setAffinityGroupCost(final Integer cost) {
         affinityCost = cost;
     }
 
@@ -188,7 +188,7 @@ public final class PersistentSponsorAssetsCosts
      * @param cost
      *            the cost of a cheerleader
      */
-    public final void setCheerleaderCost(final Integer cost) {
+    public void setCheerleaderCost(final Integer cost) {
         cheerleaderCost = cost;
     }
 
@@ -198,7 +198,7 @@ public final class PersistentSponsorAssetsCosts
      * @param cost
      *            the cost of a coaching die
      */
-    public final void setCoachingDieCost(final Integer cost) {
+    public void setCoachingDieCost(final Integer cost) {
         diceCost = cost;
     }
 
@@ -208,7 +208,7 @@ public final class PersistentSponsorAssetsCosts
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -218,7 +218,7 @@ public final class PersistentSponsorAssetsCosts
      * @param cost
      *            the cost of a medibot
      */
-    public final void setMediBotCost(final Integer cost) {
+    public void setMediBotCost(final Integer cost) {
         medibotCost = cost;
     }
 
@@ -228,7 +228,7 @@ public final class PersistentSponsorAssetsCosts
      * @param cost
      *            the cost of a sabotage card
      */
-    public final void setSabotageCardCost(final Integer cost) {
+    public void setSabotageCardCost(final Integer cost) {
         nastySurpriseCardCost = cost;
     }
 
@@ -238,7 +238,7 @@ public final class PersistentSponsorAssetsCosts
      * @param cost
      *            the cost of a special movement card
      */
-    public final void setSpecialMovementCardCost(final Integer cost) {
+    public void setSpecialMovementCardCost(final Integer cost) {
         specialMoveCardCost = cost;
     }
 
@@ -248,7 +248,7 @@ public final class PersistentSponsorAssetsCosts
      * @param cost
      *            the cost of a wager
      */
-    public final void setWagerCost(final Integer cost) {
+    public void setWagerCost(final Integer cost) {
         wagerCost = cost;
     }
 
