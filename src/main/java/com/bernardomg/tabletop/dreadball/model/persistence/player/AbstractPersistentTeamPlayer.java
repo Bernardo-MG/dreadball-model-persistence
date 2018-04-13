@@ -197,7 +197,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -297,7 +297,7 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 

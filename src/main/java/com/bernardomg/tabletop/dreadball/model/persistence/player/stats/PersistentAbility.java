@@ -38,7 +38,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "Ability")
 @Table(name = "ABILITIES")
-public final class PersistentAbility implements Ability, Serializable {
+public class PersistentAbility implements Ability, Serializable {
 
     /**
      * Serialization ID.
@@ -90,12 +90,12 @@ public final class PersistentAbility implements Ability, Serializable {
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -110,7 +110,7 @@ public final class PersistentAbility implements Ability, Serializable {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -120,7 +120,7 @@ public final class PersistentAbility implements Ability, Serializable {
      * @param nameAbility
      *            the ability name
      */
-    public final void setName(final String nameAbility) {
+    public void setName(final String nameAbility) {
         name = nameAbility;
     }
 

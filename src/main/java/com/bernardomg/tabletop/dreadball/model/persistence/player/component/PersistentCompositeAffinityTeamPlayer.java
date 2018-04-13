@@ -46,7 +46,7 @@ import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAffinit
 @Entity(name = "CompositeAffinityPlayer")
 @DiscriminatorValue("composite_affinity")
 @Table(name = "COMPOSITE_AFFINITY_PLAYERS")
-public final class PersistentCompositeAffinityTeamPlayer
+public class PersistentCompositeAffinityTeamPlayer
         extends AbstractPersistentAffinityTeamPlayer
         implements CompositeAffinityTeamPlayer, Serializable {
 
@@ -84,7 +84,7 @@ public final class PersistentCompositeAffinityTeamPlayer
     }
 
     @Override
-    public final Collection<Component> getComponents() {
+    public Collection<Component> getComponents() {
         final Collection<Component> col;
 
         col = new ArrayList<>();
@@ -114,8 +114,7 @@ public final class PersistentCompositeAffinityTeamPlayer
      * @param playerComponents
      *            the components to set on the player
      */
-    public final void
-            setComponents(final Collection<Component> playerComponents) {
+    public void setComponents(final Collection<Component> playerComponents) {
         getComponentsModifiable().clear();
 
         if (playerComponents != null) {

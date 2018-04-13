@@ -126,17 +126,17 @@ public final class PersistentTeamType implements TeamType, Serializable {
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
     @Override
-    public final Collection<TeamRule> getTeamRules() {
+    public Collection<TeamRule> getTeamRules() {
         final Collection<TeamRule> col;
 
         col = new ArrayList<>();
@@ -168,7 +168,7 @@ public final class PersistentTeamType implements TeamType, Serializable {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -181,7 +181,7 @@ public final class PersistentTeamType implements TeamType, Serializable {
      * @param teamRules
      *            the team rules to set on the team type
      */
-    public final void setTeamRules(final Collection<TeamRule> teamRules) {
+    public void setTeamRules(final Collection<TeamRule> teamRules) {
         getTeamRulesModifiable().clear();
 
         if (teamRules != null) {
@@ -200,7 +200,7 @@ public final class PersistentTeamType implements TeamType, Serializable {
      * @param typeName
      *            team type name
      */
-    public final void setTeamTypeName(final String typeName) {
+    public void setTeamTypeName(final String typeName) {
         name = typeName;
     }
 

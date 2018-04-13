@@ -174,7 +174,7 @@ public abstract class AbstractPersistentComponent implements Component {
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -252,22 +252,12 @@ public abstract class AbstractPersistentComponent implements Component {
     }
 
     /**
-     * Sets the component name.
-     * 
-     * @param componentName
-     *            the component name
-     */
-    public final void setComponentName(final String componentName) {
-        name = componentName;
-    }
-
-    /**
      * Sets the ID assigned to this entity.
      * 
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -279,6 +269,16 @@ public abstract class AbstractPersistentComponent implements Component {
      */
     public void setLocation(final PersistentComponentLocation compLocation) {
         location = compLocation;
+    }
+
+    /**
+     * Sets the component name.
+     * 
+     * @param componentName
+     *            the component name
+     */
+    public void setName(final String componentName) {
+        name = componentName;
     }
 
     /**

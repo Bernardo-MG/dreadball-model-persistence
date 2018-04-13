@@ -31,7 +31,7 @@ import javax.persistence.Table;
  */
 @Entity(name = "Component")
 @Table(name = "PLAYER_COMPONENTS")
-public final class PersistentComponent extends AbstractPersistentComponent
+public class PersistentComponent extends AbstractPersistentComponent
         implements Serializable {
 
     /**
@@ -53,7 +53,7 @@ public final class PersistentComponent extends AbstractPersistentComponent
     }
 
     @Override
-    public final Integer getCost() {
+    public Integer getCost() {
         return cost;
     }
 
@@ -63,7 +63,7 @@ public final class PersistentComponent extends AbstractPersistentComponent
      * @param costComponent
      *            the component cost
      */
-    public final void setCost(final Integer costComponent) {
+    public void setCost(final Integer costComponent) {
         cost = costComponent;
     }
 

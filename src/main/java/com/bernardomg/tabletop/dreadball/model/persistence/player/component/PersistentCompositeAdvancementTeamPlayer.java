@@ -46,7 +46,7 @@ import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAdvance
 @Entity(name = "CompositeAdvancementPlayer")
 @DiscriminatorValue("composite_advancement")
 @Table(name = "COMPOSITE_ADVANCEMENT_PLAYERS")
-public final class PersistentCompositeAdvancementTeamPlayer
+public class PersistentCompositeAdvancementTeamPlayer
         extends AbstractPersistentAdvancementTeamPlayer
         implements CompositeAdvancementTeamPlayer, Serializable {
 
@@ -84,7 +84,7 @@ public final class PersistentCompositeAdvancementTeamPlayer
     }
 
     @Override
-    public final Collection<Component> getComponents() {
+    public Collection<Component> getComponents() {
         final Collection<Component> col;
 
         col = new ArrayList<>();
@@ -114,8 +114,7 @@ public final class PersistentCompositeAdvancementTeamPlayer
      * @param playerComponents
      *            the components to set on the player
      */
-    public final void
-            setComponents(final Collection<Component> playerComponents) {
+    public void setComponents(final Collection<Component> playerComponents) {
         getComponentsModifiable().clear();
 
         for (final Component component : playerComponents) {

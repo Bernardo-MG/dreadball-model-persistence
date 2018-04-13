@@ -43,7 +43,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "TeamTypeAssetsAvailability")
 @Table(name = "TEAM_TYPE_ASSETS")
-public final class PersistentTeamTypeAssetsAvailability
+public class PersistentTeamTypeAssetsAvailability
         implements TeamTypeAssetsAvailability, Serializable {
 
     /**
@@ -171,52 +171,52 @@ public final class PersistentTeamTypeAssetsAvailability
     }
 
     @Override
-    public final Integer getCheerleaderCost() {
+    public Integer getCheerleaderCost() {
         return cheerleaderCost;
     }
 
     @Override
-    public final Integer getCheerleaderInitial() {
+    public Integer getCheerleaderInitial() {
         return cheerleaderInitial;
     }
 
     @Override
-    public final Integer getCheerleaderMax() {
+    public Integer getCheerleaderMax() {
         return cheerleaderMax;
     }
 
     @Override
-    public final Integer getCoachingDieCost() {
+    public Integer getCoachingDieCost() {
         return coachingDieCost;
     }
 
     @Override
-    public final Integer getCoachingDieInitial() {
+    public Integer getCoachingDieInitial() {
         return coachingDieInitial;
     }
 
     @Override
-    public final Integer getCoachingDieMax() {
+    public Integer getCoachingDieMax() {
         return coachingDieMax;
     }
 
     @Override
-    public final Integer getCoachingStaffCost() {
+    public Integer getCoachingStaffCost() {
         return coachingStaffCost;
     }
 
     @Override
-    public final Integer getDreadballCardCost() {
+    public Integer getDreadballCardCost() {
         return dreadballCardCost;
     }
 
     @Override
-    public final Integer getDreadballCardInitial() {
+    public Integer getDreadballCardInitial() {
         return dreadballCardInitial;
     }
 
     @Override
-    public final Integer getDreadballCardMax() {
+    public Integer getDreadballCardMax() {
         return dreadballCardMax;
     }
 
@@ -225,27 +225,27 @@ public final class PersistentTeamTypeAssetsAvailability
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final Boolean getStartingWithDefensiveCoachingStaff() {
+    public Boolean getStartingWithDefensiveCoachingStaff() {
         return startingWithDefensiveCoachingStaff;
     }
 
     @Override
-    public final Boolean getStartingWithOffensiveCoachingStaff() {
+    public Boolean getStartingWithOffensiveCoachingStaff() {
         return startingWithOffensiveCoachingStaff;
     }
 
     @Override
-    public final Boolean getStartingWithSupportCoachingStaff() {
+    public Boolean getStartingWithSupportCoachingStaff() {
         return startingWithSupportCoachingStaff;
     }
 
     @Override
-    public final TeamType getTeamType() {
+    public TeamType getTeamType() {
         return teamType;
     }
 
@@ -260,7 +260,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param cost
      *            the cheerleaders cost
      */
-    public final void setCheerleadersCost(final Integer cost) {
+    public void setCheerleadersCost(final Integer cost) {
         cheerleaderCost = cost;
     }
 
@@ -270,7 +270,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param initial
      *            the initial number of cheerleaders
      */
-    public final void setCheerleadersInitial(final Integer initial) {
+    public void setCheerleadersInitial(final Integer initial) {
         cheerleaderInitial = initial;
     }
 
@@ -280,7 +280,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param max
      *            the maximum number of cheerleaders
      */
-    public final void setCheerleadersMax(final Integer max) {
+    public void setCheerleadersMax(final Integer max) {
         cheerleaderMax = max;
     }
 
@@ -290,7 +290,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param cost
      *            the coaching dice cost
      */
-    public final void setCoachingDieCost(final Integer cost) {
+    public void setCoachingDieCost(final Integer cost) {
         coachingDieCost = cost;
     }
 
@@ -300,7 +300,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param initial
      *            the initial number of coaching dice
      */
-    public final void setCoachingDieInitial(final Integer initial) {
+    public void setCoachingDieInitial(final Integer initial) {
         coachingDieInitial = initial;
     }
 
@@ -310,7 +310,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param max
      *            the maximum number of coaching dice
      */
-    public final void setCoachingDieMax(final Integer max) {
+    public void setCoachingDieMax(final Integer max) {
         coachingDieMax = max;
     }
 
@@ -320,7 +320,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param cost
      *            the coaching staff cost
      */
-    public final void setCoachingStaffCost(final Integer cost) {
+    public void setCoachingStaffCost(final Integer cost) {
         coachingStaffCost = cost;
     }
 
@@ -330,7 +330,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param cost
      *            the Dreadball cards cost
      */
-    public final void setDreadballCardCost(final Integer cost) {
+    public void setDreadballCardCost(final Integer cost) {
         dreadballCardCost = cost;
     }
 
@@ -340,7 +340,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param initial
      *            the initial number of Dreadball cards
      */
-    public final void setDreadballCardInitial(final Integer initial) {
+    public void setDreadballCardInitial(final Integer initial) {
         dreadballCardInitial = initial;
     }
 
@@ -350,7 +350,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param max
      *            the maximum number of Dreadball cards
      */
-    public final void setDreadballCardMax(final Integer max) {
+    public void setDreadballCardMax(final Integer max) {
         dreadballCardMax = max;
     }
 
@@ -360,7 +360,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -372,8 +372,7 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the flag indicating if the team begins with a defensive
      *            coaching staff
      */
-    public final void
-            setStartingWithDefensiveCoachingStaff(final Boolean coach) {
+    public void setStartingWithDefensiveCoachingStaff(final Boolean coach) {
         startingWithDefensiveCoachingStaff = coach;
     }
 
@@ -385,8 +384,7 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the flag indicating if the team begins with an offensive
      *            coaching staff
      */
-    public final void
-            setStartingWithOffensiveCoachingStaff(final Boolean coach) {
+    public void setStartingWithOffensiveCoachingStaff(final Boolean coach) {
         startingWithOffensiveCoachingStaff = coach;
     }
 
@@ -398,7 +396,7 @@ public final class PersistentTeamTypeAssetsAvailability
      *            the flag indicating if the team begins with a support coaching
      *            staff
      */
-    public final void setStartingWithSupportCoachingStaff(final Boolean coach) {
+    public void setStartingWithSupportCoachingStaff(final Boolean coach) {
         startingWithSupportCoachingStaff = coach;
     }
 
@@ -408,7 +406,7 @@ public final class PersistentTeamTypeAssetsAvailability
      * @param team
      *            the availability's team type
      */
-    public final void setTeamType(final PersistentTeamType team) {
+    public void setTeamType(final PersistentTeamType team) {
         teamType = team;
     }
 

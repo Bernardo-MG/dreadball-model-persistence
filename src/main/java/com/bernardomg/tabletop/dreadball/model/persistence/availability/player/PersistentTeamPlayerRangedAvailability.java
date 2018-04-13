@@ -46,7 +46,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "TeamTypeRangedPlayerAvailability")
 @Table(name = "TEAM_TYPE_PLAYERS_RANGED")
-public final class PersistentTeamPlayerRangedAvailability
+public class PersistentTeamPlayerRangedAvailability
         implements TeamPlayerRangedAvailability, Serializable {
 
     /**
@@ -120,27 +120,27 @@ public final class PersistentTeamPlayerRangedAvailability
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final Integer getInitialNumber() {
+    public Integer getInitialNumber() {
         return initialNumber;
     }
 
     @Override
-    public final Integer getMaxNumber() {
+    public Integer getMaxNumber() {
         return maxNumber;
     }
 
     @Override
-    public final TeamPlayer getTeamPlayer() {
+    public TeamPlayer getTeamPlayer() {
         return teamPlayer;
     }
 
     @Override
-    public final TeamType getTeamType() {
+    public TeamType getTeamType() {
         return teamType;
     }
 
@@ -155,7 +155,7 @@ public final class PersistentTeamPlayerRangedAvailability
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -165,7 +165,7 @@ public final class PersistentTeamPlayerRangedAvailability
      * @param initialCount
      *            the initial number of players for the team type
      */
-    public final void setInitialNumber(final Integer initialCount) {
+    public void setInitialNumber(final Integer initialCount) {
         initialNumber = initialCount;
     }
 
@@ -175,7 +175,7 @@ public final class PersistentTeamPlayerRangedAvailability
      * @param maxCount
      *            the max number of players for the team type
      */
-    public final void setMaxNumber(final Integer maxCount) {
+    public void setMaxNumber(final Integer maxCount) {
         maxNumber = maxCount;
     }
 
@@ -185,7 +185,7 @@ public final class PersistentTeamPlayerRangedAvailability
      * @param playerType
      *            the player for the availability
      */
-    public final void setTeamPlayer(final PersistentTeamPlayer playerType) {
+    public void setTeamPlayer(final PersistentTeamPlayer playerType) {
         teamPlayer = playerType;
     }
 
@@ -195,7 +195,7 @@ public final class PersistentTeamPlayerRangedAvailability
      * @param team
      *            the team type for the availability
      */
-    public final void setTeamType(final PersistentTeamType team) {
+    public void setTeamType(final PersistentTeamType team) {
         teamType = team;
     }
 

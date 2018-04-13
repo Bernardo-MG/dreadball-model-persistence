@@ -49,7 +49,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "Sponsor")
 @Table(name = "SPONSORS")
-public final class PersistentSponsor implements Sponsor, Serializable {
+public class PersistentSponsor implements Sponsor, Serializable {
 
     /**
      * Serialization ID.
@@ -128,7 +128,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
     }
 
     @Override
-    public final Collection<AffinityGroup> getAffinityGroups() {
+    public Collection<AffinityGroup> getAffinityGroups() {
         final Collection<AffinityGroup> result;
 
         result = new ArrayList<>();
@@ -140,7 +140,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
     }
 
     @Override
-    public final Integer getCash() {
+    public Integer getCash() {
         return cash;
     }
 
@@ -149,17 +149,17 @@ public final class PersistentSponsor implements Sponsor, Serializable {
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
     @Override
-    public final Integer getRank() {
+    public Integer getRank() {
         return rank;
     }
 
@@ -174,7 +174,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
     }
 
     @Override
-    public final void
+    public void
             setAffinityGroups(final Collection<AffinityGroup> affinityGroups) {
         getAffinityGroupsModifiable().clear();
 
@@ -189,7 +189,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
     }
 
     @Override
-    public final void setCash(final Integer spareCash) {
+    public void setCash(final Integer spareCash) {
         cash = spareCash;
     }
 
@@ -199,17 +199,17 @@ public final class PersistentSponsor implements Sponsor, Serializable {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
     @Override
-    public final void setName(final String sponsorName) {
+    public void setName(final String sponsorName) {
         name = sponsorName;
     }
 
     @Override
-    public final void setRank(final Integer sponsorRank) {
+    public void setRank(final Integer sponsorRank) {
         rank = sponsorRank;
     }
 
@@ -219,7 +219,7 @@ public final class PersistentSponsor implements Sponsor, Serializable {
      * @param sponsorName
      *            the sponsor name
      */
-    public final void setSponsorName(final String sponsorName) {
+    public void setSponsorName(final String sponsorName) {
         name = sponsorName;
     }
 

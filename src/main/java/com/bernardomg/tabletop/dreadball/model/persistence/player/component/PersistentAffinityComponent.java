@@ -34,8 +34,8 @@ import com.bernardomg.tabletop.dreadball.model.player.component.AffinityComponen
  */
 @Entity(name = "AffinityComponent")
 @Table(name = "AFFINITY_PLAYER_COMPONENTS")
-public final class PersistentAffinityComponent extends
-        AbstractPersistentComponent implements AffinityComponent, Serializable {
+public class PersistentAffinityComponent extends AbstractPersistentComponent
+        implements AffinityComponent, Serializable {
 
     /**
      * Serialization ID.
@@ -68,23 +68,23 @@ public final class PersistentAffinityComponent extends
     }
 
     @Override
-    public final Integer getAllyCost() {
+    public Integer getAllyCost() {
         return allyCost;
     }
 
     @Override
-    public final Integer getCost() {
+    public Integer getCost() {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public final Integer getFriendCost() {
+    public Integer getFriendCost() {
         return friendCost;
     }
 
     @Override
-    public final Integer getStrangerCost() {
+    public Integer getStrangerCost() {
         return strangerCost;
     }
 
@@ -94,7 +94,7 @@ public final class PersistentAffinityComponent extends
      * @param cost
      *            the ally cost
      */
-    public final void setAllyCost(final Integer cost) {
+    public void setAllyCost(final Integer cost) {
         allyCost = cost;
     }
 
@@ -104,7 +104,7 @@ public final class PersistentAffinityComponent extends
      * @param cost
      *            the friend cost
      */
-    public final void setFriendCost(final Integer cost) {
+    public void setFriendCost(final Integer cost) {
         friendCost = cost;
     }
 
@@ -114,7 +114,7 @@ public final class PersistentAffinityComponent extends
      * @param cost
      *            the stranger cost
      */
-    public final void setStrangerCost(final Integer cost) {
+    public void setStrangerCost(final Integer cost) {
         strangerCost = cost;
     }
 

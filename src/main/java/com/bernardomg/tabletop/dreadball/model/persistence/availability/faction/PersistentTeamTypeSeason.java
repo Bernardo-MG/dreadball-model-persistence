@@ -40,8 +40,7 @@ import com.bernardomg.tabletop.dreadball.model.persistence.faction.PersistentTea
  */
 @Entity(name = "PersistentTeamTypeSeason")
 @Table(name = "TEAM_TYPE_SEASONS")
-public final class PersistentTeamTypeSeason
-        implements TeamTypeSeason, Serializable {
+public class PersistentTeamTypeSeason implements TeamTypeSeason, Serializable {
 
     /**
      * Serialization id.
@@ -96,17 +95,17 @@ public final class PersistentTeamTypeSeason
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final Integer getSeasonNumber() {
+    public Integer getSeasonNumber() {
         return seasonNumber;
     }
 
     @Override
-    public final PersistentTeamType getTeam() {
+    public PersistentTeamType getTeam() {
         return team;
     }
 
@@ -121,7 +120,7 @@ public final class PersistentTeamTypeSeason
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -131,7 +130,7 @@ public final class PersistentTeamTypeSeason
      * @param season
      *            the season number
      */
-    public final void setSeasonNumber(final Integer season) {
+    public void setSeasonNumber(final Integer season) {
         seasonNumber = season;
     }
 
@@ -141,7 +140,7 @@ public final class PersistentTeamTypeSeason
      * @param teamType
      *            the team
      */
-    public final void setTeam(final PersistentTeamType teamType) {
+    public void setTeam(final PersistentTeamType teamType) {
         team = teamType;
     }
 

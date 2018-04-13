@@ -90,12 +90,12 @@ public final class PersistentTeamRule implements TeamRule, Serializable {
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -110,7 +110,7 @@ public final class PersistentTeamRule implements TeamRule, Serializable {
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -120,7 +120,7 @@ public final class PersistentTeamRule implements TeamRule, Serializable {
      * @param ruleName
      *            the team rule name
      */
-    public final void setTeamRuleName(final String ruleName) {
+    public void setTeamRuleName(final String ruleName) {
         name = ruleName;
     }
 

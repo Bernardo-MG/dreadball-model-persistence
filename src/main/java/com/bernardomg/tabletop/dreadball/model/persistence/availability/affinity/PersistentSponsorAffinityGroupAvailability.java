@@ -51,7 +51,7 @@ import com.google.common.base.MoreObjects;
  */
 @Entity(name = "SponsorAffinityGroupAvailability")
 @Table(name = "AFFINITY_SETS")
-public final class PersistentSponsorAffinityGroupAvailability
+public class PersistentSponsorAffinityGroupAvailability
         implements SponsorAffinityGroupAvailability, Serializable {
 
     /**
@@ -130,7 +130,7 @@ public final class PersistentSponsorAffinityGroupAvailability
     }
 
     @Override
-    public final Collection<AffinityGroup> getAffinityGroups() {
+    public Collection<AffinityGroup> getAffinityGroups() {
         final Collection<AffinityGroup> result;
 
         result = new ArrayList<>();
@@ -146,12 +146,12 @@ public final class PersistentSponsorAffinityGroupAvailability
      * 
      * @return the entity's ID
      */
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     @Override
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
@@ -161,7 +161,7 @@ public final class PersistentSponsorAffinityGroupAvailability
     }
 
     @Override
-    public final Boolean isIncludingRankIncrease() {
+    public Boolean isIncludingRankIncrease() {
         return rankIncrease;
     }
 
@@ -184,7 +184,7 @@ public final class PersistentSponsorAffinityGroupAvailability
      * @param affinityGroups
      *            the affinity groups to set on the player
      */
-    public final void setAffinityGroups(
+    public void setAffinityGroups(
             final Collection<PersistentAffinityGroup> affinityGroups) {
         getAffinityGroupsModifiable().clear();
 
@@ -199,7 +199,7 @@ public final class PersistentSponsorAffinityGroupAvailability
      * @param identifier
      *            the ID for the entity
      */
-    public final void setId(final Integer identifier) {
+    public void setId(final Integer identifier) {
         id = identifier;
     }
 
@@ -209,7 +209,7 @@ public final class PersistentSponsorAffinityGroupAvailability
      * @param increase
      *            flag indicating if the availability allows increasing the rank
      */
-    public final void setIncludingRankIncrease(final Boolean increase) {
+    public void setIncludingRankIncrease(final Boolean increase) {
         rankIncrease = increase;
     }
 
@@ -219,7 +219,7 @@ public final class PersistentSponsorAffinityGroupAvailability
      * @param nameAva
      *            the availability's name
      */
-    public final void setName(final String nameAva) {
+    public void setName(final String nameAva) {
         name = nameAva;
     }
 
