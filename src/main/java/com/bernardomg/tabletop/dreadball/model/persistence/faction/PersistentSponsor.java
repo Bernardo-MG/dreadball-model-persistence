@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -65,7 +65,7 @@ public class PersistentSponsor implements Sponsor, Serializable {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAffinityGroup> affinities       = new LinkedHashSet<>();
+    private final Collection<PersistentAffinityGroup> affinities       = new HashSet<>();
 
     /**
      * Sponsor cash.

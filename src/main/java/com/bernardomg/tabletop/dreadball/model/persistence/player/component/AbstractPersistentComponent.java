@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -69,7 +69,7 @@ public abstract class AbstractPersistentComponent implements Component {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAbility> abilities  = new LinkedHashSet<>();
+    private final Collection<PersistentAbility> abilities  = new HashSet<>();
 
     /**
      * Component attributes bonus.
@@ -105,7 +105,7 @@ public abstract class AbstractPersistentComponent implements Component {
             joinColumns = @JoinColumn(name = "component_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private final Collection<Role>              roles      = new LinkedHashSet<Role>();
+    private final Collection<Role>              roles      = new HashSet<Role>();
 
     /**
      * Default constructor.

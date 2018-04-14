@@ -22,7 +22,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
@@ -64,7 +64,7 @@ public class PersistentCompositeAdvancementTeamPlayer
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "component_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentComponent> components       = new LinkedHashSet<PersistentComponent>();
+    private final Collection<PersistentComponent> components       = new HashSet<PersistentComponent>();
 
     /**
      * Default constructor.

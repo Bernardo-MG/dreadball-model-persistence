@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -55,7 +55,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAffinityGroup> affinities   = new LinkedHashSet<>();
+    private final Collection<PersistentAffinityGroup> affinities   = new HashSet<>();
 
     /**
      * Ally cost.
@@ -78,7 +78,7 @@ public abstract class AbstractPersistentAffinityTeamPlayer
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAffinityGroup> hated        = new LinkedHashSet<>();
+    private final Collection<PersistentAffinityGroup> hated        = new HashSet<>();
 
     /**
      * Stranger cost.

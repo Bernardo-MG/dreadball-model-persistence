@@ -22,7 +22,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -79,7 +79,7 @@ public final class PersistentTeamType implements TeamType, Serializable {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "team_rule_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentTeamRule> rules            = new LinkedHashSet<PersistentTeamRule>();
+    private final Collection<PersistentTeamRule> rules            = new HashSet<>();
 
     /**
      * Default constructor.
