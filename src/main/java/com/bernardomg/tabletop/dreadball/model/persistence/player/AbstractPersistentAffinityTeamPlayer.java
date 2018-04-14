@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -55,19 +56,19 @@ public abstract class AbstractPersistentAffinityTeamPlayer
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAffinityGroup> affinities   = new HashSet<>();
+    private final Set<PersistentAffinityGroup> affinities   = new HashSet<>();
 
     /**
      * Ally cost.
      */
     @Column(name = "ally_cost")
-    private Integer                                   allyCost     = 0;
+    private Integer                            allyCost     = 0;
 
     /**
      * Friend cost.
      */
     @Column(name = "friend_cost")
-    private Integer                                   friendCost   = 0;
+    private Integer                            friendCost   = 0;
 
     /**
      * Player hated affinities.
@@ -78,13 +79,13 @@ public abstract class AbstractPersistentAffinityTeamPlayer
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAffinityGroup> hated        = new HashSet<>();
+    private final Set<PersistentAffinityGroup> hated        = new HashSet<>();
 
     /**
      * Stranger cost.
      */
     @Column(name = "stranger_cost")
-    private Integer                                   strangerCost = 0;
+    private Integer                            strangerCost = 0;
 
     /**
      * Default constructor.

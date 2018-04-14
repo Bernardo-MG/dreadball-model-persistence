@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -57,7 +58,7 @@ public class PersistentSponsorAffinityGroupAvailability
     /**
      * Serialization ID.
      */
-    private static final long                         serialVersionUID = -6796465298138862022L;
+    private static final long                  serialVersionUID = -6796465298138862022L;
 
     /**
      * Available affinity groups.
@@ -68,26 +69,26 @@ public class PersistentSponsorAffinityGroupAvailability
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAffinityGroup> affinities       = new HashSet<>();
+    private final Set<PersistentAffinityGroup> affinities       = new HashSet<>();
 
     /**
      * Availability's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer                                   id               = -1;
+    private Integer                            id               = -1;
 
     /**
      * Availability's name.
      */
     @Column(name = "name", unique = true)
-    private String                                    name             = "";
+    private String                             name             = "";
 
     /**
      * Flag indicating if the availability allows increasing the rank.
      */
     @Column(name = "rank_increase", unique = true)
-    private Boolean                                   rankIncrease     = false;
+    private Boolean                            rankIncrease     = false;
 
     /**
      * Default constructor.

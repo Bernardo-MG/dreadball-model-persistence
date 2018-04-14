@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -69,33 +70,33 @@ public abstract class AbstractPersistentComponent implements Component {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAbility> abilities  = new HashSet<>();
+    private final Set<PersistentAbility> abilities  = new HashSet<>();
 
     /**
      * Component attributes bonus.
      */
     @Embedded
-    private PersistentAttributes                attributes = new PersistentAttributes();
+    private PersistentAttributes         attributes = new PersistentAttributes();
 
     /**
      * Component primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Integer                             id         = -1;
+    private Integer                      id         = -1;
 
     /**
      * Component location.
      */
     @ManyToOne
     @JoinColumn(name = "location_id")
-    private PersistentComponentLocation         location;
+    private PersistentComponentLocation  location;
 
     /**
      * Component name.
      */
     @Column(name = "name", unique = true)
-    private String                              name       = "";
+    private String                       name       = "";
 
     /**
      * Component team roles.
@@ -105,7 +106,7 @@ public abstract class AbstractPersistentComponent implements Component {
             joinColumns = @JoinColumn(name = "component_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private final Collection<Role>              roles      = new HashSet<Role>();
+    private final Set<Role>              roles      = new HashSet<Role>();
 
     /**
      * Default constructor.

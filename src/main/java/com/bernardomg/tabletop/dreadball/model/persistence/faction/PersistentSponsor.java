@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,7 +55,7 @@ public class PersistentSponsor implements Sponsor, Serializable {
     /**
      * Serialization ID.
      */
-    private static final long                         serialVersionUID = -6236019919297159189L;
+    private static final long                  serialVersionUID = -6236019919297159189L;
 
     /**
      * Sponsor affinity groups.
@@ -65,32 +66,32 @@ public class PersistentSponsor implements Sponsor, Serializable {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "affinity_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAffinityGroup> affinities       = new HashSet<>();
+    private final Set<PersistentAffinityGroup> affinities       = new HashSet<>();
 
     /**
      * Sponsor cash.
      */
     @Column(name = "cash")
-    private Integer                                   cash             = 0;
+    private Integer                            cash             = 0;
 
     /**
      * Sponsor's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer                                   id               = -1;
+    private Integer                            id               = -1;
 
     /**
      * Sponsor name.
      */
     @Column(name = "name", unique = true)
-    private String                                    name             = "";
+    private String                             name             = "";
 
     /**
      * Sponsor rank.
      */
     @Column(name = "rank")
-    private Integer                                   rank             = 0;
+    private Integer                            rank             = 0;
 
     /**
      * Default constructor.

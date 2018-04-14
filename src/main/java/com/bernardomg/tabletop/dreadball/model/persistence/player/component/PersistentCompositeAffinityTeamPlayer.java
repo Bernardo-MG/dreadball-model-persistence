@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
@@ -53,7 +54,7 @@ public class PersistentCompositeAffinityTeamPlayer
     /**
      * Serialization ID.
      */
-    private static final long                     serialVersionUID = -5866596776570200158L;
+    private static final long              serialVersionUID = -5866596776570200158L;
 
     /**
      * Player components.
@@ -64,7 +65,7 @@ public class PersistentCompositeAffinityTeamPlayer
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "component_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentComponent> components       = new HashSet<PersistentComponent>();
+    private final Set<PersistentComponent> components       = new HashSet<PersistentComponent>();
 
     /**
      * Default constructor.
