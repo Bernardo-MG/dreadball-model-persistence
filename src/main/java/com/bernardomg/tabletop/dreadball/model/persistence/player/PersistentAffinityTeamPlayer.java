@@ -36,6 +36,17 @@ import javax.persistence.Table;
 @Entity(name = "AffinityTeamPlayer")
 @DiscriminatorValue("affinity")
 @Table(name = "AFFINITY_PLAYERS")
+@NamedEntityGraph(name = "fullAffinityTeamPlayer", attributeNodes = {
+        @NamedAttributeNode(value = "abilities", subgraph = "abilities"),
+        @NamedAttributeNode(value = "affinities", subgraph = "affinities"),
+        @NamedAttributeNode(value = "hated", subgraph = "hated") },
+        subgraphs = {
+                @NamedSubgraph(name = "abilities",
+                        attributeNodes = @NamedAttributeNode("name")),
+                @NamedSubgraph(name = "affinities",
+                        attributeNodes = @NamedAttributeNode("name")),
+                @NamedSubgraph(name = "hated",
+                        attributeNodes = @NamedAttributeNode("name")) })
 public class PersistentAffinityTeamPlayer
         extends AbstractPersistentAffinityTeamPlayer implements Serializable {
 
