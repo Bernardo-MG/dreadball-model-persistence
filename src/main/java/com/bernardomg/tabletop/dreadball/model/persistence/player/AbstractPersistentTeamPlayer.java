@@ -21,8 +21,9 @@ import static com.google.common.base.Preconditions.checkArgument;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -72,57 +73,57 @@ public abstract class AbstractPersistentTeamPlayer implements TeamPlayer {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "ability_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentAbility> abilities    = new LinkedHashSet<>();
+    private final Set<PersistentAbility> abilities    = new HashSet<>();
 
     /**
      * Player attributes.
      */
     @Embedded
-    private PersistentAttributes                attributes   = new PersistentAttributes();
+    private PersistentAttributes         attributes   = new PersistentAttributes();
 
     /**
      * Player cost.
      */
     @Column(name = "cost")
-    private Integer                             cost         = 0;
+    private Integer                      cost         = 0;
 
     /**
      * Flag indicating if the player is a giant.
      */
     @Column(name = "giant")
-    private Boolean                             giant        = false;
+    private Boolean                      giant        = false;
 
     /**
      * Player's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Integer                             id           = -1;
+    private Integer                      id           = -1;
 
     /**
      * Flag indicating if the player is a MVP.
      */
     @Column(name = "mvp")
-    private final Boolean                       mvp          = false;
+    private final Boolean                mvp          = false;
 
     /**
      * Player name.
      */
     @Column(name = "name")
-    private String                              name         = "";
+    private String                       name         = "";
 
     /**
      * Player team role.
      */
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private Role                                role         = Role.JACK;
+    private Role                         role         = Role.JACK;
 
     /**
      * Player template name.
      */
     @Column(name = "template_name", unique = true)
-    private String                              templateName = "";
+    private String                       templateName = "";
 
     /**
      * Default constructor.

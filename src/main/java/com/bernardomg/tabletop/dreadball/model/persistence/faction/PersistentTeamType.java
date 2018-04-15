@@ -22,8 +22,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -55,20 +56,20 @@ public final class PersistentTeamType implements TeamType, Serializable {
     /**
      * Serialization ID.
      */
-    private static final long                    serialVersionUID = -6484889622281976716L;
+    private static final long             serialVersionUID = -6484889622281976716L;
 
     /**
      * Team type's primary key.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer                              id               = -1;
+    private Integer                       id               = -1;
 
     /**
      * Team type name.
      */
     @Column(name = "name", unique = true)
-    private String                               name             = "";
+    private String                        name             = "";
 
     /**
      * Team type rules.
@@ -79,7 +80,7 @@ public final class PersistentTeamType implements TeamType, Serializable {
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "team_rule_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentTeamRule> rules            = new LinkedHashSet<PersistentTeamRule>();
+    private final Set<PersistentTeamRule> rules            = new HashSet<>();
 
     /**
      * Default constructor.

@@ -22,7 +22,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
@@ -53,7 +54,7 @@ public class PersistentCompositeAdvancementTeamPlayer
     /**
      * Serialization ID.
      */
-    private static final long                     serialVersionUID = 4751347276326003773L;
+    private static final long              serialVersionUID = 4751347276326003773L;
 
     /**
      * Player components.
@@ -64,7 +65,7 @@ public class PersistentCompositeAdvancementTeamPlayer
                     referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "component_id",
                     referencedColumnName = "id") })
-    private final Collection<PersistentComponent> components       = new LinkedHashSet<PersistentComponent>();
+    private final Set<PersistentComponent> components       = new HashSet<PersistentComponent>();
 
     /**
      * Default constructor.
